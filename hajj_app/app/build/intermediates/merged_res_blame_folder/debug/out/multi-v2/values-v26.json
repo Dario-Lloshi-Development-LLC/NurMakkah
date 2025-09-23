@@ -4,7 +4,7 @@
             "outputFile": "com.muslim.hajjrules.app-mergeDebugResources-30:/values-v26/values-v26.xml",
             "map": [
                 {
-                    "source": "/home/ubuntu/.gradle/caches/8.12/transforms/3bdda9442b7d1d07d64e8bedce1e2f3d/transformed/appcompat-1.7.1/res/values-v26/values-v26.xml",
+                    "source": "C:\\Users\\Dario\\.gradle\\caches\\8.12\\transforms\\3bdda9442b7d1d07d64e8bedce1e2f3d\\transformed\\appcompat-1.7.1\\res\\values-v26\\values-v26.xml",
                     "from": {
                         "startLines": "2,3,4,8,12,16",
                         "startColumns": "4,4,4,4,4,4",

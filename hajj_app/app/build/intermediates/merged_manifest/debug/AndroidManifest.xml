@@ -14,6 +14,12 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
+    <permission
+        android:name="com.muslim.hajjrules.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+        android:protectionLevel="signature" />
+
+    <uses-permission android:name="com.muslim.hajjrules.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+
     <supports-screens
         android:anyDensity="true"
         android:largeScreens="true"
@@ -31,12 +37,6 @@
     <uses-feature
         android:name="android.hardware.wifi"
         android:required="false" />
-
-    <permission
-        android:name="com.muslim.hajjrules.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
-        android:protectionLevel="signature" />
-
-    <uses-permission android:name="com.muslim.hajjrules.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
 
     <application
         android:allowBackup="true"
