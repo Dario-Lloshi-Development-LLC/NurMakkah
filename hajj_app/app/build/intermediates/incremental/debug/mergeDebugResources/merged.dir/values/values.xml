@@ -528,6 +528,14 @@
     <attr format="boolean" name="singleSelection"/>
     <attr format="float" name="sizePercent"/>
     <attr format="reference" name="sliderStyle"/>
+    <attr format="enum" name="splitLayoutDirection">
+        <enum name="locale" value="0"/>
+        <enum name="ltr" value="1"/>
+        <enum name="rtl" value="2"/>
+    </attr>
+    <attr format="dimension" name="splitMinSmallestWidth"/>
+    <attr format="dimension" name="splitMinWidth"/>
+    <attr format="float" name="splitRatio"/>
     <attr format="boolean" name="state_with_icon"/>
     <attr format="color" name="strokeColor"/>
     <attr format="dimension" name="strokeWidth"/>
@@ -1761,6 +1769,7 @@
     <dimen name="notification_subtext_size">13sp</dimen>
     <dimen name="notification_top_pad">10dp</dimen>
     <dimen name="notification_top_pad_large_text">5dp</dimen>
+    <dimen name="sliding_pane_detail_pane_width">300dp</dimen>
     <dimen name="tooltip_corner_radius">2dp</dimen>
     <dimen name="tooltip_horizontal_padding">16dp</dimen>
     <dimen name="tooltip_margin">8dp</dimen>
@@ -1810,9 +1819,11 @@
     <item name="action_bar_spinner" type="id"/>
     <item name="action_menu_divider" type="id"/>
     <item name="action_menu_presenter" type="id"/>
+    <item name="androidx_window_activity_scope" type="id"/>
     <item name="fragment_container_view_tag" type="id"/>
     <item name="ghost_view" type="id"/>
     <item name="ghost_view_holder" type="id"/>
+    <item name="glide_custom_view_target_tag" type="id"/>
     <item name="home" type="id"/>
     <item name="item_touch_helper_previous_elevation" type="id"/>
     <item name="line1" type="id"/>
@@ -1827,6 +1838,8 @@
     <item name="mtrl_internal_children_alpha_tag" type="id"/>
     <item name="mtrl_motion_snapshot_view" type="id"/>
     <item name="mtrl_view_tag_bottom_padding" type="id"/>
+    <item name="nav_controller_view_tag" type="id"/>
+    <item name="nav_host_fragment_container" type="id"/>
     <item name="navigation_bar_item_active_indicator_view" type="id"/>
     <item name="navigation_bar_item_icon_container" type="id"/>
     <item name="navigation_bar_item_icon_view" type="id"/>
@@ -1841,6 +1854,8 @@
     <item name="save_non_transition_alpha" type="id"/>
     <item name="save_overlay_view" type="id"/>
     <item name="selection_type" type="id"/>
+    <item name="sliding_pane_detail_container" type="id"/>
+    <item name="sliding_pane_layout" type="id"/>
     <item name="snackbar_action" type="id"/>
     <item name="snackbar_text" type="id"/>
     <item name="special_effects_controller_view_tag" type="id"/>
@@ -1889,6 +1904,7 @@
     <integer name="app_bar_elevation_anim_duration">150</integer>
     <integer name="bottom_sheet_slide_duration">150</integer>
     <integer name="cancel_button_image_alpha">127</integer>
+    <integer name="config_navAnimTime">150</integer>
     <integer name="config_tooltipAnimTime">150</integer>
     <integer name="design_snackbar_text_max_lines">2</integer>
     <integer name="design_tab_indicator_anim_duration_ms">300</integer>
@@ -2024,6 +2040,7 @@
     <string name="compass">Compass</string>
     <string name="contact_info">Kontakti: dariolloshi2023@gmail.com</string>
     <string name="cyclemap">Cycle Map</string>
+    <string name="dest_title">destination title</string>
     <string description="Screen reader announcement for when a checkbox is on error. [CHAR LIMIT=NONE]" name="error_a11y_label">
     Error: invalid
   </string>
@@ -2169,6 +2186,8 @@
     <string description="Button text to indicate that the widget will ignore the user&apos;s selection [CHAR_LIMIT=16]" name="mtrl_timepicker_cancel">Cancel</string>
     <string description="Button text to indicate that the widget will save the user&apos;s selection [CHAR_LIMIT=16]" name="mtrl_timepicker_confirm">OK</string>
     <string name="my_location">My location</string>
+    <string name="nav_app_bar_navigate_up_description">Navigate up</string>
+    <string name="nav_app_bar_open_drawer_description">Open navigation drawer</string>
     <string name="no_results">Nuk u gjetën rezultate</string>
     <string name="offline">Offline mode</string>
     <string name="password_toggle_content_description">Show password</string>
@@ -6163,6 +6182,20 @@
     <item name="android:textColor">@color/mtrl_tabs_legacy_text_color_selector</item>
     <item name="textAllCaps">true</item>
   </style>
+    <style name="TextAppearance.HajjApp.Body1" parent="TextAppearance.MaterialComponents.Body1">
+        <item name="android:textSize">16sp</item>
+    </style>
+    <style name="TextAppearance.HajjApp.Body2" parent="TextAppearance.MaterialComponents.Body2">
+        <item name="android:textSize">14sp</item>
+    </style>
+    <style name="TextAppearance.HajjApp.Headline1" parent="TextAppearance.MaterialComponents.Headline1">
+        <item name="android:textSize">24sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="TextAppearance.HajjApp.Headline2" parent="TextAppearance.MaterialComponents.Headline2">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
     <style name="TextAppearance.M3.Sys.Typescale.BodyLarge" parent="TextAppearance.AppCompat.Body2">
     <item name="fontFamily">@string/m3_ref_typeface_plain_regular</item>
     <item name="android:fontFamily">@string/m3_ref_typeface_plain_regular</item>
@@ -6470,15 +6503,36 @@
   </style>
     <style name="Theme.HajjApp" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         
-        <item name="colorPrimary">@color/background</item>
-        <item name="colorPrimaryVariant">@color/secondary_color</item>
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryVariant">@color/primary_dark</item>
         <item name="colorOnPrimary">@color/white</item>
         
-        <item name="colorSecondary">@color/other_tones</item>
-        <item name="colorSecondaryVariant">@color/secondary_color</item>
-        <item name="colorOnSecondary">@color/white</item>
+        
+        <item name="colorSecondary">@color/accent</item>
+        <item name="colorSecondaryVariant">@color/accent_dark</item>
+        <item name="colorOnSecondary">@color/black</item>
+        
         
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        
+        
+        <item name="android:windowBackground">@color/window_background</item>
+        <item name="colorSurface">@color/surface</item>
+        <item name="colorOnSurface">@color/on_surface</item>
+        
+        
+        <item name="materialCardViewStyle">@style/Widget.HajjApp.CardView</item>
+        
+        
+        <item name="textAppearanceHeadline1">@style/TextAppearance.HajjApp.Headline1</item>
+        <item name="textAppearanceHeadline2">@style/TextAppearance.HajjApp.Headline2</item>
+        <item name="textAppearanceBody1">@style/TextAppearance.HajjApp.Body1</item>
+        <item name="textAppearanceBody2">@style/TextAppearance.HajjApp.Body2</item>
+        
+        
+        <item name="android:windowActivityTransitions">true</item>
+        <item name="android:windowEnterTransition">@android:transition/fade</item>
+        <item name="android:windowExitTransition">@android:transition/fade</item>
     </style>
     <style name="Theme.Material3.Dark" parent="Base.Theme.Material3.Dark"/>
     <style name="Theme.Material3.Dark.BottomSheetDialog" parent="Base.Theme.Material3.Dark.BottomSheetDialog"/>
@@ -7397,6 +7451,11 @@
     <item name="shapeAppearance">@null</item>
     <item name="shapeAppearanceOverlay">@null</item>
   </style>
+    <style name="Widget.HajjApp.CardView" parent="Widget.MaterialComponents.CardView">
+        <item name="cardElevation">4dp</item>
+        <item name="cardCornerRadius">8dp</item>
+        <item name="android:layout_margin">8dp</item>
+    </style>
     <style name="Widget.Material3.ActionBar.Solid" parent="Base.Widget.Material3.ActionBar.Solid"/>
     <style name="Widget.Material3.ActionMode" parent="Base.Widget.Material3.ActionMode"/>
     <style name="Widget.Material3.AppBarLayout" parent="Widget.MaterialComponents.AppBarLayout.Surface">
@@ -9435,6 +9494,23 @@
         
         <attr format="reference" name="expandActivityOverflowButtonDrawable"/>
     </declare-styleable>
+    <declare-styleable name="ActivityFilter">
+        
+        <attr format="string" name="activityName"/>
+        
+        <attr format="string" name="activityAction"/>
+    </declare-styleable>
+    <declare-styleable name="ActivityNavigator">
+        <attr name="android:name"/>
+        <attr format="string" name="action"/>
+        <attr format="string" name="data"/>
+        <attr format="string" name="dataPattern"/>
+        <attr format="string" name="targetPackage"/>
+    </declare-styleable>
+    <declare-styleable name="ActivityRule">
+        
+        <attr format="boolean" name="alwaysExpand"/>
+    </declare-styleable>
     <declare-styleable name="AlertDialog">
         <attr name="android:layout"/>
         <attr format="reference" name="buttonPanelSideLayout"/>
@@ -11394,6 +11470,9 @@
         <attr format="boolean" name="customBoolean"/>
         <attr format="reference" name="customReference"/>
     </declare-styleable>
+    <declare-styleable name="DialogFragmentNavigator">
+        <attr name="android:name"/>
+    </declare-styleable>
     <declare-styleable name="DrawerArrowToggle">
         
         <attr format="color" name="color"/>
@@ -11567,6 +11646,9 @@
     <declare-styleable name="FragmentContainerView">
         <attr name="android:name"/>
         <attr name="android:tag"/>
+    </declare-styleable>
+    <declare-styleable name="FragmentNavigator">
+        <attr name="android:name"/>
     </declare-styleable>
     <declare-styleable name="GradientColor">
         
@@ -12539,6 +12621,43 @@
         <attr format="color" name="telltales_tailColor"/>
         <attr format="float" name="telltales_tailScale"/>
     </declare-styleable>
+    <declare-styleable name="NavAction">
+        <attr name="android:id"/>
+        <attr format="reference" name="destination"/>
+        <attr format="boolean" name="launchSingleTop"/>
+        <attr format="boolean" name="restoreState"/>
+        <attr format="reference" name="popUpTo"/>
+        <attr format="boolean" name="popUpToInclusive"/>
+        <attr format="boolean" name="popUpToSaveState"/>
+        <attr format="reference" name="enterAnim"/>
+        <attr format="reference" name="exitAnim"/>
+        <attr format="reference" name="popEnterAnim"/>
+        <attr format="reference" name="popExitAnim"/>
+    </declare-styleable>
+    <declare-styleable name="NavArgument">
+        <attr name="android:name"/>
+        <attr name="android:defaultValue"/>
+        <attr format="boolean" name="nullable"/>
+        <attr format="string" name="argType"/>
+    </declare-styleable>
+    <declare-styleable name="NavDeepLink">
+        <attr format="string" name="uri"/>
+        <attr format="string" name="action"/>
+        <attr format="string" name="mimeType"/>
+        <attr name="android:autoVerify"/>
+    </declare-styleable>
+    <declare-styleable name="NavGraphNavigator">
+        <attr format="reference" name="startDestination"/>
+    </declare-styleable>
+    <declare-styleable name="NavHost">
+        <attr format="reference" name="navGraph"/>
+    </declare-styleable>
+    <declare-styleable name="NavHostFragment">
+        <attr format="boolean" name="defaultNavHost"/>
+    </declare-styleable>
+    <declare-styleable name="NavInclude">
+        <attr format="reference" name="graph"/>
+    </declare-styleable>
     <declare-styleable name="NavigationBarActiveIndicator">
     
     <attr name="android:color"/>
@@ -12689,6 +12808,11 @@
     
     <attr format="dimension" name="drawerLayoutCornerSize"/>
   </declare-styleable>
+    <declare-styleable name="Navigator">
+        <attr name="android:id"/>
+        <attr format="string" name="route"/>
+        <attr name="android:label"/>
+    </declare-styleable>
     <declare-styleable name="OnClick">
         <attr name="targetId"/>
         <attr name="clickAction">
@@ -13024,6 +13148,34 @@
         
         <attr name="android:entries"/>
     </declare-styleable>
+    <declare-styleable name="SplitPairFilter">
+        
+        <attr format="string" name="primaryActivityName"/>
+        
+        <attr format="string" name="secondaryActivityName"/>
+        
+        <attr format="string" name="secondaryActivityAction"/>
+    </declare-styleable>
+    <declare-styleable name="SplitPairRule">
+        
+        <attr format="boolean" name="finishPrimaryWithSecondary"/>
+        
+        <attr format="boolean" name="finishSecondaryWithPrimary"/>
+        
+        <attr format="boolean" name="clearTop"/>
+        <attr name="splitRatio"/>
+        <attr name="splitMinWidth"/>
+        <attr name="splitMinSmallestWidth"/>
+        <attr name="splitLayoutDirection"/>
+    </declare-styleable>
+    <declare-styleable name="SplitPlaceholderRule">
+        
+        <attr format="string" name="placeholderActivityName"/>
+        <attr name="splitRatio"/>
+        <attr name="splitMinWidth"/>
+        <attr name="splitMinSmallestWidth"/>
+        <attr name="splitLayoutDirection"/>
+    </declare-styleable>
     <declare-styleable name="State">
         <attr name="android:id"/>
         <attr format="reference" name="constraints"/>
@@ -13050,6 +13202,10 @@
     </declare-styleable>
     <declare-styleable name="StateSet">
         <attr format="reference" name="defaultState"/>
+    </declare-styleable>
+    <declare-styleable name="SwipeRefreshLayout">
+        
+        <attr format="color" name="swipeRefreshLayoutProgressSpinnerBackgroundColor"/>
     </declare-styleable>
     <declare-styleable name="SwitchCompat">
         

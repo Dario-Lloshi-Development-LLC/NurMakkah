@@ -1,17 +1,33 @@
 package com.muslim.hajjrules.model;
 
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+import androidx.room.ColumnInfo;
+
+@Entity(tableName = "hajj_rules")
 public class HajjRule {
+    @PrimaryKey(autoGenerate = true)
+    private int id;
+
     private String title;
     private String description;
-    private int categoryId;
-    private int id;
+    private String category;
     private int imageResourceId;
+    private boolean isFavorite;
 
-    public HajjRule(String title, String description, int categoryId, int imageResourceId, int id) {
+    public HajjRule(String title, String description, String category, int imageResourceId) {
         this.title = title;
         this.description = description;
-        this.categoryId = categoryId;
+        this.category = category;
         this.imageResourceId = imageResourceId;
+        this.isFavorite = false;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -19,16 +35,24 @@ public class HajjRule {
         return title;
     }
 
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
     public String getDescription() {
         return description;
     }
 
-    public int getCategoryId() {
-        return categoryId;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public int getId() {
-        return id;
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 
     public int getImageResourceId() {
@@ -39,8 +63,12 @@ public class HajjRule {
         this.imageResourceId = imageResourceId;
     }
 
-    public void setCategoryId(int categoryId) {
-        this.categoryId = categoryId;
+    public boolean isFavorite() {
+        return isFavorite;
+    }
+
+    public void setFavorite(boolean favorite) {
+        isFavorite = favorite;
     }
 }
 
