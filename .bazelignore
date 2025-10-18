@@ -1,0 +1,48 @@
+# Bazel ignore file - excludes directories from Bazel's workspace view
+
+# Node modules
+node_modules
+
+# Build artifacts
+build
+dist
+.gradle
+.m2
+
+# IDE-specific files
+.idea
+.vscode
+.DS_Store
+*.swp
+*.swo
+*~
+
+# Git
+.git
+.gitignore
+
+# Gradle
+gradle
+gradlew
+gradlew.bat
+
+# Flutter
+flutter_sdk
+flutter_releases.json
+
+# Images and documentation
+*.png
+*.jpg
+*.jpeg
+*.gif
+docs
+
+# Temporary files
+*.tmp
+*.log
+*.bak
+
+# Android specific
+local.properties
+cmdline-tools
+

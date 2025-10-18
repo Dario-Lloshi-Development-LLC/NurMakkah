@@ -1,0 +1,6 @@
+# BUILD file for hajj_app (React Native) Android project
+
+package(default_visibility = ["//visibility:public"])
+
+# This file serves as the entry point for the React Native Android build
+
