@@ -1,5 +1,9 @@
-apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+}
 
 android {
     namespace 'com.muslim.hajjrules'
@@ -13,24 +17,27 @@ android {
         versionName '1.0'
 
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
-        vectorDrawables.useSupportLibrary = true
+        vectorDrawables {
+            useSupportLibrary = true
+        }
         multiDexEnabled true
 
         // Room schema location
-        javaCompileOptions {
-            annotationProcessorOptions {
-                arguments += ['room.schemaLocation': "$projectDir/schemas"]
+        kapt {
+            arguments {
+                arg("room.schemaLocation", "$projectDir/schemas")
             }
         }
     }
 
     // Enable view binding and disable unused features
     buildFeatures {
-        viewBinding true
-        aidl false
-        renderScript false
-        resValues false
-        shaders false
+        viewBinding = true
+        // Disable unused build features for faster compilation
+        aidl = false
+        renderScript = false
+        resValues = false
+        shaders = false
     }
 
     buildTypes {
@@ -47,8 +54,8 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_17
-        targetCompatibility JavaVersion.VERSION_17
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
 
     kotlinOptions {
@@ -68,12 +75,12 @@ android {
     }
 
     aaptOptions {
-        noCompress 'png', 'jpg'
+        noCompress = ['png', 'jpg']
     }
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
     
     // AndroidX Core Libraries
     implementation 'androidx.appcompat:appcompat:1.7.1'
@@ -94,11 +101,11 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-livedata:2.6.2'
     implementation 'androidx.lifecycle:lifecycle-runtime:2.6.2'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-savedstate:2.6.2'
-    annotationProcessor 'androidx.lifecycle:lifecycle-compiler:2.6.2'
+    kapt 'androidx.lifecycle:lifecycle-compiler:2.6.2'
     
     // Room Database
     implementation 'androidx.room:room-runtime:2.6.1'
-    annotationProcessor 'androidx.room:room-compiler:2.6.1'
+    kapt 'androidx.room:room-compiler:2.6.1'
     
     // Navigation Components
     implementation 'androidx.navigation:navigation-fragment:2.7.5'
@@ -109,11 +116,11 @@ dependencies {
     
     // Image Loading and Caching
     implementation 'com.github.bumptech.glide:glide:4.16.0'
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.16.0'
+    kapt 'com.github.bumptech.glide:compiler:4.16.0'
     
     // Dependency Injection
     implementation 'com.google.dagger:hilt-android:2.48'
-    annotationProcessor 'com.google.dagger:hilt-compiler:2.48'
+    kapt 'com.google.dagger:hilt-compiler:2.48'
     
     // Testing
     testImplementation 'junit:junit:4.13.2'
