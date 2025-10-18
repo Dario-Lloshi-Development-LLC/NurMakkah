@@ -24,13 +24,22 @@ android {
         }
     }
 
-    // Enable view binding
+    // Enable view binding and disable unused features
     buildFeatures {
         viewBinding true
+        aidl false
+        renderScript false
+        resValues false
+        shaders false
     }
 
     buildTypes {
+        debug {
+            debuggable true
+            minifyEnabled false
+        }
         release {
+            debuggable false
             minifyEnabled true
             shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
@@ -47,6 +56,7 @@ android {
     }
 
     packagingOptions {
+        pickFirst 'META-INF/proguard/androidx-*.pro'
         exclude 'META-INF/DEPENDENCIES'
         exclude 'META-INF/LICENSE'
         exclude 'META-INF/LICENSE.txt'
