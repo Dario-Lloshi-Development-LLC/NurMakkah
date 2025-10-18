@@ -1,0 +1,86 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "globalDependencies": [
+    "package.json",
+    ".env"
+  ],
+  "tasks": {
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": [
+        ".next/**",
+        "dist/**",
+        "build/**",
+        "android/app/build/**",
+        "ios/build/**"
+      ],
+      "cache": true
+    },
+    "build:android": {
+      "dependsOn": ["^build"],
+      "outputs": [
+        "android/app/build/**"
+      ],
+      "cache": true
+    },
+    "build:android:bundle": {
+      "dependsOn": ["^build"],
+      "outputs": [
+        "android/app/build/**"
+      ],
+      "cache": true
+    },
+    "build:ios": {
+      "dependsOn": ["^build"],
+      "outputs": [
+        "ios/build/**"
+      ],
+      "cache": true
+    },
+    "dev": {
+      "cache": false,
+      "persistent": true
+    },
+    "start": {
+      "cache": false,
+      "persistent": true
+    },
+    "lint": {
+      "dependsOn": ["^lint"],
+      "outputs": ["coverage/**"],
+      "cache": true
+    },
+    "test": {
+      "dependsOn": ["^test"],
+      "outputs": ["coverage/**"],
+      "cache": true
+    },
+    "android": {
+      "cache": false,
+      "persistent": true
+    },
+    "ios": {
+      "cache": false,
+      "persistent": true
+    },
+    "melos:bootstrap": {
+      "cache": false
+    },
+    "melos:test": {
+      "dependsOn": ["melos:bootstrap"],
+      "outputs": ["coverage/**"],
+      "cache": true
+    },
+    "melos:build_android": {
+      "dependsOn": ["melos:bootstrap"],
+      "outputs": ["build/**"],
+      "cache": true
+    },
+    "melos:build_ios": {
+      "dependsOn": ["melos:bootstrap"],
+      "outputs": ["build/**"],
+      "cache": true
+    }
+  }
+}
+

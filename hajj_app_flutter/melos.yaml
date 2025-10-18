@@ -1,0 +1,50 @@
+name: hajj_app_flutter
+repository: https://github.com/gaming-clan/hajj-app.git
+
+packages:
+  - 'packages/**'
+  - '.'
+
+scripts:
+  bootstrap:
+    description: Bootstrap the Flutter project and get dependencies.
+    run: flutter pub get
+    
+  test:
+    description: Run tests for the Flutter project.
+    run: flutter test --no-pub --coverage
+    
+  build:android:
+    description: Build Android release APK.
+    run: flutter build apk --release
+    
+  build:android:debug:
+    description: Build Android debug APK.
+    run: flutter build apk --debug
+    
+  build:ios:
+    description: Build iOS release app (without codesigning).
+    run: flutter build ios --release --no-codesign
+    
+  build:ios:debug:
+    description: Build iOS debug app.
+    run: flutter build ios --debug
+    
+  clean:
+    description: Clean Flutter build artifacts.
+    run: flutter clean
+    
+  analyze:
+    description: Analyze Dart code for potential issues.
+    run: flutter analyze
+    
+  format:
+    description: Format Dart code.
+    run: dart format .
+    
+  lint:
+    description: Run lint checks on Dart code.
+    run: flutter analyze --no-pub
+
+version: 3.0.0
+

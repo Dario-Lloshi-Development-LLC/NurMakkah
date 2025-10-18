@@ -2,6 +2,7 @@
   "name": "hajj-app",
   "version": "1.0.0",
   "private": true,
+  "packageManager": "npm@10.0.0",
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
@@ -51,5 +52,9 @@
   },
   "engines": {
     "node": ">=16"
-  }
+  },
+  "workspaces": [
+    "hajj_app",
+    "hajj_app_flutter"
+  ]
 }
