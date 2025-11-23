@@ -357,43 +357,50 @@
       "fidyah": "Nuk ka Fidyah specifike, por veprimi është i pavlefshëm dhe mëkat."
     }
   ],
-  "vendcaktimet": [
-    {
-      "id": 1,
-      "emri": "DHUL HULEJFEH",
-      "per_ke": "Për banorët e Medinës dhe ata që vijnë nga ajo rrugë",
-      "largesia": "450 km nga Meka",
-      "image": "miqats.jpg"
-    },
-    {
-      "id": 2,
-      "emri": "XHUHFEH",
-      "per_ke": "Për udhëtarët nga Siria, Egjipti, Maroku dhe ata që vijnë nga ajo rrugë",
-      "largesia": "183 km nga Meka",
-      "image": "miqats.jpg"
-    },
-    {
-      "id": 3,
-      "emri": "KARNUL MENAZIL",
-      "per_ke": "Për haxhilerët e Nexhdit dhe ata që vijnë nga ajo rrugë",
-      "largesia": "75 km nga Meka",
-      "image": "miqats.jpg"
-    },
-    {
-      "id": 4,
-      "emri": "JELEMLEM",
-      "per_ke": "Për haxhinjtë nga Jemeni dhe ata që kalojnë aty",
-      "largesia": "92 km nga Meka",
-      "image": "miqats.jpg"
-    },
-    {
-      "id": 5,
-      "emri": "DHATE IRK",
-      "per_ke": "Për haxhinjtë e Irakut dhe ata që kalojnë nga ai vend",
-      "largesia": "94 km nga Meka",
-      "image": "miqats.jpg"
+  "vendcaktimet": {
+    "hadith_reference": "Sahih al-Bukhari, 1526",
+    "locations": [
+      {
+        "id": 1,
+        "emri": "DHUL HULEJFEH",
+        "per_ke": "Për banorët e Medinës dhe ata që vijnë nga ajo rrugë",
+        "largesia": "450 km nga Meka",
+        "image": "miqats.jpg"
+      },
+      {
+        "id": 2,
+        "emri": "XHUHFEH",
+        "per_ke": "Për udhëtarët nga Siria, Egjipti, Maroku dhe ata që vijnë nga ajo rrugë",
+        "largesia": "183 km nga Meka",
+        "image": "miqats.jpg"
+      },
+      {
+        "id": 3,
+        "emri": "KARNUL MENAZIL",
+        "per_ke": "Për haxhilerët e Nexhdit dhe ata që vijnë nga ajo rrugë",
+        "largesia": "75 km nga Meka",
+        "image": "miqats.jpg"
+      },
+      {
+        "id": 4,
+        "emri": "JELEMLEM",
+        "per_ke": "Për haxhinjtë nga Jemeni dhe ata që kalojnë aty",
+        "largesia": "92 km nga Meka",
+        "image": "miqats.jpg"
+      },
+      {
+        "id": 5,
+        "emri": "DHATE IRK",
+        "per_ke": "Për haxhinjtë e Irakut dhe ata që kalojnë nga ai vend",
+        "largesia": "94 km nga Meka",
+        "image": "miqats.jpg"
+      }
+    ],
+    "modern_context": {
+      "title": "Udhëtimi Ajror dhe Miqati",
+      "description": "Pelegrinët që udhëtojnë me avion për në Xheda dhe nuk kalojnë pranë një Miqati të caktuar, duhet të hyjnë në Ihram para se të arrijnë në Xheda. Shumica e dijetarëve këshillojnë që ihrami të bëhet kur avioni është paralel me Miqatin më të afërt, ose si masë paraprake, para se të nisen nga aeroporti i origjinës."
     }
-  ],
+  },
   "qabja": {
     "description": "Qabja është vendi që tërheq zemrat e muslimanëve nga e gjithë bota. Është shtëpia e parë e ndërtuar për adhurim mbi tokë.",
     "rendesia": "Muslimanët drejtohen nga Qabja pesë herë në ditë për të kryer namazin dhe vërshojnë për të kryer ceremonitë e Haxhit."
