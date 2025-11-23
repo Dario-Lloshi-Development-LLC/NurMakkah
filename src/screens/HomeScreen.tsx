@@ -28,7 +28,9 @@ const HomeScreen: React.FC = () => {
   const renderCategory = ({item}: {item: Category}) => (
     <TouchableOpacity
       style={styles.categoryCard}
-      onPress={() => handleCategoryPress(item)}>
+      onPress={() => handleCategoryPress(item)}
+      accessibilityLabel={`Kategoria: ${item.title}`}
+      accessibilityHint={`Hap për të parë rregullat për ${item.title}`}>
       <View style={styles.categoryContent}>
         <Image source={getImageSource(item.image)} style={styles.categoryIcon} />
         <View style={styles.categoryTextContainer}>
