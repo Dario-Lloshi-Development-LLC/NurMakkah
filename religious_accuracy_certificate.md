@@ -87,10 +87,24 @@ All content has been cross-referenced with the following hierarchy of sources:
 
 **Justification:** These enhancements will make the Miqat section far more practical and useful for contemporary pilgrims. The foundational Hadith provides religious authority, while the modern context for air travel addresses a very common point of confusion, making the app an indispensable tool for today's Hajj and Umrah traveler.
 
+### Section 7: Comprehensive Dua Collection (`duas`)
+
+**Initial State:** The application lacks a centralized, comprehensive, and well-sourced collection of supplications (Duas) for the various rituals of Hajj and Umrah.
+
+**Verification & Enhancement Plan:**
+1.  **Create New `duas` Section:** I will add a new top-level section in `hajj_rules.json` dedicated to supplications.
+2.  **Categorize Duas:** I will structure the duas into logical categories based on the ritual being performed (e.g., "Duas for Tawaf", "Duas for Sa'i").
+3.  **Provide Comprehensive Dua Information:** For each dua, I will include:
+    *   **Arabic Text:** The original Arabic with proper vowel markings.
+    *   **Transliteration:** Phonetic transliteration for non-Arabic speakers.
+    *   **Translation:** Accurate translations in all supported languages (Albanian, English).
+    *   **Source Attribution:** A specific, verifiable reference from the Quran or authentic Hadith collections (e.g., Sahih Muslim 1218).
+4.  **Initial Implementation:** I have implemented the initial structure with key duas for Tawaf and Sa'i.
+
+**Justification:** Adding a well-organized and authentically sourced Dua collection is a critical enhancement. It provides immense value to the user, allowing them to easily access and recite the correct supplications at the correct times during their pilgrimage, thereby enhancing their spiritual experience and ensuring their actions align with the Sunnah.
+
 ---
 
 **Initial Content Verification Phase: COMPLETED**
 
 All major sections related to the initial stages of Hajj and Umrah have been reviewed and enhanced with authentic references and contemporary context. The application is now a much more reliable and authoritative guide for pilgrims.
-
-
