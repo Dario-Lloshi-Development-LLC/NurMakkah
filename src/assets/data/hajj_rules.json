@@ -302,38 +302,59 @@
   "ndalesat_gjate_ihramit": [
     {
       "id": 1,
-      "ndalesa": "Mbulimi i kokës",
-      "description": "Nuk lejohet të mbulohet koka për burrat."
+      "ndalesa": "Veshja e rrobave të qepura (për burrat)",
+      "description": "Burrat nuk lejohen të veshin rroba të qepura që marrin formën e trupit, si këmisha, pantallona, etj.",
+      "hadith_reference": "Sahih al-Bukhari, 1838",
+      "fidyah": "Nëse shkelet, kërkohet Fidyah: agjërimi i tre ditëve, ose ushqimi i gjashtë të varfërve, ose therja e një deleje."
     },
     {
       "id": 2,
-      "ndalesa": "Veshja e rrobave të qepura",
-      "description": "Nuk lejohet të vishen rroba të qepura për burrat."
+      "ndalesa": "Mbulimi i kokës (për burrat)",
+      "description": "Nuk lejohet të mbulohet koka me çfarëdo që e prek atë direkt.",
+      "hadith_reference": "Sahih al-Bukhari, 1838",
+      "fidyah": "Fidyah e njëjtë si për veshjen e rrobave të qepura."
     },
     {
       "id": 3,
-      "ndalesa": "Parfumimi",
-      "description": "Nuk lejohet të parfumoset trupi apo rrobat."
+      "ndalesa": "Mbulimi i fytyrës (për gratë)",
+      "description": "Gratë nuk duhet ta mbulojnë fytyrën me nikab ose burka, por mund ta mbulojnë atë nga burrat e huaj me një shami pa e lidhur atë.",
+      "hadith_reference": "Sahih al-Bukhari, 1838",
+      "fidyah": "Fidyah e njëjtë si për veshjen e rrobave të qepura."
     },
     {
       "id": 4,
-      "ndalesa": "Prerja e thonjve dhe flokëve",
-      "description": "Nuk lejohet të priten thonjtë apo flokët."
+      "ndalesa": "Prerja e flokëve dhe thonjve",
+      "description": "Nuk lejohet prerja e flokëve apo thonjve pa arsye legjitime.",
+      "quranic_reference": "وَلَا تَحْلِقُوا رُءُوسَكُمْ حَتَّىٰ يَبْلُغَ الْهَدْيُ مَحِلَّهُ",
+      "fidyah": "Fidyah e njëjtë si për veshjen e rrobave të qepura."
     },
     {
       "id": 5,
-      "ndalesa": "Gjuetia",
-      "description": "Nuk lejohet gjuetia e kafshëve tokësore."
+      "ndalesa": "Parfumimi",
+      "description": "Nuk lejohet përdorimi i parfumit në trup apo në rroba.",
+      "hadith_reference": "Sahih al-Bukhari, 1838",
+      "fidyah": "Fidyah e njëjtë si për veshjen e rrobave të qepura."
     },
     {
       "id": 6,
-      "ndalesa": "Marrëdhëniet intime",
-      "description": "Nuk lejohet marrëdhëniet intime me bashkëshorten."
+      "ndalesa": "Gjuetia",
+      "description": "Nuk lejohet gjuetia e kafshëve tokësore të egra.",
+      "quranic_reference": "يَا أَيُّهَا الَّذِينَ آمَنُوا لَا تَقْتُلُوا الصَّيْدَ وَأَنتُمْ حُرُمٌ",
+      "fidyah": "Fidyah specifike në varësi të kafshës së gjuajtur, siç përshkruhet në Fikh."
     },
     {
       "id": 7,
+      "ndalesa": "Marrëdhëniet intime",
+      "description": "Marrëdhëniet intime dhe çdo veprim që çon drejt tyre janë rreptësisht të ndaluara.",
+      "quranic_reference": "فَلَا رَفَثَ وَلَا فُسُوقَ وَلَا جِدَالَ فِي الْحَجِّ",
+      "fidyah": "Prish Haxhin dhe kërkon pendim, përsëritjen e Haxhit vitin tjetër, dhe therjen e një deveje."
+    },
+    {
+      "id": 8,
       "ndalesa": "Martesa",
-      "description": "Nuk lejohet lidhja e kurorës (martesa)."
+      "description": "Nuk lejohet propozimi për martesë, lidhja e kurorës, apo veprimi si kujdestar (ueli) për dikë tjetër.",
+      "hadith_reference": "Sahih Muslim, 1409a",
+      "fidyah": "Nuk ka Fidyah specifike, por veprimi është i pavlefshëm dhe mëkat."
     }
   ],
   "vendcaktimet": [
