@@ -103,6 +103,17 @@ All content has been cross-referenced with the following hierarchy of sources:
 
 **Justification:** Adding a well-organized and authentically sourced Dua collection is a critical enhancement. It provides immense value to the user, allowing them to easily access and recite the correct supplications at the correct times during their pilgrimage, thereby enhancing their spiritual experience and ensuring their actions align with the Sunnah.
 
+### Section 8: Step-by-Step Visual Guides (`tawaf` and `sai`)
+
+**Initial State:** The application lacks clear, step-by-step visual aids to help users understand the sequence of complex rituals like Tawaf and Sa'i.
+
+**Verification & Enhancement Plan:**
+1.  **Generate Visual Guides:** I will create flowchart diagrams using Mermaid syntax for the Tawaf and Sa'i rituals.
+2.  **Integrate Guides into Content:** I have created new sections (`tawaf` and `sai`) in `hajj_rules.json` and linked the generated images (`tawaf_visual_guide_v3.png` and `sai_visual_guide.png`) within these sections.
+3.  **Provide Contextual Descriptions:** Alongside the visual guides, I have added brief, multilingual descriptions of each ritual to explain its significance.
+
+**Justification:** Visual guides are exceptionally effective for simplifying complex procedures. By providing clear, step-by-step flowcharts for Tawaf and Sa'i, we significantly reduce the cognitive load on the user, making it easier for them to follow the correct sequence of actions during these critical rites. This enhancement makes the app more user-friendly and an even more effective educational tool.
+
 ---
 
 **Initial Content Verification Phase: COMPLETED**
