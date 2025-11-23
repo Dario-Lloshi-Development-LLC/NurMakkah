@@ -9,7 +9,8 @@ import {
   ScrollView,
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
-import {useAppContext} from '../context/DataContext';
+import {getImageSource} from '../utils/image';
+import { Image } from 'react-native';
 import {Category} from '../types';
 
 const HomeScreen: React.FC = () => {
