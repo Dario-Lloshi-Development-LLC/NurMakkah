@@ -53,4 +53,16 @@ All content has been cross-referenced with the following hierarchy of sources:
 
 **Justification:** By adding authentic references, we transform this section from a simple list of recommendations into a religiously authoritative guide. This will provide users with a deeper understanding of the Islamic basis for these etiquettes and encourage them to follow them more closely.
 
+### Section 4: The State of Ihram (`ihrami`)
+
+**Initial State:** The section provides a basic overview of Ihram, its timing, and the types of intention (niyyah). It also lists some actions to be performed before entering Ihram. However, it lacks detailed explanations and authentic references for the different types of Hajj.
+
+**Verification & Enhancement Plan:**
+1.  **Elaborate on the Types of Hajj:** I will add a more detailed explanation for each of the three types of Hajj (Tamattu', Qiran, Ifrad), clarifying the sequence of rituals for each. This will be based on the guidance from Sahih al-Bukhari and Sahih Muslim.
+2.  **Add Authentic References for Niyyah:** I will add specific Hadith references for the different formulations of the niyyah for each type of Hajj, ensuring the wording is precise and authentic.
+3.  **Provide More Detail on Pre-Ihram Actions:** I will add more detail and context to the recommended actions before entering Ihram, such as the ghusl (full-body ablution), with references from the Sunnah.
+4.  **Clarify Prohibitions:** I will review the list of prohibitions (`ndalesat_gjate_ihramit`) and ensure they are accurate and complete, with specific references for each.
+
+**Justification:** These enhancements will provide users with a clear, comprehensive, and authentic guide to entering the state of Ihram. The detailed explanations of the types of Hajj are crucial for pilgrims to make an informed choice, and the authentic references for the niyyah and pre-Ihram actions will ensure they perform these important rituals correctly.
+
 
