@@ -1,44 +1,73 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   View,
   Text,
   StyleSheet,
-  ScrollView,
+  ActivityIndicator,
 } from 'react-native';
+import MapView, {Marker, Callout} from 'react-native-maps';
 import DataService from '../services/DataService';
+import {Category} from '../types';
+
+const miqatCoordinates = {
+  "DHUL HULEJFEH": {latitude: 24.5247, longitude: 39.5934},
+  "XHUHFEH": {latitude: 22.8475, longitude: 39.1553},
+  "KARNUL MENAZIL": {latitude: 21.6333, longitude: 40.4167},
+  "JELEMLEM": {latitude: 20.6167, longitude: 39.7333},
+  "DHATE IRK": {latitude: 21.8, longitude: 40.05},
+};
 
 const MapScreen: React.FC = () => {
-  const miqatData = DataService.getCategories().find(cat => cat.name === 'vendcaktimet');
+  const [miqatCategory, setMiqatCategory] = useState<Category | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const loadData = async () => {
+      const category = await DataService.getCategoryByName('vendcaktimet');
+      if (category) {
+        setMiqatCategory(category);
+      }
+      setIsLoading(false);
+    };
+
+    loadData();
+  }, []);
+
+  if (isLoading) {
+    return (
+      <View style={[styles.container, styles.center]}>
+        <ActivityIndicator size="large" color="#d4af37" />
+      </View>
+    );
+  }
 
   return (
-    <ScrollView style={styles.container}>
-      <View style={styles.header}>
-        <Text style={styles.headerTitle}>Vendcaktimet (Miqat)</Text>
-        <Text style={styles.headerDescription}>
-          Vendcaktimet ku duhet të bëhet ihrami para se të hyjnë në territorin e shenjtë
-        </Text>
-      </View>
+    <View style={styles.container}>
+      <MapView
+        style={styles.map}
+        initialRegion={{
+          latitude: 21.4225,
+          longitude: 39.8262,
+          latitudeDelta: 5,
+          longitudeDelta: 5,
+        }}>
+        {miqatCategory?.rules?.map((miqat, index) => {
+          const coordinate = miqatCoordinates[miqat.rule.toUpperCase()];
+          if (!coordinate) return null;
 
-      {miqatData?.rules?.map((miqat, index) => (
-        <View key={index} style={styles.miqatCard}>
-          <Text style={styles.miqatName}>{miqat.rule}</Text>
-          <Text style={styles.miqatDescription}>{miqat.description}</Text>
-        </View>
-      ))}
-
-      <View style={styles.infoSection}>
-        <Text style={styles.infoTitle}>Informacion i rëndësishëm</Text>
-        <Text style={styles.infoText}>
-          Vendcaktimet janë pika gjeografike të caktuara nga Profeti Muhamed (a.s.) 
-          ku haxhilerët dhe atyre që kryejnë umren duhet të bëjnë ihramin para se 
-          të vazhdojnë drejt Mekës.
-        </Text>
-        <Text style={styles.infoText}>
-          Është e detyrueshme për çdo haxhiler të kalojë nëpër një nga këto vendcaktime 
-          dhe të bëjë ihramin para se të hyjë në territorin e shenjtë të Mekës.
-        </Text>
-      </View>
-    </ScrollView>
+          return (
+            <Marker key={index} coordinate={coordinate}>
+              <Callout>
+                <View style={styles.calloutContainer}>
+                  <Text style={styles.calloutTitle}>{miqat.rule}</Text>
+                  <Text style={styles.calloutDescription}>{miqat.description}</Text>
+                </View>
+              </Callout>
+            </Marker>
+          );
+        })}
+      </MapView>
+    </View>
   );
 };
 
