@@ -176,7 +176,7 @@ export class DataService {
       });
     }
 
-    return categories;
+    return Promise.resolve(categories);
   }
 
   public getCategoryById(id: number): Category | undefined {
