@@ -106,6 +106,19 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.2,
     shadowRadius: 4,
   },
+  searchContainer: {
+    padding: 16,
+  },
+  searchInput: {
+    backgroundColor: '#2c2c2c',
+    color: '#ffffff',
+    paddingHorizontal: 16,
+    paddingVertical: 12,
+    borderRadius: 8,
+    borderWidth: 1,
+    borderColor: '#d4af37',
+    fontSize: 16,
+  },
   headerTitle: {
     fontSize: 20,
     fontWeight: 'bold',
