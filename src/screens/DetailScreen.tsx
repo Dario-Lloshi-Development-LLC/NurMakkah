@@ -45,40 +45,44 @@ const DetailScreen: React.FC = () => {
     </View>
   );
 
-  if (rule) {
-    // Single rule view
-    return (
-      <ScrollView style={styles.container}>
-        <View style={styles.ruleCard}>
-          <Text style={styles.ruleTitle}>{rule.rule}</Text>
-          <Text style={styles.ruleDescription}>{rule.description}</Text>
-        </View>
-      </ScrollView>
-    );
-  }
-
-  if (category && category.rules) {
-    // Category rules view
-    return (
-      <View style={styles.container}>
+  const renderHeader = () => (
+    <>
+      {category && (
         <View style={styles.header}>
           <Text style={styles.headerTitle}>{category.title}</Text>
           <Text style={styles.headerDescription}>{category.description}</Text>
         </View>
-        <FlatList
-          data={category.rules}
-          renderItem={renderRule}
-          keyExtractor={item => `${item.category}-${item.id}`}
-          contentContainerStyle={styles.listContainer}
-          showsVerticalScrollIndicator={false}
+      )}
+      <View style={styles.searchContainer}>
+        <TextInput
+          style={styles.searchInput}
+          placeholder="Kërko rregulla..."
+          placeholderTextColor="#888"
+          value={searchQuery}
+          onChangeText={setSearchQuery}
         />
+      </View>
+    </>
+  );
+
+  if (!rules.length) {
+    return (
+      <View style={styles.container}>
+        <Text style={styles.emptyText}>Nuk ka të dhëna për të shfaqur</Text>
       </View>
     );
   }
 
   return (
     <View style={styles.container}>
-      <Text style={styles.emptyText}>Nuk ka të dhëna për të shfaqur</Text>
+      <FlatList
+        data={filteredRules}
+        renderItem={renderRule}
+        keyExtractor={item => `${item.category}-${item.id}`}
+        ListHeaderComponent={renderHeader}
+        contentContainerStyle={styles.listContainer}
+        showsVerticalScrollIndicator={false}
+      />
     </View>
   );
 };
