@@ -390,34 +390,34 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   section: {
-    backgroundColor: APP_CONFIG.theme.surface,
+    backgroundColor: '#2c2c2c',
     marginTop: 20,
+    marginHorizontal: 16,
+    borderRadius: 12,
+    borderWidth: 1,
+    borderColor: '#d4af37',
     paddingVertical: 8,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.05,
-    shadowRadius: 2,
-    elevation: 2,
+    overflow: 'hidden',
   },
   sectionTitle: {
     fontSize: 16,
     fontWeight: '600',
-    color: APP_CONFIG.theme.textSecondary,
+    color: '#b0b0b0',
     paddingHorizontal: 20,
     paddingVertical: 12,
     textTransform: 'uppercase',
     letterSpacing: 0.5,
   },
   touchableItem: {
-    marginHorizontal: 20,
-    marginVertical: 4,
+    marginHorizontal: 0,
+    marginVertical: 0,
   },
   settingItem: {
     flexDirection: 'row',
     alignItems: 'center',
     paddingVertical: 16,
     paddingHorizontal: 20,
-    backgroundColor: APP_CONFIG.theme.surface,
+    backgroundColor: 'transparent',
   },
   iconContainer: {
     width: 40,
@@ -433,12 +433,12 @@ const styles = StyleSheet.create({
   settingTitle: {
     fontSize: 16,
     fontWeight: '500',
-    color: APP_CONFIG.theme.text,
+    color: '#ffffff',
     marginBottom: 4,
   },
   settingSubtitle: {
     fontSize: 14,
-    color: APP_CONFIG.theme.textSecondary,
+    color: '#b0b0b0',
   },
   selectorContainer: {
     flexDirection: 'row',
@@ -447,7 +447,7 @@ const styles = StyleSheet.create({
   },
   selectorValue: {
     fontSize: 16,
-    color: APP_CONFIG.theme.primary,
+    color: '#d4af37',
     marginRight: 8,
   },
   footer: {
@@ -457,12 +457,12 @@ const styles = StyleSheet.create({
   footerText: {
     fontSize: 16,
     fontWeight: '600',
-    color: APP_CONFIG.theme.text,
+    color: '#ffffff',
     marginBottom: 8,
   },
   footerSubtext: {
     fontSize: 14,
-    color: APP_CONFIG.theme.textSecondary,
+    color: '#b0b0b0',
     textAlign: 'center',
     lineHeight: 20,
   },
