@@ -370,18 +370,21 @@ const EnhancedSettingsScreen: React.FC = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: APP_CONFIG.theme.background,
+    backgroundColor: '#1a1a1a',
   },
   header: {
-    backgroundColor: APP_CONFIG.theme.primary,
+    backgroundColor: '#2c2c2c',
     paddingTop: 50,
     paddingBottom: 20,
     paddingHorizontal: 20,
+    borderBottomWidth: 1,
+    borderColor: '#d4af37',
   },
   headerTitle: {
     fontSize: 24,
     fontWeight: 'bold',
-    color: '#fff',
+    color: '#d4af37',
+    fontFamily: 'serif',
   },
   scrollView: {
     flex: 1,
