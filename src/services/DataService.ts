@@ -212,16 +212,16 @@ export class DataService {
     );
   }
 
-  public getIntroduction() {
-    return this.data.introduction;
+  public async getIntroduction(): Promise<any> {
+    return Promise.resolve(this.data.introduction);
   }
 
-  public getHajjObligation() {
-    return this.data.detyrimi_i_haxhit;
+  public async getHajjObligation(): Promise<any> {
+    return Promise.resolve(this.data.detyrimi_i_haxhit);
   }
 
-  public getIhramInfo() {
-    return this.data.ihrami;
+  public async getIhramInfo(): Promise<any> {
+    return Promise.resolve(this.data.ihrami);
   }
 }
 
