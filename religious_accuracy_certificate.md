@@ -65,4 +65,15 @@ All content has been cross-referenced with the following hierarchy of sources:
 
 **Justification:** These enhancements will provide users with a clear, comprehensive, and authentic guide to entering the state of Ihram. The detailed explanations of the types of Hajj are crucial for pilgrims to make an informed choice, and the authentic references for the niyyah and pre-Ihram actions will ensure they perform these important rituals correctly.
 
+### Section 5: Prohibitions During Ihram (`ndalesat_gjate_ihramit`)
+
+**Initial State:** The section provides a good list of the major prohibitions during Ihram. However, it lacks specific Quranic and Hadith references and, crucially, does not explain the consequences (Fidyah) for violating these prohibitions.
+
+**Verification & Enhancement Plan:**
+1.  **Add Authentic References:** For each prohibition, I will add a clear reference from the Quran or authentic Hadith (e.g., Sahih al-Bukhari, 1838 for prohibited clothing).
+2.  **Explain Fidyah (Expiation):** For each category of prohibition, I will add a concise explanation of the required Fidyah (expiation), which could be fasting, feeding the poor, or sacrificing an animal, based on the nature of the violation. This is critical practical information.
+3.  **Clarify Gender-Specific Rules:** I will add notes to clarify rules that differ for men and women, such as the prohibition of covering the face for women (with exceptions) and the specific types of clothing prohibited for men.
+
+**Justification:** Simply listing prohibitions is incomplete. By adding authentic references and explaining the Fidyah for violations, the app becomes a far more practical and responsible guide for pilgrims, helping them understand the seriousness of the rules and how to rectify mistakes.
+
 
