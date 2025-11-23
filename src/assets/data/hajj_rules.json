@@ -239,5 +239,50 @@
         {"madhab": "Hanbali", "ruling": {"albanian": "Nga agimi i ditës së 9-të deri në agim të ditës së 10-të.", "arabic": "من فجر يوم التاسع إلى فجر يوم العاشر.", "english": "From dawn on the 9th day until dawn of the 10th day."}}
       ]
     }
-  ]
+  ],
+  "health_and_safety": {
+    "title": {
+      "albanian": "Shëndeti dhe Siguria",
+      "arabic": "الصحة والسلامة",
+      "english": "Health and Safety"
+    },
+    "tips": [
+      {
+        "tip": {
+          "albanian": "Qëndroni të hidratuar",
+          "arabic": "حافظ على رطوبتك",
+          "english": "Stay Hydrated"
+        },
+        "description": {
+          "albanian": "Pini shumë ujë, veçanërisht ujë Zemzem. Shmangni pijet me sheqer.",
+          "arabic": "اشرب الكثير من الماء، وخاصة ماء زمزم. تجنب المشروبات السكرية.",
+          "english": "Drink plenty of water, especially Zamzam water. Avoid sugary drinks."
+        }
+      },
+      {
+        "tip": {
+          "albanian": "Vishni maskë",
+          "arabic": "ارتدِ قناعًا",
+          "english": "Wear a Mask"
+        },
+        "description": {
+          "albanian": "Në turma të mëdha, veshja e një maske mund të ndihmojë në parandalimin e përhapjes së sëmundjeve.",
+          "arabic": "في الحشود الكبيرة، يمكن أن يساعد ارتداء القناع في منع انتشار الأمراض.",
+          "english": "In large crowds, wearing a mask can help prevent the spread of illness."
+        }
+      },
+      {
+        "tip": {
+          "albanian": "Kini kontakte emergjence",
+          "arabic": "احتفظ بجهات اتصال للطوارئ",
+          "english": "Have Emergency Contacts"
+        },
+        "description": {
+          "albanian": "Mbani një listë të kontakteve të urgjencës, duke përfshirë udhërrëfyesin tuaj të grupit dhe informacionin e hotelit.",
+          "arabic": "احتفظ بقائمة بجهات الاتصال في حالات الطوارئ، بما في ذلك مرشد مجموعتك ومعلومات الفندق.",
+          "english": "Keep a list of emergency contacts, including your group leader and hotel information."
+        }
+      }
+    ]
+  }
 }
