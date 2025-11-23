@@ -1,5 +1,5 @@
 const { getDefaultConfig, mergeConfig } = require("@react-native/metro-config");
-const path = require('path');
+const path = require("path");
 
 /**
  * Metro configuration for React Native bundle optimization
@@ -9,10 +9,7 @@ const path = require('path');
  */
 const defaultConfig = getDefaultConfig(__dirname);
 
-const {
-  assetExts,
-  sourceExts,
-} = defaultConfig.resolver;
+const { assetExts, sourceExts } = defaultConfig.resolver;
 
 const config = {
   transformer: {
@@ -30,30 +27,34 @@ const config = {
     },
 
     // Enable babel transformer for better performance
-    babelTransformerPath: require.resolve('metro-react-native-babel-transformer'),
+    babelTransformerPath: require.resolve(
+      "metro-react-native-babel-transformer",
+    ),
   },
 
   resolver: {
     // Asset extensions including Islamic image formats
-    assetExts: assetExts.filter(ext => ext !== 'svg').concat(['svg', 'jpg', 'jpeg', 'png', 'gif', 'webp']),
+    assetExts: assetExts
+      .filter((ext) => ext !== "svg")
+      .concat(["svg", "jpg", "jpeg", "png", "gif", "webp"]),
 
     // Source extensions for TypeScript support
-    sourceExts: [...sourceExts, 'jsx', 'ts', 'tsx', 'js'],
+    sourceExts: [...sourceExts, "jsx", "ts", "tsx", "js"],
 
     // Alias for cleaner imports in the Hajj app
     alias: {
-      '@components': path.resolve(__dirname, 'src/shared/components'),
-      '@hooks': path.resolve(__dirname, 'src/shared/hooks'),
-      '@screens': path.resolve(__dirname, 'src/features'),
-      '@services': path.resolve(__dirname, 'src/features/content/services'),
-      '@types': path.resolve(__dirname, 'src/core/types'),
-      '@utils': path.resolve(__dirname, 'src/core/utils'),
-      '@assets': path.resolve(__dirname, 'src/assets'),
-      '@content': path.resolve(__dirname, 'src/assets/data'),
+      "@components": path.resolve(__dirname, "src/shared/components"),
+      "@hooks": path.resolve(__dirname, "src/shared/hooks"),
+      "@screens": path.resolve(__dirname, "src/features"),
+      "@services": path.resolve(__dirname, "src/features/content/services"),
+      "@types": path.resolve(__dirname, "src/core/types"),
+      "@utils": path.resolve(__dirname, "src/core/utils"),
+      "@assets": path.resolve(__dirname, "src/assets"),
+      "@content": path.resolve(__dirname, "src/assets/data"),
     },
 
     // Optimize module resolution
-    platforms: ['ios', 'android', 'native'],
+    platforms: ["ios", "android", "native"],
   },
 
   // Server configuration for better development experience
@@ -65,16 +66,19 @@ const config = {
   maxWorkers: 2,
 
   // Configuration for watch mode
-  watchFolders: [path.resolve(__dirname, 'src')],
+  watchFolders: [path.resolve(__dirname, "src")],
 
   // Enable source maps for debugging (disabled in production)
-  production: process.env.NODE_ENV === 'production' ? {
-    sourceMap: false,
-    inlineSourceMap: false,
-  } : {
-    sourceMap: true,
-    inlineSourceMap: false,
-  },
+  production:
+    process.env.NODE_ENV === "production"
+      ? {
+          sourceMap: false,
+          inlineSourceMap: false,
+        }
+      : {
+          sourceMap: true,
+          inlineSourceMap: false,
+        },
 };
 
 module.exports = mergeConfig(defaultConfig, config);
