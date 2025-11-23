@@ -16,17 +16,6 @@ const HomeScreen: React.FC = () => {
   const {categories, introduction, isLoading} = useAppContext();
   const navigation = useNavigation();
 
-  useEffect(() => {
-    loadData();
-  }, []);
-
-  const loadData = () => {
-    const categoriesData = DataService.getCategories();
-    const introData = DataService.getIntroduction();
-    setCategories(categoriesData);
-    setIntroduction(introData);
-  };
-
   const handleCategoryPress = (category: Category) => {
     navigation.navigate('Detail', {
       category,
@@ -52,13 +41,21 @@ const HomeScreen: React.FC = () => {
     </TouchableOpacity>
   );
 
+  if (isLoading) {
+    return (
+      <View style={[styles.container, styles.center]}>
+        <ActivityIndicator size="large" color="#d4af37" />
+      </View>
+    );
+  }
+
   return (
     <ScrollView style={styles.container}>
       {introduction && (
         <View style={styles.introSection}>
           <Text style={styles.introTitle}>Mirë se vini në Haxh App</Text>
-          <Text style={styles.introText}>{introduction.description}</Text>
-          <Text style={styles.introSubtext}>{introduction.qabja}</Text>
+          <Text style={styles.introText}>{introduction.description.albanian}</Text>
+          <Text style={styles.introSubtext}>{introduction.qabja.albanian}</Text>
         </View>
       )}
 
