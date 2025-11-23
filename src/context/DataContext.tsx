@@ -16,10 +16,10 @@ export const DataProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const loadData = () => {
+    const loadData = async () => {
       try {
-        const categoriesData = DataService.getCategories();
-        const introData = DataService.getIntroduction();
+        const categoriesData = await DataService.getCategories();
+        const introData = await DataService.getIntroduction();
         setCategories(categoriesData);
         setIntroduction(introData);
       } catch (error) {
