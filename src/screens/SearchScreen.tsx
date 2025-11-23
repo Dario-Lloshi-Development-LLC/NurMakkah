@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useCallback} from 'react';
 import {
   View,
   Text,
@@ -6,24 +6,36 @@ import {
   FlatList,
   TouchableOpacity,
   StyleSheet,
+  ActivityIndicator,
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import DataService from '../services/DataService';
 import {HajjRule} from '../types';
+import {debounce} from 'lodash';
 
 const SearchScreen: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState<HajjRule[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
   const navigation = useNavigation();
+
+  const debouncedSearch = useCallback(
+    debounce(async (query: string) => {
+      if (query.trim().length > 2) {
+        setIsLoading(true);
+        const results = await DataService.searchRules(query.trim());
+        setSearchResults(results);
+        setIsLoading(false);
+      } else {
+        setSearchResults([]);
+      }
+    }, 500),
+    [],
+  );
 
   const handleSearch = (query: string) => {
     setSearchQuery(query);
-    if (query.trim().length > 0) {
-      const results = DataService.searchRules(query.trim());
-      setSearchResults(results);
-    } else {
-      setSearchResults([]);
-    }
+    debouncedSearch(query);
   };
 
   const handleRulePress = (rule: HajjRule) => {
@@ -36,7 +48,9 @@ const SearchScreen: React.FC = () => {
   const renderRule = ({item}: {item: HajjRule}) => (
     <TouchableOpacity
       style={styles.ruleCard}
-      onPress={() => handleRulePress(item)}>
+      onPress={() => handleRulePress(item)}
+      accessibilityLabel={`Rregulli: ${item.rule}`}
+      accessibilityHint={`Hap për të parë detajet për ${item.rule}`}>
       <Text style={styles.ruleTitle}>{item.rule}</Text>
       <Text style={styles.ruleDescription} numberOfLines={2}>
         {item.description}
@@ -53,13 +67,16 @@ const SearchScreen: React.FC = () => {
         <TextInput
           style={styles.searchInput}
           placeholder="Kërkoni për rregulla..."
+          placeholderTextColor="#888"
           value={searchQuery}
           onChangeText={handleSearch}
           autoFocus
         />
       </View>
 
-      {searchQuery.length === 0 ? (
+      {isLoading ? (
+        <ActivityIndicator style={styles.loader} size="large" color="#d4af37" />
+      ) : searchQuery.length === 0 ? (
         <View style={styles.emptyContainer}>
           <Text style={styles.emptyText}>
             Shkruani një fjalë për të kërkuar rregullat e Haxhit
