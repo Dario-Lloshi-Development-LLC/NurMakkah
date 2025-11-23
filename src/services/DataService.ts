@@ -184,8 +184,8 @@ export class DataService {
     return categories.find(cat => cat.id === id);
   }
 
-  public getCategoryByName(name: string): Category | undefined {
-    const categories = this.getCategories();
+  public async getCategoryByName(name: string): Promise<Category | undefined> {
+    const categories = await this.getCategories();
     return categories.find(cat => cat.name === name);
   }
 
