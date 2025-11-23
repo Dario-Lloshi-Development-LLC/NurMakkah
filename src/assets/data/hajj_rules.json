@@ -135,7 +135,7 @@
     {"id": 3, "rule": "Pendimi nga mëkatet", "description": "Pendimi nga mëkatet dhe vendosmëria për të mos u kthyer më në to.", "quranic_reference": "وَتُوبُوا إِلَى اللَّهِ جَمِيعًا أَيُّهَ الْمُؤْمِنُونَ لَعَلَّكُمْ تُفْلِحُونَ"},
     {"id": 4, "rule": "Kërkimi i hallallëkut", "description": "Kërkimi i hallallëkut nga të gjithë para udhëtimit.", "hadith_reference": "Musnad Ahmad, 22015"},
     {"id": 5, "rule": "Paraja hallall", "description": "Paraja që shpenzohet për udhëtim duhet të jetë e fituar në mënyrë hallall.", "hadith_reference": "Sahih Muslim, 1015"},
-    {"id": 6, "rule": "Largimi nga mëkatet", "description": "Largimi nga të gjitha mëkatet gjatë kryerjes së ceremonive.", "quranic_reference": "الْحَجُّ أَشْهُرٌ مَّعْلُومَاتٌ ۚ فَمَن فَرَضَ فِيهِنَّ الْحَjَّ فَلَا رَفَثَ وَلَا فُسُوقَ وَلَا جِدَالَ فِي الْحَجِّ"},
+    {"id": 6, "rule": "Largimi nga mëkatet", "description": "Largimi nga të gjitha mëkatet gjatë kryerjes së ceremonive.", "quranic_reference": "الْحَجُّ أَشْهُرٌ مَّعْلُومَاتٌ ۚ فَمَن فَرَضَ فِيهِنَّ الْحَjَّ فَلَا رَفَثَ وَلَا فُsُوقَ وَلَا جِدَالَ فِي الْحَجِّ"},
     {"id": 7, "rule": "Leximi i materialeve informuese", "description": "Leximi i materialeve informuese për Umren dhe Haxhin para udhëtimit."},
     {"id": 8, "rule": "Përmbushja e detyrave fetare", "description": "Përmbushja e detyrave fetare gjatë udhëtimit."},
     {"id": 9, "rule": "Zgjedhja e shoqërisë së mirë", "description": "Zgjedhja e shoqërisë së mirë dhe të devotshme.", "hadith_reference": "Sunan Abi Dawud, 4833"},
@@ -218,6 +218,25 @@
         {"madhab": "Maliki", "ruling": {"albanian": "Uaxhib (Detyrim). Lënia e tij pa arsye kërkon një Fidyah (shpagim).", "arabic": "واجب. تركه لغير عذر يوجب فدية.", "english": "Wajib (Obligatory). Leaving it without an excuse necessitates a Fidyah (expiation)."}},
         {"madhab": "Shafi'i", "ruling": {"albanian": "Uaxhib (Detyrim). Lënia e tij pa arsye kërkon një Fidyah (shpagim).", "arabic": "واجب. تركه لغير عذر يوجب فدية.", "english": "Wajib (Obligatory). Leaving it without an excuse necessitates a Fidyah (expiation)."}},
         {"madhab": "Hanbali", "ruling": {"albanian": "Uaxhib (Detyrim). Lënia e tij pa arsye kërkon një Fidyah (shpagim).", "arabic": "واجب. تركه لغير عذر يوجب فدية.", "english": "Wajib (Obligatory). Leaving it without an excuse necessitates a Fidyah (expiation)."}}
+      ]
+    },
+    {
+      "issue": "Wuquf at Arafat Timing",
+      "title": {
+        "albanian": "Koha e Qëndrimit në Arafat",
+        "arabic": "وقت الوقوف بعرفة",
+        "english": "Timing of Standing at Arafat"
+      },
+      "description": {
+        "albanian": "Koha e saktë e fillimit dhe mbarimit të qëndrimit në Arafat në ditën e 9-të të Dhul Hixhxhes është një pikë dallimi midis shkollave.",
+        "arabic": "يختلف وقت بداية ونهاية الوقوف بعرفة في اليوم التاسع من ذي الحجة بين المذاهب.",
+        "english": "The exact start and end time for the standing at Arafat on the 9th day of Dhul Hijjah is a point of difference among the schools."
+      },
+      "rulings": [
+        {"madhab": "Hanafi", "ruling": {"albanian": "Nga mesdita e ditës së 9-të deri në agim të ditës së 10-të.", "arabic": "من زوال شمس يوم التاسع إلى فجر يوم العاشر.", "english": "From noon on the 9th day until dawn of the 10th day."}},
+        {"madhab": "Maliki", "ruling": {"albanian": "Nga mesdita e ditës së 9-të deri në agim të ditës së 10-të.", "arabic": "من زوال شمس يوم التاسع إلى فجر يوم العاشر.", "english": "From noon on the 9th day until dawn of the 10th day."}},
+        {"madhab": "Shafi'i", "ruling": {"albanian": "Nga mesdita e ditës së 9-të deri në agim të ditës së 10-të.", "arabic": "من زوال شمس يوم التاسع إلى فجر يوم العاشر.", "english": "From noon on the 9th day until dawn of the 10th day."}},
+        {"madhab": "Hanbali", "ruling": {"albanian": "Nga agimi i ditës së 9-të deri në agim të ditës së 10-të.", "arabic": "من فجر يوم التاسع إلى فجر يوم العاشر.", "english": "From dawn on the 9th day until dawn of the 10th day."}}
       ]
     }
   ]
