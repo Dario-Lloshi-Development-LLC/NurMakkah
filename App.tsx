@@ -51,6 +51,8 @@ const saveSettings = async (settings: AppSettings): Promise<void> => {
   }
 };
 
+import { DataProvider } from './src/context/DataContext';
+
 // Main App Component
 const AppContent: React.FC = () => {
   const [settings, setSettings] = React.useState<AppSettings | null>(null);
