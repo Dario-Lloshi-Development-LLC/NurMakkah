@@ -189,10 +189,10 @@ export class DataService {
     return categories.find(cat => cat.name === name);
   }
 
-  public getAllRules(): HajjRule[] {
-    const categories = this.getCategories();
+  public async getAllRules(): Promise<HajjRule[]> {
+    const categories = await this.getCategories();
     const allRules: HajjRule[] = [];
-    
+
     categories.forEach(category => {
       if (category.rules) {
         allRules.push(...category.rules);
