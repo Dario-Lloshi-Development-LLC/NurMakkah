@@ -38,7 +38,7 @@ All content has been cross-referenced with the following hierarchy of sources:
 **Verification & Enhancement Plan:**
 1.  **Correct Hadith Reference:** The current reference, "Sahih al-Bukhari, Book 26, Hadith 1513," is slightly inaccurate. I will correct it to the more precise and widely cited Hadith from Sunan Abi Dawud and Musnad Ahmad, which directly addresses the "once in a lifetime" obligation.
 2.  **Add Conditions of Obligation:** I will add a new subsection detailing the essential conditions that make Hajj obligatory upon an individual, according to the four major schools of thought. These conditions are: Islam, sanity, puberty, freedom, and ability (financial and physical).
-3.  **Elaborate on 'Ability':** I will add a brief explanation of the concept of "ability" (istita'ah), including financial and physical capacity, and the specific rulings for women (mahrem or safe company).
+3.  **Elaborate on 'Ability':** I will add a brief explanation of the concept of "ability" (istita'ah), including financial and physical capacity, and the specific rulings for women (mahram or safe company).
 
 **Justification:** These enhancements will provide a much more comprehensive and accurate understanding of the obligation of Hajj. Correcting the Hadith reference ensures authenticity, and adding the conditions of obligation gives users clear, actionable information to determine if they are required to perform Hajj. This aligns with our goal of making the app a truly reliable source of Islamic knowledge.
 
@@ -92,7 +92,7 @@ All content has been cross-referenced with the following hierarchy of sources:
 **Initial State:** The application lacks a centralized, comprehensive, and well-sourced collection of supplications (Duas) for the various rituals of Hajj and Umrah.
 
 **Verification & Enhancement Plan:**
-1.  **Create New `duas` Section:** I will add a new top-level section in `hajj_rules.json` dedicated to supplications.
+1.  **Create New `duas` Section:** I have added a new top-level section in `hajj_rules.json` dedicated to supplications.
 2.  **Categorize Duas:** I will structure the duas into logical categories based on the ritual being performed (e.g., "Duas for Tawaf", "Duas for Sa'i").
 3.  **Provide Comprehensive Dua Information:** For each dua, I will include:
     *   **Arabic Text:** The original Arabic with proper vowel markings.
@@ -108,7 +108,7 @@ All content has been cross-referenced with the following hierarchy of sources:
 **Initial State:** The application lacks clear, step-by-step visual aids to help users understand the sequence of complex rituals like Tawaf and Sa'i.
 
 **Verification & Enhancement Plan:**
-1.  **Generate Visual Guides:** I will create flowchart diagrams using Mermaid syntax for the Tawaf and Sa'i rituals.
+1.  **Generate Visual Guides:** I have created flowchart diagrams using Mermaid syntax for the Tawaf and Sa'i rituals.
 2.  **Integrate Guides into Content:** I have created new sections (`tawaf` and `sai`) in `hajj_rules.json` and linked the generated images (`tawaf_visual_guide_v3.png` and `sai_visual_guide.png`) within these sections.
 3.  **Provide Contextual Descriptions:** Alongside the visual guides, I have added brief, multilingual descriptions of each ritual to explain its significance.
 
@@ -122,7 +122,9 @@ All content has been cross-referenced with the following hierarchy of sources:
 1.  **Create `madhab_comparison` Section:** I have created a new section in `hajj_rules.json` dedicated to highlighting these differences.
 2.  **Structure for Comparison:** Each item in this section will focus on a specific ritual (e.g., "Night at Muzdalifah") and provide a clear, side-by-side comparison of the ruling for each of the four madhabs.
 3.  **Provide Multilingual Rulings:** The ruling for each school is provided in Albanian, Arabic, and English.
-4.  **Initial Implementation:** I have implemented the first comparison table for the ruling on spending the night at Muzdalifah, a known point of difference among the schools.
+4.  **Implementation:**
+    *   I have implemented a comparison table for the ruling on **spending the night at Muzdalifah**.
+    *   I have added a second comparison table for the **timing of the Standing at Arafat (Wuquf al-Arafat)**.
 
 **Justification:** This feature is critical for achieving the highest level of religious accuracy and user trust. By clearly attributing rulings to their respective schools of thought, the app empowers users following a specific madhab to perform their rituals with confidence and precision. It moves the app from a general guide to a truly personalized and authoritative resource.
 
