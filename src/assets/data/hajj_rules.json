@@ -409,5 +409,31 @@
     "description": "Haxhi është një nga shtyllat e Islamit dhe është detyrë për çdo musliman që ka mundësi ta kryejë.",
     "hadith": "Haxhi është detyrë vetëm një herë në jetë, dhe kush e kryen më shumë se një herë, këto janë nafile (vepra vullnetare) për të.",
     "keshilla": "Për më shumë detaje dhe udhëzime specifike, rekomandohet konsultimi me burime të specializuara dhe dijetarë islamikë."
+  },
+  "tawaf": {
+    "title": {
+      "albanian": "Tawafi",
+      "arabic": "الطواف",
+      "english": "The Tawaf"
+    },
+    "description": {
+      "albanian": "Tawafi është rituali i ecjes rreth Qabes shtatë herë në një drejtim kundër-akrepave të orës. Ai simbolizon unitetin e besimtarëve në adhurimin e Një Zoti.",
+      "arabic": "الطواف هو ритуал المشي حول الكعبة سبع مرات عكس اتجاه عقارب الساعة. إنه يرمز إلى وحدة المؤمنين في عبادة إله واحد.",
+      "english": "Tawaf is the ritual of circumambulating the Kaaba seven times in a counter-clockwise direction. It symbolizes the unity of believers in the worship of One God."
+    },
+    "visual_guide": "tawaf_visual_guide_v3.png"
+  },
+  "sai": {
+    "title": {
+      "albanian": "Sa'i",
+      "arabic": "السعي",
+      "english": "The Sa'i"
+    },
+    "description": {
+      "albanian": "Sa'i është ecja e shpejtë midis kodrave të Safas dhe Mervës shtatë herë. Ai përkujton përpjekjen e Haxheres, gruas së Profetit Ibrahim, në kërkim të ujit për djalin e saj Ismailin.",
+      "arabic": "السعي هو المشي السريع بين تلال الصفا والمروة سبع مرات. إنه يحيي ذكرى سعي هاجر، زوجة النبي إبراهيم، بحثًا عن الماء لابنها إسماعيل.",
+      "english": "Sa'i is the ritual of briskly walking between the hills of Safa and Marwa seven times. It commemorates the struggle of Hajar, the wife of Prophet Ibrahim, in her search for water for her son, Ismail."
+    },
+    "visual_guide": "sai_visual_guide.png"
   }
 }
