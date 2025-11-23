@@ -132,4 +132,24 @@ All content has been cross-referenced with the following hierarchy of sources:
 
 **Initial Content Verification Phase: COMPLETED**
 
+### Section 10: Contemporary Practical Guidance (`health_and_safety`)
+
+**Initial State:** The application lacks a dedicated section for modern health, safety, and practical advice that is crucial for contemporary pilgrims.
+
+**Verification & Enhancement Plan:**
+1.  **Create `health_and_safety` Section:** I have created a new section in `hajj_rules.json`.
+2.  **Add Practical Tips:** I have added a list of essential, easy-to-understand tips for the modern pilgrim.
+3.  **Implementation:** The section includes advice on:
+    *   Staying hydrated.
+    *   Wearing masks in crowded areas.
+    *   Keeping emergency contacts readily available.
+    *   Strategies for managing crowds safely.
+    *   Using technology (like the app) to enhance the pilgrimage experience.
+
+**Justification:** The Hajj journey presents modern challenges that classical texts do not address. This section provides critical, practical advice that enhances the safety, health, and overall well-being of the pilgrim, making the app not just a religious guide, but a holistic travel companion.
+
+---
+
+**Initial Content Verification Phase: COMPLETED**
+
 All major sections related to the initial stages of Hajj and Umrah have been reviewed and enhanced with authentic references and contemporary context. The application is now a much more reliable and authoritative guide for pilgrims.
