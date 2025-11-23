@@ -39,7 +39,7 @@ const DetailScreen: React.FC = () => {
   }, [searchQuery, rules]);
 
   const renderRule = ({item}: {item: HajjRule}) => (
-    <View style={styles.ruleCard}>
+    <View style={styles.ruleCard} accessibilityLabel={`Rregulli: ${item.rule}`}>
       <Text style={styles.ruleTitle}>{item.rule}</Text>
       <Text style={styles.ruleDescription}>{item.description}</Text>
     </View>
