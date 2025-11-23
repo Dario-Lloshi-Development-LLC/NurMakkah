@@ -1,35 +1,22 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import {
   View,
   Text,
   FlatList,
   TouchableOpacity,
   StyleSheet,
-  Image,
-  Dimensions,
+  ActivityIndicator,
   ScrollView,
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
-import DataService from '../services/DataService';
+import {useAppContext} from '../context/DataContext';
+import {getImageSource} from '../utils/image';
+import { Image } from 'react-native';
 import {Category} from '../types';
 
-const {width} = Dimensions.get('window');
-
 const HomeScreen: React.FC = () => {
-  const [categories, setCategories] = useState<Category[]>([]);
-  const [introduction, setIntroduction] = useState<any>(null);
+  const {categories, introduction, isLoading} = useAppContext();
   const navigation = useNavigation();
-
-  useEffect(() => {
-    loadData();
-  }, []);
-
-  const loadData = () => {
-    const categoriesData = DataService.getCategories();
-    const introData = DataService.getIntroduction();
-    setCategories(categoriesData);
-    setIntroduction(introData);
-  };
 
   const handleCategoryPress = (category: Category) => {
     navigation.navigate('Detail', {
@@ -41,11 +28,11 @@ const HomeScreen: React.FC = () => {
   const renderCategory = ({item}: {item: Category}) => (
     <TouchableOpacity
       style={styles.categoryCard}
-      onPress={() => handleCategoryPress(item)}>
+      onPress={() => handleCategoryPress(item)}
+      accessibilityLabel={`Kategoria: ${item.title}`}
+      accessibilityHint={`Hap për të parë rregullat për ${item.title}`}>
       <View style={styles.categoryContent}>
-        <View style={styles.categoryIcon}>
-          <Text style={styles.categoryIconText}>📖</Text>
-        </View>
+        <Image source={getImageSource(item.image)} style={styles.categoryIcon} />
         <View style={styles.categoryTextContainer}>
           <Text style={styles.categoryTitle}>{item.title}</Text>
           <Text style={styles.categoryDescription} numberOfLines={2}>
@@ -56,63 +43,74 @@ const HomeScreen: React.FC = () => {
     </TouchableOpacity>
   );
 
-  return (
-    <ScrollView style={styles.container}>
-      {introduction && (
-        <View style={styles.introSection}>
-          <Text style={styles.introTitle}>Mirë se vini në Haxh App</Text>
-          <Text style={styles.introText}>{introduction.description}</Text>
-          <Text style={styles.introSubtext}>{introduction.qabja}</Text>
-        </View>
-      )}
-
-      <View style={styles.categoriesSection}>
-        <Text style={styles.sectionTitle}>Kategoritë</Text>
-        <FlatList
-          data={categories}
-          renderItem={renderCategory}
-          keyExtractor={item => item.id.toString()}
-          scrollEnabled={false}
-          showsVerticalScrollIndicator={false}
-        />
+  if (isLoading) {
+    return (
+      <View style={[styles.container, styles.center]}>
+        <ActivityIndicator size="large" color="#d4af37" />
       </View>
-    </ScrollView>
+    );
+  }
+
+  return (
+    <FlatList
+      style={styles.container}
+      data={categories}
+      renderItem={renderCategory}
+      keyExtractor={item => item.id.toString()}
+      ListHeaderComponent={
+        <>
+          {introduction && (
+            <View style={styles.introSection}>
+              <Text style={styles.introTitle}>Mirë se vini në Haxh App</Text>
+              <Text style={styles.introText}>{introduction.description.albanian}</Text>
+              <Text style={styles.introSubtext}>{introduction.qabja.albanian}</Text>
+            </View>
+          )}
+          <View style={styles.categoriesSection}>
+            <Text style={styles.sectionTitle}>Kategoritë</Text>
+          </View>
+        </>
+      }
+    />
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F5F5F5',
+    backgroundColor: '#1a1a1a',
   },
   introSection: {
-    backgroundColor: '#2E7D32',
+    backgroundColor: '#2c2c2c',
     padding: 20,
     margin: 16,
     borderRadius: 12,
+    borderWidth: 1,
+    borderColor: '#d4af37',
     elevation: 3,
-    shadowColor: '#000',
+    shadowColor: '#d4af37',
     shadowOffset: {width: 0, height: 2},
-    shadowOpacity: 0.1,
-    shadowRadius: 3,
+    shadowOpacity: 0.2,
+    shadowRadius: 4,
   },
   introTitle: {
     fontSize: 24,
     fontWeight: 'bold',
-    color: '#FFFFFF',
+    color: '#d4af37',
     marginBottom: 12,
     textAlign: 'center',
+    fontFamily: 'serif',
   },
   introText: {
     fontSize: 16,
-    color: '#E8F5E8',
+    color: '#ffffff',
     lineHeight: 24,
     marginBottom: 10,
     textAlign: 'justify',
   },
   introSubtext: {
     fontSize: 14,
-    color: '#C8E6C9',
+    color: '#b0b0b0',
     lineHeight: 20,
     fontStyle: 'italic',
     textAlign: 'center',
@@ -123,18 +121,21 @@ const styles = StyleSheet.create({
   sectionTitle: {
     fontSize: 20,
     fontWeight: 'bold',
-    color: '#333',
+    color: '#d4af37',
     marginBottom: 16,
+    fontFamily: 'serif',
   },
   categoryCard: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#2c2c2c',
     borderRadius: 12,
     marginBottom: 12,
+    borderWidth: 1,
+    borderColor: '#d4af37',
     elevation: 2,
-    shadowColor: '#000',
+    shadowColor: '#d4af37',
     shadowOffset: {width: 0, height: 1},
-    shadowOpacity: 0.1,
-    shadowRadius: 2,
+    shadowOpacity: 0.15,
+    shadowRadius: 3,
   },
   categoryContent: {
     flexDirection: 'row',
@@ -144,14 +145,16 @@ const styles = StyleSheet.create({
   categoryIcon: {
     width: 50,
     height: 50,
-    backgroundColor: '#E8F5E8',
     borderRadius: 25,
-    justifyContent: 'center',
-    alignItems: 'center',
     marginRight: 16,
   },
   categoryIconText: {
     fontSize: 24,
+    color: '#d4af37',
+  },
+  center: {
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   categoryTextContainer: {
     flex: 1,
@@ -159,12 +162,13 @@ const styles = StyleSheet.create({
   categoryTitle: {
     fontSize: 16,
     fontWeight: 'bold',
-    color: '#333',
+    color: '#d4af37',
     marginBottom: 4,
+    fontFamily: 'serif',
   },
   categoryDescription: {
     fontSize: 14,
-    color: '#666',
+    color: '#b0b0b0',
     lineHeight: 20,
   },
 });

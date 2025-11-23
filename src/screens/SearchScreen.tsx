@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useCallback} from 'react';
 import {
   View,
   Text,
@@ -6,24 +6,36 @@ import {
   FlatList,
   TouchableOpacity,
   StyleSheet,
+  ActivityIndicator,
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import DataService from '../services/DataService';
 import {HajjRule} from '../types';
+import {debounce} from 'lodash';
 
 const SearchScreen: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState<HajjRule[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
   const navigation = useNavigation();
+
+  const debouncedSearch = useCallback(
+    debounce(async (query: string) => {
+      if (query.trim().length > 2) {
+        setIsLoading(true);
+        const results = await DataService.searchRules(query.trim());
+        setSearchResults(results);
+        setIsLoading(false);
+      } else {
+        setSearchResults([]);
+      }
+    }, 500),
+    [],
+  );
 
   const handleSearch = (query: string) => {
     setSearchQuery(query);
-    if (query.trim().length > 0) {
-      const results = DataService.searchRules(query.trim());
-      setSearchResults(results);
-    } else {
-      setSearchResults([]);
-    }
+    debouncedSearch(query);
   };
 
   const handleRulePress = (rule: HajjRule) => {
@@ -36,7 +48,9 @@ const SearchScreen: React.FC = () => {
   const renderRule = ({item}: {item: HajjRule}) => (
     <TouchableOpacity
       style={styles.ruleCard}
-      onPress={() => handleRulePress(item)}>
+      onPress={() => handleRulePress(item)}
+      accessibilityLabel={`Rregulli: ${item.rule}`}
+      accessibilityHint={`Hap për të parë detajet për ${item.rule}`}>
       <Text style={styles.ruleTitle}>{item.rule}</Text>
       <Text style={styles.ruleDescription} numberOfLines={2}>
         {item.description}
@@ -53,13 +67,16 @@ const SearchScreen: React.FC = () => {
         <TextInput
           style={styles.searchInput}
           placeholder="Kërkoni për rregulla..."
+          placeholderTextColor="#888"
           value={searchQuery}
           onChangeText={handleSearch}
           autoFocus
         />
       </View>
 
-      {searchQuery.length === 0 ? (
+      {isLoading ? (
+        <ActivityIndicator style={styles.loader} size="large" color="#d4af37" />
+      ) : searchQuery.length === 0 ? (
         <View style={styles.emptyContainer}>
           <Text style={styles.emptyText}>
             Shkruani një fjalë për të kërkuar rregullat e Haxhit
@@ -87,58 +104,56 @@ const SearchScreen: React.FC = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F5F5F5',
+    backgroundColor: '#1a1a1a',
   },
   searchContainer: {
     padding: 16,
-    backgroundColor: '#FFFFFF',
-    elevation: 2,
-    shadowColor: '#000',
-    shadowOffset: {width: 0, height: 1},
-    shadowOpacity: 0.1,
-    shadowRadius: 2,
+    borderBottomWidth: 1,
+    borderColor: '#d4af37',
   },
   searchInput: {
-    backgroundColor: '#F5F5F5',
+    backgroundColor: '#2c2c2c',
+    color: '#ffffff',
     borderRadius: 25,
     paddingHorizontal: 20,
     paddingVertical: 12,
     fontSize: 16,
+    borderWidth: 1,
+    borderColor: '#d4af37',
   },
   listContainer: {
     padding: 16,
   },
   ruleCard: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#2c2c2c',
     borderRadius: 12,
     padding: 16,
     marginBottom: 12,
-    elevation: 2,
-    shadowColor: '#000',
-    shadowOffset: {width: 0, height: 1},
-    shadowOpacity: 0.1,
-    shadowRadius: 2,
+    borderWidth: 1,
+    borderColor: '#d4af37',
   },
   ruleTitle: {
     fontSize: 16,
     fontWeight: 'bold',
-    color: '#2E7D32',
+    color: '#d4af37',
     marginBottom: 8,
+    fontFamily: 'serif',
   },
   ruleDescription: {
     fontSize: 14,
-    color: '#333',
+    color: '#ffffff',
     lineHeight: 20,
     marginBottom: 8,
   },
   categoryTag: {
     fontSize: 12,
-    color: '#666',
-    backgroundColor: '#E8F5E8',
+    color: '#1a1a1a',
+    backgroundColor: '#d4af37',
     paddingHorizontal: 8,
     paddingVertical: 4,
     borderRadius: 12,
     alignSelf: 'flex-start',
+    overflow: 'hidden',
   },
   emptyContainer: {
     flex: 1,
@@ -148,9 +163,13 @@ const styles = StyleSheet.create({
   },
   emptyText: {
     fontSize: 16,
-    color: '#666',
+    color: '#b0b0b0',
     textAlign: 'center',
     lineHeight: 24,
+    fontStyle: 'italic',
+  },
+  loader: {
+    marginTop: 20,
   },
 });
 
