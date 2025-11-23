@@ -50,26 +50,26 @@ const HomeScreen: React.FC = () => {
   }
 
   return (
-    <ScrollView style={styles.container}>
-      {introduction && (
-        <View style={styles.introSection}>
-          <Text style={styles.introTitle}>Mirë se vini në Haxh App</Text>
-          <Text style={styles.introText}>{introduction.description.albanian}</Text>
-          <Text style={styles.introSubtext}>{introduction.qabja.albanian}</Text>
-        </View>
-      )}
-
-      <View style={styles.categoriesSection}>
-        <Text style={styles.sectionTitle}>Kategoritë</Text>
-        <FlatList
-          data={categories}
-          renderItem={renderCategory}
-          keyExtractor={item => item.id.toString()}
-          scrollEnabled={false}
-          showsVerticalScrollIndicator={false}
-        />
-      </View>
-    </ScrollView>
+    <FlatList
+      style={styles.container}
+      data={categories}
+      renderItem={renderCategory}
+      keyExtractor={item => item.id.toString()}
+      ListHeaderComponent={
+        <>
+          {introduction && (
+            <View style={styles.introSection}>
+              <Text style={styles.introTitle}>Mirë se vini në Haxh App</Text>
+              <Text style={styles.introText}>{introduction.description.albanian}</Text>
+              <Text style={styles.introSubtext}>{introduction.qabja.albanian}</Text>
+            </View>
+          )}
+          <View style={styles.categoriesSection}>
+            <Text style={styles.sectionTitle}>Kategoritë</Text>
+          </View>
+        </>
+      }
+    />
   );
 };
 
