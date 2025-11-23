@@ -32,8 +32,8 @@ export class DataService {
         image: 'pillars_of_islam.png',
         rules: data.shtyllat_e_islamit.map(pillar => ({
           id: pillar.id,
-          rule: pillar.name,
-          description: pillar.description,
+          rule: pillar.name.albanian,
+          description: pillar.description.albanian,
           category: 'shtyllat_e_islamit',
         })),
       });
