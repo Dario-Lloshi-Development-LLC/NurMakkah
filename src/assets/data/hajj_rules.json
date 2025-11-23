@@ -284,5 +284,42 @@
         }
       }
     ]
+  },
+  "duas": {
+    "title": {
+      "albanian": "Lutjet",
+      "arabic": "الأدعية",
+      "english": "Supplications"
+    },
+    "supplications": [
+      {
+        "title": {
+          "albanian": "Lutja gjatë Tavafit",
+          "arabic": "دعاء الطواف",
+          "english": "Dua during Tawaf"
+        },
+        "arabic": "رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الْآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ",
+        "transliteration": "Rabbana atina fi d-dunya hasanatan wa fi l-akhirati hasanatan waqina 'adhaban-nar",
+        "translation": {
+          "albanian": "O Zoti ynë, na jep të mira në këtë botë dhe të mira në botën tjetër dhe na ruaj nga dënimi i zjarrit.",
+          "english": "Our Lord, give us in this world [that which is] good and in the Hereafter [that which is] good and protect us from the punishment of the Fire."
+        },
+        "source": "Quran 2:201"
+      },
+      {
+        "title": {
+          "albanian": "Lutja në Safa dhe Merva",
+          "arabic": "دعاء الصفا والمروة",
+          "english": "Dua at Safa and Marwa"
+        },
+        "arabic": "إِنَّ الصَّفَا وَالْمَرْوَةَ مِنْ شَعَائِرِ اللَّهِ",
+        "transliteration": "Inna as-safa wa l-marwata min sha'a'iri llah",
+        "translation": {
+          "albanian": "Me të vërtetë, Safa dhe Merva janë nga shenjat e Allahut.",
+          "english": "Indeed, as-Safa and al-Marwah are among the symbols of Allah."
+        },
+        "source": "Quran 2:158"
+      }
+    ]
   }
 }
