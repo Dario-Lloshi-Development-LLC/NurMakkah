@@ -257,40 +257,45 @@
   ],
   "ihrami": {
     "description": "Ihrami është qëllimi që ka muslimani për të kryer ceremonitë e Haxhit apo të Umres.",
-    "koha": "Nijeti për Haxhin bëhet në muajt: Sheual, Dhul Kadeh dhe Dhul Hixh\'xheh.",
+    "koha": "Nijeti për Haxhin bëhet në muajt: Sheual, Dhul Kadeh dhe Dhul Hixh'xheh.",
     "llojet_e_nijetit": [
       {
-        "lloji": "Umra",
-        "nijeti": "LEB\'BEJKE UMRATEN"
+        "lloji": "Haxhi Tamattu'",
+        "description": "Pelegrini kryen Umren gjatë muajve të Haxhit, del nga ihrami, dhe pastaj hyn përsëri në ihram për Haxhin në ditën e 8-të të Dhul Hixhxhes.",
+        "nijeti": "LEB'BEJKE UMRATEN MUTEMET'TIAN BIHA ILEL'HAXH'XHI",
+        "hadith_reference": "Sahih al-Bukhari, 1562"
       },
       {
-        "lloji": "Haxh (mutemet\'tia)",
-        "nijeti": "LEB\'BEJKE UMRATEN MUTEMET\'TIAN BIHA ILEL\'HAXH\'XHI"
+        "lloji": "Haxhi Qiran",
+        "description": "Pelegrini hyn në ihram për Umren dhe Haxhin së bashku dhe nuk del nga ihrami deri në ditën e sakrificës.",
+        "nijeti": "LEB'BEJKE UMRATEN UE HAXH'XHEN",
+        "hadith_reference": "Sahih al-Bukhari, 1562"
       },
       {
-        "lloji": "Haxh (Kiran)",
-        "nijeti": "LEB\'BEJKE UMRATEN UE HAXH\'XHEN"
-      },
-      {
-        "lloji": "Haxh (Ifrad)",
-        "nijeti": "LEB\'BEJKE HAXH\'XHEN"
+        "lloji": "Haxhi Ifrad",
+        "description": "Pelegrini hyn në ihram vetëm për Haxhin dhe mbetet në ihram deri në përfundimin e të gjitha ritualeve të Haxhit.",
+        "nijeti": "LEB'BEJKE HAXH'XHEN",
+        "hadith_reference": "Sahih al-Bukhari, 1562"
       }
     ],
     "para_veshjes": [
       {
         "id": 1,
-        "veprim": "Prerja e thonjve dhe shkurtimi i mustaqeve",
-        "description": "Prerja e thonjve, shkurtimi i mustaqeve, pastrimi i qimeve të sqetullave dhe vendit të turpshëm."
+        "veprim": "Pastrimi personal",
+        "description": "Prerja e thonjve, shkurtimi i mustaqeve, dhe pastrimi i qimeve të trupit.",
+        "hadith_reference": "Sahih Muslim, 257a"
       },
       {
         "id": 2,
-        "veprim": "Larja e trupit",
-        "description": "Larja e të gjithë trupit (e pëlqyeshme, por jo e detyrueshme)."
+        "veprim": "Ghusl (Larja e plotë)",
+        "description": "Është sunnet (e pëlqyeshme) të merret gusël para se të vishet ihrami.",
+        "hadith_reference": "Jami` at-Tirmidhi, 830"
       },
       {
         "id": 3,
         "veprim": "Veshja e ihramit",
-        "description": "Burrat heqin të gjitha rrobat dhe veshin rrobat e haxhit (ihrami), ndërsa gratë qëndrojnë me veshjen e zakonshme."
+        "description": "Burrat heqin të gjitha rrobat e qepura dhe veshin dy copa të bardha. Gratë veshin rrobat e tyre të zakonshme, modeste.",
+        "hadith_reference": "Sahih al-Bukhari, 1542"
       }
     ]
   },
@@ -378,5 +383,3 @@
     "keshilla": "Për më shumë detaje dhe udhëzime specifike, rekomandohet konsultimi me burime të specializuara dhe dijetarë islamikë."
   }
 }
-
-
