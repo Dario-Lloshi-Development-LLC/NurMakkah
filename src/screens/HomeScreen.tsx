@@ -143,17 +143,16 @@ const styles = StyleSheet.create({
   categoryIcon: {
     width: 50,
     height: 50,
-    backgroundColor: '#1a1a1a',
     borderRadius: 25,
-    justifyContent: 'center',
-    alignItems: 'center',
     marginRight: 16,
-    borderColor: '#d4af37',
-    borderWidth: 1,
   },
   categoryIconText: {
     fontSize: 24,
     color: '#d4af37',
+  },
+  center: {
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   categoryTextContainer: {
     flex: 1,
