@@ -169,7 +169,7 @@ export class DataService {
         image: 'health.png',
         rules: data.health_and_safety.tips.map((tip, index) => ({
           id: index + 1,
-          rule: tip.title.albanian,
+          rule: tip.tip.albanian,
           description: tip.description.albanian,
           category: 'health_and_safety',
         })),
