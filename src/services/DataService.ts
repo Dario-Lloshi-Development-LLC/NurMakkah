@@ -154,7 +154,7 @@ export class DataService {
         image: 'madhab.png',
         rules: data.madhab_comparison.map((issue, index) => ({
           id: index + 1,
-          rule: issue.issue.albanian,
+          rule: issue.title.albanian,
           description: issue.rulings.map(r => `**${r.madhab}:** ${r.ruling.albanian}`).join('\n\n'),
           category: 'madhab_comparison',
         })),
