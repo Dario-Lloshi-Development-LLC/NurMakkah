@@ -90,7 +90,7 @@
         "albanian": "Vizita e Qabes së paktën një herë në jetë për ata që kanë mundësi.",
         "arabic": "زيارة الكعبة الشريفة مرة واحدة في العمر على الأقل للقادرين",
         "english": "Visiting the Holy Kaaba at least once in a lifetime for those who are able.",
-        "quranic_reference": "وَلِلَّهِ عَلَى ٱلنَّاسِ حِجُّ ٱلْبَيْتِ مَنِ ٱسْتَطَاعَ إِلَيْهِ سَبِيلًا",
+        "quranic_reference": "وَلِلَّهِ عَلَى ٱلنَّاسِ حِجُّ ٱلْبَيْتِ مَنِ ٱسْتَطَاعَ إِلَيْهِ sَبِيلًا",
         "hadith_reference": "Sahih Muslim, Book 1, Hadith 8"
       }
     }
@@ -121,280 +121,60 @@
             "english": "Conditions of Hajj Obligation"
         },
         "conditions": [
-            {
-                "condition": {
-                    "albanian": "Islami",
-                    "arabic": "الإسلام",
-                    "english": "Islam"
-                },
-                "description": {
-                    "albanian": "Personi duhet të jetë musliman.",
-                    "arabic": "أن يكون الشخص مسلماً",
-                    "english": "The person must be a Muslim."
-                }
-            },
-            {
-                "condition": {
-                    "albanian": "Pjekuria mendore",
-                    "arabic": "العقل",
-                    "english": "Sanity"
-                },
-                "description": {
-                    "albanian": "Personi duhet të jetë i shëndoshë mendërisht.",
-                    "arabic": "أن يكون الشخص عاقلاً",
-                    "english": "The person must be of sound mind."
-                }
-            },
-            {
-                "condition": {
-                    "albanian": "Pjekuria fizike",
-                    "arabic": "البلوغ",
-                    "english": "Puberty"
-                },
-                "description": {
-                    "albanian": "Personi duhet të ketë arritur moshën e pjekurisë.",
-                    "arabic": "أن يكون الشخص بالغاً",
-                    "english": "The person must have reached the age of puberty."
-                }
-            },
-            {
-                "condition": {
-                    "albanian": "Liria",
-                    "arabic": "الحرية",
-                    "english": "Freedom"
-                },
-                "description": {
-                    "albanian": "Personi nuk duhet të jetë skllav.",
-                    "arabic": "أن لا يكون الشخص عبداً",
-                    "english": "The person must not be a slave."
-                }
-            },
-            {
-                "condition": {
-                    "albanian": "Mundësia (Istita'ah)",
-                    "arabic": "الاستطاعة",
-                    "english": "Ability (Istita'ah)"
-                },
-                "description": {
-                    "albanian": "Të ketë mundësi financiare dhe fizike për të kryer Haxhin. Për gratë, kjo përfshin të udhëtuarit me një mahrem (kujdestar mashkull) ose në një grup të sigurt, sipas shkollave të ndryshme të mendimit.",
-                    "arabic": "القدرة المالية والبدنية على أداء الحج. بالنسبة للنساء، يشمل ذلك السفر مع محرم أو في رفقة آمنة، وفقاً للمذاهب الفقهية المختلفة",
-                    "english": "To have the financial and physical ability to perform Hajj. For women, this includes traveling with a mahram (male guardian) or in a safe group, according to the different schools of thought."
-                }
-            }
+            {"condition": {"albanian": "Islami", "arabic": "الإسلام", "english": "Islam"}, "description": {"albanian": "Personi duhet të jetë musliman.", "arabic": "أن يكون الشخص مسلماً", "english": "The person must be a Muslim."}},
+            {"condition": {"albanian": "Pjekuria mendore", "arabic": "العقل", "english": "Sanity"}, "description": {"albanian": "Personi duhet të jetë i shëndoshë mendërisht.", "arabic": "أن يكون الشخص عاقلاً", "english": "The person must be of sound mind."}},
+            {"condition": {"albanian": "Pjekuria fizike", "arabic": "البلوغ", "english": "Puberty"}, "description": {"albanian": "Personi duhet të ketë arritur moshën e pjekurisë.", "arabic": "أن يكون الشخص بالغاً", "english": "The person must have reached the age of puberty."}},
+            {"condition": {"albanian": "Liria", "arabic": "الحرية", "english": "Freedom"}, "description": {"albanian": "Personi nuk duhet të jetë skllav.", "arabic": "أن لا يكون الشخص عبداً", "english": "The person must not be a slave."}},
+            {"condition": {"albanian": "Mundësia (Istita'ah)", "arabic": "الاستطاعة", "english": "Ability (Istita'ah)"}, "description": {"albanian": "Të ketë mundësi financiare dhe fizike për të kryer Haxhin. Për gratë, kjo përfshin të udhëtuarit me një mahrem (kujdestar mashkull) ose në një grup të sigurt, sipas shkollave të ndryshme të mendimit.", "arabic": "القدرة المالية والبدنية على أداء الحج. بالنسبة للنساء، يشمل ذلك السفر مع محرم أو في رفقة آمنة، وفقاً للمذاهب الفقهية المختلفة", "english": "To have the financial and physical ability to perform Hajj. For women, this includes traveling with a mahram (male guardian) or in a safe group, according to the different schools of thought."}}
         ]
     }
   },
   "edukata_e_udhetimit": [
-    {
-        "id": 1,
-        "rule": "Qëllimi duhet të jetë vetëm për hir të Allahut",
-        "description": "Jo për t'u dukur apo për qëllime të tjera.",
-        "quranic_reference": "وَمَا أُمِرُوا إِلَّا لِيَعْبُدُوا اللَّهَ مُخْلِصِينَ لَهُ الدِّينَ حُنَفَاءَ"
-    },
-    {
-        "id": 2,
-        "rule": "Larja e borxheve dhe shkrimi i testamentit",
-        "description": "Udhëtari duhet të lajë borxhet dhe të shkruajë testamentin para nisjes.",
-        "hadith_reference": "Sahih al-Bukhari, 2738"
-    },
-    {
-        "id": 3,
-        "rule": "Pendimi nga mëkatet",
-        "description": "Pendimi nga mëkatet dhe vendosmëria për të mos u kthyer më në to.",
-        "quranic_reference": "وَتُوبُوا إِلَى اللَّهِ جَمِيعًا أَيُّهَ الْمُؤْمِنُونَ لَعَلَّكُمْ تُفْلِحُونَ"
-    },
-    {
-        "id": 4,
-        "rule": "Kërkimi i hallallëkut",
-        "description": "Kërkimi i hallallëkut nga të gjithë para udhëtimit.",
-        "hadith_reference": "Musnad Ahmad, 22015"
-    },
-    {
-        "id": 5,
-        "rule": "Paraja hallall",
-        "description": "Paraja që shpenzohet për udhëtim duhet të jetë e fituar në mënyrë hallall.",
-        "hadith_reference": "Sahih Muslim, 1015"
-    },
-    {
-        "id": 6,
-        "rule": "Largimi nga mëkatet",
-        "description": "Largimi nga të gjitha mëkatet gjatë kryerjes së ceremonive.",
-        "quranic_reference": "الْحَجُّ أَشْهُرٌ مَّعْلُومَاتٌ ۚ فَمَن فَرَضَ فِيهِنَّ الْحَjَّ فَلَا رَفَثَ وَلَا فُسُوقَ وَلَا جِدَالَ فِي الْحَجِّ"
-    },
-    {
-        "id": 7,
-        "rule": "Leximi i materialeve informuese",
-        "description": "Leximi i materialeve informuese për Umren dhe Haxhin para udhëtimit."
-    },
-    {
-        "id": 8,
-        "rule": "Përmbushja e detyrave fetare",
-        "description": "Përmbushja e detyrave fetare gjatë udhëtimit."
-    },
-    {
-        "id": 9,
-        "rule": "Zgjedhja e shoqërisë së mirë",
-        "description": "Zgjedhja e shoqërisë së mirë dhe të devotshme.",
-        "hadith_reference": "Sunan Abi Dawud, 4833"
-    },
-    {
-        "id": 10,
-        "rule": "Pajisja me morale të larta",
-        "description": "Pajisja me morale të larta gjatë gjithë udhëtimit.",
-        "quranic_reference": "وَإِنَّكَ لَعَلَىٰ خُلُقٍ عَظِيمٍ"
-    },
-    {
-        "id": 11,
-        "rule": "Këshillimi i familjarëve",
-        "description": "Këshillimi i familjarëve para nisjes."
-    },
-    {
-        "id": 12,
-        "rule": "Thënia e lutjeve të udhëtimit",
-        "description": "Thënia e lutjeve të udhëtimit sipas traditës islame.",
-        "hadith_reference": "Sahih Muslim, 1342a"
-    }
+    {"id": 1, "rule": "Qëllimi duhet të jetë vetëm për hir të Allahut", "description": "Jo për t'u dukur apo për qëllime të tjera.", "quranic_reference": "وَمَا أُمِرُوا إِلَّا لِيَعْبُدُوا اللَّهَ مُخْلِصِينَ لَهُ الدِّينَ حُنَفَاءَ"},
+    {"id": 2, "rule": "Larja e borxheve dhe shkrimi i testamentit", "description": "Udhëtari duhet të lajë borxhet dhe të shkruajë testamentin para nisjes.", "hadith_reference": "Sahih al-Bukhari, 2738"},
+    {"id": 3, "rule": "Pendimi nga mëkatet", "description": "Pendimi nga mëkatet dhe vendosmëria për të mos u kthyer më në to.", "quranic_reference": "وَتُوبُوا إِلَى اللَّهِ جَمِيعًا أَيُّهَ الْمُؤْمِنُونَ لَعَلَّكُمْ تُفْلِحُونَ"},
+    {"id": 4, "rule": "Kërkimi i hallallëkut", "description": "Kërkimi i hallallëkut nga të gjithë para udhëtimit.", "hadith_reference": "Musnad Ahmad, 22015"},
+    {"id": 5, "rule": "Paraja hallall", "description": "Paraja që shpenzohet për udhëtim duhet të jetë e fituar në mënyrë hallall.", "hadith_reference": "Sahih Muslim, 1015"},
+    {"id": 6, "rule": "Largimi nga mëkatet", "description": "Largimi nga të gjitha mëkatet gjatë kryerjes së ceremonive.", "quranic_reference": "الْحَجُّ أَشْهُرٌ مَّعْلُومَاتٌ ۚ فَمَن فَرَضَ فِيهِنَّ الْحَjَّ فَلَا رَفَثَ وَلَا فُسُوقَ وَلَا جِدَالَ فِي الْحَجِّ"},
+    {"id": 7, "rule": "Leximi i materialeve informuese", "description": "Leximi i materialeve informuese për Umren dhe Haxhin para udhëtimit."},
+    {"id": 8, "rule": "Përmbushja e detyrave fetare", "description": "Përmbushja e detyrave fetare gjatë udhëtimit."},
+    {"id": 9, "rule": "Zgjedhja e shoqërisë së mirë", "description": "Zgjedhja e shoqërisë së mirë dhe të devotshme.", "hadith_reference": "Sunan Abi Dawud, 4833"},
+    {"id": 10, "rule": "Pajisja me morale të larta", "description": "Pajisja me morale të larta gjatë gjithë udhëtimit.", "quranic_reference": "وَإِنَّكَ لَعَلَىٰ خُلُقٍ عَظِيمٍ"},
+    {"id": 11, "rule": "Këshillimi i familjarëve", "description": "Këshillimi i familjarëve para nisjes."},
+    {"id": 12, "rule": "Thënia e lutjeve të udhëtimit", "description": "Thënia e lutjeve të udhëtimit sipas traditës islame.", "hadith_reference": "Sahih Muslim, 1342a"}
   ],
   "ihrami": {
     "description": "Ihrami është qëllimi që ka muslimani për të kryer ceremonitë e Haxhit apo të Umres.",
     "koha": "Nijeti për Haxhin bëhet në muajt: Sheual, Dhul Kadeh dhe Dhul Hixh'xheh.",
     "llojet_e_nijetit": [
-      {
-        "lloji": "Haxhi Tamattu'",
-        "description": "Pelegrini kryen Umren gjatë muajve të Haxhit, del nga ihrami, dhe pastaj hyn përsëri në ihram për Haxhin në ditën e 8-të të Dhul Hixhxhes.",
-        "nijeti": "LEB'BEJKE UMRATEN MUTEMET'TIAN BIHA ILEL'HAXH'XHI",
-        "hadith_reference": "Sahih al-Bukhari, 1562"
-      },
-      {
-        "lloji": "Haxhi Qiran",
-        "description": "Pelegrini hyn në ihram për Umren dhe Haxhin së bashku dhe nuk del nga ihrami deri në ditën e sakrificës.",
-        "nijeti": "LEB'BEJKE UMRATEN UE HAXH'XHEN",
-        "hadith_reference": "Sahih al-Bukhari, 1562"
-      },
-      {
-        "lloji": "Haxhi Ifrad",
-        "description": "Pelegrini hyn në ihram vetëm për Haxhin dhe mbetet në ihram deri në përfundimin e të gjitha ritualeve të Haxhit.",
-        "nijeti": "LEB'BEJKE HAXH'XHEN",
-        "hadith_reference": "Sahih al-Bukhari, 1562"
-      }
+      {"lloji": "Haxhi Tamattu'", "description": "Pelegrini kryen Umren gjatë muajve të Haxhit, del nga ihrami, dhe pastaj hyn përsëri në ihram për Haxhin në ditën e 8-të të Dhul Hixhxhes.", "nijeti": "LEB'BEJKE UMRATEN MUTEMET'TIAN BIHA ILEL'HAXH'XHI", "hadith_reference": "Sahih al-Bukhari, 1562"},
+      {"lloji": "Haxhi Qiran", "description": "Pelegrini hyn në ihram për Umren dhe Haxhin së bashku dhe nuk del nga ihrami deri në ditën e sakrificës.", "nijeti": "LEB'BEJKE UMRATEN UE HAXH'XHEN", "hadith_reference": "Sahih al-Bukhari, 1562"},
+      {"lloji": "Haxhi Ifrad", "description": "Pelegrini hyn në ihram vetëm për Haxhin dhe mbetet në ihram deri në përfundimin e të gjitha ritualeve të Haxhit.", "nijeti": "LEB'BEJKE HAXH'XHEN", "hadith_reference": "Sahih al-Bukhari, 1562"}
     ],
     "para_veshjes": [
-      {
-        "id": 1,
-        "veprim": "Pastrimi personal",
-        "description": "Prerja e thonjve, shkurtimi i mustaqeve, dhe pastrimi i qimeve të trupit.",
-        "hadith_reference": "Sahih Muslim, 257a"
-      },
-      {
-        "id": 2,
-        "veprim": "Ghusl (Larja e plotë)",
-        "description": "Është sunnet (e pëlqyeshme) të merret gusël para se të vishet ihrami.",
-        "hadith_reference": "Jami` at-Tirmidhi, 830"
-      },
-      {
-        "id": 3,
-        "veprim": "Veshja e ihramit",
-        "description": "Burrat heqin të gjitha rrobat e qepura dhe veshin dy copa të bardha. Gratë veshin rrobat e tyre të zakonshme, modeste.",
-        "hadith_reference": "Sahih al-Bukhari, 1542"
-      }
+      {"id": 1, "veprim": "Pastrimi personal", "description": "Prerja e thonjve, shkurtimi i mustaqeve, dhe pastrimi i qimeve të trupit.", "hadith_reference": "Sahih Muslim, 257a"},
+      {"id": 2, "veprim": "Ghusl (Larja e plotë)", "description": "Është sunnet (e pëlqyeshme) të merret gusël para se të vishet ihrami.", "hadith_reference": "Jami` at-Tirmidhi, 830"},
+      {"id": 3, "veprim": "Veshja e ihramit", "description": "Burrat heqin të gjitha rrobat e qepura dhe veshin dy copa të bardha. Gratë veshin rrobat e tyre të zakonshme, modeste.", "hadith_reference": "Sahih al-Bukhari, 1542"}
     ]
   },
   "ndalesat_gjate_ihramit": [
-    {
-      "id": 1,
-      "ndalesa": "Veshja e rrobave të qepura (për burrat)",
-      "description": "Burrat nuk lejohen të veshin rroba të qepura që marrin formën e trupit, si këmisha, pantallona, etj.",
-      "hadith_reference": "Sahih al-Bukhari, 1838",
-      "fidyah": "Nëse shkelet, kërkohet Fidyah: agjërimi i tre ditëve, ose ushqimi i gjashtë të varfërve, ose therja e një deleje."
-    },
-    {
-      "id": 2,
-      "ndalesa": "Mbulimi i kokës (për burrat)",
-      "description": "Nuk lejohet të mbulohet koka me çfarëdo që e prek atë direkt.",
-      "hadith_reference": "Sahih al-Bukhari, 1838",
-      "fidyah": "Fidyah e njëjtë si për veshjen e rrobave të qepura."
-    },
-    {
-      "id": 3,
-      "ndalesa": "Mbulimi i fytyrës (për gratë)",
-      "description": "Gratë nuk duhet ta mbulojnë fytyrën me nikab ose burka, por mund ta mbulojnë atë nga burrat e huaj me një shami pa e lidhur atë.",
-      "hadith_reference": "Sahih al-Bukhari, 1838",
-      "fidyah": "Fidyah e njëjtë si për veshjen e rrobave të qepura."
-    },
-    {
-      "id": 4,
-      "ndalesa": "Prerja e flokëve dhe thonjve",
-      "description": "Nuk lejohet prerja e flokëve apo thonjve pa arsye legjitime.",
-      "quranic_reference": "وَلَا تَحْلِقُوا رُءُوسَكُمْ حَتَّىٰ يَبْلُغَ الْهَدْيُ مَحِلَّهُ",
-      "fidyah": "Fidyah e njëjtë si për veshjen e rrobave të qepura."
-    },
-    {
-      "id": 5,
-      "ndalesa": "Parfumimi",
-      "description": "Nuk lejohet përdorimi i parfumit në trup apo në rroba.",
-      "hadith_reference": "Sahih al-Bukhari, 1838",
-      "fidyah": "Fidyah e njëjtë si për veshjen e rrobave të qepura."
-    },
-    {
-      "id": 6,
-      "ndalesa": "Gjuetia",
-      "description": "Nuk lejohet gjuetia e kafshëve tokësore të egra.",
-      "quranic_reference": "يَا أَيُّهَا الَّذِينَ آمَنُوا لَا تَقْتُلُوا الصَّيْدَ وَأَنتُمْ حُرُمٌ",
-      "fidyah": "Fidyah specifike në varësi të kafshës së gjuajtur, siç përshkruhet në Fikh."
-    },
-    {
-      "id": 7,
-      "ndalesa": "Marrëdhëniet intime",
-      "description": "Marrëdhëniet intime dhe çdo veprim që çon drejt tyre janë rreptësisht të ndaluara.",
-      "quranic_reference": "فَلَا رَفَثَ وَلَا فُسُوقَ وَلَا جِدَالَ فِي الْحَجِّ",
-      "fidyah": "Prish Haxhin dhe kërkon pendim, përsëritjen e Haxhit vitin tjetër, dhe therjen e një deveje."
-    },
-    {
-      "id": 8,
-      "ndalesa": "Martesa",
-      "description": "Nuk lejohet propozimi për martesë, lidhja e kurorës, apo veprimi si kujdestar (ueli) për dikë tjetër.",
-      "hadith_reference": "Sahih Muslim, 1409a",
-      "fidyah": "Nuk ka Fidyah specifike, por veprimi është i pavlefshëm dhe mëkat."
-    }
+    {"id": 1, "ndalesa": "Veshja e rrobave të qepura (për burrat)", "description": "Burrat nuk lejohen të veshin rroba të qepura që marrin formën e trupit, si këmisha, pantallona, etj.", "hadith_reference": "Sahih al-Bukhari, 1838", "fidyah": "Nëse shkelet, kërkohet Fidyah: agjërimi i tre ditëve, ose ushqimi i gjashtë të varfërve, ose therja e një deleje."},
+    {"id": 2, "ndalesa": "Mbulimi i kokës (për burrat)", "description": "Nuk lejohet të mbulohet koka me çfarëdo që e prek atë direkt.", "hadith_reference": "Sahih al-Bukhari, 1838", "fidyah": "Fidyah e njëjtë si për veshjen e rrobave të qepura."},
+    {"id": 3, "ndalesa": "Mbulimi i fytyrës (për gratë)", "description": "Gratë nuk duhet ta mbulojnë fytyrën me nikab ose burka, por mund ta mbulojnë atë nga burrat e huaj me një shami pa e lidhur atë.", "hadith_reference": "Sahih al-Bukhari, 1838", "fidyah": "Fidyah e njëjtë si për veshjen e rrobave të qepura."},
+    {"id": 4, "ndalesa": "Prerja e flokëve dhe thonjve", "description": "Nuk lejohet prerja e flokëve apo thonjve pa arsye legjitime.", "quranic_reference": "وَلَا تَحْلِقُوا رُءُوسَكُمْ حَتَّىٰ يَبْلُغَ الْهَدْيُ مَحِلَّهُ", "fidyah": "Fidyah e njëjtë si për veshjen e rrobave të qepura."},
+    {"id": 5, "ndalesa": "Parfumimi", "description": "Nuk lejohet përdorimi i parfumit në trup apo në rroba.", "hadith_reference": "Sahih al-Bukhari, 1838", "fidyah": "Fidyah e njëjtë si për veshjen e rrobave të qepura."},
+    {"id": 6, "ndalesa": "Gjuetia", "description": "Nuk lejohet gjuetia e kafshëve tokësore të egra.", "quranic_reference": "يَا أَيُّهَا الَّذِينَ آمَنُوا لَا تَقْتُلُوا الصَّيْدَ وَأَنتُمْ حُرُمٌ", "fidyah": "Fidyah specifike në varësi të kafshës së gjuajtur, siç përshkruhet në Fikh."},
+    {"id": 7, "ndalesa": "Marrëdhëniet intime", "description": "Marrëdhëniet intime dhe çdo veprim që çon drejt tyre janë rreptësisht të ndaluara.", "quranic_reference": "فَلَا رَفَثَ وَلَا فُسُوقَ وَلَا جِدَالَ فِي الْحَجِّ", "fidyah": "Prish Haxhin dhe kërkon pendim, përsëritjen e Haxhit vitin tjetër, dhe therjen e një deveje."},
+    {"id": 8, "ndalesa": "Martesa", "description": "Nuk lejohet propozimi për martesë, lidhja e kurorës, apo veprimi si kujdestar (ueli) për dikë tjetër.", "hadith_reference": "Sahih Muslim, 1409a", "fidyah": "Nuk ka Fidyah specifike, por veprimi është i pavlefshëm dhe mëkat."}
   ],
   "vendcaktimet": {
     "hadith_reference": "Sahih al-Bukhari, 1526",
     "locations": [
-      {
-        "id": 1,
-        "emri": "DHUL HULEJFEH",
-        "per_ke": "Për banorët e Medinës dhe ata që vijnë nga ajo rrugë",
-        "largesia": "450 km nga Meka",
-        "image": "miqats.jpg"
-      },
-      {
-        "id": 2,
-        "emri": "XHUHFEH",
-        "per_ke": "Për udhëtarët nga Siria, Egjipti, Maroku dhe ata që vijnë nga ajo rrugë",
-        "largesia": "183 km nga Meka",
-        "image": "miqats.jpg"
-      },
-      {
-        "id": 3,
-        "emri": "KARNUL MENAZIL",
-        "per_ke": "Për haxhilerët e Nexhdit dhe ata që vijnë nga ajo rrugë",
-        "largesia": "75 km nga Meka",
-        "image": "miqats.jpg"
-      },
-      {
-        "id": 4,
-        "emri": "JELEMLEM",
-        "per_ke": "Për haxhinjtë nga Jemeni dhe ata që kalojnë aty",
-        "largesia": "92 km nga Meka",
-        "image": "miqats.jpg"
-      },
-      {
-        "id": 5,
-        "emri": "DHATE IRK",
-        "per_ke": "Për haxhinjtë e Irakut dhe ata që kalojnë nga ai vend",
-        "largesia": "94 km nga Meka",
-        "image": "miqats.jpg"
-      }
+      {"id": 1, "emri": "DHUL HULEJFEH", "per_ke": "Për banorët e Medinës dhe ata që vijnë nga ajo rrugë", "largesia": "450 km nga Meka", "image": "miqats.jpg"},
+      {"id": 2, "emri": "XHUHFEH", "per_ke": "Për udhëtarët nga Siria, Egjipti, Maroku dhe ata që vijnë nga ajo rrugë", "largesia": "183 km nga Meka", "image": "miqats.jpg"},
+      {"id": 3, "emri": "KARNUL MENAZIL", "per_ke": "Për haxhilerët e Nexhdit dhe ata që vijnë nga ajo rrugë", "largesia": "75 km nga Meka", "image": "miqats.jpg"},
+      {"id": 4, "emri": "JELEMLEM", "per_ke": "Për haxhinjtë nga Jemeni dhe ata që kalojnë aty", "largesia": "92 km nga Meka", "image": "miqats.jpg"},
+      {"id": 5, "emri": "DHATE IRK", "per_ke": "Për haxhinjtë e Irakut dhe ata që kalojnë nga ai vend", "largesia": "94 km nga Meka", "image": "miqats.jpg"}
     ],
     "modern_context": {
       "title": "Udhëtimi Ajror dhe Miqati",
@@ -411,29 +191,34 @@
     "keshilla": "Për më shumë detaje dhe udhëzime specifike, rekomandohet konsultimi me burime të specializuara dhe dijetarë islamikë."
   },
   "tawaf": {
-    "title": {
-      "albanian": "Tawafi",
-      "arabic": "الطواف",
-      "english": "The Tawaf"
-    },
-    "description": {
-      "albanian": "Tawafi është rituali i ecjes rreth Qabes shtatë herë në një drejtim kundër-akrepave të orës. Ai simbolizon unitetin e besimtarëve në adhurimin e Një Zoti.",
-      "arabic": "الطواف هو ритуал المشي حول الكعبة سبع مرات عكس اتجاه عقارب الساعة. إنه يرمز إلى وحدة المؤمنين في عبادة إله واحد.",
-      "english": "Tawaf is the ritual of circumambulating the Kaaba seven times in a counter-clockwise direction. It symbolizes the unity of believers in the worship of One God."
-    },
+    "title": {"albanian": "Tawafi", "arabic": "الطواف", "english": "The Tawaf"},
+    "description": {"albanian": "Tawafi është rituali i ecjes rreth Qabes shtatë herë në një drejtim kundër-akrepave të orës. Ai simbolizon unitetin e besimtarëve në adhurimin e Një Zoti.", "arabic": "الطواف هو ритуал المشي حول الكعبة سبع مرات عكس اتجاه عقارب الساعة. إنه يرمز إلى وحدة المؤمنين في عبادة إله واحد.", "english": "Tawaf is the ritual of circumambulating the Kaaba seven times in a counter-clockwise direction. It symbolizes the unity of believers in the worship of One God."},
     "visual_guide": "tawaf_visual_guide_v3.png"
   },
   "sai": {
-    "title": {
-      "albanian": "Sa'i",
-      "arabic": "السعي",
-      "english": "The Sa'i"
-    },
-    "description": {
-      "albanian": "Sa'i është ecja e shpejtë midis kodrave të Safas dhe Mervës shtatë herë. Ai përkujton përpjekjen e Haxheres, gruas së Profetit Ibrahim, në kërkim të ujit për djalin e saj Ismailin.",
-      "arabic": "السعي هو المشي السريع بين تلال الصفا والمروة سبع مرات. إنه يحيي ذكرى سعي هاجر، زوجة النبي إبراهيم، بحثًا عن الماء لابنها إسماعيل.",
-      "english": "Sa'i is the ritual of briskly walking between the hills of Safa and Marwa seven times. It commemorates the struggle of Hajar, the wife of Prophet Ibrahim, in her search for water for her son, Ismail."
-    },
+    "title": {"albanian": "Sa'i", "arabic": "السعي", "english": "The Sa'i"},
+    "description": {"albanian": "Sa'i është ecja e shpejtë midis kodrave të Safas dhe Mervës shtatë herë. Ai përkujton përpjekjen e Haxheres, gruas së Profetit Ibrahim, në kërkim të ujit për djalin e saj Ismailin.", "arabic": "السعي هو المشي السريع بين تلال الصفا والمروة سبع مرات. إنه يحيي ذكرى سعي هاجر، زوجة النبي إبراهيم، بحثًا عن الماء لابنها إسماعيل.", "english": "Sa'i is the ritual of briskly walking between the hills of Safa and Marwa seven times. It commemorates the struggle of Hajar, the wife of Prophet Ibrahim, in her search for water for her son, Ismail."},
     "visual_guide": "sai_visual_guide.png"
-  }
+  },
+  "madhab_comparison": [
+    {
+      "issue": "Night at Muzdalifah",
+      "title": {
+        "albanian": "Qëndrimi në Muzdalife Natën",
+        "arabic": "المبيت بمزدلفة",
+        "english": "Spending the Night at Muzdalifah"
+      },
+      "description": {
+        "albanian": "Rregullat për kalimin e natës në Muzdalife në natën e 10-të të Dhul Hixhxhes ndryshojnë midis shkollave.",
+        "arabic": "تختلف أحكام المبيت بمزدلفة ليلة العاشر من ذي الحجة بين المذاهب.",
+        "english": "The ruling on spending the night at Muzdalifah on the 10th night of Dhul Hijjah differs among the schools of thought."
+      },
+      "rulings": [
+        {"madhab": "Hanafi", "ruling": {"albanian": "Sunneh Muekkede (Sunnet i fortë). Lënia pa arsye është mekruh (e papëlqyeshme).", "arabic": "سنة مؤكدة. تركه لغير عذر مكروه.", "english": "Sunnah Mu'akkadah (a confirmed Sunnah). Leaving it without an excuse is makruh (disliked)."}},
+        {"madhab": "Maliki", "ruling": {"albanian": "Uaxhib (Detyrim). Lënia e tij pa arsye kërkon një Fidyah (shpagim).", "arabic": "واجب. تركه لغير عذر يوجب فدية.", "english": "Wajib (Obligatory). Leaving it without an excuse necessitates a Fidyah (expiation)."}},
+        {"madhab": "Shafi'i", "ruling": {"albanian": "Uaxhib (Detyrim). Lënia e tij pa arsye kërkon një Fidyah (shpagim).", "arabic": "واجب. تركه لغير عذر يوجب فدية.", "english": "Wajib (Obligatory). Leaving it without an excuse necessitates a Fidyah (expiation)."}},
+        {"madhab": "Hanbali", "ruling": {"albanian": "Uaxhib (Detyrim). Lënia e tij pa arsye kërkon një Fidyah (shpagim).", "arabic": "واجب. تركه لغير عذر يوجب فدية.", "english": "Wajib (Obligatory). Leaving it without an excuse necessitates a Fidyah (expiation)."}}
+      ]
+    }
+  ]
 }
