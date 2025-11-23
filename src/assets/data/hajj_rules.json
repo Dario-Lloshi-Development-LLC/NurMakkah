@@ -186,64 +186,73 @@
   },
   "edukata_e_udhetimit": [
     {
-      "id": 1,
-      "rule": "Qëllimi duhet të jetë vetëm për hir të Allahut",
-      "description": "Jo për t\'u dukur apo për qëllime të tjera."
+        "id": 1,
+        "rule": "Qëllimi duhet të jetë vetëm për hir të Allahut",
+        "description": "Jo për t'u dukur apo për qëllime të tjera.",
+        "quranic_reference": "وَمَا أُمِرُوا إِلَّا لِيَعْبُدُوا اللَّهَ مُخْلِصِينَ لَهُ الدِّينَ حُنَفَاءَ"
     },
     {
-      "id": 2,
-      "rule": "Larja e borxheve dhe shkrimi i testamentit",
-      "description": "Udhëtari duhet të lajë borxhet dhe të shkruajë testamentin para nisjes."
+        "id": 2,
+        "rule": "Larja e borxheve dhe shkrimi i testamentit",
+        "description": "Udhëtari duhet të lajë borxhet dhe të shkruajë testamentin para nisjes.",
+        "hadith_reference": "Sahih al-Bukhari, 2738"
     },
     {
-      "id": 3,
-      "rule": "Pendimi nga mëkatet",
-      "description": "Pendimi nga mëkatet dhe vendosmëria për të mos u kthyer më në to."
+        "id": 3,
+        "rule": "Pendimi nga mëkatet",
+        "description": "Pendimi nga mëkatet dhe vendosmëria për të mos u kthyer më në to.",
+        "quranic_reference": "وَتُوبُوا إِلَى اللَّهِ جَمِيعًا أَيُّهَ الْمُؤْمِنُونَ لَعَلَّكُمْ تُفْلِحُونَ"
     },
     {
-      "id": 4,
-      "rule": "Kërkimi i hallallëkut",
-      "description": "Kërkimi i hallallëkut nga të gjithë para udhëtimit."
+        "id": 4,
+        "rule": "Kërkimi i hallallëkut",
+        "description": "Kërkimi i hallallëkut nga të gjithë para udhëtimit.",
+        "hadith_reference": "Musnad Ahmad, 22015"
     },
     {
-      "id": 5,
-      "rule": "Paraja hallall",
-      "description": "Paraja që shpenzohet për udhëtim duhet të jetë e fituar në mënyrë hallall."
+        "id": 5,
+        "rule": "Paraja hallall",
+        "description": "Paraja që shpenzohet për udhëtim duhet të jetë e fituar në mënyrë hallall.",
+        "hadith_reference": "Sahih Muslim, 1015"
     },
     {
-      "id": 6,
-      "rule": "Largimi nga mëkatet",
-      "description": "Largimi nga të gjitha mëkatet gjatë kryerjes së ceremonive."
+        "id": 6,
+        "rule": "Largimi nga mëkatet",
+        "description": "Largimi nga të gjitha mëkatet gjatë kryerjes së ceremonive.",
+        "quranic_reference": "الْحَجُّ أَشْهُرٌ مَّعْلُومَاتٌ ۚ فَمَن فَرَضَ فِيهِنَّ الْحَجَّ فَلَا رَفَثَ وَلَا فُسُوقَ وَلَا جِدَالَ فِي الْحَجِّ"
     },
     {
-      "id": 7,
-      "rule": "Leximi i materialeve informuese",
-      "description": "Leximi i materialeve informuese për Umren dhe Haxhin para udhëtimit."
+        "id": 7,
+        "rule": "Leximi i materialeve informuese",
+        "description": "Leximi i materialeve informuese për Umren dhe Haxhin para udhëtimit."
     },
     {
-      "id": 8,
-      "rule": "Përmbushja e detyrave fetare",
-      "description": "Përmbushja e detyrave fetare gjatë udhëtimit."
+        "id": 8,
+        "rule": "Përmbushja e detyrave fetare",
+        "description": "Përmbushja e detyrave fetare gjatë udhëtimit."
     },
     {
-      "id": 9,
-      "rule": "Zgjedhja e shoqërisë së mirë",
-      "description": "Zgjedhja e shoqërisë së mirë dhe të devotshme."
+        "id": 9,
+        "rule": "Zgjedhja e shoqërisë së mirë",
+        "description": "Zgjedhja e shoqërisë së mirë dhe të devotshme.",
+        "hadith_reference": "Sunan Abi Dawud, 4833"
     },
     {
-      "id": 10,
-      "rule": "Pajisja me morale të larta",
-      "description": "Pajisja me morale të larta gjatë gjithë udhëtimit."
+        "id": 10,
+        "rule": "Pajisja me morale të larta",
+        "description": "Pajisja me morale të larta gjatë gjithë udhëtimit.",
+        "quranic_reference": "وَإِنَّكَ لَعَلَىٰ خُلُقٍ عَظِيمٍ"
     },
     {
-      "id": 11,
-      "rule": "Këshillimi i familjarëve",
-      "description": "Këshillimi i familjarëve para nisjes."
+        "id": 11,
+        "rule": "Këshillimi i familjarëve",
+        "description": "Këshillimi i familjarëve para nisjes."
     },
     {
-      "id": 12,
-      "rule": "Thënia e lutjeve të udhëtimit",
-      "description": "Thënia e lutjeve të udhëtimit sipas traditës islame."
+        "id": 12,
+        "rule": "Thënia e lutjeve të udhëtimit",
+        "description": "Thënia e lutjeve të udhëtimit sipas traditës islame.",
+        "hadith_reference": "Sahih Muslim, 1342a"
     }
   ],
   "ihrami": {
