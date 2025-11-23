@@ -89,9 +89,11 @@ const AppContent: React.FC = () => {
   }
 
   return (
-    <NavigationProvider initialSettings={settings}>
-      <AppNavigator />
-    </NavigationProvider>
+    <DataProvider>
+      <NavigationProvider initialSettings={settings}>
+        <AppNavigator />
+      </NavigationProvider>
+    </DataProvider>
   );
 };
 
