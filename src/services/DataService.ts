@@ -179,8 +179,8 @@ export class DataService {
     return Promise.resolve(categories);
   }
 
-  public getCategoryById(id: number): Category | undefined {
-    const categories = this.getCategories();
+  public async getCategoryById(id: number): Promise<Category | undefined> {
+    const categories = await this.getCategories();
     return categories.find(cat => cat.id === id);
   }
 
