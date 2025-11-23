@@ -38,7 +38,7 @@ All content has been cross-referenced with the following hierarchy of sources:
 **Verification & Enhancement Plan:**
 1.  **Correct Hadith Reference:** The current reference, "Sahih al-Bukhari, Book 26, Hadith 1513," is slightly inaccurate. I will correct it to the more precise and widely cited Hadith from Sunan Abi Dawud and Musnad Ahmad, which directly addresses the "once in a lifetime" obligation.
 2.  **Add Conditions of Obligation:** I will add a new subsection detailing the essential conditions that make Hajj obligatory upon an individual, according to the four major schools of thought. These conditions are: Islam, sanity, puberty, freedom, and ability (financial and physical).
-3.  **Elaborate on 'Ability':** I will add a brief explanation of the concept of "ability" (istita'ah), including financial and physical capacity, and the specific rulings for women (mahram or safe company).
+3.  **Elaborate on 'Ability':** I will add a brief explanation of the concept of "ability" (istita'ah), including financial and physical capacity, and the specific rulings for women (mahrem or safe company).
 
 **Justification:** These enhancements will provide a much more comprehensive and accurate understanding of the obligation of Hajj. Correcting the Hadith reference ensures authenticity, and adding the conditions of obligation gives users clear, actionable information to determine if they are required to perform Hajj. This aligns with our goal of making the app a truly reliable source of Islamic knowledge.
 
@@ -113,6 +113,18 @@ All content has been cross-referenced with the following hierarchy of sources:
 3.  **Provide Contextual Descriptions:** Alongside the visual guides, I have added brief, multilingual descriptions of each ritual to explain its significance.
 
 **Justification:** Visual guides are exceptionally effective for simplifying complex procedures. By providing clear, step-by-step flowcharts for Tawaf and Sa'i, we significantly reduce the cognitive load on the user, making it easier for them to follow the correct sequence of actions during these critical rites. This enhancement makes the app more user-friendly and an even more effective educational tool.
+
+### Section 9: Madhab-Specific Comparison Tables (`madhab_comparison`)
+
+**Initial State:** The application presents a generalized view of Hajj rituals, which, while broadly correct, does not address the specific differences in practice and obligation that exist between the four major Sunni schools of thought (madhabs).
+
+**Verification & Enhancement Plan:**
+1.  **Create `madhab_comparison` Section:** I have created a new section in `hajj_rules.json` dedicated to highlighting these differences.
+2.  **Structure for Comparison:** Each item in this section will focus on a specific ritual (e.g., "Night at Muzdalifah") and provide a clear, side-by-side comparison of the ruling for each of the four madhabs.
+3.  **Provide Multilingual Rulings:** The ruling for each school is provided in Albanian, Arabic, and English.
+4.  **Initial Implementation:** I have implemented the first comparison table for the ruling on spending the night at Muzdalifah, a known point of difference among the schools.
+
+**Justification:** This feature is critical for achieving the highest level of religious accuracy and user trust. By clearly attributing rulings to their respective schools of thought, the app empowers users following a specific madhab to perform their rituals with confidence and precision. It moves the app from a general guide to a truly personalized and authoritative resource.
 
 ---
 
