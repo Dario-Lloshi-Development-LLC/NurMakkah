@@ -127,11 +127,8 @@ const MainTabs: React.FC = () => {
       case 'Home':
         iconName = 'home';
         break;
-      case 'Categories':
-        iconName = 'category';
-        break;
-      case 'Content':
-        iconName = 'menu-book';
+      case 'Search':
+        iconName = 'search';
         break;
       case 'Map':
         iconName = 'map';
@@ -153,15 +150,10 @@ const MainTabs: React.FC = () => {
         arabic: 'الرئيسية',
         english: 'Home',
       },
-      Categories: {
-        albanian: 'Kategoritë',
-        arabic: 'الفئات',
-        english: 'Categories',
-      },
-      Content: {
-        albanian: 'Përmbajtja',
-        arabic: 'المحتوى',
-        english: 'Content',
+      Search: {
+        albanian: 'Kërko',
+        arabic: 'بحث',
+        english: 'Search',
       },
       Map: {
         albanian: 'Harta',
