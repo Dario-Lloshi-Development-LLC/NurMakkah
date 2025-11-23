@@ -30,9 +30,7 @@ const HomeScreen: React.FC = () => {
       style={styles.categoryCard}
       onPress={() => handleCategoryPress(item)}>
       <View style={styles.categoryContent}>
-        <View style={styles.categoryIcon}>
-          <Text style={styles.categoryIconText}>📖</Text>
-        </View>
+        <Image source={getImageSource(item.image)} style={styles.categoryIcon} />
         <View style={styles.categoryTextContainer}>
           <Text style={styles.categoryTitle}>{item.title}</Text>
           <Text style={styles.categoryDescription} numberOfLines={2}>
