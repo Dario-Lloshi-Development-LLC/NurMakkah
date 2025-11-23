@@ -31,4 +31,15 @@ All content has been cross-referenced with the following hierarchy of sources:
 
 **Justification:** Adding these authentic Hadith references will provide users with a much stronger, more complete understanding of the five pillars, directly linking the app's content to the teachings of the Prophet Muhammad (PBUH). This greatly enhances the religious authority and trustworthiness of the application.
 
+### Section 2: The Obligation of Hajj (`detyrimi_i_haxhit`)
+
+**Initial State:** This section correctly states that Hajj is obligatory once in a lifetime and provides a Hadith reference. However, the reference is incomplete and could be more precise. The section also lacks detail on the conditions of obligation.
+
+**Verification & Enhancement Plan:**
+1.  **Correct Hadith Reference:** The current reference, "Sahih al-Bukhari, Book 26, Hadith 1513," is slightly inaccurate. I will correct it to the more precise and widely cited Hadith from Sunan Abi Dawud and Musnad Ahmad, which directly addresses the "once in a lifetime" obligation.
+2.  **Add Conditions of Obligation:** I will add a new subsection detailing the essential conditions that make Hajj obligatory upon an individual, according to the four major schools of thought. These conditions are: Islam, sanity, puberty, freedom, and ability (financial and physical).
+3.  **Elaborate on 'Ability':** I will add a brief explanation of the concept of "ability" (istita'ah), including financial and physical capacity, and the specific rulings for women (mahram or safe company).
+
+**Justification:** These enhancements will provide a much more comprehensive and accurate understanding of the obligation of Hajj. Correcting the Hadith reference ensures authenticity, and adding the conditions of obligation gives users clear, actionable information to determine if they are required to perform Hajj. This aligns with our goal of making the app a truly reliable source of Islamic knowledge.
+
 
