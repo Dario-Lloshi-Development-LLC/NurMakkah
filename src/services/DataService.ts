@@ -85,7 +85,7 @@ export class DataService {
             title: 'Vendcaktimet (Miqat)',
             description: 'Vendcaktimet ku bëhet ihram-i',
             image: 'miqats.jpg',
-            rules: data.vendcaktimet.map(miqat => ({
+            rules: data.vendcaktimet.locations.map(miqat => ({
                 id: miqat.id,
                 rule: miqat.emri,
                 description: `${miqat.per_ke} - ${miqat.largesia}`,
