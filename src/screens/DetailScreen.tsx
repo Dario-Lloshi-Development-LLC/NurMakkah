@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   View,
   Text,
   FlatList,
   StyleSheet,
+  TextInput,
   ScrollView,
 } from 'react-native';
 import {useRoute} from '@react-navigation/native';
@@ -17,7 +18,25 @@ interface RouteParams {
 
 const DetailScreen: React.FC = () => {
   const route = useRoute();
-  const {rule, category, title} = route.params as RouteParams;
+  const {rule, category} = route.params as RouteParams;
+  const [searchQuery, setSearchQuery] = useState('');
+  const [filteredRules, setFilteredRules] = useState<HajjRule[]>([]);
+
+  const rules = rule ? [rule] : category?.rules || [];
+
+  useEffect(() => {
+    if (searchQuery) {
+      const lowerQuery = searchQuery.toLowerCase();
+      const filtered = rules.filter(
+        item =>
+          item.rule.toLowerCase().includes(lowerQuery) ||
+          item.description.toLowerCase().includes(lowerQuery),
+      );
+      setFilteredRules(filtered);
+    } else {
+      setFilteredRules(rules);
+    }
+  }, [searchQuery, rules]);
 
   const renderRule = ({item}: {item: HajjRule}) => (
     <View style={styles.ruleCard}>
