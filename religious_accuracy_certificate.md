@@ -76,4 +76,15 @@ All content has been cross-referenced with the following hierarchy of sources:
 
 **Justification:** Simply listing prohibitions is incomplete. By adding authentic references and explaining the Fidyah for violations, the app becomes a far more practical and responsible guide for pilgrims, helping them understand the seriousness of the rules and how to rectify mistakes.
 
+### Section 6: The Miqats (`vendcaktimet`)
+
+**Initial State:** The section correctly lists the five primary Miqats. However, it lacks a foundational Hadith reference that establishes these locations, and it could benefit from more practical information for modern travelers.
+
+**Verification & Enhancement Plan:**
+1.  **Add Foundational Hadith:** I will add the central Hadith from Sahih al-Bukhari (1526) where the Prophet Muhammad (PBUH) himself designated these Miqats.
+2.  **Provide Modern Context:** I will add a note explaining the situation for travelers who fly into Jeddah, which is a common modern scenario not covered by the classical texts. This will include the scholarly consensus on where such travelers should enter Ihram.
+3.  **Clarify 'Parallel To':** For those who do not pass directly through a Miqat, I will add the fiqh ruling that they should enter Ihram when they are parallel to the nearest Miqat.
+
+**Justification:** These enhancements will make the Miqat section far more practical and useful for contemporary pilgrims. The foundational Hadith provides religious authority, while the modern context for air travel addresses a very common point of confusion, making the app an indispensable tool for today's Hajj and Umrah traveler.
+
 
