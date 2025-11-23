@@ -202,11 +202,11 @@ export class DataService {
     return allRules;
   }
 
-  public searchRules(query: string): HajjRule[] {
-    const allRules = this.getAllRules();
+  public async searchRules(query: string): Promise<HajjRule[]> {
+    const allRules = await this.getAllRules();
     const lowerQuery = query.toLowerCase();
-    
-    return allRules.filter(rule => 
+
+    return allRules.filter(rule =>
       rule.rule.toLowerCase().includes(lowerQuery) ||
       rule.description.toLowerCase().includes(lowerQuery)
     );
