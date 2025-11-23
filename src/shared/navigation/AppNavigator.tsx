@@ -176,18 +176,21 @@ const MainTabs: React.FC = () => {
       screenOptions={({ route }) => ({
         tabBarIcon: ({ color, size }) => getTabBarIcon(route.name, color, size),
         tabBarLabel: () => getTabBarLabel(route.name),
-        tabBarActiveTintColor: APP_CONFIG.theme.primary,
+        tabBarActiveTintColor: '#d4af37',
         tabBarInactiveTintColor: 'gray',
         headerStyle: {
-          backgroundColor: APP_CONFIG.theme.primary,
+          backgroundColor: '#2c2c2c',
+          borderBottomWidth: 1,
+          borderColor: '#d4af37',
         },
-        headerTintColor: '#fff',
+        headerTintColor: '#d4af37',
         headerTitleStyle: {
           fontWeight: 'bold',
+          fontFamily: 'serif',
         },
         tabBarStyle: {
-          backgroundColor: APP_CONFIG.theme.surface,
-          borderTopColor: APP_CONFIG.theme.background,
+          backgroundColor: '#2c2c2c',
+          borderTopColor: '#d4af37',
         },
         // RTL support
         tabBarDirection: settings.rtl ? 'rtl' : 'ltr',
@@ -201,20 +204,10 @@ const MainTabs: React.FC = () => {
         }}
       />
       <Tab.Screen
-        name="Categories"
-        component={CategoriesScreen}
-        options={({ navigation }) => ({
-          title: getTabBarLabel('Categories'),
-          headerTitleStyle: {
-            writingDirection: settings.rtl ? 'rtl' : 'ltr',
-          },
-        })}
-      />
-      <Tab.Screen
-        name="Content"
-        component={CategoriesScreen} // Will be replaced with ContentScreen
+        name="Search"
+        component={SearchScreen}
         options={{
-          title: getTabBarLabel('Content'),
+          title: getTabBarLabel('Search'),
           headerTitleStyle: {
             writingDirection: settings.rtl ? 'rtl' : 'ltr',
           },
