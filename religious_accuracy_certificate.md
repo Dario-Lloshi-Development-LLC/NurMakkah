@@ -42,4 +42,15 @@ All content has been cross-referenced with the following hierarchy of sources:
 
 **Justification:** These enhancements will provide a much more comprehensive and accurate understanding of the obligation of Hajj. Correcting the Hadith reference ensures authenticity, and adding the conditions of obligation gives users clear, actionable information to determine if they are required to perform Hajj. This aligns with our goal of making the app a truly reliable source of Islamic knowledge.
 
+### Section 3: The Etiquette of Travel (`edukata_e_udhetimit`)
+
+**Initial State:** This section provides a good list of recommended etiquette for a Muslim traveler. However, it lacks specific Quranic and Hadith references to give the points religious authority.
+
+**Verification & Enhancement Plan:**
+1.  **Add Quranic and Hadith References:** I will add specific references to each point of etiquette, linking them directly to the teachings of the Quran and the Sunnah.
+2.  **Elaborate on Key Points:** I will add more detail to some of the key points, such as the importance of writing a will and the specific supplications for traveling.
+3.  **Group Related Etiquette:** I will group related points together for better organization and clarity.
+
+**Justification:** By adding authentic references, we transform this section from a simple list of recommendations into a religiously authoritative guide. This will provide users with a deeper understanding of the Islamic basis for these etiquettes and encourage them to follow them more closely.
+
 
