@@ -18,7 +18,7 @@ export class DataService {
     return DataService.instance;
   }
 
-  public getCategories(): Category[] {
+  public async getCategories(): Promise<Category[]> {
     const data = this.data;
     const categories: Category[] = [];
 
