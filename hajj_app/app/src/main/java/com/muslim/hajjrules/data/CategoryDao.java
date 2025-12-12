@@ -50,9 +50,9 @@ public interface CategoryDao {
     void deleteAllCategories();
 
     /**
-     * Get all categories ordered by order
+     * Get all categories ordered by display order
      */
-    @Query("SELECT * FROM categories ORDER BY `order` ASC")
+    @Query("SELECT * FROM categories ORDER BY display_order ASC")
     LiveData<List<Category>> getAllCategories();
 
     /**
@@ -60,18 +60,6 @@ public interface CategoryDao {
      */
     @Query("SELECT * FROM categories WHERE id = :id")
     LiveData<Category> getCategoryById(int id);
-
-    /**
-     * Get category by name
-     */
-    @Query("SELECT * FROM categories WHERE name = :name")
-    LiveData<Category> getCategoryByName(String name);
-
-    /**
-     * Get featured categories
-     */
-    @Query("SELECT * FROM categories WHERE featured = 1 ORDER BY `order` ASC")
-    LiveData<List<Category>> getFeaturedCategories();
 
     /**
      * Get categories count (synchronous)
@@ -86,50 +74,14 @@ public interface CategoryDao {
     LiveData<Integer> getCategoriesCount();
 
     /**
-     * Update category order
-     */
-    @Query("UPDATE categories SET `order` = :order WHERE id = :id")
-    void updateCategoryOrder(int id, int order);
-
-    /**
-     * Toggle featured status
-     */
-    @Query("UPDATE categories SET featured = CASE WHEN featured = 1 THEN 0 ELSE 1 END WHERE id = :id")
-    void toggleFeatured(int id);
-
-    /**
      * Search categories by title or description
      */
-    @Query("SELECT * FROM categories WHERE title LIKE '%' || :query || '%' OR description LIKE '%' || :query || '%' ORDER BY `order` ASC")
+    @Query("SELECT * FROM categories WHERE title LIKE '%' || :query || '%' OR description LIKE '%' || :query || '%' ORDER BY title ASC")
     LiveData<List<Category>> searchCategories(String query);
 
     /**
-     * Get categories with specific color
+     * Get featured categories
      */
-    @Query("SELECT * FROM categories WHERE color = :color ORDER BY `order` ASC")
-    LiveData<List<Category>> getCategoriesByColor(String color);
-
-    /**
-     * Update category image
-     */
-    @Query("UPDATE categories SET image = :image WHERE id = :id")
-    void updateCategoryImage(int id, String image);
-
-    /**
-     * Update category icon
-     */
-    @Query("UPDATE categories SET icon = :icon WHERE id = :id")
-    void updateCategoryIcon(int id, String icon);
-
-    /**
-     * Get max order value
-     */
-    @Query("SELECT MAX(`order`) FROM categories")
-    int getMaxOrder();
-
-    /**
-     * Get categories by order range (for pagination)
-     */
-    @Query("SELECT * FROM categories ORDER BY `order` ASC LIMIT :limit OFFSET :offset")
-    LiveData<List<Category>> getCategoriesByRange(int limit, int offset);
+    @Query("SELECT * FROM categories WHERE featured = 1 ORDER BY display_order ASC")
+    LiveData<List<Category>> getFeaturedCategories();
 }

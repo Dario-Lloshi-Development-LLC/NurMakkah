@@ -8,7 +8,6 @@ import android.util.Base64;
 import android.util.Log;
 
 import androidx.security.crypto.EncryptedFile;
-import androidx.security.crypto.MasterKey;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;

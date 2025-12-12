@@ -20,13 +20,13 @@ import java.util.List;
 public interface HajjRuleDao {
 
     // Basic CRUD operations
-    @Query("SELECT * FROM hajj_rules ORDER BY category, `order` ASC")
+    @Query("SELECT * FROM hajj_rules ORDER BY category, displayOrder ASC")
     LiveData<List<HajjRule>> getAllRules();
 
-    @Query("SELECT * FROM hajj_rules WHERE category = :category ORDER BY `order` ASC")
+    @Query("SELECT * FROM hajj_rules WHERE category = :category ORDER BY displayOrder ASC")
     LiveData<List<HajjRule>> getRulesByCategory(String category);
 
-    @Query("SELECT * FROM hajj_rules WHERE isFavorite = 1 ORDER BY category, `order` ASC")
+    @Query("SELECT * FROM hajj_rules WHERE isFavorite = 1 ORDER BY category, displayOrder ASC")
     LiveData<List<HajjRule>> getFavoriteRules();
 
     @Query("SELECT * FROM hajj_rules WHERE id = :id")
@@ -48,17 +48,17 @@ public interface HajjRuleDao {
     void deleteAllRules();
 
     // Search operations
-    @Query("SELECT * FROM hajj_rules WHERE title LIKE '%' || :query || '%' OR description LIKE '%' || :query || '%' ORDER BY category, `order` ASC")
+    @Query("SELECT * FROM hajj_rules WHERE title LIKE '%' || :query || '%' OR description LIKE '%' || :query || '%' ORDER BY category, displayOrder ASC")
     LiveData<List<HajjRule>> searchRules(String query);
 
-    @Query("SELECT * FROM hajj_rules WHERE title LIKE '%' || :query || '%' ORDER BY category, `order` ASC")
+    @Query("SELECT * FROM hajj_rules WHERE title LIKE '%' || :query || '%' ORDER BY category, displayOrder ASC")
     LiveData<List<HajjRule>> searchRulesByTitle(String query);
 
-    @Query("SELECT * FROM hajj_rules WHERE description LIKE '%' || :query || '%' ORDER BY category, `order` ASC")
+    @Query("SELECT * FROM hajj_rules WHERE description LIKE '%' || :query || '%' ORDER BY category, displayOrder ASC")
     LiveData<List<HajjRule>> searchRulesByContent(String query);
 
     // Evidence and verification operations
-    @Query("SELECT * FROM hajj_rules WHERE (quranicReference IS NOT NULL OR hadithReference IS NOT NULL) ORDER BY category, `order` ASC")
+    @Query("SELECT * FROM hajj_rules WHERE (quranicReference IS NOT NULL OR hadithReference IS NOT NULL) ORDER BY category, displayOrder ASC")
     LiveData<List<HajjRule>> getRulesWithEvidence();
 
     // Favorites management
@@ -83,11 +83,11 @@ public interface HajjRuleDao {
     LiveData<Integer> getRulesCountByCategory(String category);
 
     // Order management
-    @Query("UPDATE hajj_rules SET `order` = :order WHERE id = :id")
-    void updateRuleOrder(int id, int order);
+    @Query("UPDATE hajj_rules SET displayOrder = :displayOrder WHERE id = :id")
+    void updateRuleOrder(int id, int displayOrder);
 
-    @Query("UPDATE hajj_rules SET `order` = `order` + 1 WHERE `order` >= :order AND category = :category")
-    void shiftRulesDown(int order, String category);
+    @Query("UPDATE hajj_rules SET displayOrder = displayOrder + 1 WHERE displayOrder >= :displayOrder AND category = :category")
+    void shiftRulesDown(int displayOrder, String category);
 
     // Content operations
     @Query("UPDATE hajj_rules SET title = :title WHERE id = :id")
@@ -100,7 +100,7 @@ public interface HajjRuleDao {
     void updateRuleImage(int id, String image);
 
     // Pagination support
-    @Query("SELECT * FROM hajj_rules ORDER BY category, `order` ASC LIMIT :limit OFFSET :offset")
+    @Query("SELECT * FROM hajj_rules ORDER BY category, displayOrder ASC LIMIT :limit OFFSET :offset")
     LiveData<List<HajjRule>> getRulesByRange(int limit, int offset);
 
     // Advanced search with multiple filters
@@ -108,7 +108,7 @@ public interface HajjRuleDao {
            "(:category IS NULL OR category = :category) AND " +
            "(:isFavorite IS NULL OR isFavorite = :isFavorite) AND " +
            "(title LIKE '%' || :query || '%' OR description LIKE '%' || :query || '%') " +
-           "ORDER BY category, `order` ASC")
+           "ORDER BY category, displayOrder ASC")
     LiveData<List<HajjRule>> searchRulesWithFilters(String query, String category, Boolean isFavorite);
 
     // Content integrity checks

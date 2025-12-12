@@ -3,6 +3,7 @@ package com.muslim.hajjrules.model;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 import androidx.room.ColumnInfo;
+import androidx.room.Ignore;
 import androidx.room.Index;
 
 /**
@@ -14,7 +15,7 @@ import androidx.room.Index;
         @Index(value = {"category"}),
         @Index(value = {"isFavorite"}),
         @Index(value = {"title"}),
-        @Index(value = {"category", "order"})
+        @Index(value = {"category", "displayOrder"})
     }
 )
 public class HajjRule {
@@ -36,8 +37,8 @@ public class HajjRule {
     @ColumnInfo(name = "isFavorite")
     private boolean isFavorite;
 
-    @ColumnInfo(name = "`order`") // Order in category
-    private int order;
+    @ColumnInfo(name = "displayOrder") // Order in category
+    private int displayOrder;
 
     @ColumnInfo(name = "quranicReference")
     private String quranicReference;
@@ -47,39 +48,42 @@ public class HajjRule {
 
     @ColumnInfo(name = "lastAccessed")
     private Long lastAccessed;
+    
+    // Backward compatibility field
+    @Deprecated
+    @ColumnInfo(name = "imageResourceId")
+    private int imageResourceId;
 
     // Default constructor for Room
     public HajjRule() {}
 
     // Constructor for creating new rules
-    public HajjRule(String title, String description, String category, boolean isFavorite, int order, String image, String quranicReference) {
+    @Ignore
+    public HajjRule(String title, String description, String category, boolean isFavorite, int displayOrder, String image, String quranicReference) {
         this.title = title;
         this.description = description;
         this.category = category;
         this.isFavorite = isFavorite;
-        this.order = order;
+        this.displayOrder = displayOrder;
         this.image = image;
         this.quranicReference = quranicReference;
         this.lastAccessed = null;
     }
 
     // Constructor with basic fields (backward compatibility)
+    @Ignore
     public HajjRule(String title, String description, String category, int imageResourceId) {
         this.title = title;
         this.description = description;
         this.category = category;
         this.imageResourceId = imageResourceId;
         this.isFavorite = false;
-        this.order = 0;
+        this.displayOrder = 0;
         this.image = null;
         this.quranicReference = null;
         this.hadithReference = null;
         this.lastAccessed = null;
     }
-
-    // Backward compatibility field
-    @Deprecated
-    private int imageResourceId;
 
     // Getters and Setters
     public int getId() {
@@ -140,12 +144,12 @@ public class HajjRule {
         isFavorite = favorite;
     }
 
-    public int getOrder() {
-        return order;
+    public int getDisplayOrder() {
+        return displayOrder;
     }
 
-    public void setOrder(int order) {
-        this.order = order;
+    public void setDisplayOrder(int displayOrder) {
+        this.displayOrder = displayOrder;
     }
 
     public String getQuranicReference() {
@@ -203,11 +207,10 @@ public class HajjRule {
                 ", category='" + category + '\'' +
                 ", image='" + image + '\'' +
                 ", isFavorite=" + isFavorite +
-                ", order=" + order +
+                ", displayOrder=" + displayOrder +
                 ", quranicReference='" + quranicReference + '\'' +
                 ", hadithReference='" + hadithReference + '\'' +
                 ", lastAccessed=" + lastAccessed +
                 '}';
     }
 }
-

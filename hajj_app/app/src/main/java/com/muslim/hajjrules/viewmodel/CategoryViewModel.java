@@ -27,7 +27,7 @@ public class CategoryViewModel extends AndroidViewModel {
     private final HajjRepositoryInterface repository;
     private final ExecutorService executorService;
 
-    private final MutableLiveData<List<HajjRule>> rules = new MutableLiveData<>();
+    private LiveData<List<HajjRule>> rules;
     private final MutableLiveData<Boolean> isLoading = new MutableLiveData<>();
     private final MutableLiveData<String> errorMessage = new MutableLiveData<>();
     private final MutableLiveData<String> categoryTitle = new MutableLiveData<>();
@@ -73,19 +73,10 @@ public class CategoryViewModel extends AndroidViewModel {
         isLoading.setValue(true);
         errorMessage.setValue(null);
 
-        executorService.execute(() -> {
-            try {
-                List<HajjRule> ruleList = repository.getRulesByCategory(categoryId);
-
-                // Post rules to main thread
-                rules.postValue(ruleList);
-                isLoading.postValue(false);
-
-            } catch (Exception e) {
-                // Post error to main thread
-                errorMessage.postValue("Error loading rules: " + e.getMessage());
-                isLoading.postValue(false);
-            }
+        rules = repository.getRulesByCategory(String.valueOf(categoryId));
+        
+        rules.observeForever(hajjRules -> {
+            isLoading.setValue(false);
         });
     }
 
@@ -103,7 +94,7 @@ public class CategoryViewModel extends AndroidViewModel {
         executorService.execute(() -> {
             try {
                 rule.setFavorite(!rule.isFavorite());
-                repository.updateRule(rule);
+                repository.update(rule);
 
                 // Refresh the list to update UI
                 loadRules();

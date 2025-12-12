@@ -63,7 +63,7 @@ public class HomeViewModel extends AndroidViewModel {
 
         executorService.execute(() -> {
             try {
-                List<Category> categoryList = repository.getAllCategories();
+                List<Category> categoryList = repository.getAllCategories().getValue();
 
                 // Post categories to main thread
                 categories.postValue(categoryList);

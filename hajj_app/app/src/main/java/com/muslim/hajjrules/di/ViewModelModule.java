@@ -8,6 +8,8 @@ import com.muslim.hajjrules.viewmodel.HomeViewModel;
 
 import dagger.Binds;
 import dagger.Module;
+import dagger.hilt.InstallIn;
+import dagger.hilt.android.components.ViewModelComponent;
 import dagger.multibindings.IntoMap;
 import dagger.multibindings.ClassKey;
 
@@ -16,6 +18,7 @@ import dagger.multibindings.ClassKey;
  * Provides ViewModel instances with proper dependency injection
  */
 @Module
+@InstallIn(ViewModelComponent.class)
 public abstract class ViewModelModule {
 
     /**
@@ -36,9 +39,4 @@ public abstract class ViewModelModule {
     @ClassKey(CategoryViewModel.class)
     abstract ViewModel bindCategoryViewModel(CategoryViewModel categoryViewModel);
 
-    /**
-     * Provides ViewModelProvider.Factory for creating ViewModels with Hilt
-     */
-    @Binds
-    abstract ViewModelProvider.Factory bindViewModelFactory(HiltViewModelFactory factory);
 }

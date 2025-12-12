@@ -182,7 +182,7 @@ public class NetworkSecurityConfig {
      * Check if app is in debug mode
      */
     private static boolean isDebugBuild() {
-        return BuildConfig.DEBUG;
+        return false;
     }
 
     /**

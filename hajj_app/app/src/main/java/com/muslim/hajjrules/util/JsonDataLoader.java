@@ -111,7 +111,8 @@ public class JsonDataLoader {
                         "pillars_of_islam.png",
                         "account_balance",
                         "#2E7D32",
-                        true
+                        true,
+                        1
                 ));
             }
 
@@ -124,7 +125,8 @@ public class JsonDataLoader {
                         "travel_etiquette.png",
                         "luggage",
                         "#1976D2",
-                        true
+                        true,
+                        2
                 ));
             }
 
@@ -137,7 +139,8 @@ public class JsonDataLoader {
                         "ihram.png",
                         "verified",
                         "#F57C00",
-                        true
+                        true,
+                        3
                 ));
             }
 
@@ -150,7 +153,8 @@ public class JsonDataLoader {
                         "prohibitions.png",
                         "block",
                         "#D32F2F",
-                        true
+                        true,
+                        4
                 ));
             }
 
@@ -163,7 +167,8 @@ public class JsonDataLoader {
                         "miqats.jpg",
                         "place",
                         "#7B1FA2",
-                        true
+                        true,
+                        5
                 ));
             }
 
@@ -192,14 +197,12 @@ public class JsonDataLoader {
             }
 
             List<HajjRule> rules = new ArrayList<>();
-            int ruleId = 1;
 
             // Extract rules from different sections
             if (jsonData.containsKey("shtyllat_e_islamit")) {
                 List<Map<String, Object>> pillars = (List<Map<String, Object>>) jsonData.get("shtyllat_e_islamit");
                 for (Map<String, Object> pillar : pillars) {
                     rules.add(new HajjRule(
-                            ruleId++,
                             pillar.get("name") != null ? pillar.get("name").toString() : "",
                             pillar.get("description") != null ? pillar.get("description").toString() : "",
                             "shtyllat_e_islamit",
@@ -215,7 +218,6 @@ public class JsonDataLoader {
                 List<Map<String, Object>> etiquetteItems = (List<Map<String, Object>>) jsonData.get("edukata_e_udhetimit");
                 for (Map<String, Object> item : etiquetteItems) {
                     rules.add(new HajjRule(
-                            ruleId++,
                             item.get("rule") != null ? item.get("rule").toString() : "",
                             item.get("description") != null ? item.get("description").toString() : "",
                             "edukata_e_udhetimit",
@@ -231,7 +233,6 @@ public class JsonDataLoader {
                 List<Map<String, Object>> prohibitions = (List<Map<String, Object>>) jsonData.get("ndalesat_gjate_ihramit");
                 for (Map<String, Object> prohibition : prohibitions) {
                     rules.add(new HajjRule(
-                            ruleId++,
                             prohibition.get("ndalesa") != null ? prohibition.get("ndalesa").toString() : "",
                             prohibition.get("description") != null ? prohibition.get("description").toString() : "",
                             "ndalesat_gjate_ihramit",
@@ -247,7 +248,6 @@ public class JsonDataLoader {
                 List<Map<String, Object>> miqats = (List<Map<String, Object>>) jsonData.get("vendcaktimet");
                 for (Map<String, Object> miqat : miqats) {
                     rules.add(new HajjRule(
-                            ruleId++,
                             miqat.get("emri") != null ? miqat.get("emri").toString() : "",
                             miqat.get("per_ke") != null ? miqat.get("per_ke").toString() : "",
                             "vendcaktimet",
@@ -307,7 +307,8 @@ public class JsonDataLoader {
                 "pillars_of_islam.png",
                 "account_balance",
                 "#2E7D32",
-                true
+                true,
+                1
         ));
 
         categories.add(new Category(
@@ -318,7 +319,8 @@ public class JsonDataLoader {
                 "travel_etiquette.png",
                 "luggage",
                 "#1976D2",
-                true
+                true,
+                2
         ));
 
         categories.add(new Category(
@@ -329,7 +331,8 @@ public class JsonDataLoader {
                 "ihram.png",
                 "verified",
                 "#F57C00",
-                true
+                true,
+                3
         ));
 
         categories.add(new Category(
@@ -340,7 +343,8 @@ public class JsonDataLoader {
                 "prohibitions.png",
                 "block",
                 "#D32F2F",
-                true
+                true,
+                4
         ));
 
         categories.add(new Category(
@@ -351,7 +355,8 @@ public class JsonDataLoader {
                 "miqats.jpg",
                 "place",
                 "#7B1FA2",
-                true
+                true,
+                5
         ));
 
         return categories;
@@ -365,7 +370,6 @@ public class JsonDataLoader {
 
         // Add a few default rules for each category
         rules.add(new HajjRule(
-                1,
                 "Dëshmia",
                 "Nuk ka zot përveç Allahut dhe Muhammedi është i Dërguari i Tij.",
                 "shtyllat_e_islamit",
@@ -376,7 +380,6 @@ public class JsonDataLoader {
         ));
 
         rules.add(new HajjRule(
-                2,
                 "Larja e borxheve",
                 "Udhëtari duhet të lajë borxhet dhe të shkruajë testamentin para nisjes.",
                 "edukata_e_udhetimit",
@@ -387,7 +390,6 @@ public class JsonDataLoader {
         ));
 
         rules.add(new HajjRule(
-                3,
                 "Mbulimi i kokës",
                 "Nuk lejohet të mbulohet koka për burrat.",
                 "ndalesat_gjate_ihramit",

@@ -5,7 +5,7 @@ import android.os.Build;
 import android.text.SpannableString;
 import android.text.style.URLSpan;
 import android.text.util.Linkify;
-import android.view.AccessibilityManager;
+import android.view.accessibility.AccessibilityManager;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.accessibility.AccessibilityEvent;
@@ -30,7 +30,7 @@ public class AccessibilityUtils {
         view.setContentDescription(contentDescription);
 
         if (hint != null && hint.trim().length() > 0) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
                 view.setAccessibilityPaneTitle(hint);
             }
         }
@@ -160,7 +160,7 @@ public class AccessibilityUtils {
 
         view.setContentDescription(label + (description != null ? ": " + description : ""));
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
             view.setAccessibilityHeading(false);
         }
 
@@ -185,17 +185,19 @@ public class AccessibilityUtils {
         itemView.setContentDescription(contentDescription);
         itemView.setImportantForAccessibility(View.IMPORTANT_FOR_ACCESSIBILITY_YES);
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2) {
-            itemView.setAccessibilityCollectionItemInfo(
-                new AccessibilityNodeInfo.CollectionItemInfo.Builder()
-                    .setRowIndex(position)
-                    .setColumnIndex(0)
-                    .setRowSpan(1)
-                    .setColumnSpan(1)
-                    .setHeading(false)
-                    .setSelected(false)
-                    .build()
-            );
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            AccessibilityNodeInfo.CollectionItemInfo collectionItemInfo =
+                AccessibilityNodeInfo.CollectionItemInfo.obtain(
+                    position, 1, 0, 1, false, false);
+            if (collectionItemInfo != null) {
+                itemView.setAccessibilityDelegate(new View.AccessibilityDelegate() {
+                    @Override
+                    public void onInitializeAccessibilityNodeInfo(View host, AccessibilityNodeInfo info) {
+                        super.onInitializeAccessibilityNodeInfo(host, info);
+                        info.setCollectionItemInfo(collectionItemInfo);
+                    }
+                });
+            }
         }
     }
 

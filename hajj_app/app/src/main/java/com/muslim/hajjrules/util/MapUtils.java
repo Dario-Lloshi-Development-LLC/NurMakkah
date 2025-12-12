@@ -60,8 +60,4 @@ public class MapUtils {
         Configuration.getInstance().setCacheMapTileOvershoot((short)12);
         Configuration.getInstance().setTileDownloadThreads((short)4);
     }
-
-    public static void clearMapCache(Context context) {
-        Configuration.getInstance().clearAllCaches(context);
-    }
 }
