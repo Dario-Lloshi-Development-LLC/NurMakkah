@@ -1,4 +1,4 @@
-name: CI/CD - Android Native Hajj App
+name: CI/CD - Android Native Nur Makkah
 
 on:
   push:

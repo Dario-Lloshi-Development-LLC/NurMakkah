@@ -1,9 +1,9 @@
-# 🕌 Hajj & Umrah Guide - Complete Multi-Platform Islamic Application
+# 🕌 Nur Makkah - Complete Multi-Platform Islamic Application
 
-[![CI/CD](https://github.com/muslim/hajj-app/workflows/CI-CD-React-Native/badge.svg)](https://github.com/muslim/hajj-app/actions)
+[![CI/CD](https://github.com/Dario-Lloshi-Development-LLC/NurMakkah/workflows/CI-CD-React-Native/badge.svg)](https://github.com/Dario-Lloshi-Development-LLC/NurMakkah/actions)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Platform](https://img.shields.io/badge/Platform-iOS%20%7C%20Android%20%7C%20Web-blue.svg)](https://github.com/muslim/hajj-app)
-[![Languages](https://img.shields.io/badge/Languages-Arabic%20%7C%20English%20%7C%20Albanian-green.svg)](https://github.com/muslim/hajj-app)
+[![Platform](https://img.shields.io/badge/Platform-iOS%20%7C%20Android%20%7C%20Web-blue.svg)](https://github.com/Dario-Lloshi-Development-LLC/NurMakkah)
+[![Languages](https://img.shields.io/badge/Languages-Arabic%20%7C%20English%20%7C%20Albanian-green.svg)](https://github.com/Dario-Lloshi-Development-LLC/NurMakkah)
 
 A comprehensive multi-platform mobile application providing verified Islamic guidance for Hajj and Umrah rituals, built with React Native, Android Native, and Flutter implementations.
 
@@ -52,7 +52,7 @@ The **Hajj & Umrah Guide** is a meticulously crafted digital companion for Musli
 
 ### Project Structure
 ```
-hajj-app/
+NurMakkah/
 ├── src/
 │   ├── assets/
 │   │   ├── data/          # JSON data files
@@ -90,8 +90,8 @@ hajj-app/
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/gaming-clan/hajj-app.git
-   cd hajj-app
+   git clone https://github.com/Dario-Lloshi-Development-LLC/NurMakkah.git
+   cd NurMakkah
    ```
 
 2. **Install dependencies**

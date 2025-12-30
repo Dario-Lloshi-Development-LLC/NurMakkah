@@ -1,6 +1,6 @@
 # User Testing Instructions
 
-This document provides instructions for users to test the Hajj App, focusing on verifying the newly integrated OpenStreetMap (OSM) functionality and the overall application build.
+This document provides instructions for users to test the Nur Makkah, focusing on verifying the newly integrated OpenStreetMap (OSM) functionality and the overall application build.
 
 ## Prerequisites
 

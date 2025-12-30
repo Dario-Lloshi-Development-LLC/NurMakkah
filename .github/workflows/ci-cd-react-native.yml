@@ -1,4 +1,4 @@
-name: CI/CD - React Native Hajj App
+name: CI/CD - React Native Nur Makkah
 
 on:
   push:

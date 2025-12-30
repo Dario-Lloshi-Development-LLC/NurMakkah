@@ -1,7 +1,7 @@
 # Map Functionality Update - June 15, 2025
 
 ## Summary
-Updated the Hajj App repository with comprehensive documentation and analysis of the map functionality implementation.
+Updated the Nur Makkah repository with comprehensive documentation and analysis of the map functionality implementation.
 
 ## Changes Made
 
@@ -10,7 +10,7 @@ Updated the Hajj App repository with comprehensive documentation and analysis of
 2. **project_analysis.md** - Comprehensive analysis of the current project state and recommendations
 
 ### Map Functionality Status
-The map functionality in the Hajj App has been successfully implemented with the following features:
+The map functionality in the Nur Makkah has been successfully implemented with the following features:
 
 #### ✅ Implemented Features:
 - OSMDroid integration with MAPNIK tile source

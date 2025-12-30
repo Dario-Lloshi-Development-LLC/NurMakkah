@@ -1,6 +1,6 @@
-# Hajj App - Project Update and Fixes
+# Nur Makkah - Project Update and Fixes
 
-This document summarizes the changes made to the Hajj App repository, addressing various build errors and updating dependencies. The goal was to ensure the application builds successfully and to improve its overall stability.
+This document summarizes the changes made to the Nur Makkah repository, addressing various build errors and updating dependencies. The goal was to ensure the application builds successfully and to improve its overall stability.
 
 ## Summary of Changes Made
 
@@ -38,11 +38,11 @@ After implementing the fixes, the application was successfully built using `./gr
 
 ## Setup Instructions (English)
 
-To set up the development environment for the Hajj App:
+To set up the development environment for the Nur Makkah:
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/gaming-clan/hajj-app.git
+git clone https://github.com/Dario-Lloshi-Development-LLC/NurMakkah.git
 ```
 
 ### 2. Java Setup

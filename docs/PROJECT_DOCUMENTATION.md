@@ -1,4 +1,4 @@
-# Hajj App Enhancement Project - Documentation
+# Nur Makkah Enhancement Project - Documentation
 
 ## Project Summary
 Successfully extended and enhanced the Hajj rules JSON file and Android application with comprehensive information from reliable sources, integrated new Albanian Hajj guide images, and updated the app's UI to match the new visual theme.
@@ -107,5 +107,5 @@ Created an extended hajj_rules.json with the following improvements:
 4. Test app functionality with the extended JSON data
 5. Ensure proper image scaling for different screen sizes
 
-This enhancement significantly improves the Hajj app's content comprehensiveness and visual appeal while maintaining the Albanian language focus and Islamic authenticity.
+This enhancement significantly improves the Nur Makkah's content comprehensiveness and visual appeal while maintaining the Albanian language focus and Islamic authenticity.
 

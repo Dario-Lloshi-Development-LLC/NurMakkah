@@ -1,8 +1,8 @@
-# Hajj App Project Analysis
+# Nur Makkah Project Analysis
 
 ## Current State
 
-Based on the extracted files and documentation, the Hajj App project appears to be an Android application with map functionality that has already been implemented and fixed. Here's what I found:
+Based on the extracted files and documentation, the Nur Makkah project appears to be an Android application with map functionality that has already been implemented and fixed. Here's what I found:
 
 ### Project Structure
 - **Android Application**: Built for Android SDK 31 with minimum SDK 21
@@ -91,5 +91,5 @@ While the map functionality appears to be working, here are some enhancements th
 
 ## Conclusion
 
-The map functionality in the Hajj App appears to be properly implemented according to the documentation. The code follows Android best practices and includes all essential features for a Hajj pilgrimage app. The project is ready for testing and deployment.
+The map functionality in the Nur Makkah appears to be properly implemented according to the documentation. The code follows Android best practices and includes all essential features for a Hajj pilgrimage app. The project is ready for testing and deployment.
 

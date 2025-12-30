@@ -1,6 +1,6 @@
-# Hajj App Project Analysis and Insights
+# Nur Makkah Project Analysis and Insights
 
-This document summarizes the analysis performed on the Hajj App GitHub repository and the subsequent actions taken to improve its structure and documentation.
+This document summarizes the analysis performed on the Nur Makkah GitHub repository and the subsequent actions taken to improve its structure and documentation.
 
 ## Initial Repository State
 
@@ -36,5 +36,5 @@ The repository initially contained core Java files for the Android application, 
 *   **Version Control Best Practices:** The changes were committed with a clear and concise message, adhering to good version control practices. It is recommended to continue this practice for all future commits.
 *   **Collaboration:** For seamless collaboration, it is crucial for the user to push these local changes to the remote GitHub repository. This will make the improvements accessible to other contributors and users.
 
-This analysis and the implemented changes lay a solid foundation for the Hajj App, making it more accessible, understandable, and ready for further development.
+This analysis and the implemented changes lay a solid foundation for the Nur Makkah, making it more accessible, understandable, and ready for further development.
 
