@@ -13,9 +13,9 @@
 > Task :app:parseDebugLocalResources
 
 > Task :app:processDebugMainManifest
-package="com.muslim.hajjrules" found in source AndroidManifest.xml: /home/ubuntu/hajj-app/hajj_app/app/src/main/AndroidManifest.xml.
+package="com.muslim.hajjrules" found in source AndroidManifest.xml: /home/ubuntu/nur_makkah-app/nur_makkah/app/src/main/AndroidManifest.xml.
 Setting the namespace via the package attribute in the source AndroidManifest.xml is no longer supported, and the value is ignored.
-Recommendation: remove package="com.muslim.hajjrules" from the source AndroidManifest.xml: /home/ubuntu/hajj-app/hajj_app/app/src/main/AndroidManifest.xml.
+Recommendation: remove package="com.muslim.hajjrules" from the source AndroidManifest.xml: /home/ubuntu/nur_makkah-app/nur_makkah/app/src/main/AndroidManifest.xml.
 
 > Task :app:processDebugManifest
 > Task :app:mergeDebugShaders
@@ -56,9 +56,9 @@ Note: Recompile with -Xlint:deprecation for details.
 > Task :app:extractDeepLinksRelease
 
 > Task :app:processReleaseMainManifest
-package="com.muslim.hajjrules" found in source AndroidManifest.xml: /home/ubuntu/hajj-app/hajj_app/app/src/main/AndroidManifest.xml.
+package="com.muslim.hajjrules" found in source AndroidManifest.xml: /home/ubuntu/nur_makkah-app/nur_makkah/app/src/main/AndroidManifest.xml.
 Setting the namespace via the package attribute in the source AndroidManifest.xml is no longer supported, and the value is ignored.
-Recommendation: remove package="com.muslim.hajjrules" from the source AndroidManifest.xml: /home/ubuntu/hajj-app/hajj_app/app/src/main/AndroidManifest.xml.
+Recommendation: remove package="com.muslim.hajjrules" from the source AndroidManifest.xml: /home/ubuntu/nur_makkah-app/nur_makkah/app/src/main/AndroidManifest.xml.
 
 > Task :app:processReleaseManifest
 > Task :app:mergeDebugGlobalSynthetics
@@ -104,7 +104,7 @@ Recommendation: remove package="com.muslim.hajjrules" from the source AndroidMan
 > Task :app:lintAnalyzeDebug
 
 > Task :app:lintReportDebug
-Wrote HTML report to file:///home/ubuntu/hajj-app/hajj_app/app/build/reports/lint-results-debug.html
+Wrote HTML report to file:///home/ubuntu/nur_makkah-app/nur_makkah/app/build/reports/lint-results-debug.html
 
 > Task :app:lintDebug
 > Task :app:lint
@@ -134,7 +134,7 @@ Note: Recompile with -Xlint:deprecation for details.
 > Task :app:assemble
 > Task :app:build
 
-[Incubating] Problems report is available at: file:///home/ubuntu/hajj-app/build/reports/problems/problems-report.html
+[Incubating] Problems report is available at: file:///home/ubuntu/nur_makkah-app/build/reports/problems/problems-report.html
 
 Deprecated Gradle features were used in this build, making it incompatible with Gradle 9.0.
 

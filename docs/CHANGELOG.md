@@ -15,7 +15,7 @@ The map functionality in the Nur Makkah has been successfully implemented with t
 #### ✅ Implemented Features:
 - OSMDroid integration with MAPNIK tile source
 - Required permissions in AndroidManifest.xml
-- Five important Hajj location markers:
+- Five important Nur Makkah location markers:
   - Kaaba/Masjid al-Haram
   - Mount Arafat
   - Muzdalifah

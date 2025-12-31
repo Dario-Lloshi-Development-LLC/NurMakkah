@@ -1,6 +1,6 @@
 # Gradle Build System Fixes and Updates
 
-This document outlines the fixes and updates applied to the Gradle build configurations for both the React Native (`hajj_app`) and Flutter (`hajj_app_flutter`) projects within the `hajj-app` repository. These changes aim to resolve potential build issues, improve compatibility with modern Android development practices, and enhance overall build stability.
+This document outlines the fixes and updates applied to the Gradle build configurations for both the React Native (`nur_makkah`) and Flutter (`hajj_app_flutter`) projects within the `nur_makkah-app` repository. These changes aim to resolve potential build issues, improve compatibility with modern Android development practices, and enhance overall build stability.
 
 ## Summary of Changes
 

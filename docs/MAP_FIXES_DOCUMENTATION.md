@@ -11,7 +11,7 @@
 - Sets up map view with proper tile source (MAPNIK)
 - Enables multitouch controls
 - Centers map on Mecca with appropriate zoom level
-- Adds important Hajj-related location markers
+- Adds important Nur Makkah-related location markers
 
 ### 2. Missing Permissions
 **Problem**: The AndroidManifest.xml was missing some required permissions for map functionality.
@@ -21,13 +21,13 @@
 - `ACCESS_NETWORK_STATE` - For network connectivity checks
 
 ### 3. Map Markers Added
-The following important Hajj locations have been added as markers on the map:
+The following important Nur Makkah locations have been added as markers on the map:
 
 1. **Kaaba/Masjid al-Haram** (21.4225, 39.8262)
    - The holiest site in Islam
    
 2. **Mount Arafat** (21.3544, 39.9857)
-   - The most important day of Hajj
+   - The most important day of Nur Makkah
    
 3. **Muzdalifah** (21.4067, 39.9364)
    - Sacred valley where pilgrims spend the night
@@ -71,7 +71,7 @@ The fragment_map.xml layout was already properly configured with:
 ## Future Enhancements
 Potential improvements that could be added:
 1. User location tracking
-2. Route planning between Hajj sites
+2. Route planning between Nur Makkah sites
 3. Offline map support
 4. Additional points of interest
 5. Prayer time integration based on location

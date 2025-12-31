@@ -229,7 +229,7 @@ describe('Islamic Content Validation', () => {
       const validQueries = [
         'salat',
         'صلاة',
-        'hajj',
+        'nur_makkah',
         'حج',
         'query with spaces',
         '',

@@ -2,7 +2,7 @@
 
 ## Overview
 
-This document outlines the detailed strategy for migrating the `hajj-app` project to a hybrid build orchestration system, utilizing **Turborepo** as the primary monorepo orchestrator and **Melos** for Flutter-specific management. This approach aims to streamline the build process for both React Native and Flutter applications within the monorepo, providing a unified workflow and optimized performance without replacing the underlying native build systems (Gradle/Xcode).
+This document outlines the detailed strategy for migrating the `nur_makkah-app` project to a hybrid build orchestration system, utilizing **Turborepo** as the primary monorepo orchestrator and **Melos** for Flutter-specific management. This approach aims to streamline the build process for both React Native and Flutter applications within the monorepo, providing a unified workflow and optimized performance without replacing the underlying native build systems (Gradle/Xcode).
 
 ## Phase 1: Monorepo Setup with Turborepo
 
@@ -12,18 +12,18 @@ This document outlines the detailed strategy for migrating the `hajj-app` projec
     ```bash
     npm install -g turbo
     ```
-2.  **Initialize Monorepo**: In the root of the `hajj-app` repository, initialize Turborepo. This will create a `turbo.json` file.
+2.  **Initialize Monorepo**: In the root of the `nur_makkah-app` repository, initialize Turborepo. This will create a `turbo.json` file.
     ```bash
     turbo init
     ```
-3.  **Configure `package.json`**: Update the root `package.json` to define workspaces for `hajj_app` (React Native) and `hajj_app_flutter` (Flutter).
+3.  **Configure `package.json`**: Update the root `package.json` to define workspaces for `nur_makkah` (React Native) and `hajj_app_flutter` (Flutter).
     ```json
     {
-      "name": "hajj-app-monorepo",
+      "name": "nur_makkah-app-monorepo",
       "version": "1.0.0",
       "private": true,
       "workspaces": [
-        "hajj_app",
+        "nur_makkah",
         "hajj_app_flutter"
       ],
       "scripts": {
@@ -40,7 +40,7 @@ This document outlines the detailed strategy for migrating the `hajj-app` projec
 
 ### 1.2 Define Turborepo Tasks
 
-Configure `turbo.json` to define tasks for building, developing, linting, and testing projects within the monorepo. This will involve calling the existing `npm` scripts within the `hajj_app` (React Native) and `hajj_app_flutter` (Flutter) directories.
+Configure `turbo.json` to define tasks for building, developing, linting, and testing projects within the monorepo. This will involve calling the existing `npm` scripts within the `nur_makkah` (React Native) and `hajj_app_flutter` (Flutter) directories.
 
 **Example `turbo.json` structure**:
 ```json
@@ -68,14 +68,14 @@ Configure `turbo.json` to define tasks for building, developing, linting, and te
 
 ## Phase 2: React Native Integration (within Turborepo)
 
-### 2.1 Update `hajj_app/package.json`
+### 2.1 Update `nur_makkah/package.json`
 
-Ensure `hajj_app/package.json` contains standard React Native scripts for `build:android`, `build:ios`, `start`, `test`, and `lint`. Turborepo will then invoke these scripts.
+Ensure `nur_makkah/package.json` contains standard React Native scripts for `build:android`, `build:ios`, `start`, `test`, and `lint`. Turborepo will then invoke these scripts.
 
-**Example `hajj_app/package.json` scripts**:
+**Example `nur_makkah/package.json` scripts**:
 ```json
 {
-  "name": "hajj_app",
+  "name": "nur_makkah",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -113,7 +113,7 @@ Ensure `hajj_app/package.json` contains standard React Native scripts for `build
 
 ### 2.2 Configure Turborepo for React Native
 
-In `turbo.json`, ensure tasks like `build:android` and `build:ios` for `hajj_app` are properly defined to leverage caching and parallelization.
+In `turbo.json`, ensure tasks like `build:android` and `build:ios` for `nur_makkah` are properly defined to leverage caching and parallelization.
 
 ## Phase 3: Flutter Integration with Melos
 
@@ -228,4 +228,4 @@ Update existing CI/CD pipelines (e.g., GitHub Actions) to use Turborepo commands
 
 ## Conclusion
 
-This hybrid build orchestration strategy provides a clear path to managing the `hajj-app` monorepo with both React Native and Flutter projects efficiently. By leveraging Turborepo for overall orchestration and React Native builds, and Melos for Flutter-specific tasks, the project can achieve optimized build performance, a unified developer experience, and simplified CI/CD, without the high complexity of a full Bazel migration. The next step is to implement these changes, starting with the Turborepo setup and then integrating each application.
+This hybrid build orchestration strategy provides a clear path to managing the `nur_makkah-app` monorepo with both React Native and Flutter projects efficiently. By leveraging Turborepo for overall orchestration and React Native builds, and Melos for Flutter-specific tasks, the project can achieve optimized build performance, a unified developer experience, and simplified CI/CD, without the high complexity of a full Bazel migration. The next step is to implement these changes, starting with the Turborepo setup and then integrating each application.

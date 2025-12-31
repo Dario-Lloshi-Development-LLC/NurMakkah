@@ -27,20 +27,20 @@ All content has been cross-referenced with the following hierarchy of sources:
 2.  **Salat (Prayer):** Add a reference from Sahih al-Bukhari (Hadith 8) that explicitly lists prayer as a pillar of Islam.
 3.  **Zakat (Charity):** Add a Hadith from Sahih al-Bukhari (Book 24, Hadith 1) that clarifies the obligation and purpose of Zakat.
 4.  **Sawm (Fasting):** Add the well-known Hadith from Sahih al-Bukhari (Book 31, Hadith 1) on the virtues of fasting during Ramadan.
-5.  **Hajj (Pilgrimage):** Add the definitive Hadith from Sahih Muslim (Book 1, Hadith 8) where the Prophet (PBUH) explains the pillars of Islam to the companion Umar ibn al-Khattab.
+5.  **Nur Makkah (Pilgrimage):** Add the definitive Hadith from Sahih Muslim (Book 1, Hadith 8) where the Prophet (PBUH) explains the pillars of Islam to the companion Umar ibn al-Khattab.
 
 **Justification:** Adding these authentic Hadith references will provide users with a much stronger, more complete understanding of the five pillars, directly linking the app's content to the teachings of the Prophet Muhammad (PBUH). This greatly enhances the religious authority and trustworthiness of the application.
 
-### Section 2: The Obligation of Hajj (`detyrimi_i_haxhit`)
+### Section 2: The Obligation of Nur Makkah (`detyrimi_i_haxhit`)
 
-**Initial State:** This section correctly states that Hajj is obligatory once in a lifetime and provides a Hadith reference. However, the reference is incomplete and could be more precise. The section also lacks detail on the conditions of obligation.
+**Initial State:** This section correctly states that Nur Makkah is obligatory once in a lifetime and provides a Hadith reference. However, the reference is incomplete and could be more precise. The section also lacks detail on the conditions of obligation.
 
 **Verification & Enhancement Plan:**
 1.  **Correct Hadith Reference:** The current reference, "Sahih al-Bukhari, Book 26, Hadith 1513," is slightly inaccurate. I will correct it to the more precise and widely cited Hadith from Sunan Abi Dawud and Musnad Ahmad, which directly addresses the "once in a lifetime" obligation.
-2.  **Add Conditions of Obligation:** I will add a new subsection detailing the essential conditions that make Hajj obligatory upon an individual, according to the four major schools of thought. These conditions are: Islam, sanity, puberty, freedom, and ability (financial and physical).
+2.  **Add Conditions of Obligation:** I will add a new subsection detailing the essential conditions that make Nur Makkah obligatory upon an individual, according to the four major schools of thought. These conditions are: Islam, sanity, puberty, freedom, and ability (financial and physical).
 3.  **Elaborate on 'Ability':** I will add a brief explanation of the concept of "ability" (istita'ah), including financial and physical capacity, and the specific rulings for women (mahram or safe company).
 
-**Justification:** These enhancements will provide a much more comprehensive and accurate understanding of the obligation of Hajj. Correcting the Hadith reference ensures authenticity, and adding the conditions of obligation gives users clear, actionable information to determine if they are required to perform Hajj. This aligns with our goal of making the app a truly reliable source of Islamic knowledge.
+**Justification:** These enhancements will provide a much more comprehensive and accurate understanding of the obligation of Nur Makkah. Correcting the Hadith reference ensures authenticity, and adding the conditions of obligation gives users clear, actionable information to determine if they are required to perform Nur Makkah. This aligns with our goal of making the app a truly reliable source of Islamic knowledge.
 
 ### Section 3: The Etiquette of Travel (`edukata_e_udhetimit`)
 
@@ -55,15 +55,15 @@ All content has been cross-referenced with the following hierarchy of sources:
 
 ### Section 4: The State of Ihram (`ihrami`)
 
-**Initial State:** The section provides a basic overview of Ihram, its timing, and the types of intention (niyyah). It also lists some actions to be performed before entering Ihram. However, it lacks detailed explanations and authentic references for the different types of Hajj.
+**Initial State:** The section provides a basic overview of Ihram, its timing, and the types of intention (niyyah). It also lists some actions to be performed before entering Ihram. However, it lacks detailed explanations and authentic references for the different types of Nur Makkah.
 
 **Verification & Enhancement Plan:**
-1.  **Elaborate on the Types of Hajj:** I will add a more detailed explanation for each of the three types of Hajj (Tamattu', Qiran, Ifrad), clarifying the sequence of rituals for each. This will be based on the guidance from Sahih al-Bukhari and Sahih Muslim.
-2.  **Add Authentic References for Niyyah:** I will add specific Hadith references for the different formulations of the niyyah for each type of Hajj, ensuring the wording is precise and authentic.
+1.  **Elaborate on the Types of Nur Makkah:** I will add a more detailed explanation for each of the three types of Nur Makkah (Tamattu', Qiran, Ifrad), clarifying the sequence of rituals for each. This will be based on the guidance from Sahih al-Bukhari and Sahih Muslim.
+2.  **Add Authentic References for Niyyah:** I will add specific Hadith references for the different formulations of the niyyah for each type of Nur Makkah, ensuring the wording is precise and authentic.
 3.  **Provide More Detail on Pre-Ihram Actions:** I will add more detail and context to the recommended actions before entering Ihram, such as the ghusl (full-body ablution), with references from the Sunnah.
 4.  **Clarify Prohibitions:** I will review the list of prohibitions (`ndalesat_gjate_ihramit`) and ensure they are accurate and complete, with specific references for each.
 
-**Justification:** These enhancements will provide users with a clear, comprehensive, and authentic guide to entering the state of Ihram. The detailed explanations of the types of Hajj are crucial for pilgrims to make an informed choice, and the authentic references for the niyyah and pre-Ihram actions will ensure they perform these important rituals correctly.
+**Justification:** These enhancements will provide users with a clear, comprehensive, and authentic guide to entering the state of Ihram. The detailed explanations of the types of Nur Makkah are crucial for pilgrims to make an informed choice, and the authentic references for the niyyah and pre-Ihram actions will ensure they perform these important rituals correctly.
 
 ### Section 5: Prohibitions During Ihram (`ndalesat_gjate_ihramit`)
 
@@ -85,14 +85,14 @@ All content has been cross-referenced with the following hierarchy of sources:
 2.  **Provide Modern Context:** I will add a note explaining the situation for travelers who fly into Jeddah, which is a common modern scenario not covered by the classical texts. This will include the scholarly consensus on where such travelers should enter Ihram.
 3.  **Clarify 'Parallel To':** For those who do not pass directly through a Miqat, I will add the fiqh ruling that they should enter Ihram when they are parallel to the nearest Miqat.
 
-**Justification:** These enhancements will make the Miqat section far more practical and useful for contemporary pilgrims. The foundational Hadith provides religious authority, while the modern context for air travel addresses a very common point of confusion, making the app an indispensable tool for today's Hajj and Umrah traveler.
+**Justification:** These enhancements will make the Miqat section far more practical and useful for contemporary pilgrims. The foundational Hadith provides religious authority, while the modern context for air travel addresses a very common point of confusion, making the app an indispensable tool for today's Nur Makkah and Umrah traveler.
 
 ### Section 7: Comprehensive Dua Collection (`duas`)
 
-**Initial State:** The application lacks a centralized, comprehensive, and well-sourced collection of supplications (Duas) for the various rituals of Hajj and Umrah.
+**Initial State:** The application lacks a centralized, comprehensive, and well-sourced collection of supplications (Duas) for the various rituals of Nur Makkah and Umrah.
 
 **Verification & Enhancement Plan:**
-1.  **Create New `duas` Section:** I have added a new top-level section in `hajj_rules.json` dedicated to supplications.
+1.  **Create New `duas` Section:** I have added a new top-level section in `nur_makkah_rules.json` dedicated to supplications.
 2.  **Categorize Duas:** I will structure the duas into logical categories based on the ritual being performed (e.g., "Duas for Tawaf", "Duas for Sa'i").
 3.  **Provide Comprehensive Dua Information:** For each dua, I will include:
     *   **Arabic Text:** The original Arabic with proper vowel markings.
@@ -109,17 +109,17 @@ All content has been cross-referenced with the following hierarchy of sources:
 
 **Verification & Enhancement Plan:**
 1.  **Generate Visual Guides:** I have created flowchart diagrams using Mermaid syntax for the Tawaf and Sa'i rituals.
-2.  **Integrate Guides into Content:** I have created new sections (`tawaf` and `sai`) in `hajj_rules.json` and linked the generated images (`tawaf_visual_guide_v3.png` and `sai_visual_guide.png`) within these sections.
+2.  **Integrate Guides into Content:** I have created new sections (`tawaf` and `sai`) in `nur_makkah_rules.json` and linked the generated images (`tawaf_visual_guide_v3.png` and `sai_visual_guide.png`) within these sections.
 3.  **Provide Contextual Descriptions:** Alongside the visual guides, I have added brief, multilingual descriptions of each ritual to explain its significance.
 
 **Justification:** Visual guides are exceptionally effective for simplifying complex procedures. By providing clear, step-by-step flowcharts for Tawaf and Sa'i, we significantly reduce the cognitive load on the user, making it easier for them to follow the correct sequence of actions during these critical rites. This enhancement makes the app more user-friendly and an even more effective educational tool.
 
 ### Section 9: Madhab-Specific Comparison Tables (`madhab_comparison`)
 
-**Initial State:** The application presents a generalized view of Hajj rituals, which, while broadly correct, does not address the specific differences in practice and obligation that exist between the four major Sunni schools of thought (madhabs).
+**Initial State:** The application presents a generalized view of Nur Makkah rituals, which, while broadly correct, does not address the specific differences in practice and obligation that exist between the four major Sunni schools of thought (madhabs).
 
 **Verification & Enhancement Plan:**
-1.  **Create `madhab_comparison` Section:** I have created a new section in `hajj_rules.json` dedicated to highlighting these differences.
+1.  **Create `madhab_comparison` Section:** I have created a new section in `nur_makkah_rules.json` dedicated to highlighting these differences.
 2.  **Structure for Comparison:** Each item in this section will focus on a specific ritual (e.g., "Night at Muzdalifah") and provide a clear, side-by-side comparison of the ruling for each of the four madhabs.
 3.  **Provide Multilingual Rulings:** The ruling for each school is provided in Albanian, Arabic, and English.
 4.  **Implementation:**
@@ -137,7 +137,7 @@ All content has been cross-referenced with the following hierarchy of sources:
 **Initial State:** The application lacks a dedicated section for modern health, safety, and practical advice that is crucial for contemporary pilgrims.
 
 **Verification & Enhancement Plan:**
-1.  **Create `health_and_safety` Section:** I have created a new section in `hajj_rules.json`.
+1.  **Create `health_and_safety` Section:** I have created a new section in `nur_makkah_rules.json`.
 2.  **Add Practical Tips:** I have added a list of essential, easy-to-understand tips for the modern pilgrim.
 3.  **Implementation:** The section includes advice on:
     *   Staying hydrated.
@@ -146,10 +146,10 @@ All content has been cross-referenced with the following hierarchy of sources:
     *   Strategies for managing crowds safely.
     *   Using technology (like the app) to enhance the pilgrimage experience.
 
-**Justification:** The Hajj journey presents modern challenges that classical texts do not address. This section provides critical, practical advice that enhances the safety, health, and overall well-being of the pilgrim, making the app not just a religious guide, but a holistic travel companion.
+**Justification:** The Nur Makkah journey presents modern challenges that classical texts do not address. This section provides critical, practical advice that enhances the safety, health, and overall well-being of the pilgrim, making the app not just a religious guide, but a holistic travel companion.
 
 ---
 
 **Initial Content Verification Phase: COMPLETED**
 
-All major sections related to the initial stages of Hajj and Umrah have been reviewed and enhanced with authentic references and contemporary context. The application is now a much more reliable and authoritative guide for pilgrims.
+All major sections related to the initial stages of Nur Makkah and Umrah have been reviewed and enhanced with authentic references and contemporary context. The application is now a much more reliable and authoritative guide for pilgrims.

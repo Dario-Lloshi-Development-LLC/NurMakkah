@@ -17,13 +17,13 @@ Projekti përmban këto skedarë kryesorë:
 
 ### Të dhënat e Rregullave të Haxhit
 - `hajj_rules_summary.md` - Përmbledhje narrative e rregullave të Haxhit
-- `hajj_rules.json` - Rregullat e Haxhit të strukturuara në format JSON
+- `nur_makkah_rules.json` - Rregullat e Haxhit të strukturuara në format JSON
 
 ### Dizajni i Aplikacionit
 - `hajj_app_design.md` - Dokumenti i dizajnit të aplikacionit Android
 
 ### Kodi i Aplikacionit Android
-- `hajj_app/` - Direktoria kryesore e projektit Android
+- `nur_makkah/` - Direktoria kryesore e projektit Android
   - `app/src/main/java/com/example/hajjrules/` - Kodi burim i aplikacionit
     - `model/` - Modelet e të dhënave
     - `util/` - Utilitetet dhe menaxhimi i të dhënave
@@ -48,7 +48,7 @@ Aplikacioni ofron këto funksionalitete kryesore:
 Për të vazhduar zhvillimin e aplikacionit:
 
 1. **Importimi i Projektit** - Importoni projektin në Android Studio.
-2. **Vendosja e JSON** - Kopjoni skedarin `hajj_rules.json` në direktorinë `app/src/main/assets/` të projektit.
+2. **Vendosja e JSON** - Kopjoni skedarin `nur_makkah_rules.json` në direktorinë `app/src/main/assets/` të projektit.
 3. **Ndërtimi i Aplikacionit** - Ndërtoni dhe ekzekutoni aplikacionin në një emulator ose pajisje fizike.
 
 ## Përmirësime të Mundshme

@@ -1,7 +1,7 @@
 import {HajjData, Category, HajjRule} from '../types';
 
 // Import the JSON data
-const hajjRulesData = require('../assets/data/hajj_rules.json') as HajjData;
+const hajjRulesData = require('../assets/data/nur_makkah_rules.json') as HajjData;
 
 export class DataService {
   private static instance: DataService;

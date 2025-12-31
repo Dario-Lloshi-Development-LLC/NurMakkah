@@ -2,13 +2,13 @@
   "title": {
     "albanian": "Rregullat e Haxhit",
     "arabic": "أحكام الحج",
-    "english": "Rules of Hajj"
+    "english": "Rules of Nur Makkah"
   },
   "introduction": {
     "description": {
       "albanian": "Haxhi është një nga pesë shtyllat e Islamit dhe është detyrë për çdo musliman që ka mundësi ta kryejë atë të paktën një herë në jetë.",
       "arabic": "الحج هو أحد أركان الإسلام الخمسة، وهو فرض على كل مسلم قادر على أدائه مرة واحدة في العمر على الأقل",
-      "english": "Hajj is one of the five pillars of Islam and is obligatory for every Muslim who is able to perform it at least once in a lifetime",
+      "english": "Nur Makkah is one of the five pillars of Islam and is obligatory for every Muslim who is able to perform it at least once in a lifetime",
       "quranic_reference": "وَلِلَّهِ عَلَى ٱلنَّاسِ حِجُّ ٱلْبَيْتِ مَنِ ٱسْتَطَاعَ إِلَيْهِ سَبِيلًا"
     },
     "qabja": {
@@ -84,7 +84,7 @@
       "name": {
         "albanian": "Haxhi në Qabe",
         "arabic": "حج البيت",
-        "english": "Hajj to the House"
+        "english": "Nur Makkah to the House"
       },
       "description": {
         "albanian": "Vizita e Qabes së paktën një herë në jetë për ata që kanë mundësi.",
@@ -99,33 +99,33 @@
     "description": {
       "albanian": "Haxhi është detyrë vetëm një herë në jetë.",
       "arabic": "الحج فرض مرة واحدة في العمر",
-      "english": "Hajj is obligatory only once in a lifetime"
+      "english": "Nur Makkah is obligatory only once in a lifetime"
     },
     "hadith": {
       "albanian": "Haxhi është vetëm një herë në jetë. Kush kryen më shumë janë nafile për të.",
       "arabic": "الحج مرة واحدة، فمن زاد فهو نافلة",
-      "english": "Hajj is once in a lifetime. Whoever does more than that is voluntary.",
+      "english": "Nur Makkah is once in a lifetime. Whoever does more than that is voluntary.",
       "reference": "Sunan Abi Dawud, 1721; Musnad Ahmad, 1:255. Graded Sahih by Al-Albani.",
       "full_arabic_hadith": "عن ابن عباس رضي الله عنهما قال: خطبنا رسول الله صلى الله عليه وسلم فقال: يا أيها الناس، كتب عليكم الحج. فقام الأقرع بن حابس فقال: أفي كل عام يا رسول الله؟ فقال: لو قلتها لوجبت، ولما استطعتم، الحج مرة، فمن زاد فهو تطوع"
     },
     "kushtet": {
         "albanian": "Haxhi duhet të jetë patjetër vetëm për Allahun dhe të kryhet sipas mënyrës së të Dërguarit të Allahut.",
         "arabic": "الحج يجب أن يكون خالصاً لله، ويؤدى على سنة رسول الله صلى الله عليه وسلم",
-        "english": "Hajj must be purely for Allah and performed according to the Sunnah of the Messenger of Allah",
+        "english": "Nur Makkah must be purely for Allah and performed according to the Sunnah of the Messenger of Allah",
         "quranic_reference": "وَمَا أُمِرُوا۟ إِلَّا لِيَعْبُدُوا۟ ٱللَّهَ مُخْلِصِينَ لَهُ ٱلدِّينَ حُنَفَآءَ"
     },
     "conditions_of_obligation": {
         "title": {
             "albanian": "Kushtet e Detyrimit të Haxhit",
             "arabic": "شروط وجوب الحج",
-            "english": "Conditions of Hajj Obligation"
+            "english": "Conditions of Nur Makkah Obligation"
         },
         "conditions": [
             {"condition": {"albanian": "Islami", "arabic": "الإسلام", "english": "Islam"}, "description": {"albanian": "Personi duhet të jetë musliman.", "arabic": "أن يكون الشخص مسلماً", "english": "The person must be a Muslim."}},
             {"condition": {"albanian": "Pjekuria mendore", "arabic": "العقل", "english": "Sanity"}, "description": {"albanian": "Personi duhet të jetë i shëndoshë mendërisht.", "arabic": "أن يكون الشخص عاقلاً", "english": "The person must be of sound mind."}},
             {"condition": {"albanian": "Pjekuria fizike", "arabic": "البلوغ", "english": "Puberty"}, "description": {"albanian": "Personi duhet të ketë arritur moshën e pjekurisë.", "arabic": "أن يكون الشخص بالغاً", "english": "The person must have reached the age of puberty."}},
             {"condition": {"albanian": "Liria", "arabic": "الحرية", "english": "Freedom"}, "description": {"albanian": "Personi nuk duhet të jetë skllav.", "arabic": "أن لا يكون الشخص عبداً", "english": "The person must not be a slave."}},
-            {"condition": {"albanian": "Mundësia (Istita'ah)", "arabic": "الاستطاعة", "english": "Ability (Istita'ah)"}, "description": {"albanian": "Të ketë mundësi financiare dhe fizike për të kryer Haxhin. Për gratë, kjo përfshin të udhëtuarit me një mahrem (kujdestar mashkull) ose në një grup të sigurt, sipas shkollave të ndryshme të mendimit.", "arabic": "القدرة المالية والبدنية على أداء الحج. بالنسبة للنساء، يشمل ذلك السفر مع محرم أو في رفقة آمنة، وفقاً للمذاهب الفقهية المختلفة", "english": "To have the financial and physical ability to perform Hajj. For women, this includes traveling with a mahram (male guardian) or in a safe group, according to the different schools of thought."}}
+            {"condition": {"albanian": "Mundësia (Istita'ah)", "arabic": "الاستطاعة", "english": "Ability (Istita'ah)"}, "description": {"albanian": "Të ketë mundësi financiare dhe fizike për të kryer Haxhin. Për gratë, kjo përfshin të udhëtuarit me një mahrem (kujdestar mashkull) ose në një grup të sigurt, sipas shkollave të ndryshme të mendimit.", "arabic": "القدرة المالية والبدنية على أداء الحج. بالنسبة للنساء، يشمل ذلك السفر مع محرم أو في رفقة آمنة، وفقاً للمذاهب الفقهية المختلفة", "english": "To have the financial and physical ability to perform Nur Makkah. For women, this includes traveling with a mahram (male guardian) or in a safe group, according to the different schools of thought."}}
         ]
     }
   },

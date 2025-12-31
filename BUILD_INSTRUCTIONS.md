@@ -126,4 +126,4 @@ If you encounter any issues during the build process, please check:
 3. Dependencies: `flutter pub get`
 4. Build logs for specific error messages
 
-The app is now ready for distribution and use by Hajj pilgrims worldwide! 🕌
+The app is now ready for distribution and use by Nur Makkah pilgrims worldwide! 🕌

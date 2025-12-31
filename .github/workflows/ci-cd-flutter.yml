@@ -443,7 +443,7 @@ jobs:
           groups: testers
           file: ./build-artifacts/flutter-release-apk/app-release.apk
           releaseNotes: |
-            🕌 Hajj & Umrah Guide - Flutter v${{ github.event.release.tag_name }}
+            🕌 Nur Makkah & Umrah Guide - Flutter v${{ github.event.release.tag_name }}
 
             ✅ Cross-platform performance optimized
             ✅ Verified Islamic content with authentic sources
@@ -459,7 +459,7 @@ jobs:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_KEY }}'
           channelId: live
-          projectId: hajj-app-preview
+          projectId: nur_makkah-app-preview
           entry: "build/web/index.html"
 
       - name: Generate Deployment Report

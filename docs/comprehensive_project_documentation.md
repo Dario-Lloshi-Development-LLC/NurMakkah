@@ -1,11 +1,11 @@
-# Hajj & Umrah Guide - Complete Multi-Platform Project Documentation
+# Nur Makkah & Umrah Guide - Complete Multi-Platform Project Documentation
 
 ## 📋 Project Overview
 
-The **Hajj & Umrah Guide** is a comprehensive multi-platform mobile application designed to provide verified Islamic guidance for performing Hajj and Umrah rituals. The project implements three separate implementations using React Native, Android Native, and Flutter to demonstrate best practices across different mobile development ecosystems.
+The **Nur Makkah & Umrah Guide** is a comprehensive multi-platform mobile application designed to provide verified Islamic guidance for performing Nur Makkah and Umrah rituals. The project implements three separate implementations using React Native, Android Native, and Flutter to demonstrate best practices across different mobile development ecosystems.
 
 ### 🕌 **Mission Statement**
-To provide Muslims worldwide with accurate, accessible, and user-friendly digital guidance for performing Hajj and Umrah, with all content verified against authentic Islamic sources.
+To provide Muslims worldwide with accurate, accessible, and user-friendly digital guidance for performing Nur Makkah and Umrah, with all content verified against authentic Islamic sources.
 
 ### 🎯 **Core Objectives**
 - **Religious Accuracy**: 100% verified Islamic content against authentic sources
@@ -343,8 +343,8 @@ const OptimizedImage = ({ imageUrl }) => {
 #### **Indexing Strategy**
 ```sql
 -- Android Room Example
-CREATE INDEX idx_rules_category_order ON hajj_rules(category_id, order_index);
-CREATE INDEX idx_rules_favorite ON hajj_rules(is_favorite);
+CREATE INDEX idx_rules_category_order ON nur_makkah_rules(category_id, order_index);
+CREATE INDEX idx_rules_favorite ON nur_makkah_rules(is_favorite);
 CREATE INDEX idx_categories_order ON categories(order_index);
 ```
 
@@ -398,7 +398,7 @@ public void testArabicTextSecurity() {
 ### **Integration Testing**
 
 #### **End-to-End Workflows**
-- **Hajj Ritual Flow**: Complete Hajj ritual guidance
+- **Nur Makkah Ritual Flow**: Complete Nur Makkah ritual guidance
 - **Umrah Ritual Flow**: Complete Umrah ritual guidance
 - **Multilingual Support**: Language switching functionality
 - **Offline Mode**: Offline functionality testing
@@ -551,7 +551,7 @@ stages:
 #### **Content Management API**
 ```typescript
 interface ContentService {
-  // Get all Hajj categories
+  // Get all Nur Makkah categories
   getCategories(): Promise<Category[]>
 
   // Get rules for specific category
@@ -603,7 +603,7 @@ interface SecurityService {
 ```json
 {
   "app_name": "دليل الحج والعمرة",
-  "hajj_rules": "أحكام الحج",
+  "nur_makkah_rules": "أحكام الحج",
   "umrah_rules": "أحكام العمرة",
   "pillars_of_islam": "أركان الإسلام",
   "ihram": "الإحرام",
@@ -615,8 +615,8 @@ interface SecurityService {
 #### **English**
 ```json
 {
-  "app_name": "Hajj & Umrah Guide",
-  "hajj_rules": "Nur Makkah",
+  "app_name": "Nur Makkah & Umrah Guide",
+  "nur_makkah_rules": "Nur Makkah",
   "umrah_rules": "Umrah Rules",
   "pillars_of_islam": "Pillars of Islam",
   "ihram": "Ihram",
@@ -629,7 +629,7 @@ interface SecurityService {
 ```json
 {
   "app_name": "Udhërrëfyesi i Haxhit dhe Umres",
-  "hajj_rules": "Rregullat e Haxhit",
+  "nur_makkah_rules": "Rregullat e Haxhit",
   "umrah_rules": "Rregullat e Umres",
   "pillars_of_islam": "Shtyllat e Islamit",
   "ihram": "Ihrami",
@@ -829,9 +829,9 @@ CREATE TABLE categories (
 CREATE INDEX idx_categories_order ON categories(order_index);
 ```
 
-#### **Hajj Rules Table**
+#### **Nur Makkah Rules Table**
 ```sql
-CREATE TABLE hajj_rules (
+CREATE TABLE nur_makkah_rules (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     category_id INTEGER NOT NULL,
     title_albanian TEXT NOT NULL,
@@ -850,9 +850,9 @@ CREATE TABLE hajj_rules (
     FOREIGN KEY (category_id) REFERENCES categories (id)
 );
 
-CREATE INDEX idx_rules_category ON hajj_rules(category_id);
-CREATE INDEX idx_rules_favorite ON hajj_rules(is_favorite);
-CREATE INDEX idx_rules_order ON hajj_rules(category_id, order_index);
+CREATE INDEX idx_rules_category ON nur_makkah_rules(category_id);
+CREATE INDEX idx_rules_favorite ON nur_makkah_rules(is_favorite);
+CREATE INDEX idx_rules_order ON nur_makkah_rules(category_id, order_index);
 ```
 
 #### **User Progress Table**
@@ -863,7 +863,7 @@ CREATE TABLE user_progress (
     completed INTEGER DEFAULT 0,
     completed_at INTEGER,
     notes TEXT,
-    FOREIGN KEY (rule_id) REFERENCES hajj_rules (id)
+    FOREIGN KEY (rule_id) REFERENCES nur_makkah_rules (id)
 );
 
 CREATE INDEX idx_progress_rule ON user_progress(rule_id);
@@ -904,7 +904,7 @@ class ErrorBoundary extends Component {
 
 #### **Android Global Exception Handler**
 ```kotlin
-class HajjApp : Application() {
+class NurMakkah : Application() {
     override fun onCreate() {
         super.onCreate()
 
@@ -924,7 +924,7 @@ void main() {
     logErrorToCrashlytics(details);
   };
 
-  runApp(HajjApp());
+  runApp(NurMakkah());
 }
 ```
 
@@ -1075,7 +1075,7 @@ test: Add unit tests for content validation
 
 ### **Religious Content Metrics**
 - **Accuracy**: 100% verified Islamic content
-- **Comprehensiveness**: Covers all major Hajj/Umrah topics
+- **Comprehensiveness**: Covers all major Nur Makkah/Umrah topics
 - **Multilingual**: Complete support in all target languages
 - **Scholar Approval**: All content approved by Islamic scholars
 
@@ -1103,6 +1103,6 @@ test: Add unit tests for content validation
 
 ---
 
-This comprehensive documentation provides a complete overview of the Hajj & Umrah Guide multi-platform application, covering all aspects from development to deployment, with special emphasis on religious content accuracy, accessibility, and security.
+This comprehensive documentation provides a complete overview of the Nur Makkah & Umrah Guide multi-platform application, covering all aspects from development to deployment, with special emphasis on religious content accuracy, accessibility, and security.
 
 The project represents best practices in multi-platform mobile development while maintaining the highest standards for Islamic content and user experience.

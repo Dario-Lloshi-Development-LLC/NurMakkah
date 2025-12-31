@@ -22,7 +22,7 @@ According to the documentation and code analysis, the map functionality has been
    - WRITE_EXTERNAL_STORAGE
    - ACCESS_NETWORK_STATE
 
-3. **Hajj Location Markers**: Five important locations added:
+3. **Nur Makkah Location Markers**: Five important locations added:
    - Kaaba/Masjid al-Haram (21.4225, 39.8262)
    - Mount Arafat (21.3544, 39.9857)
    - Muzdalifah (21.4067, 39.9364)
@@ -62,7 +62,7 @@ While the map functionality appears to be working, here are some enhancements th
 ### 1. Enhanced User Experience
 - Add custom marker icons for different location types
 - Implement info windows with more detailed information
-- Add route planning between Hajj sites
+- Add route planning between Nur Makkah sites
 - Include distance calculations between locations
 
 ### 2. Additional Features
@@ -85,11 +85,11 @@ While the map functionality appears to be working, here are some enhancements th
 ## Recommendations
 
 1. **Testing**: The app should be tested on actual Android devices to ensure map functionality works correctly
-2. **User Feedback**: Gather feedback from actual Hajj pilgrims to identify missing features
+2. **User Feedback**: Gather feedback from actual Nur Makkah pilgrims to identify missing features
 3. **Performance Testing**: Test with large numbers of markers and users
 4. **Localization**: Consider adding Arabic language support for better accessibility
 
 ## Conclusion
 
-The map functionality in the Nur Makkah appears to be properly implemented according to the documentation. The code follows Android best practices and includes all essential features for a Hajj pilgrimage app. The project is ready for testing and deployment.
+The map functionality in the Nur Makkah appears to be properly implemented according to the documentation. The code follows Android best practices and includes all essential features for a Nur Makkah pilgrimage app. The project is ready for testing and deployment.
 

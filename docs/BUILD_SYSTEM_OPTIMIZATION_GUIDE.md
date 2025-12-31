@@ -2,11 +2,11 @@
 
 ## Overview
 
-This guide provides a comprehensive overview of the optimizations applied to the `hajj-app` project's build system, as well as guidance on potential migration to Bazel for improved performance and scalability.
+This guide provides a comprehensive overview of the optimizations applied to the `nur_makkah-app` project's build system, as well as guidance on potential migration to Bazel for improved performance and scalability.
 
 ## Part 1: Gradle Build Optimizations
 
-The `hajj-app` project has been optimized to leverage Gradle's built-in performance features. The following optimizations have been implemented:
+The `nur_makkah-app` project has been optimized to leverage Gradle's built-in performance features. The following optimizations have been implemented:
 
 ### 1.1 Gradle Properties Optimization
 
@@ -40,41 +40,9 @@ Kotlin incremental compilation has been enabled to speed up Kotlin compilation:
 *   **Parallel Lint**: `android.lintParallel=true` enables parallel processing of lint checks.
 *   **Resource Optimization**: `android.enableResourceOptimizations=true` enables resource optimization during the build process.
 
-## Part 2: Bazel Migration (Optional)
+## Part 2: Build-System Options
 
-For projects that require even greater performance improvements, especially in large monorepos or with complex build graphs, migrating to Bazel is a viable option. A `.bazelrc` configuration file has been created as a starting point for this migration.
-
-### 2.1 When to Consider Bazel Migration
-
-Consider migrating to Bazel if:
-
-*   Your project has multiple interdependent modules with complex build dependencies.
-*   Build times are a significant bottleneck in your development workflow.
-*   You require hermetic builds for maximum reproducibility.
-*   You plan to scale the project significantly in the future.
-*   Your team has the resources to invest in learning Bazel and adapting existing build configurations.
-
-### 2.2 Bazel Advantages
-
-*   **Performance**: Bazel can offer 5-10x faster builds for large projects compared to Gradle, especially with remote caching.
-*   **Hermeticity**: Bazel ensures builds are hermetic, producing identical outputs regardless of the environment.
-*   **Scalability**: Bazel is designed for large, complex monorepos with thousands of targets.
-*   **Multi-language Support**: Bazel supports multiple programming languages and build systems out of the box.
-
-### 2.3 Bazel Challenges
-
-*   **Learning Curve**: Bazel has a steep learning curve and requires understanding of its build philosophy.
-*   **Ecosystem Maturity**: While improving, the ecosystem for React Native and Flutter on Bazel is less mature than for Gradle.
-*   **Migration Effort**: Migrating an existing Gradle project to Bazel is a significant undertaking requiring substantial development time.
-*   **Tooling Integration**: IDEs and CI/CD tools may require reconfiguration for Bazel.
-
-### 2.4 Migration Strategy
-
-If you decide to migrate to Bazel, follow the phased approach outlined in `bazel_migration_plan.md`:
-
-1.  **Phase 1**: Migrate the React Native application to Bazel.
-2.  **Phase 2**: Migrate the Flutter application to Bazel.
-3.  **Phase 3**: Migrate iOS builds to Bazel (future phase).
+This project uses Gradle for Android builds. References to a Bazel migration were removed during the modernization: Bazel is not used in the current build flow. If your team later chooses to explore Bazel, create a separate migration plan and test it in an isolated branch — do not keep live `.bazelrc` or Bazel build instructions in the main documentation unless Bazel is actively maintained.
 
 ## Part 3: Recommended Build Commands
 
@@ -88,7 +56,7 @@ If you decide to migrate to Bazel, follow the phased approach outlined in `bazel
 ./gradlew build --build-cache --parallel
 
 # Build specific module
-./gradlew :hajj_app:app:build
+./gradlew :nur_makkah:app:build
 
 # Run linting
 ./gradlew lint
@@ -97,21 +65,9 @@ If you decide to migrate to Bazel, follow the phased approach outlined in `bazel
 ./gradlew test
 ```
 
-### Using Bazel (if migrated)
+### Bazel (removed)
 
-```bash
-# Build the React Native Android app
-bazel build //hajj_app/android:app
-
-# Build the Flutter Android app
-bazel build //hajj_app_flutter/android:app
-
-# Run tests
-bazel test //...
-
-# Build with remote caching
-bazel build --remote_cache=https://your-cache-server //...
-```
+References to Bazel and example Bazel commands have been removed from the active documentation; Bazel is not used in the project's current build flow.
 
 ## Part 4: Performance Monitoring
 
@@ -127,15 +83,9 @@ To monitor build performance and identify bottlenecks:
 open build/reports/profile/profile-{timestamp}.html
 ```
 
-### Bazel Profiling
+### Bazel Profiling (removed)
 
-```bash
-# Generate a build profile
-bazel build --profile=profile.json //...
-
-# Analyze the profile
-bazel analyze-profile profile.json
-```
+Bazel profiling examples removed.
 
 ## Conclusion
 

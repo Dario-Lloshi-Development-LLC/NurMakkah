@@ -1,13 +1,13 @@
-# Islamic Content Verification Report - Hajj & Umrah Application
+# Islamic Content Verification Report - Nur Makkah & Umrah Application
 
 ## Executive Summary
-This document provides comprehensive verification of all Islamic religious content across the Hajj & Umrah application platforms against authentic Islamic sources including the Holy Quran, Sahih Hadith collections, and authoritative Fiqh texts.
+This document provides comprehensive verification of all Islamic religious content across the Nur Makkah & Umrah application platforms against authentic Islamic sources including the Holy Quran, Sahih Hadith collections, and authoritative Fiqh texts.
 
 ## Content Inventory Analysis
 
 ### Platforms Reviewed
-1. **React Native Application** (`src/assets/data/hajj_rules.json`)
-2. **Android Native Application** (`hajj_app/app/src/main/assets/hajj_rules_extended.json`)
+1. **React Native Application** (`src/assets/data/nur_makkah_rules.json`)
+2. **Android Native Application** (`nur_makkah/app/src/main/assets/hajj_rules_extended.json`)
 3. **Documentation** (`docs/hajj_rules_summary.md`)
 
 ### Primary Content Categories Verified
@@ -16,7 +16,7 @@ This document provides comprehensive verification of all Islamic religious conte
 3. **Ihrami (Sacred State Requirements)**
 4. **Ndalesat gjatë Ihramit (Prohibitions during Ihram)**
 5. **Vendcaktimet (Miqat - Geographic Boundaries)**
-6. **Hajj Ritual Procedures**
+6. **Nur Makkah Ritual Procedures**
 7. **Umrah Ritual Procedures**
 
 ---
@@ -45,7 +45,7 @@ This document provides comprehensive verification of all Islamic religious conte
 - **Authentic Arabic**: بُنِيَ ٱلْإِسْلَامُ عَلَىٰ خَمْسٍ
 - **Narration**: Ibn Umar (RA) reported that the Prophet Muhammad ﷺ said: "Islam is built upon five pillars"
 
-### 2. Hajj Obligation and Frequency
+### 2. Nur Makkah Obligation and Frequency
 
 **Application Content:**
 "Haxhi është detyrë vetëm një herë në jetë. Kush kryen më shumë janë nafile për të."
@@ -54,12 +54,12 @@ This document provides comprehensive verification of all Islamic religious conte
 
 **Quranic Verification:**
 - **Reference**: Surah Aal-e-Imran 3:97 - "وَلِلَّهِ عَلَى ٱلنَّاسِ حِجُّ ٱلْبَيْتِ مَنِ ٱسْتَطَاعَ إِلَيْهِ سَبِيلًا"
-- **Translation**: "And Hajj to the House (Kaaba) is a duty that mankind owes to Allah, those who can afford the expenses"
+- **Translation**: "And Nur Makkah to the House (Kaaba) is a duty that mankind owes to Allah, those who can afford the expenses"
 
 **Hadith Verification:**
 - **Reference**: Sahih al-Bukhari, Book 26, Hadith 1513
 - **Reference**: Sunan Abu Dawud, Kitab al-Manasik, Hadith 1721
-- **Narration**: Abu Huraira (RA) reported that the Prophet ﷺ said: "Hajj is obligatory only once in a lifetime. Whoever performs more than that, it is supererogatory."
+- **Narration**: Abu Huraira (RA) reported that the Prophet ﷺ said: "Nur Makkah is obligatory only once in a lifetime. Whoever performs more than that, it is supererogatory."
 
 ### 3. Niyyah (Intention) Formulations for Ihram
 
@@ -70,20 +70,20 @@ This document provides comprehensive verification of all Islamic religious conte
 - **Arabic**: لَبَّيْكَ عُمْرَةً (Labbayk Umratan)
 - **Translation**: "Here I am at Your service, O Allah, for Umrah"
 
-#### For Hajj (Ifrad):
+#### For Nur Makkah (Ifrad):
 - **Albanian**: "LEB'BEJKE HAXH'XHEN"
 - **Arabic**: لَبَّيْكَ حَجًّا (Labbayk Hajjan)
-- **Translation**: "Here I am at Your service, O Allah, for Hajj"
+- **Translation**: "Here I am at Your service, O Allah, for Nur Makkah"
 
-#### For Hajj (Tamattu'):
+#### For Nur Makkah (Tamattu'):
 - **Albanian**: "LEB'BEJKE UMRATEN MUTEMET'TIAN BIHA ILEL'HAXH'XHI"
 - **Arabic**: لَبَّيْكَ عُمْرَةً مُتَمَتِّعًا بِهَا إِلَى ٱلْحَجِّ
-- **Translation**: "Here I am at Your service, O Allah, for Umrah with Tamattu' to Hajj"
+- **Translation**: "Here I am at Your service, O Allah, for Umrah with Tamattu' to Nur Makkah"
 
-#### For Hajj (Qiran):
+#### For Nur Makkah (Qiran):
 - **Albanian**: "LEB'BEJKE UMRATEN UE HAXH'XHEN"
 - **Arabic**: لَبَّيْكَ عُمْرَةً وَحَجًّا (Labbayk Umratan wa Hajjan)
-- **Translation**: "Here I am at Your service, O Allah, for Umrah and Hajj"
+- **Translation**: "Here I am at Your service, O Allah, for Umrah and Nur Makkah"
 
 **✅ VERIFICATION STATUS: AUTHENTIC**
 
@@ -127,7 +127,7 @@ This document provides comprehensive verification of all Islamic religious conte
 - **Reference**: Sahih al-Bukhari, Book 26, Hadith 597
 - **Reference**: Sunan Abu Dawud, Kitab al-Manasik
 - **Scholarly Source**: "Reliance of the Traveller" by Ahmad ibn Naqib al-Misri, Book 7
-- **Modern Verification**: Saudi Ministry of Hajj and Umrah official guidelines
+- **Modern Verification**: Saudi Ministry of Nur Makkah and Umrah official guidelines
 
 ### 5. Prohibitions During Ihram (Ndalesat gjatë Ihramit)
 
@@ -150,10 +150,10 @@ This document provides comprehensive verification of all Islamic religious conte
 
 **Hadith Verification:**
 - **Reference**: Sahih al-Bukhari, Book 26, Hadith 615-617
-- **Reference**: Sahih Muslim, Kitab al-Hajj, Hadith 1215-1225
+- **Reference**: Sahih Muslim, Kitab al-Nur Makkah, Hadith 1215-1225
 - **Fiqh Source**: Al-Mughni by Ibn Qudamah, Vol. 3, p. 287
 
-### 6. Travel Etiquette for Hajj (Edukata e Udhëtimit)
+### 6. Travel Etiquette for Nur Makkah (Edukata e Udhëtimit)
 
 **Application Content Analysis:**
 
@@ -175,7 +175,7 @@ This document provides comprehensive verification of all Islamic religious conte
 
 **Sources:**
 - **Reference**: Al-Muwatta by Imam Malik, Book 20, Hadith 20
-- **Reference**: Riyad us-Saliheen by Imam Nawawi, Chapter on Hajj
+- **Reference**: Riyad us-Saliheen by Imam Nawawi, Chapter on Nur Makkah
 - **Fiqh Source**: Fiqh us-Sunnah, Vol. 2, p. 172-176
 
 ---
@@ -184,7 +184,7 @@ This document provides comprehensive verification of all Islamic religious conte
 
 ### ✅ AUTHENTIC CONTENT (No Changes Needed)
 - The Five Pillars of Islam
-- Hajj obligation (once in lifetime)
+- Nur Makkah obligation (once in lifetime)
 - All niyyah formulations for Ihram
 - All Miqat locations and distances
 - All seven prohibitions during Ihram
@@ -195,14 +195,14 @@ This document provides comprehensive verification of all Islamic religious conte
 #### 1. Missing Quranic Verses
 **Add these verses:**
 - Surah Al-Baqarah 2:158 (Safa and Marwah)
-- Surah Al-Hajj 22:27-30 (Hajj obligations)
-- Surah Al-Ma'idah 5:1-3 (Hajj completion requirements)
+- Surah Al-Nur Makkah 22:27-30 (Nur Makkah obligations)
+- Surah Al-Ma'idah 5:1-3 (Nur Makkah completion requirements)
 
 #### 2. Missing Authentic Hadith References
 **Add complete references:**
-- Sahih al-Bukhari, Kitab al-Hajj (all referenced hadith)
-- Sahih Muslim, Kitab al-Hajj (all referenced hadith)
-- Sunan Abu Dawud, Manasik al-Hajj (specific hadith numbers)
+- Sahih al-Bukhari, Kitab al-Nur Makkah (all referenced hadith)
+- Sahih Muslim, Kitab al-Nur Makkah (all referenced hadith)
+- Sunan Abu Dawud, Manasik al-Nur Makkah (specific hadith numbers)
 
 #### 3. Missing Arabic Text
 **Add original Arabic for:**
@@ -211,7 +211,7 @@ This document provides comprehensive verification of all Islamic religious conte
 - Hadith text in original Arabic
 
 #### 4. Missing Detailed Ritual Steps
-**Complete Hajj ritual sequence:**
+**Complete Nur Makkah ritual sequence:**
 - Step-by-step Tawaf procedure
 - Detailed Sa'i requirements
 - Arafat standing details
@@ -245,11 +245,11 @@ This document provides comprehensive verification of all Islamic religious conte
 
 **This certificate confirms that:**
 
-✅ **All Islamic content in the Hajj & Umrah application has been verified against authentic Islamic sources**
+✅ **All Islamic content in the Nur Makkah & Umrah application has been verified against authentic Islamic sources**
 
 ✅ **The content accurately represents the five pillars of Islam as per Quran and Sunnah**
 
-✅ **Hajj and Umrah procedures described are in accordance with the four major schools of Islamic jurisprudence**
+✅ **Nur Makkah and Umrah procedures described are in accordance with the four major schools of Islamic jurisprudence**
 
 ✅ **All religious formulas, niyyah, and du'aas are authentic**
 

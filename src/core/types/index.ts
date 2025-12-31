@@ -26,7 +26,7 @@ export interface MultilingualDescription {
   quranic_reference?: string;
 }
 
-// Enhanced Hajj-related interfaces with multilingual support
+// Enhanced Nur Makkah-related interfaces with multilingual support
 export interface PillarOfIslam {
   id: number;
   name: MultilingualTitle;

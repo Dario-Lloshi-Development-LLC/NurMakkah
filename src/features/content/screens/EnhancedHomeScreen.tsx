@@ -303,7 +303,7 @@ const EnhancedHomeScreen: React.FC = () => {
             description={{
               albanian: 'Shfletoni të gjitha rregullat e Haxhit të organizuara për kategori',
               arabic: 'تصفح جميع قواعد الحج المنظمة حسب الفئة',
-              english: 'Browse all Hajj rules organized by category'
+              english: 'Browse all Nur Makkah rules organized by category'
             }}
             onPress={() => navigation.navigate('Categories')}
             settings={settings}
@@ -360,7 +360,7 @@ const EnhancedHomeScreen: React.FC = () => {
           </View>
         )}
 
-        {/* Hajj Obligation Info */}
+        {/* Nur Makkah Obligation Info */}
         {hajjData && (
           <View style={[styles.infoCard, styles.cardMargin]}>
             <View style={styles.infoContent}>
