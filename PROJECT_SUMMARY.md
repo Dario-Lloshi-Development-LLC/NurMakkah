@@ -1,4 +1,4 @@
-# Hajj Rules App - Project Summary
+# Nur Makkah - Project Summary
 
 ## 🎯 Project Overview
 A comprehensive Flutter-based mobile application for Hajj pilgrims, providing essential guidance, Qibla direction, prayer times, and multi-language support.

@@ -616,7 +616,7 @@ interface SecurityService {
 ```json
 {
   "app_name": "Hajj & Umrah Guide",
-  "hajj_rules": "Hajj Rules",
+  "hajj_rules": "Nur Makkah",
   "umrah_rules": "Umrah Rules",
   "pillars_of_islam": "Pillars of Islam",
   "ihram": "Ihram",

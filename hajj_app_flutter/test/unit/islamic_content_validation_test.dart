@@ -69,7 +69,7 @@ void main() {
     });
 
     testWidgets('AccessibleHeading renders correct heading level', (WidgetTester tester) async {
-      const headingText = 'Hajj Rules';
+      const headingText = 'Nur Makkah';
 
       await tester.pumpWidget(
         AccessibleHeading(

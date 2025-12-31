@@ -1,6 +1,6 @@
 @echo off
 echo ========================================
-echo Hajj Rules App - Setup Verification
+echo Nur Makkah - Setup Verification
 echo ========================================
 echo.
 

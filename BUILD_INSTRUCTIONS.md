@@ -1,4 +1,4 @@
-# Hajj Rules App - Build Instructions
+# Nur Makkah - Build Instructions
 
 ## Prerequisites
 
