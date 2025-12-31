@@ -183,8 +183,8 @@ jobs:
       - name: Build iOS App
         run: |
           cd ios
-          xcodebuild -workspace HajjApp.xcworkspace \
-            -scheme HajjApp \
+          xcodebuild -workspace NurMakkah.xcworkspace \
+            -scheme NurMakkah \
             -configuration Debug \
             -destination generic/platform=iOS \
             build
@@ -192,8 +192,8 @@ jobs:
       - name: Run iOS Tests
         run: |
           cd ios
-          xcodebuild -workspace HajjApp.xcworkspace \
-            -scheme HajjApp \
+          xcodebuild -workspace NurMakkah.xcworkspace \
+            -scheme NurMakkah \
             -configuration Debug \
             -destination 'platform=iOS Simulator,name=iPhone 14' \
             test
@@ -202,8 +202,8 @@ jobs:
         if: github.ref == 'refs/heads/main' || github.event_name == 'release'
         run: |
           cd ios
-          xcodebuild -workspace HajjApp.xcworkspace \
-            -scheme HajjApp \
+          xcodebuild -workspace NurMakkah.xcworkspace \
+            -scheme NurMakkah \
             -configuration Release \
             -destination generic/platform=iOS \
             build
@@ -287,7 +287,7 @@ jobs:
           # Check for XSS vulnerabilities in content
           node -e "
           const fs = require('fs');
-          const content = fs.readFileSync('src/assets/data/hajj_rules.json', 'utf8');
+          const content = fs.readFileSync('src/assets/data/nur_makkah_rules.json', 'utf8');
           const dangerousPatterns = [/<script/i, /javascript:/i, /on\\w+=/i];
 
           let securityIssues = 0;
@@ -335,7 +335,7 @@ jobs:
           groups: testers
           file: ./build-artifacts/android-release-apk/app-release.apk
           releaseNotes: |
-            🕌 Hajj & Umrah Guide v${{ github.event.release.tag_name }}
+            🕌 Nur Makkah & Umrah Guide v${{ github.event.release.tag_name }}
 
             ✅ Verified Islamic content with authentic sources
             ✅ Enhanced Arabic RTL support
@@ -343,7 +343,7 @@ jobs:
             ✅ Security enhancements
             ✅ Performance optimizations
 
-            Full release notes: https://github.com/muslim/hajj-app/releases/tag/${{ github.event.release.tag_name }}
+            Full release notes: https://github.com/muslim/nur_makkah-app/releases/tag/${{ github.event.release.tag_name }}
 
       - name: Notify deployment success
         uses: 8398a7/action-slack@v3
@@ -351,7 +351,7 @@ jobs:
           status: ${{ job.status }}
           channel: '#deployments'
           text: |
-            🕌 *Hajj & Umrah Guide* successfully deployed to production!
+            🕌 *Nur Makkah & Umrah Guide* successfully deployed to production!
 
             **Version:** ${{ github.event.release.tag_name }}
             **Platform:** React Native

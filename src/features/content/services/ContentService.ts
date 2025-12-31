@@ -92,6 +92,7 @@ export class ContentService implements DataServiceInterface {
           albanian: legacyData.title || 'Rregullat e Haxhit',
           arabic: 'أحكام الحج',
           english: 'Rules of Hajj',
+          english: 'Rules of Hajj',
         },
         introduction: {
           description: {

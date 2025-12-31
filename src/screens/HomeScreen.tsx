@@ -1,4 +1,31 @@
 import React from 'react';
+import { View, Text, StyleSheet } from 'react-native';
+import { theme } from '../styles/theme';
+
+const HomeScreen: React.FC = () => {
+  return (
+    <View style={styles.container}>
+      <Text style={styles.title}>Welcome to Nur Makkah</Text>
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: theme.colors.background,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  title: {
+    color: theme.colors.text,
+    fontSize: 20,
+    fontWeight: '600',
+  },
+});
+
+export default HomeScreen;
+import React from 'react';
 import {
   View,
   Text,

@@ -1,25 +1,25 @@
 # Nur Makkah Enhancement Project - Documentation
 
 ## Project Summary
-Successfully extended and enhanced the Hajj rules JSON file and Android application with comprehensive information from reliable sources, integrated new Albanian Hajj guide images, and updated the app's UI to match the new visual theme.
+Successfully extended and enhanced the Nur Makkah rules JSON file and Android application with comprehensive information from reliable sources, integrated new Albanian Nur Makkah guide images, and updated the app's UI to match the new visual theme.
 
 ## Completed Tasks
 
 ### 1. Data Analysis and Environment Setup
-- Analyzed existing hajj_rules.json file structure
-- Cloned the GitHub repository: https://github.com/gaming-clan/hajj-app.git
-- Extracted and examined the provided Albanian Hajj guide images (13 PNG files)
+- Analyzed existing nur_makkah_rules.json file structure
+- Cloned the GitHub repository: https://github.com/gaming-clan/nur_makkah-app.git
+- Extracted and examined the provided Albanian Nur Makkah guide images (13 PNG files)
 
 ### 2. Image Integration
-- Replaced all existing images in the `/images/` folder with 13 new Albanian Hajj guide images
+- Replaced all existing images in the `/images/` folder with 13 new Albanian Nur Makkah guide images
 - Copied new images to Android app's drawable resources
 - Updated image references in the Android app's DataManager.java
 
 ### 3. Information Extraction and Research
-- Extracted comprehensive Hajj rules from https://www.mesazhi.com/haxhi-dhe-rregullat-e-tij/
+- Extracted comprehensive Nur Makkah rules from https://www.mesazhi.com/haxhi-dhe-rregullat-e-tij/
 - Researched additional reliable sources including Muslim Hands USA for detailed Ihram rules
 - Gathered information about:
-  - Hajj steps and procedures
+  - Nur Makkah steps and procedures
   - Ihram rules for men and women
   - Prohibitions during Ihram
   - Miqat (boundary points)
@@ -27,10 +27,10 @@ Successfully extended and enhanced the Hajj rules JSON file and Android applicat
   - Pillars of Islam
 
 ### 4. JSON File Enhancement
-Created an extended hajj_rules.json with the following improvements:
+Created an extended nur_makkah_rules.json with the following improvements:
 - **Structured data organization** with clear categories
 - **Enhanced Ihram section** with detailed rules for men and women
-- **Additional details** about menstruating women during Hajj
+- **Additional details** about menstruating women during Nur Makkah
 - **Step-by-step Ihram procedures**
 - **Comprehensive prohibitions list**
 - **Detailed Miqat information** with distances from Mecca
@@ -50,8 +50,8 @@ Created an extended hajj_rules.json with the following improvements:
 ### 6. Repository Updates
 - Successfully pushed all changes to the GitHub repository
 - Commit includes:
-  - 13 new PNG images in both `/images/` and `/hajj_app/app/src/main/res/drawable/`
-  - Extended hajj_rules.json with comprehensive data
+  - 13 new PNG images in both `/images/` and `/nur_makkah/app/src/main/res/drawable/`
+  - Extended nur_makkah_rules.json with comprehensive data
   - Updated colors.xml with new teal theme
   - Modified DataManager.java to use new images
   - Detailed commit message documenting all changes
@@ -59,22 +59,22 @@ Created an extended hajj_rules.json with the following improvements:
 ## Technical Details
 
 ### New Images Added
-1. **image_1.png** - Complete Hajj steps overview (12 steps)
-2. **2.png** - Hajj importance and Kaaba information
+1. **image_1.png** - Complete Nur Makkah steps overview (12 steps)
+2. **2.png** - Nur Makkah importance and Kaaba information
 3. **3.png** - Ihram rules and procedures
-4. **4.png** - Additional Hajj guidance
-5. **5.png** - Hajj rituals and ceremonies
+4. **4.png** - Additional Nur Makkah guidance
+5. **5.png** - Nur Makkah rituals and ceremonies
 6. **6.png** - Pilgrimage guidelines
 7. **7.png** - Sacred sites information
 8. **8.png** - Prayer and worship guidelines
-9. **9.png** - Hajj completion procedures
+9. **9.png** - Nur Makkah completion procedures
 10. **10.png** - Additional religious guidance
 11. **image_11.png** - Spiritual preparation
-12. **12.png** - Final Hajj procedures
+12. **12.png** - Final Nur Makkah procedures
 13. **13.png** - Completion and return guidance
 
 ### JSON Structure Improvements
-- **Organized categories**: Clear separation of different Hajj aspects
+- **Organized categories**: Clear separation of different Nur Makkah aspects
 - **Multilingual support**: Albanian primary with English additions
 - **Detailed descriptions**: Comprehensive explanations for each rule
 - **Structured arrays**: Organized data for easy app consumption
@@ -87,8 +87,8 @@ Created an extended hajj_rules.json with the following improvements:
 - **Maintained functionality**: All existing app features preserved
 
 ## Repository Status
-- **Repository**: https://github.com/gaming-clan/hajj-app.git
-- **Latest commit**: 274eda8 - "Extended Hajj rules with comprehensive information and updated app UI"
+- **Repository**: https://github.com/gaming-clan/nur_makkah-app.git
+- **Latest commit**: 274eda8 - "Extended Nur Makkah rules with comprehensive information and updated app UI"
 - **Files changed**: 46 files modified/added
 - **Images**: 13 new PNG files added, old images removed
 - **Code changes**: DataManager.java and colors.xml updated

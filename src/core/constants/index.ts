@@ -1,5 +1,5 @@
 export const APP_CONFIG = {
-  name: 'Hajj Rules App',
+  name: 'Nur Makkah',
   version: '1.0.0',
   theme: {
     primary: '#2E7D32',
@@ -18,9 +18,9 @@ export const APP_CONFIG = {
     },
   },
   storage: {
-    hajjDataKey: '@hajj_app_data',
-    settingsKey: '@hajj_app_settings',
-    languageKey: '@hajj_app_language',
+    hajjDataKey: '@nur_makkah_data',
+    settingsKey: '@nur_makkah_settings',
+    languageKey: '@nur_makkah_language',
   },
 } as const;
 

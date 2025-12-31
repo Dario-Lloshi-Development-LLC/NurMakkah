@@ -314,7 +314,7 @@ const EnhancedSettingsScreen: React.FC = () => {
           <Text style={styles.sectionTitle}>About</Text>
 
           <SettingItem
-            title="About Hajj Rules App"
+            title="About Nur Makkah"
             subtitle="Version information and acknowledgments"
             value={null}
             onValueChange={handleAbout}
@@ -356,7 +356,7 @@ const EnhancedSettingsScreen: React.FC = () => {
         {/* Footer */}
         <View style={styles.footer}>
           <Text style={styles.footerText}>
-            Hajj Rules App v{APP_CONFIG.version}
+            Nur Makkah v{APP_CONFIG.version}
           </Text>
           <Text style={styles.footerSubtext}>
             © 2025 - All content verified against authentic Islamic sources

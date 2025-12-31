@@ -6,22 +6,22 @@ This document summarizes the changes made to the Nur Makkah repository, addressi
 
 ### 1. DataManager.java File Fix
 - **Issue:** Duplicate `import java.util.Locale;` statement at the end of the `DataManager.java` file.
-- **Resolution:** The redundant import statement was removed from `/home/ubuntu/hajj-app/hajj_app/app/src/main/java/com/muslim/hajjrules/util/DataManager.java`.
+- **Resolution:** The redundant import statement was removed from `/home/ubuntu/nur_makkah-app/nur_makkah/app/src/main/java/com/muslim/hajjrules/util/DataManager.java`.
 
 ### 2. Outdated Dependencies Update
 - **Issue:** The `build.gradle` file contained outdated dependencies.
-- **Resolution:** The following dependencies in `hajj_app/app/build.gradle` were updated to their latest stable versions:
+- **Resolution:** The following dependencies in `nur_makkah/app/build.gradle` were updated to their latest stable versions:
     - `androidx.appcompat:appcompat` updated to `1.7.1`
     - `androidx.constraintlayout:constraintlayout` updated to `2.2.1`
     - `com.google.android.material:material` updated to `1.12.0`
 
 ### 3. JdkImageTransform Error Resolution
 - **Issue:** Persistent `JdkImageTransform` errors during the build process.
-- **Resolution:** After attempting to re-export environment variables and cleaning the project, the error persisted. The solution implemented was to add `aaptOptions { noCompress 'png', 'jpg' }` to the `android` block in `hajj_app/app/build.gradle`. This prevents compression of PNG and JPG assets, which was causing the `JdkImageTransform` error.
+- **Resolution:** After attempting to re-export environment variables and cleaning the project, the error persisted. The solution implemented was to add `aaptOptions { noCompress 'png', 'jpg' }` to the `android` block in `nur_makkah/app/build.gradle`. This prevents compression of PNG and JPG assets, which was causing the `JdkImageTransform` error.
 
 ### 4. Removal of Problematic Mipmap Files
 - **Issue:** Compilation errors related to `ic_launcher.png` and `ic_launcher_round.png` in `mipmap-mdpi`.
-- **Resolution:** The problematic files `/home/ubuntu/hajj-app/hajj_app/app/src/main/res/mipmap-mdpi/ic_launcher.png` and `/home/ubuntu/hajj-app/hajj_app/app/src/main/res/mipmap-mdpi/ic_launcher_round.png` were removed. This resolved the `AAPT: error: file failed to compile` errors.
+- **Resolution:** The problematic files `/home/ubuntu/nur_makkah-app/nur_makkah/app/src/main/res/mipmap-mdpi/ic_launcher.png` and `/home/ubuntu/nur_makkah-app/nur_makkah/app/src/main/res/mipmap-mdpi/ic_launcher_round.png` were removed. This resolved the `AAPT: error: file failed to compile` errors.
 
 ## Build Verification
 
@@ -77,15 +77,15 @@ git clone https://github.com/Dario-Lloshi-Development-LLC/NurMakkah.git
   ```bash
   yes | ~/android-sdk/cmdline-tools/latest/bin/sdkmanager --install "platforms;android-34" "build-tools;34.0.0"
   ```
-- Create `local.properties` file in the `hajj-app` directory:
+- Create `local.properties` file in the `nur_makkah-app` directory:
   ```bash
-  echo "sdk.dir=/home/ubuntu/android-sdk" > /home/ubuntu/hajj-app/local.properties
+  echo "sdk.dir=/home/ubuntu/android-sdk" > /home/ubuntu/nur_makkah-app/local.properties
   ```
 
 ### 4. Build and Run
 - Navigate to the project directory:
   ```bash
-  cd /home/ubuntu/hajj-app
+  cd /home/ubuntu/nur_makkah-app
   ```
 - Clean and build the project:
   ```bash
@@ -102,7 +102,7 @@ Për të konfiguruar mjedisin e zhvillimit për Aplikacionin Haxh:
 
 ### 1. Klononi Depon
 ```bash
-git clone https://github.com/gaming-clan/hajj-app.git
+git clone https://github.com/gaming-clan/nur_makkah-app.git
 ```
 
 ### 2. Konfigurimi i Java
@@ -137,15 +137,15 @@ git clone https://github.com/gaming-clan/hajj-app.git
   ```bash
   yes | ~/android-sdk/cmdline-tools/latest/bin/sdkmanager --install "platforms;android-34" "build-tools;34.0.0"
   ```
-- Krijoni skedarin `local.properties` në direktorinë `hajj-app`:
+- Krijoni skedarin `local.properties` në direktorinë `nur_makkah-app`:
   ```bash
-  echo "sdk.dir=/home/ubuntu/android-sdk" > /home/ubuntu/hajj-app/local.properties
+  echo "sdk.dir=/home/ubuntu/android-sdk" > /home/ubuntu/nur_makkah-app/local.properties
   ```
 
 ### 4. Ndërtimi dhe Ekzekutimi
 - Navigoni te direktoria e projektit:
   ```bash
-  cd /home/ubuntu/hajj-app
+  cd /home/ubuntu/nur_makkah-app
   ```
 - Pastroni dhe ndërtoni projektin:
   ```bash
