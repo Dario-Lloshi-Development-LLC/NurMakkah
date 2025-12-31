@@ -16,7 +16,7 @@ import {
 } from '../../../core/utils';
 
 // Legacy data import
-const legacyHajjData = require('../../../assets/data/nur_makkah_rules.json');
+const legacyHajjData = require('../../../assets/data/hajj_rules.json');
 
 /**
  * Enhanced Content Service with multilingual support and caching
@@ -46,6 +46,9 @@ export class ContentService implements DataServiceInterface {
 
   /**
    * Load and transform Nur Makkah data from legacy format to new multilingual format
+   */
+  /**
+   * Load and transform Hajj data from legacy format to new multilingual format
    */
   private async loadHajjData(): Promise<void> {
     const cacheKey = 'hajj_data';
@@ -92,12 +95,14 @@ export class ContentService implements DataServiceInterface {
           albanian: legacyData.title || 'Rregullat e Haxhit',
           arabic: 'أحكام الحج',
           english: 'Rules of Nur Makkah',
+          english: 'Rules of Hajj',
         },
         introduction: {
           description: {
             albanian: legacyData.introduction?.description || '',
             arabic: 'الحج هو أحد أركان الإسلام الخمسة، وهو فرض على كل مسلم قادر على أدائه مرة واحدة في العمر على الأقل',
             english: 'Nur Makkah is one of the five pillars of Islam and is obligatory for every Muslim who is able to perform it at least once in a lifetime',
+                        english: 'Hajj is one of the five pillars of Islam and is obligatory for every Muslim who is able to perform it at least once in a lifetime',
             quranic_reference: 'وَلِلَّهِ عَلَى ٱلنَّاسِ حِجُّ ٱلْبَيْتِ مَنِ ٱسْتَطَاعَ إِلَيْهِ سَبِيلًا',
           },
           qabja: {
@@ -123,6 +128,7 @@ export class ContentService implements DataServiceInterface {
             albanian: legacyData.qabja?.rendesia || '',
             arabic: 'يتوجه المسلمون نحو الكعبة خمس مرات في اليوم لأداء الصلاة ويطوفون حولها لأداء مناسك الحج',
             english: 'Muslims face the Kaaba five times a day for prayer and circumambulate it during Nur Makkah rites',
+                      english: 'Muslims face the Kaaba five times a day for prayer and circumambulate it during Hajj rites',
           },
         },
         rendesia_e_haxhit: {
@@ -172,11 +178,13 @@ export class ContentService implements DataServiceInterface {
         albanian: legacyObligation.description,
         arabic: 'الحج فرض مرة واحدة في العمر',
         english: 'Nur Makkah is obligatory only once in a lifetime',
+                  english: 'Hajj is obligatory only once in a lifetime',
       },
       hadith: {
         albanian: legacyObligation.hadith,
         arabic: 'الحج مرة واحدة، فمن زاد فهو نافلة',
         english: 'Nur Makkah is once in a lifetime. Whoever does more than that is voluntary.',
+                    english: 'Hajj is once in a lifetime. Whoever does more than that is voluntary.',
         reference: 'Sahih al-Bukhari, Book 26, Hadith 1513',
         full_arabic_hadith: 'عن أبي هريرة رضي الله عنه قال: خطبنا رسول الله صلى الله عليه وسلم فقال: يا أيها الناس، قد فرض الله عليكم الحج فحجوا. فقال رجل: أكل عام يا رسول الله؟ فسكت، حتى قالها ثلاثا. فقال رسول الله صلى الله عليه وسلم: لو قلت نعم لوجبت، ولما استطعتم. الحج مرة واحدة، فمن زاد فهو نافلة',
       },
@@ -184,6 +192,7 @@ export class ContentService implements DataServiceInterface {
         albanian: legacyObligation.kushtet,
         arabic: 'الحج يجب أن يكون خالصاً لله، ويؤدى على سنة رسول الله صلى الله عليه وسلم',
         english: 'Nur Makkah must be purely for Allah and performed according to the Sunnah of the Messenger of Allah',
+                    english: 'Hajj must be purely for Allah and performed according to the Sunnah of the Messenger of Allah',
         quranic_reference: 'وَمَا أُمِرُوا۟ إِلَّا لِيَعْبُدُوا۟ ٱللَّهَ مُخْلِصِينَ لَهُ ٱلدِّينَ حُنَفَآءَ',
       },
     };
@@ -212,11 +221,13 @@ export class ContentService implements DataServiceInterface {
         albanian: legacyIhram.description,
         arabic: 'الإحرام هو نية المسلمان لأداء مناسك الحج أو العمرة',
         english: 'Ihram is the intention of a Muslim to perform the rites of Nur Makkah or Umrah',
+        english: 'Ihram is the intention of a Muslim to perform the rites of Hajj or Umrah',
       },
       koha: {
         albanian: legacyIhram.koha,
         arabic: 'نية الحج تكون في أشهر الحج: شوال، وذو القعدة، وذو الحجة',
         english: 'The intention for Nur Makkah is made in the months of Nur Makkah: Shawwal, Dhul-Qa\'dah, and Dhul-Hijjah',
+          english: 'The intention for Hajj is made in the months of Hajj: Shawwal, Dhul-Qa\'dah, and Dhul-Hijjah',
         quranic_reference: 'ٱلْحَجُّ أَشْهُرٌ مَّعْلُومَٰتٌ',
       },
       llojet_e_nijetit: (legacyIhram.llojet_e_nijetit || []).map((item: any) => ({
