@@ -242,7 +242,7 @@ const EnhancedHomeScreen: React.FC = () => {
               )}
             </Text>
             <Text style={styles.appTitle}>
-              {hajjData ? getLocalizedTextWithFallback(hajjData.title, settings) : 'Hajj Rules'}
+              {hajjData ? getLocalizedTextWithFallback(hajjData.title, settings) : 'Nur Makkah'}
             </Text>
           </View>
 

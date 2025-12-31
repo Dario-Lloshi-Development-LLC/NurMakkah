@@ -28,7 +28,7 @@ const SplashScreen: React.FC = () => {
         style={styles.logo}
         resizeMode="contain"
       />
-      <Text style={styles.title}>Hajj Rules</Text>
+      <Text style={styles.title}>Nur Makkah</Text>
       <Text style={styles.subtitle}>Complete Guide for Hajj</Text>
     </View>
   );

@@ -73,7 +73,7 @@ const AboutScreen: React.FC = () => {
       </View>
 
       <View style={styles.footer}>
-        <Text style={styles.footerText}>Hajj Rules App v1.0</Text>
+        <Text style={styles.footerText}>Nur Makkah v1.0</Text>
         <Text style={styles.footerText}>© 2025 - Për më shumë informata kontaktoni zhvilluesit</Text>
       </View>
     </ScrollView>
