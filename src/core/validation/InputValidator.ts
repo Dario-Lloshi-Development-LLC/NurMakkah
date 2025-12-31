@@ -15,14 +15,14 @@ const REGEX_PATTERNS = {
   // Allowed characters for Islamic content (Arabic, English, Albanian characters, numbers, basic punctuation)
   ISLAMIC_CONTENT: /^[\w\s\u0600-\u06FF\u0750-\u077F\uFB50-\uFDFF\uFE70-\uFEFF\u00C0-\u017F.,;:!?'"()\-\/@#%&*+=]*$/,
 
-  // Arabic text only (for religious content)
-  ARABIC_TEXT: /^[\u0600-\u06FF\u0750-\u077F\uFB50-\uFDFF\uFE70-\uFEFF\s\W]*$/,
+  // Arabic text only (for religious content) — allow Arabic letters, digits, whitespace and common punctuation
+  ARABIC_TEXT: /^[\u0600-\u06FF\u0750-\u077F\uFB50-\uFDFF\uFE70-\uFEFF0-9\s\.,;:!\-\u060C\u061B\u061F'"()]*$/,
 
   // Quranic verse reference pattern
   QURANIC_REFERENCE: /^(\d+):(\d+)(-\d+)?$/,
 
-  // Hadith reference pattern
-  HADITH_REFERENCE: /^[A-Za-z\s,.\d]+$/,
+  // Hadith reference pattern (allow names, numbers, hyphens, colons, parentheses)
+  HADITH_REFERENCE: /^[A-Za-z\u0600-\u06FF0-9\s,\.\-:\(\)'"]+$/,
 
   // Email pattern
   EMAIL: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
@@ -136,8 +136,29 @@ export class InputValidator {
     }
 
     // Pattern: Surah:Ayah (e.g., 2:255 or 2:255-256)
-    if (!REGEX_PATTERNS.QURANIC_REFERENCE.test(trimmed)) {
+    const match = REGEX_PATTERNS.QURANIC_REFERENCE.exec(trimmed);
+    if (!match) {
       return { isValid: false, error: 'Invalid Quranic reference format. Use format: Surah:Ayah (e.g., 2:255)' };
+    }
+
+    const surah = parseInt(match[1], 10);
+    const ayahPart = match[2];
+    const rangePart = match[3];
+
+    if (isNaN(surah) || surah < 1) {
+      return { isValid: false, error: 'Invalid surah number' };
+    }
+
+    const ayahStart = parseInt(ayahPart, 10);
+    if (isNaN(ayahStart) || ayahStart < 1) {
+      return { isValid: false, error: 'Invalid ayah number' };
+    }
+
+    if (rangePart) {
+      const ayahEnd = parseInt(rangePart.slice(1), 10);
+      if (isNaN(ayahEnd) || ayahEnd < ayahStart) {
+        return { isValid: false, error: 'Invalid ayah range' };
+      }
     }
 
     return { isValid: true, sanitizedValue: trimmed };

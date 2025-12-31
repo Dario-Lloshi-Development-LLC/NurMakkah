@@ -154,7 +154,64 @@ const EnhancedHomeScreen: React.FC = () => {
   // Load data
   const loadData = useCallback(async () => {
     try {
-      setError(null);
+      const contentService = useMemo(() => ContentService.getInstance(), []);
+      
+      // Load data
+      const loadData = useCallback(async () => {
+        try {
+          setError(null);
+          await contentService.initialize(settings);
+  
+          const [data, cats] = await Promise.all([
+            contentService.getHajjData(),
+            contentService.getCategories(),
+          ]);
+  
+          setHajjData(data);
+          setCategories(cats);
+        } catch (err) {
+          setError(err instanceof Error ? err.message : 'Failed to load data');
+        } finally {
+          setLoading(false);
+          setRefreshing(false);
+        }
+      }, [contentService, settings]);
+  
+      useEffect(() => {
+        loadData();
+      }, [loadData]);
+  
+      // Handle refresh
+      const handleRefresh = useCallback(() => {
+        setRefreshing(true);
+        contentService.clearCache();
+        loadData();
+      }, [contentService, loadData]);
+  
+      // Navigation handlers
+      const handleCategoryPress = useCallback((category: Category) => {
+        navigation.navigate('Content', {
+          category: category.name,
+          title: category.title,
+        });
+      }, [navigation]);
+  
+      const handleSearchPress = useCallback(() => {
+        navigation.navigate('Search');
+      }, [navigation]);
+  
+      const handleMapPress = useCallback(() => {
+        navigation.navigate('Map');
+      }, [navigation]);
+  
+      const handleSettingsPress = useCallback(() => {
+        navigation.navigate('Settings');
+      }, [navigation]);
+  
+      // Featured categories for quick access
+      const featuredCategories = useMemo(() => {
+        return categories.filter(cat => cat.featured).slice(0, 3);
+      }, [categories]);
       await contentService.initialize(settings);
 
       const [data, cats] = await Promise.all([
@@ -190,7 +247,7 @@ const EnhancedHomeScreen: React.FC = () => {
       title: category.title,
     });
   }, [navigation]);
-
+                  {hajjData ? getLocalizedTextWithFallback(hajjData.title, settings) : 'Hajj'}
   const handleSearchPress = useCallback(() => {
     navigation.navigate('Search');
   }, [navigation]);
@@ -242,7 +299,7 @@ const EnhancedHomeScreen: React.FC = () => {
               )}
             </Text>
             <Text style={styles.appTitle}>
-              {hajjData ? getLocalizedTextWithFallback(hajjData.title, settings) : 'Nur Makkah'}
+              {hajjData ? getLocalizedTextWithFallback(hajjData.title, settings) : 'Hajj'}
             </Text>
           </View>
 
@@ -303,7 +360,7 @@ const EnhancedHomeScreen: React.FC = () => {
             description={{
               albanian: 'Shfletoni të gjitha rregullat e Haxhit të organizuara për kategori',
               arabic: 'تصفح جميع قواعد الحج المنظمة حسب الفئة',
-              english: 'Browse all Nur Makkah rules organized by category'
+              english: 'Browse all Hajj rules organized by category'
             }}
             onPress={() => navigation.navigate('Categories')}
             settings={settings}
@@ -318,9 +375,9 @@ const EnhancedHomeScreen: React.FC = () => {
               english: 'Locations of Miqat where Ihram begins'
             }}
             onPress={handleMapPress}
-            color="#F57C00"
-            settings={settings}
-          />
+                  <Text style={styles.infoText}>
+                    {getLocalizedTextWithFallback(hajjData.detyrimi_i_haxhit.description, settings)}
+                  </Text>
 
           <FeatureCard
             icon="help"
@@ -360,7 +417,7 @@ const EnhancedHomeScreen: React.FC = () => {
           </View>
         )}
 
-        {/* Nur Makkah Obligation Info */}
+        {/* Hajj Obligation Info */}
         {hajjData && (
           <View style={[styles.infoCard, styles.cardMargin]}>
             <View style={styles.infoContent}>
