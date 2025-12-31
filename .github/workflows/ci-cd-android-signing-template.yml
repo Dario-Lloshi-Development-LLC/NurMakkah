@@ -1,0 +1,45 @@
+name: CI/CD - Android Signing Template
+
+on:
+  workflow_dispatch:
+
+env:
+  JAVA_VERSION: '17'
+
+jobs:
+  signed-build:
+    name: Signed Release Build (template)
+    runs-on: ubuntu-latest
+    if: ${{ secrets.KEYSTORE_BASE64 }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: ${{ env.JAVA_VERSION }}
+
+      - name: Decode keystore
+        run: |
+          mkdir -p android/keystore
+          echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 -d > android/keystore/release.keystore
+          echo "storeFile=keystore/release.keystore" > android/keystore.properties
+          echo "storePassword=${{ secrets.KEYSTORE_PASSWORD }}" >> android/keystore.properties
+          echo "keyAlias=${{ secrets.KEY_ALIAS }}" >> android/keystore.properties
+          echo "keyPassword=${{ secrets.KEY_PASSWORD }}" >> android/keystore.properties
+
+      - name: Build Release AAB
+        working-directory: ./android
+        run: ./gradlew bundleRelease --no-daemon --stacktrace
+
+      - name: Upload Release AAB
+        uses: actions/upload-artifact@v3
+        with:
+          name: android-signed-release-aab
+          path: android/app/build/outputs/bundle/release/app-release.aab
+
+      - name: Note
+        run: |
+          echo "Signed build completed. Ensure google-services.json and Play Console settings are correct before publishing."
