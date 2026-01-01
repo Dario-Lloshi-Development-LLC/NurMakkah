@@ -42,14 +42,14 @@ interface FeatureCardProps {
 
 const { width: screenWidth } = Dimensions.get('window');
 
-const FeatureCard: React.FC<FeatureCardProps> = ({
+const FeatureCard: React.FC<FeatureCardProps> = React.memo(({
   icon,
   title,
   description,
   onPress,
   color = APP_CONFIG.theme.primary,
   settings,
-}) => {
+}: FeatureCardProps) => {
   const animatedValue = React.useRef(new Animated.Value(0)).current;
 
   useEffect(() => {
@@ -137,7 +137,7 @@ const FeatureCard: React.FC<FeatureCardProps> = ({
       </TouchableOpacity>
     </Animated.View>
   );
-};
+});
 
 const EnhancedHomeScreen: React.FC = () => {
   const navigation = useNavigation<HomeScreenNavigationProp>();

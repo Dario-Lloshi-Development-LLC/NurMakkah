@@ -114,13 +114,12 @@ export function useOptimizedData<T>({
 
   // Debounced refresh function (local timeout so tests and timers behave predictably)
   const debouncedRefresh = useMemo(() => {
+    // Debounced background refresh — call the fetcher directly to avoid
+    // triggering component state updates in test environments (keeps tests deterministic).
     let timeout: ReturnType<typeof setTimeout> | null = null;
     return (...args: any[]) => {
-      if (timeout) clearTimeout(timeout);
+      if (timeout) clearTimeout(timeout as any);
       timeout = setTimeout(() => {
-        // For debounced refresh we call the provided fetcher directly
-        // This keeps debounced calls lightweight and makes behavior
-        // deterministic under Jest fake timers used in tests.
         try {
           void fetcher();
         } catch (e) {
@@ -128,12 +127,21 @@ export function useOptimizedData<T>({
         }
       }, debounceMs);
     };
-  }, [fetchData, debounceMs]);
+  }, [fetcher, debounceMs]);
 
   // Initial data load
   useEffect(() => {
     fetchData();
   }, [fetchData]);
+
+  // Memoized callbacks exposed to consumers
+  const refresh = useCallback(() => {
+    return fetchData(true);
+  }, [fetchData]);
+
+  const clearCache = useCallback(async () => {
+    await AsyncStorage.removeItem(cacheKey);
+  }, [cacheKey]);
 
   // Memoized return value
   const result = useMemo(() => ({
@@ -141,12 +149,10 @@ export function useOptimizedData<T>({
     isLoading,
     error,
     lastFetched,
-    refresh: () => fetchData(true),
+    refresh,
     debouncedRefresh,
-    clearCache: async () => {
-      await AsyncStorage.removeItem(cacheKey);
-    },
-  }), [data, isLoading, error, lastFetched, fetchData, debouncedRefresh, cacheKey]);
+    clearCache,
+  }), [data, isLoading, error, lastFetched, refresh, debouncedRefresh, clearCache]);
 
   return result;
 }

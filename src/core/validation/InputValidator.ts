@@ -44,6 +44,16 @@ const MAX_LENGTHS = {
   SEARCH_QUERY: 100,
 };
 
+// Precompiled dangerous patterns used for safety checks
+const DANGEROUS_PATTERNS: RegExp[] = [
+  /<script[^>]*>.*?<\/script>/gi,
+  /javascript:/gi,
+  /on\w+\s*=/gi,
+  /<iframe[^>]*>/gi,
+  /<object[^>]*>/gi,
+  /<embed[^>]*>/gi,
+];
+
 export class InputValidator {
   /**
    * Validate and sanitize Islamic content titles
@@ -286,12 +296,13 @@ export class InputValidator {
    * Sanitize HTML content to prevent XSS
    */
   private static sanitizeHtml(input: string): string {
+    // Replace ampersand first to avoid double-escaping
     return input
+      .replace(/&/g, '&amp;')
       .replace(/</g, '&lt;')
       .replace(/>/g, '&gt;')
       .replace(/"/g, '&quot;')
       .replace(/'/g, '&#x27;')
-      .replace(/&/g, '&amp;')
       .replace(/\//g, '&#x2F;');
   }
 
@@ -350,18 +361,7 @@ export class InputValidator {
     if (!input || typeof input !== 'string') {
       return false;
     }
-
-    // Check for dangerous patterns
-    const dangerousPatterns = [
-      /<script[^>]*>.*?<\/script>/gi,
-      /javascript:/gi,
-      /on\w+\s*=/gi,
-      /<iframe[^>]*>/gi,
-      /<object[^>]*>/gi,
-      /<embed[^>]*>/gi,
-    ];
-
-    return !dangerousPatterns.some(pattern => pattern.test(input));
+    return !DANGEROUS_PATTERNS.some(pattern => pattern.test(input));
   }
 
   /**
