@@ -18,6 +18,40 @@ import {
 // Legacy data import
 const legacyHajjData = require('../../../assets/data/hajj_rules.json');
 
+// Module-level translation maps to avoid recreating objects on each call
+const PILLAR_NAME_MAP: Record<string, string> = {
+  'Dëshmia': 'الشهادتان',
+  'Falja e namazit': 'الصلاة',
+  'Dhënja e Zekatit': 'الزكاة',
+  'Agjërimi i Ramazanit': 'صوم رمضان',
+  'Haxhi në Qabe': 'حج البيت',
+};
+
+const PILLAR_NAME_MAP_EN: Record<string, string> = {
+  'Dëshmia': 'The Testimony',
+  'Falja e namazit': 'Prayer',
+  'Dhënja e Zekatit': 'Zakat',
+  'Agjërimi i Ramazanit': 'Fasting in Ramadan',
+  'Haxhi në Qabe': 'Hajj to the House',
+};
+
+const PILLAR_DESC_MAP_AR: Record<string, string> = {
+  'Dëshmia': 'لا إله إلا الله، محمد رسول الله',
+  'Falja e namazit': 'أداء الصلوات الخمس المفروضة في اليوم والليلة',
+  'Dhënja e Zekatit': 'إخراج جزء من المال للمحتاجين والمساكين',
+  'Agjërimi i Ramazanit': 'الإمساك عن الطعام والشراب والشهوة من الفجر إلى الغروب في شهر رمضان',
+  'Haxhi në Qabe': 'زيارة الكعبة الشريفة مرة واحدة في العمر على الأقل للقادرين',
+};
+
+const PILLAR_DESC_MAP_EN: Record<string, string> = {
+  'Dëshmia': 'There is no god but Allah, and Muhammad is the Messenger of Allah.',
+  'Falja e namazit': 'Performing the five obligatory prayers daily and nightly.',
+  'Dhënja e Zekatit': 'Giving a portion of wealth to the needy and poor.',
+  'Agjërimi i Ramazanit': 'Abstaining from food, drink, and desires from dawn to sunset in Ramadan.',
+  'Haxhi në Qabe': 'Visiting the Holy Kaaba at least once in a lifetime for those who are able.',
+};
+
+
 /**
  * Enhanced Content Service with multilingual support and caching
  */
@@ -25,6 +59,12 @@ export class ContentService implements DataServiceInterface {
   private static instance: ContentService;
   private hajjData: HajjData | null = null;
   private cache = new SimpleCache<any>(10 * 60 * 1000); // 10 minutes cache
+  // Memoization caches for expensive helper computations
+  private pillarArabicCache = new Map<string, string>();
+  private pillarEnglishCache = new Map<string, string>();
+  private pillarArabicDescCache = new Map<string, string>();
+  private pillarEnglishDescCache = new Map<string, string>();
+  private miqatCoordinatesCache = new Map<string, { lat: number; lng: number } | null>();
   private currentSettings: AppSettings | null = null;
 
   private constructor() {}
@@ -306,58 +346,49 @@ export class ContentService implements DataServiceInterface {
 
   // Helper methods for translations (these would ideally come from a translation service)
   private getPillarArabicName(name: string): string {
-    const translations: Record<string, string> = {
-      'Dëshmia': 'الشهادتان',
-      'Falja e namazit': 'الصلاة',
-      'Dhënja e Zekatit': 'الزكاة',
-      'Agjërimi i Ramazanit': 'صوم رمضان',
-      'Haxhi në Qabe': 'حج البيت',
-    };
-    return translations[name] || name;
+    if (this.pillarArabicCache.has(name)) return this.pillarArabicCache.get(name)!;
+    const v = PILLAR_NAME_MAP[name] || name;
+    this.pillarArabicCache.set(name, v);
+    return v;
   }
 
   private getPillarEnglishName(name: string): string {
-    const translations: Record<string, string> = {
-      'Dëshmia': 'The Testimony',
-      'Falja e namazit': 'Prayer',
-      'Dhënja e Zekatit': 'Zakat',
-      'Agjërimi i Ramazanit': 'Fasting in Ramadan',
-      'Haxhi në Qabe': 'Hajj to the House',
-    };
-    return translations[name] || name;
+    if (this.pillarEnglishCache.has(name)) return this.pillarEnglishCache.get(name)!;
+    const v = PILLAR_NAME_MAP_EN[name] || name;
+    this.pillarEnglishCache.set(name, v);
+    return v;
   }
 
   private getPillarArabicDescription(name: string): string {
-    const descriptions: Record<string, string> = {
-      'Dëshmia': 'لا إله إلا الله، محمد رسول الله',
-      'Falja e namazit': 'أداء الصلوات الخمس المفروضة في اليوم والليلة',
-      'Dhënja e Zekatit': 'إخراج جزء من المال للمحتاجين والمساكين',
-      'Agjërimi i Ramazanit': 'الإمساك عن الطعام والشراب والشهوة من الفجر إلى الغروب في شهر رمضان',
-      'Haxhi në Qabe': 'زيارة الكعبة الشريفة مرة واحدة في العمر على الأقل للقادرين',
-    };
-    return descriptions[name] || '';
+    if (this.pillarArabicDescCache.has(name)) return this.pillarArabicDescCache.get(name)!;
+    const v = PILLAR_DESC_MAP_AR[name] || '';
+    this.pillarArabicDescCache.set(name, v);
+    return v;
   }
 
   private getPillarEnglishDescription(name: string): string {
-    const descriptions: Record<string, string> = {
-      'Dëshmia': 'There is no god but Allah, and Muhammad is the Messenger of Allah.',
-      'Falja e namazit': 'Performing the five obligatory prayers daily and nightly.',
-      'Dhënja e Zekatit': 'Giving a portion of wealth to the needy and poor.',
-      'Agjërimi i Ramazanit': 'Abstaining from food, drink, and desires from dawn to sunset in Ramadan.',
-      'Haxhi në Qabe': 'Visiting the Holy Kaaba at least once in a lifetime for those who are able.',
-    };
-    return descriptions[name] || '';
+    if (this.pillarEnglishDescCache.has(name)) return this.pillarEnglishDescCache.get(name)!;
+    const v = PILLAR_DESC_MAP_EN[name] || '';
+    this.pillarEnglishDescCache.set(name, v);
+    return v;
   }
 
   private getPillarQuranicReference(name: string): string {
-    const references: Record<string, string> = {
-      'Dëshmia': 'شَهِدَ ٱللَّهُ أَنَّهُۥ لَا إِلَٰهَ إِلَّا هُوَ',
-      'Falja e namazit': 'إِنَّ ٱلصَّلَوٰةَ كَانَتْ عَلَى ٱلْمُؤْمِنِينَ كِتَٰبًا مَّوْقُوتًا',
-      'Dhënja e Zekatit': 'خُذْ مِنْ أَمْوَٰلِهِمْ صَدَقَةً تُطَهِّرُهُمْ وَتُزَكِّيهِم بِهَا',
-      'Agjërimi i Ramazanit': 'يَا أَيُّهَا ٱلَّذِينَ ءَامَنُوا۟ كُتِبَ عَلَيْكُمُ ٱلصِّيَامُ',
-      'Haxhi në Qabe': 'وَلِلَّهِ عَلَى ٱلنَّاسِ حِجُّ ٱلْبَيْتِ مَنِ ٱسْتَطَاعَ إِلَيْهِ سَبِيلًا',
-    };
-    return references[name] || '';
+    // Simple mapping - these are static so no heavy allocation per call
+    switch (name) {
+      case 'Dëshmia':
+        return 'شَهِدَ ٱللَّهُ أَنَّهُۥ لَا إِلَٰهَ إِلَّا هُوَ';
+      case 'Falja e namazit':
+        return 'إِنَّ ٱلصَّلَوٰةَ كَانَتْ عَلَى ٱلْمُؤْمِنِينَ كِتَٰبًا مَّوْقُوتًا';
+      case 'Dhënja e Zekatit':
+        return 'خُذْ مِنْ أَمْوَٰلِهِمْ صَدَقَةً تُطَهِّرُهُمْ وَتُزَكِّيهِم بِهَا';
+      case 'Agjërimi i Ramazanit':
+        return 'يَا أَيُّهَا ٱلَّذِينَ ءَامَنُوا۟ كُتِبَ عَلَيْكُمُ ٱلصِّيَامُ';
+      case 'Haxhi në Qabe':
+        return 'وَلِلَّهِ عَلَى ٱلنَّاسِ حِجُّ ٱلْبَيْتِ مَنِ ٱسْتَطَاعَ إِلَيْهِ سَبِيلًا';
+      default:
+        return '';
+    }
   }
 
   // Add more translation helper methods as needed...
