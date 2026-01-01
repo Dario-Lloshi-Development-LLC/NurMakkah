@@ -1,49 +1,36 @@
 # Nur Makkah - Project Summary
 
 ## 🎯 Project Overview
-A comprehensive Flutter-based mobile application for Nur Makkah pilgrims, providing essential guidance, Qibla direction, prayer times, and multi-language support.
+A comprehensive React Native-based mobile application for Nur Makkah pilgrims, providing essential guidance, Qibla direction, prayer times, and multi-language support.
 
 ## 📁 Project Structure
 
-### Flutter App (`hajj_app_flutter/`)
+### React Native App
 ```
-hajj_app_flutter/
-├── lib/
-│   ├── main.dart                          # App entry point with localization
-│   ├── models/
-│   │   ├── hajj_rule.dart                 # Rule data model
-│   │   └── category.dart                  # Category data model
-│   ├── providers/
-│   │   ├── app_state_provider.dart        # App state management
-│   │   └── navigation_provider.dart       # Navigation state
-│   ├── screens/
-│   │   ├── splash_screen.dart             # App splash screen
-│   │   ├── home_screen.dart               # Main home screen
-│   │   ├── detail_screen.dart             # Rule detail view
-│   │   └── category_screen.dart           # Category listing
-│   ├── widgets/
-│   │   ├── home_widget.dart               # Home screen content
-│   │   ├── categories_widget.dart         # Categories display
-│   │   ├── search_widget.dart             # Search functionality
-│   │   ├── map_widget.dart                # Interactive map
-│   │   ├── qibla_widget.dart              # Qibla compass ⭐ NEW
-│   │   ├── prayer_times_widget.dart       # Prayer times ⭐ NEW
-│   │   ├── favorites_widget.dart          # Favorites management ⭐ NEW
-│   │   └── settings_widget.dart           # App settings ⭐ NEW
-│   ├── data/
-│   │   ├── database_helper.dart           # SQLite database
-│   │   ├── hajj_repository.dart           # Data repository
-│   │   ├── hajj_rule_dao.dart             # Data access object
-│   │   └── sample_data.dart               # Sample Nur Makkah rules
-│   ├── themes/
-│   │   └── app_theme.dart                 # App theming
-│   └── localization/
-│       └── app_localizations.dart         # Multi-language support ⭐ NEW
-├── assets/
-│   ├── images/                            # App images
-│   └── data/                              # Data files
-├── android/                               # Android configuration
-└── pubspec.yaml                           # Dependencies
+nur-makkah/
+├── src/
+│   ├── assets/
+│   │   ├── images/                # App images
+│   │   └── data/                  # Data files
+│   ├── components/                # Reusable UI components
+│   ├── context/                   # Context providers (Data, etc.)
+│   ├── core/                      # Core constants, types, utils
+│   ├── features/                  # Feature-based modules
+│   │   ├── content/               # Content display features
+│   │   └── settings/              # Settings features
+│   ├── navigation/                # Navigation configuration
+│   ├── screens/                   # Application screens
+│   ├── services/                  # Business logic services
+│   ├── shared/                    # Shared utilities and navigation
+│   ├── styles/                    # Global styles
+│   ├── types/                     # TypeScript type definitions
+│   └── utils/                     # Utility functions
+├── android/                       # Android native code
+├── ios/                           # iOS native code
+├── __tests__/                     # Jest tests
+├── App.tsx                        # Main application entry
+├── index.js                       # App registry
+└── package.json                   # Dependencies
 ```
 
 ## 🌟 New Features Added

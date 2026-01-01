@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import {
   View,
   Text,
@@ -6,9 +6,9 @@ import {
   StyleSheet,
   Dimensions,
 } from 'react-native';
-import {useNavigation} from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 
-const {width, height} = Dimensions.get('window');
+const { width, height } = Dimensions.get('window');
 
 const SplashScreen: React.FC = () => {
   const navigation = useNavigation();
@@ -24,7 +24,7 @@ const SplashScreen: React.FC = () => {
   return (
     <View style={styles.container}>
       <Image
-        source={require('../../assets/images/app_icon.png')}
+        source={require('../../assets/images/rituals_optimized/app_icon.webp')}
         style={styles.logo}
         resizeMode="contain"
       />
