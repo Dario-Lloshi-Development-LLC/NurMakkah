@@ -7,7 +7,7 @@ import { AppSettings } from '../../core/types';
 import { getLocalizedText, shouldUseRTL } from '../../core/utils';
 import { APP_CONFIG } from '../../core/constants';
 
-// Import screens (will be updated as we create them)
+// Import screens
 import SplashScreen from '../../screens/SplashScreen';
 import HomeScreen from '../../screens/HomeScreen';
 import CategoriesScreen from '../../screens/CategoriesScreen';
@@ -120,7 +120,7 @@ const Tab = createBottomTabNavigator<MainTabParamList>();
 const MainTabs: React.FC = () => {
   const { settings } = useNavigationContext();
 
-  const getTabBarIcon = (routeName: string, color: string, size: number) => {
+  const getTabBarIcon = useCallback((routeName: string, color: string, size: number) => {
     let iconName: string;
 
     switch (routeName) {
@@ -141,10 +141,10 @@ const MainTabs: React.FC = () => {
     }
 
     return <Icon name={iconName} size={size} color={color} />;
-  };
+  }, []);
 
-  const getTabBarLabel = (routeName: string) => {
-    const labels = {
+  const getTabBarLabel = useCallback((routeName: string) => {
+    const labels: Record<string, Record<string, string>> = {
       Home: {
         albanian: 'Ballina',
         arabic: 'الرئيسية',
@@ -167,35 +167,34 @@ const MainTabs: React.FC = () => {
       },
     };
 
-    const label = labels[routeName as keyof typeof labels];
+    const label = labels[routeName];
     return label ? getLocalizedText(label, settings.language) : routeName;
-  };
+  }, [settings.language]);
+
+  const screenOptions = useMemo(() => ({ route }: any) => ({
+    tabBarIcon: ({ color, size }: { color: string; size: number }) => getTabBarIcon(route.name, color, size),
+    tabBarLabel: () => getTabBarLabel(route.name),
+    tabBarActiveTintColor: APP_CONFIG.theme.primary,
+    tabBarInactiveTintColor: 'gray',
+    headerStyle: {
+      backgroundColor: '#2c2c2c',
+      borderBottomWidth: 1,
+      borderColor: APP_CONFIG.theme.primary,
+    },
+    headerTintColor: APP_CONFIG.theme.surface,
+    headerTitleStyle: {
+      fontWeight: 'bold',
+      fontFamily: 'serif',
+    },
+    tabBarStyle: {
+      backgroundColor: '#2c2c2c',
+      borderTopColor: APP_CONFIG.theme.primary,
+    },
+    tabBarDirection: settings.rtl ? 'rtl' : 'ltr' as const,
+  }), [getTabBarIcon, getTabBarLabel, settings.rtl]);
 
   return (
-    <Tab.Navigator
-      screenOptions={({ route }) => ({
-        tabBarIcon: ({ color, size }) => getTabBarIcon(route.name, color, size),
-        tabBarLabel: () => getTabBarLabel(route.name),
-        tabBarActiveTintColor: '#d4af37',
-        tabBarInactiveTintColor: 'gray',
-        headerStyle: {
-          backgroundColor: '#2c2c2c',
-          borderBottomWidth: 1,
-          borderColor: '#d4af37',
-        },
-        headerTintColor: '#d4af37',
-        headerTitleStyle: {
-          fontWeight: 'bold',
-          fontFamily: 'serif',
-        },
-        tabBarStyle: {
-          backgroundColor: '#2c2c2c',
-          borderTopColor: '#d4af37',
-        },
-        // RTL support
-        tabBarDirection: settings.rtl ? 'rtl' : 'ltr',
-      })}
-    >
+    <Tab.Navigator screenOptions={screenOptions}>
       <Tab.Screen
         name="Home"
         component={HomeScreen}

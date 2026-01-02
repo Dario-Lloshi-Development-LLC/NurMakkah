@@ -7,22 +7,30 @@ import {
   TextInput,
   ScrollView,
 } from 'react-native';
-import {useRoute} from '@react-navigation/native';
-import {HajjRule, Category} from '../types';
+import { useRoute } from '@react-navigation/native';
+import { HajjRule, Category } from '../types';
+
+import { useNavigationContext } from '../shared/navigation/AppNavigator';
+import { APP_CONFIG } from '../core/constants';
+import { getLocalizedTextWithFallback, shouldUseRTL } from '../core/utils';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 interface RouteParams {
   rule?: HajjRule;
   category?: Category;
-  title: string;
+  title: any;
 }
 
 const DetailScreen: React.FC = () => {
   const route = useRoute();
-  const {rule, category} = route.params as RouteParams;
+  const { rule, category } = route.params as RouteParams;
+  const { settings } = useNavigationContext();
+  const isRTL = shouldUseRTL(settings);
+
+  const rules = useMemo(() => rule ? [rule] : category?.rules || [], [rule, category]);
+
   const [searchQuery, setSearchQuery] = useState('');
   const [filteredRules, setFilteredRules] = useState<HajjRule[]>([]);
-
-  const rules = rule ? [rule] : category?.rules || [];
 
   useEffect(() => {
     if (searchQuery) {
@@ -38,10 +46,10 @@ const DetailScreen: React.FC = () => {
     }
   }, [searchQuery, rules]);
 
-  const renderRule = ({item}: {item: HajjRule}) => (
-    <View style={styles.ruleCard} accessibilityLabel={`Rregulli: ${item.rule}`}>
-      <Text style={styles.ruleTitle}>{item.rule}</Text>
-      <Text style={styles.ruleDescription}>{item.description}</Text>
+  const renderRule = ({ item }: { item: HajjRule }) => (
+    <View style={[styles.ruleCard, { borderLeftColor: APP_CONFIG.theme.primary }]}>
+      <Text style={[styles.ruleTitle, { textAlign: isRTL ? 'right' : 'left' }]}>{item.rule}</Text>
+      <Text style={[styles.ruleDescription, { textAlign: isRTL ? 'right' : 'left' }]}>{item.description}</Text>
     </View>
   );
 
@@ -49,32 +57,41 @@ const DetailScreen: React.FC = () => {
     <>
       {category && (
         <View style={styles.header}>
-          <Text style={styles.headerTitle}>{category.title}</Text>
-          <Text style={styles.headerDescription}>{category.description}</Text>
+          <Text style={[styles.headerTitle, { textAlign: isRTL ? 'right' : 'left' }]}>
+            {getLocalizedTextWithFallback(category.title, settings)}
+          </Text>
+          <Text style={[styles.headerDescription, { textAlign: isRTL ? 'right' : 'left' }]}>
+            {getLocalizedTextWithFallback(category.description, settings)}
+          </Text>
         </View>
       )}
       <View style={styles.searchContainer}>
-        <TextInput
-          style={styles.searchInput}
-          placeholder="Kërko rregulla..."
-          placeholderTextColor="#888"
-          value={searchQuery}
-          onChangeText={setSearchQuery}
-        />
+        <View style={styles.searchBar}>
+          <Icon name="search" size={20} color={APP_CONFIG.theme.textSecondary} style={styles.searchIcon} />
+          <TextInput
+            style={[styles.searchInput, { textAlign: isRTL ? 'right' : 'left' }]}
+            placeholder={getLocalizedTextWithFallback({ albanian: 'Kërko...', arabic: 'بحث...', english: 'Search...' }, settings)}
+            placeholderTextColor={APP_CONFIG.theme.textSecondary}
+            value={searchQuery}
+            onChangeText={setSearchQuery}
+          />
+        </View>
       </View>
     </>
   );
 
   if (!rules.length) {
     return (
-      <View style={styles.container}>
-        <Text style={styles.emptyText}>Nuk ka të dhëna për të shfaqur</Text>
+      <View style={[styles.container, styles.center]}>
+        <Text style={styles.emptyText}>
+          {getLocalizedTextWithFallback({ albanian: 'Nuk ka të dhëna', arabic: 'لا توجد بيانات', english: 'No data' }, settings)}
+        </Text>
       </View>
     );
   }
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, { backgroundColor: APP_CONFIG.theme.background }]}>
       <FlatList
         data={filteredRules}
         renderItem={renderRule}
@@ -90,80 +107,87 @@ const DetailScreen: React.FC = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#1a1a1a',
+  },
+  center: {
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   header: {
-    backgroundColor: '#2c2c2c',
+    backgroundColor: APP_CONFIG.theme.surface,
     padding: 20,
     margin: 16,
     marginBottom: 0,
     borderRadius: 12,
     borderWidth: 1,
-    borderColor: '#d4af37',
+    borderColor: '#eee',
     elevation: 3,
-    shadowColor: '#d4af37',
-    shadowOffset: {width: 0, height: 2},
-    shadowOpacity: 0.2,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
     shadowRadius: 4,
   },
   searchContainer: {
     padding: 16,
   },
-  searchInput: {
-    backgroundColor: '#2c2c2c',
-    color: '#ffffff',
-    paddingHorizontal: 16,
-    paddingVertical: 12,
-    borderRadius: 8,
+  searchBar: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: APP_CONFIG.theme.surface,
+    borderRadius: 12,
+    paddingHorizontal: 12,
     borderWidth: 1,
-    borderColor: '#d4af37',
+    borderColor: '#eee',
+  },
+  searchIcon: {
+    marginRight: 8,
+  },
+  searchInput: {
+    flex: 1,
+    color: APP_CONFIG.theme.text,
+    paddingVertical: 12,
     fontSize: 16,
   },
   headerTitle: {
-    fontSize: 20,
+    fontSize: 22,
     fontWeight: 'bold',
-    color: '#d4af37',
+    color: APP_CONFIG.theme.primary,
     marginBottom: 8,
-    fontFamily: 'serif',
   },
   headerDescription: {
-    fontSize: 14,
-    color: '#ffffff',
-    lineHeight: 20,
+    fontSize: 15,
+    color: APP_CONFIG.theme.text,
+    lineHeight: 22,
   },
   listContainer: {
     padding: 16,
+    paddingTop: 0,
   },
   ruleCard: {
-    backgroundColor: '#2c2c2c',
+    backgroundColor: APP_CONFIG.theme.surface,
     borderRadius: 12,
     padding: 16,
     marginBottom: 12,
-    borderWidth: 1,
-    borderColor: '#d4af37',
+    borderLeftWidth: 4,
     elevation: 2,
-    shadowColor: '#d4af37',
-    shadowOffset: {width: 0, height: 1},
-    shadowOpacity: 0.15,
-    shadowRadius: 3,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.1,
+    shadowRadius: 2,
   },
   ruleTitle: {
     fontSize: 16,
     fontWeight: 'bold',
-    color: '#d4af37',
+    color: APP_CONFIG.theme.primary,
     marginBottom: 8,
-    fontFamily: 'serif',
   },
   ruleDescription: {
     fontSize: 14,
-    color: '#ffffff',
+    color: APP_CONFIG.theme.text,
     lineHeight: 20,
   },
   emptyText: {
     fontSize: 16,
-    color: '#b0b0b0',
-    textAlign: 'center',
-    marginTop: 50,
+    color: APP_CONFIG.theme.textSecondary,
     fontStyle: 'italic',
   },
 });
