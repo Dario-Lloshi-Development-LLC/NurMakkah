@@ -55,6 +55,9 @@
   "engines": {
     "node": ">=16"
   },
+  "jest": {
+    "setupFilesAfterEnv": ["<rootDir>/jest.setup.js"]
+  },
   "workspaces": [
     "nur_makkah",
     "hajj_app_flutter"

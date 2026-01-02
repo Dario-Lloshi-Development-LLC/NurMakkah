@@ -260,7 +260,24 @@ export function measurePerformance<T>(name: string, fn: () => T): T {
   const result = fn();
   const end = performance.now();
 
-  console.log(`[Performance] ${name}: ${end - start}ms`);
+  // Only log performance info in development to avoid noisy production logs
+  try {
+    // React Native and many bundlers provide a global __DEV__ flag
+    // Use it when available to restrict logging to development builds
+    // Fallback to console.debug when __DEV__ is not present
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const dev = (typeof (global as any).__DEV__ !== 'undefined') ? (global as any).__DEV__ : false;
+    if (dev) {
+      // eslint-disable-next-line no-console
+      console.log(`[Performance] ${name}: ${end - start}ms`);
+    } else if (typeof console !== 'undefined' && typeof console.debug === 'function') {
+      // Keep a lower-priority log in non-dev environments only if debug is available
+      // eslint-disable-next-line no-console
+      console.debug && console.debug(`[Performance] ${name}: ${end - start}ms`);
+    }
+  } catch (e) {
+    // swallow any logging errors
+  }
 
   return result;
 }

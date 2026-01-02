@@ -58,7 +58,11 @@ export function useOptimizedData<T>({
         }
       }
     } catch (error) {
-      console.warn('Cache read error:', error);
+      // Only warn in non-production (dev) environments to avoid noisy logs in production
+      // Avoid printing during Jest runs to keep test output clean
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const dev = ((typeof (global as any).__DEV__ !== 'undefined') ? (global as any).__DEV__ : (process.env.NODE_ENV !== 'production')) && !process.env.JEST_WORKER_ID;
+      if (dev) console.warn('Cache read error:', error);
     }
 
     return null;
@@ -76,7 +80,11 @@ export function useOptimizedData<T>({
       };
       await AsyncStorage.setItem(cacheKey, JSON.stringify(cacheEntry));
     } catch (error) {
-      console.warn('Cache write error:', error);
+      // Only warn in non-production (dev) environments to avoid noisy logs in production
+      // Avoid printing during Jest runs to keep test output clean
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const dev = ((typeof (global as any).__DEV__ !== 'undefined') ? (global as any).__DEV__ : (process.env.NODE_ENV !== 'production')) && !process.env.JEST_WORKER_ID;
+      if (dev) console.warn('Cache write error:', error);
     }
   }, [cacheKey, enableCache, cacheVersion]);
 

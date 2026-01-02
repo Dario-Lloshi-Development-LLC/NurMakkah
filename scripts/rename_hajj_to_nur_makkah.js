@@ -35,6 +35,9 @@ const TRANSFORMS = [
   { from: /\bhajj\b/gi, to: "nur_makkah" },
 ];
 
+const isVerbose =
+  process.env.DEBUG === "1" || process.env.NODE_ENV !== "production";
+
 async function walk(dir) {
   const entries = await fs.readdir(dir, { withFileTypes: true });
   for (const e of entries) {
@@ -55,17 +58,19 @@ async function processFile(filePath) {
     if (content !== original) {
       await fs.copyFile(filePath, filePath + ".bak");
       await fs.writeFile(filePath, content, "utf8");
-      console.log("Updated:", path.relative(ROOT, filePath));
+      if (isVerbose) console.info("Updated:", path.relative(ROOT, filePath));
     }
   } catch (err) {
-    console.error("err", filePath, err.message);
+    console.error("err", filePath, err && err.message ? err.message : err);
   }
 }
 
 (async function main() {
-  console.log(
-    "Running safe rename: nur_makkah -> nur_makkah (excluding android/ and native packages)",
-  );
+  if (isVerbose)
+    console.info(
+      "Running safe rename: nur_makkah -> nur_makkah (excluding android/ and native packages)",
+    );
   await walk(ROOT);
-  console.log("Done. Backups with .bak created for changed files.");
+  if (isVerbose)
+    console.info("Done. Backups with .bak created for changed files.");
 })();

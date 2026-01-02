@@ -10,6 +10,8 @@ try {
 
 const RITUALS_DIR = path.join(__dirname, "../src/assets/images/rituals");
 const OUT_DIR = path.join(__dirname, "../src/assets/images/rituals_optimized");
+const isVerbose =
+  process.env.DEBUG === "1" || process.env.NODE_ENV !== "production";
 
 if (!fs.existsSync(OUT_DIR)) fs.mkdirSync(OUT_DIR, { recursive: true });
 
@@ -23,16 +25,20 @@ async function processImage(file) {
         .resize({ width: 1080, height: 2400, fit: "inside" })
         .webp({ quality: 80 })
         .toFile(out);
-      console.log("Optimized", file, "->", out);
+      if (isVerbose) console.info("Optimized", file, "->", out);
     } catch (err) {
-      console.error("Failed optimizing", file, err.message);
+      console.error(
+        "Failed optimizing",
+        file,
+        err && err.message ? err.message : err,
+      );
     }
   } else {
     const ext = path.extname(file);
     const out = path.join(OUT_DIR, `${name}${ext}`);
     try {
       fs.copyFileSync(input, out);
-      console.log("Copied (no sharp):", file, "->", out);
+      if (isVerbose) console.info("Copied (no sharp):", file, "->", out);
     } catch (err) {
       console.error("Failed copying", file, err.message);
     }
@@ -45,7 +51,11 @@ if (!fs.existsSync(RITUALS_DIR)) {
 }
 
 fs.readdir(RITUALS_DIR, (err, files) => {
-  if (err) return console.error("Read dir error", err.message);
+  if (err)
+    return console.error(
+      "Read dir error",
+      err && err.message ? err.message : err,
+    );
   files
     .filter((f) => /\.(jpg|jpeg|png)$/i.test(f))
     .forEach((f) => processImage(f));
