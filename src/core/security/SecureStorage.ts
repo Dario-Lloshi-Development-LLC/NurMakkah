@@ -136,8 +136,8 @@ export class SecureStorage {
       autoBackup: true,
     };
 
-    const preferences = await this.getItem('user_preferences');
-    return { ...defaultPreferences, ...preferences };
+    const preferences = (await this.getItem('user_preferences')) as Partial<typeof defaultPreferences> | null;
+    return { ...defaultPreferences, ...(preferences || {}) };
   }
 
   /**
@@ -164,8 +164,8 @@ export class SecureStorage {
       securityLevel: 'medium' as const,
     };
 
-    const settings = await this.getItem('app_settings');
-    return { ...defaultSettings, ...settings };
+    const settings = (await this.getItem('app_settings')) as Partial<typeof defaultSettings> | null;
+    return { ...defaultSettings, ...(settings || {}) };
   }
 
   /**
@@ -196,8 +196,8 @@ export class SecureStorage {
       lastAccess: Date.now(),
     };
 
-    const progress = await this.getItem('user_progress');
-    return { ...defaultProgress, ...progress };
+    const progress = (await this.getItem('user_progress')) as Partial<typeof defaultProgress> | null;
+    return { ...defaultProgress, ...(progress || {}) };
   }
 
   /**

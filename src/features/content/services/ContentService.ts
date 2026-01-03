@@ -132,7 +132,6 @@ export class ContentService implements DataServiceInterface {
           albanian: legacyData.title || 'Rregullat e Haxhit',
           arabic: 'أحكام الحج',
           english: 'Rules of Hajj',
-          english: 'Rules of Hajj',
         },
         introduction: {
           description: {
@@ -418,6 +417,15 @@ export class ContentService implements DataServiceInterface {
     return type === 'Umra' ? 'Umrah' : 'Hajj';
   }
 
+  // Backwards-compatible aliases (some legacy code calls singular names)
+  private getIntentionTypeArabic(type: string): string {
+    return this.getIntentionsTypeArabic(type);
+  }
+
+  private getIntentionTypeEnglish(type: string): string {
+    return this.getIntentionsTypeEnglish(type);
+  }
+
   private getIntentionsArabic(nijeti: string): string {
     return 'لَبَّيْكَ عُمْرَةً';
   }
@@ -428,6 +436,19 @@ export class ContentService implements DataServiceInterface {
 
   private getIntentionsTransliteration(nijeti: string): string {
     return 'Labbayk Allahumma Umratan';
+  }
+
+  // Legacy singular aliases
+  private getIntentionArabic(nijeti: string): string {
+    return this.getIntentionsArabic(nijeti);
+  }
+
+  private getIntentionEnglish(nijeti: string): string {
+    return this.getIntentionsEnglish(nijeti);
+  }
+
+  private getIntentionTransliteration(nijeti: string): string {
+    return this.getIntentionsTransliteration(nijeti);
   }
 
   private getPreIhramActionArabic(action: string): string {
@@ -625,8 +646,8 @@ export class ContentService implements DataServiceInterface {
           category: categoryName,
           order: pillar.order,
           evidence: {
-            quranic: [pillar.description.quranic_reference].filter(Boolean),
-            hadith: pillar.description.hadith_reference ? [pillar.description.hadith_reference] : [],
+            quranic: ([pillar.description.quranic_reference].filter(Boolean) as string[]),
+            hadith: (pillar.description && (pillar.description as any).hadith_reference) ? [(pillar.description as any).hadith_reference] : [],
           },
         }));
         break;

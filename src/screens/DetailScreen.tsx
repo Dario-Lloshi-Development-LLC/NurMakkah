@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import {
   View,
   Text,
@@ -8,7 +8,7 @@ import {
   ScrollView,
 } from 'react-native';
 import { useRoute } from '@react-navigation/native';
-import { HajjRule, Category } from '../types';
+import { Rule, Category } from '../core/types';
 
 import { useNavigationContext } from '../shared/navigation/AppNavigator';
 import { APP_CONFIG } from '../core/constants';
@@ -16,7 +16,7 @@ import { getLocalizedTextWithFallback, shouldUseRTL } from '../core/utils';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 interface RouteParams {
-  rule?: HajjRule;
+  rule?: Rule;
   category?: Category;
   title: any;
 }
@@ -27,31 +27,35 @@ const DetailScreen: React.FC = () => {
   const { settings } = useNavigationContext();
   const isRTL = shouldUseRTL(settings);
 
-  const rules = useMemo(() => rule ? [rule] : category?.rules || [], [rule, category]);
+  const rules = useMemo<Rule[]>(() => (rule ? [rule] : ((category as any)?.rules as Rule[]) || []), [rule, category]);
 
   const [searchQuery, setSearchQuery] = useState('');
-  const [filteredRules, setFilteredRules] = useState<HajjRule[]>([]);
+  const [filteredRules, setFilteredRules] = useState<Rule[]>([]);
 
   useEffect(() => {
     if (searchQuery) {
       const lowerQuery = searchQuery.toLowerCase();
-      const filtered = rules.filter(
-        item =>
-          item.rule.toLowerCase().includes(lowerQuery) ||
-          item.description.toLowerCase().includes(lowerQuery),
-      );
+      const filtered = rules.filter(item => {
+        const titleText = getLocalizedTextWithFallback((item as any).title || (item as any).rule, settings);
+        const descText = getLocalizedTextWithFallback((item as any).description || (item as any).description, settings);
+        return titleText.toLowerCase().includes(lowerQuery) || descText.toLowerCase().includes(lowerQuery);
+      });
       setFilteredRules(filtered);
     } else {
       setFilteredRules(rules);
     }
   }, [searchQuery, rules]);
 
-  const renderRule = ({ item }: { item: HajjRule }) => (
-    <View style={[styles.ruleCard, { borderLeftColor: APP_CONFIG.theme.primary }]}>
-      <Text style={[styles.ruleTitle, { textAlign: isRTL ? 'right' : 'left' }]}>{item.rule}</Text>
-      <Text style={[styles.ruleDescription, { textAlign: isRTL ? 'right' : 'left' }]}>{item.description}</Text>
-    </View>
-  );
+  const renderRule = ({ item }: { item: Rule }) => {
+    const titleText = getLocalizedTextWithFallback((item as any).title || (item as any).rule, settings);
+    const descText = getLocalizedTextWithFallback((item as any).description || (item as any).description, settings);
+    return (
+      <View style={[styles.ruleCard, { borderLeftColor: APP_CONFIG.theme.primary }]}>
+        <Text style={[styles.ruleTitle, { textAlign: isRTL ? 'right' : 'left' }]}>{titleText}</Text>
+        <Text style={[styles.ruleDescription, { textAlign: isRTL ? 'right' : 'left' }]}>{descText}</Text>
+      </View>
+    );
+  };
 
   const renderHeader = () => (
     <>

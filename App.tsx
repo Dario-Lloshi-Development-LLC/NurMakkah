@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavigationProvider, NavigationContext } from './src/shared/navigation/AppNavigator';
+import { NavigationProvider } from './src/shared/navigation/AppNavigator';
 import AppNavigator from './src/shared/navigation/AppNavigator';
 import { AppSettings } from './src/core/types';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -14,9 +14,7 @@ import MapScreen from './src/screens/MapScreen';
 import AboutScreen from './src/screens/AboutScreen';
 
 // Enhanced screens
-import EnhancedHomeScreen from './src/features/content/screens/EnhancedHomeScreen';
 import CategoriesScreen from './src/screens/CategoriesScreen';
-import EnhancedSettingsScreen from './src/features/settings/screens/SettingsScreen';
 
 // Load settings from storage
 const loadSettings = async (): Promise<AppSettings> => {
@@ -51,7 +49,7 @@ const saveSettings = async (settings: AppSettings): Promise<void> => {
   }
 };
 
-import { DataProvider } from './src/context/DataContext';
+// DataProvider is optional — not present in this branch/structure
 
 // Main App Component
 const AppContent: React.FC = () => {
@@ -89,11 +87,9 @@ const AppContent: React.FC = () => {
   }
 
   return (
-    <DataProvider>
-      <NavigationProvider initialSettings={settings}>
-        <AppNavigator />
-      </NavigationProvider>
-    </DataProvider>
+    <NavigationProvider initialSettings={settings}>
+      <AppNavigator />
+    </NavigationProvider>
   );
 };
 

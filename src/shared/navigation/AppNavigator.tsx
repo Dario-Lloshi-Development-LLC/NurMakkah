@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import React, { createContext, useContext, useState, useEffect, ReactNode, useCallback, useMemo } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -168,7 +168,7 @@ const MainTabs: React.FC = () => {
     };
 
     const label = labels[routeName];
-    return label ? getLocalizedText(label, settings.language) : routeName;
+    return label ? getLocalizedText(label as any, settings.language) : routeName;
   }, [settings.language]);
 
   const screenOptions = useMemo(() => ({ route }: any) => ({
@@ -182,10 +182,7 @@ const MainTabs: React.FC = () => {
       borderColor: APP_CONFIG.theme.primary,
     },
     headerTintColor: APP_CONFIG.theme.surface,
-    headerTitleStyle: {
-      fontWeight: 'bold',
-      fontFamily: 'serif',
-    },
+    headerTitleStyle: ({ fontWeight: 'bold', fontFamily: 'serif' } as any),
     tabBarStyle: {
       backgroundColor: '#2c2c2c',
       borderTopColor: APP_CONFIG.theme.primary,

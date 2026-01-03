@@ -1,10 +1,21 @@
+import React, { useState, useCallback } from 'react';
+import { useNavigation } from '@react-navigation/native';
+import {
+  View,
+  Text,
+  TextInput,
+  FlatList,
+  TouchableOpacity,
+  StyleSheet,
+  ActivityIndicator,
+} from 'react-native';
 import { useNavigationContext } from '../shared/navigation/AppNavigator';
 import ContentService from '../features/content/services/ContentService';
 import { Rule } from '../core/types';
 import { APP_CONFIG } from '../core/constants';
 import { getLocalizedTextWithFallback, shouldUseRTL } from '../core/utils';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import { debounce } from 'lodash';
+import debounce from 'lodash/debounce';
 
 const SearchScreen: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -91,7 +102,7 @@ const SearchScreen: React.FC = () => {
         <ActivityIndicator style={styles.loader} size="large" color={APP_CONFIG.theme.primary} />
       ) : searchQuery.length < 2 ? (
         <View style={styles.emptyContainer}>
-          <Icon name="search" size={64} color={APP_CONFIG.theme.textSecondary} opacity={0.3} />
+          <Icon name="search" size={64} color={APP_CONFIG.theme.textSecondary} />
           <Text style={styles.emptyText}>
             {getLocalizedTextWithFallback(
               {
@@ -105,7 +116,7 @@ const SearchScreen: React.FC = () => {
         </View>
       ) : searchResults.length === 0 ? (
         <View style={styles.emptyContainer}>
-          <Icon name="search-off" size={64} color={APP_CONFIG.theme.textSecondary} opacity={0.3} />
+          <Icon name="search-off" size={64} color={APP_CONFIG.theme.textSecondary} />
           <Text style={styles.emptyText}>
             {getLocalizedTextWithFallback(
               {

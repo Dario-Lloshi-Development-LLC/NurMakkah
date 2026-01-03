@@ -7,7 +7,7 @@ const ACT_WARNING = /not wrapped in act\(\.{3}\)/i;
 console.error = (...args) => {
   try {
     const first = args && args[0];
-    if (typeof first === 'string' && ACT_WARNING.test(first)) {
+    if (typeof first === "string" && ACT_WARNING.test(first)) {
       return; // swallow the specific act warning
     }
   } catch (e) {

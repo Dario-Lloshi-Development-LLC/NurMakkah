@@ -1,4 +1,4 @@
-import { MultilingualString, MultilingualTitle, MultilingualContent, MultilingualDescription, AppSettings } from '../types';
+import { MultilingualString, MultilingualTitle, MultilingualContent, MultilingualDescription, AppSettings } from '../core/types';
 import { SUPPORTED_LANGUAGES } from '../constants';
 
 export type Language = keyof typeof SUPPORTED_LANGUAGES;

@@ -1,10 +1,10 @@
 import React, { memo, useState } from 'react';
-import { View, Image, ImageStyle, ActivityIndicator, StyleSheet } from 'react-native';
-import FastImage, { FastImageProps, ImageStyle as FastImageStyle } from 'react-native-fast-image';
+import { View, Image, ActivityIndicator, StyleSheet } from 'react-native';
+import FastImage from 'react-native-fast-image';
 
 interface OptimizedImageProps {
   source: { uri: string } | number;
-  style: ImageStyle | FastImageStyle;
+  style: any;
   resizeMode?: 'contain' | 'cover' | 'stretch' | 'repeat' | 'center';
   fallbackSource?: { uri: string } | number;
   showLoading?: boolean;
@@ -79,12 +79,8 @@ export const OptimizedImage = memo<OptimizedImageProps>(({
       ) : (
         <FastImage
           style={StyleSheet.absoluteFillObject}
-          source={{
-            uri: (source as { uri: string }).uri,
-            priority: FastImage.priority.normal,
-            cache: FastImage.cacheControl.immutable,
-          }}
-          resizeMode={FastImage.resizeMode[resizeMode]}
+          source={{ uri: (source as { uri: string }).uri }}
+          resizeMode={resizeMode as any}
           onLoadStart={handleLoadStart}
           onLoadEnd={handleLoadEnd}
           onError={handleError}

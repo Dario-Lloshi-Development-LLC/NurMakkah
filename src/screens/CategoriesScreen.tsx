@@ -6,14 +6,13 @@ import {
   TouchableOpacity,
   StyleSheet,
   Dimensions,
+  ActivityIndicator,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import DataService from '../services/DataService';
-import { Category } from '../types';
+import { Category } from '../core/types';
 
 import { useNavigationContext } from '../shared/navigation/AppNavigator';
-import ContentService from '../features/content/services/ContentService';
-import { Category } from '../core/types';
 import { APP_CONFIG } from '../core/constants';
 import { getLocalizedTextWithFallback, shouldUseRTL } from '../core/utils';
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -28,7 +27,7 @@ const CategoriesScreen: React.FC = () => {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const data = await ContentService.getCategories();
+        const data = await DataService.getCategories();
         setCategories(data);
       } catch (error) {
         console.error('Failed to fetch categories:', error);

@@ -6,8 +6,7 @@ import {
   ActivityIndicator,
 } from 'react-native';
 import MapView, { Marker, Callout } from 'react-native-maps';
-import DataService from '../services/DataService';
-import { Category } from '../types';
+import { Category } from '../core/types';
 
 import { useNavigationContext } from '../shared/navigation/AppNavigator';
 import ContentService from '../features/content/services/ContentService';

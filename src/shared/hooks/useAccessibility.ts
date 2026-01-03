@@ -28,17 +28,17 @@ export const useAccessibility = () => {
     checkAccessibilitySettings();
 
     const listeners = [
-      AccessibilityInfo.addEventListener(
+      (AccessibilityInfo as any).addEventListener(
         'reduceMotionChanged',
-        (enabled) => updateSetting('reduceMotion', enabled)
+        (enabled: boolean) => updateSetting('reduceMotion', enabled)
       ),
-      AccessibilityInfo.addEventListener(
+      (AccessibilityInfo as any).addEventListener(
         'screenReaderChanged',
-        (enabled) => updateSetting('screenReaderEnabled', enabled)
+        (enabled: boolean) => updateSetting('screenReaderEnabled', enabled)
       ),
-      AccessibilityInfo.addEventListener(
+      (AccessibilityInfo as any).addEventListener(
         'highContrastChanged',
-        (enabled) => updateSetting('highContrastMode', enabled)
+        (enabled: boolean) => updateSetting('highContrastMode', enabled)
       ),
     ];
 
@@ -55,10 +55,10 @@ export const useAccessibility = () => {
         highContrast,
         fontSizeScale,
       ] = await Promise.all([
-        AccessibilityInfo.isReduceMotionEnabled(),
-        AccessibilityInfo.isScreenReaderEnabled(),
-        AccessibilityInfo.isHighContrastEnabled(),
-        AccessibilityInfo.preferredFontScale(),
+        (AccessibilityInfo as any).isReduceMotionEnabled(),
+        (AccessibilityInfo as any).isScreenReaderEnabled(),
+        (AccessibilityInfo as any).isHighContrastEnabled(),
+        (AccessibilityInfo as any).preferredFontScale(),
       ]);
 
       setSettings(prev => ({

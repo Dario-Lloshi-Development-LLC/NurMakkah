@@ -144,7 +144,7 @@ const SettingsScreen: React.FC = () => {
         { label: 'Madhe (Large)', value: 'large' },
     ];
 
-    const loc = (texts: { [key: string]: string }) => getLocalizedTextWithFallback(texts, settings);
+    const loc = (texts: any) => getLocalizedTextWithFallback(texts, settings as any);
 
     return (
         <View style={[styles.container, { backgroundColor: APP_CONFIG.theme.background }]}>

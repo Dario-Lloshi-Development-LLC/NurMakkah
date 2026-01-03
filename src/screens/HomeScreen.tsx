@@ -30,7 +30,7 @@ const HomeScreen: React.FC = () => {
   const [refreshing, setRefreshing] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const contentService = useMemo(() => ContentService.getInstance(), []);
+  const contentService = ContentService;
   const isRTL = shouldUseRTL(settings);
 
   const loadData = useCallback(async () => {
@@ -287,7 +287,5 @@ const styles = StyleSheet.create({
     color: APP_CONFIG.theme.textSecondary,
   },
 });
-
-export default HomeScreen;
 
 export default HomeScreen;

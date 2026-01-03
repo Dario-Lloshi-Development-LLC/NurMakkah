@@ -274,12 +274,5 @@ export interface UserInteraction {
   duration?: number;
 }
 
-// Export all types for convenience
-export type {
-  MultilingualString,
-  MultilingualTitle,
-  MultilingualContent,
-  MultilingualDescription,
-  RootStackParamList,
-  MainTabParamList,
-};
+// Note: individual interfaces are exported above. Avoid re-exporting
+// the same names as types to prevent duplicate-export conflicts.
