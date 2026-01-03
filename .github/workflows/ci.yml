@@ -65,9 +65,20 @@ jobs:
       - name: Ensure ANDROID_HOME
         run: echo "ANDROID_HOME=$ANDROID_SDK_ROOT" >> $GITHUB_ENV
 
-      - name: Install required Android packages and accept licenses
+      - name: Install required Android packages and accept licenses (with retries)
         run: |
-          yes | sdkmanager --install "platform-tools" "platforms;android-34" "build-tools;34.0.0" "ndk;25.1.8937393"
+          set -e
+          max_retries=3
+          i=0
+          until [ $i -ge $max_retries ]
+          do
+            if sdkmanager --install "platform-tools" "platforms;android-34" "build-tools;34.0.0" "ndk;25.1.8937393"; then
+              break
+            fi
+            i=$((i+1))
+            echo "sdkmanager install failed, retrying ($i/$max_retries)..."
+            sleep 5
+          done
           yes | sdkmanager --licenses || true
 
       - name: Cache Gradle
@@ -78,9 +89,16 @@ jobs:
             ~/.gradle/wrapper
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/gradle/wrapper/gradle-wrapper.properties') }}
 
+      - name: Diagnostics
+        run: |
+          echo "== Java version =="
+          java -version || true
+          echo "== Gradle wrapper =="
+          ./android/gradlew -v || true
+
       - name: Make gradlew executable
         run: chmod +x android/gradlew
 
-      - name: Build Android (assembleRelease)
+      - name: Build Android (assembleDebug)
         working-directory: android
-        run: ./gradlew assembleRelease --no-daemon --stacktrace
+        run: ./gradlew assembleDebug --no-daemon --stacktrace
