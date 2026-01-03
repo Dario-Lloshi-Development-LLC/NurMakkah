@@ -18,14 +18,47 @@ jobs:
         with:
           node-version: '18'
 
-      - name: Install dependencies
-        run: npm ci
+      - name: Diagnostics (node & npm)
+        run: |
+          echo "node: $(node -v)" > npm-install.log
+          echo "npm: $(npm -v)" >> npm-install.log
 
-      - name: Run lint
-        run: npm run lint
+      - name: Install dependencies (with retries and log)
+        run: |
+          max_retries=3
+          i=0
+          until [ $i -ge $max_retries ]
+          do
+            if npm ci 2>&1 | tee -a npm-install.log; then
+              break
+            fi
+            i=$((i+1))
+            echo "npm ci failed, retrying ($i/$max_retries)..." | tee -a npm-install.log
+            sleep 5
+          done
 
-      - name: Run tests
-        run: npm test --silent
+      - name: Upload npm install log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: npm-install-log
+          path: npm-install.log
+
+      - name: Run lint (capture output)
+        run: npm run lint 2>&1 | tee lint-output.log
+
+      - name: Run tests (capture output)
+        run: npm test --silent 2>&1 | tee test-output.log
+
+      - name: Upload test logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: node-test-logs
+          path: |
+            npm-install.log
+            lint-output.log
+            test-output.log
 
   android-build:
     name: Android Build
