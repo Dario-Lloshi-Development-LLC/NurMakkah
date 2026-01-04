@@ -290,17 +290,17 @@ jobs:
             echo "=== Running Flutter Integration Tests ==="
 
             # Test Islamic content loading
-            adb shell am start -n com.muslim.hajjrules.flutter/.MainActivity
+            adb shell am start -n com.nurmakkah.flutter/.MainActivity
             sleep 5
 
             # Test basic functionality
-            adb shell am instrument -w com.muslim.hajjrules.flutter.test/com.example.hajj_app_flutter.IntegrationTest
+            adb shell am instrument -w com.nurmakkah.flutter.test/com.example.hajj_app_flutter.IntegrationTest
 
             # Test Arabic content display
-            adb shell am instrument -w com.muslim.hajjrules.flutter.test/com.example.hajj_app_flutter.ArabicContentTest
+            adb shell am instrument -w com.nurmakkah.flutter.test/com.example.hajj_app_flutter.ArabicContentTest
 
             # Test accessibility features
-            adb shell am instrument -w com.muslim.hajjrules.flutter.test/com.example.hajj_app_flutter.AccessibilityTest
+            adb shell am instrument -w com.nurmakkah.flutter.test/com.example.hajj_app_flutter.AccessibilityTest
 
       - name: Upload integration test results
         uses: actions/upload-artifact@v3
@@ -429,7 +429,7 @@ jobs:
         uses: r0adkll/upload-google-play@v1
         with:
           serviceAccountJsonPlainText: ${{ secrets.GOOGLE_PLAY_SERVICE_ACCOUNT }}
-          packageName: com.muslim.hajjrules.flutter
+          packageName: com.nurmakkah.flutter
           releaseFiles: ./build-artifacts/flutter-release-aab/app-release.aab
           track: production
           status: completed
@@ -459,7 +459,7 @@ jobs:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_KEY }}'
           channelId: live
-          projectId: nur_makkah-app-preview
+          projectId: nur-makkah-app-preview
           entry: "build/web/index.html"
 
       - name: Generate Deployment Report

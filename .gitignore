@@ -127,3 +127,6 @@ hajj_app/build/
 # Large patch files
 changes.patch
 flutter.tar.gz
+
+# Local Android SDK (should not be checked in)
+android-sdk/
