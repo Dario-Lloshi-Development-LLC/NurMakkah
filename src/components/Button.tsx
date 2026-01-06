@@ -1,6 +1,11 @@
-import React from 'react';
-import { TouchableOpacity, Text, StyleSheet, GestureResponderEvent } from 'react-native';
-import { theme } from '../styles/theme';
+import React from "react";
+import {
+  TouchableOpacity,
+  Text,
+  StyleSheet,
+  GestureResponderEvent,
+} from "react-native";
+import { theme } from "../styles/theme";
 
 interface Props {
   title: string;
@@ -10,7 +15,11 @@ interface Props {
 
 export const Button: React.FC<Props> = ({ title, onPress, disabled }) => {
   return (
-    <TouchableOpacity style={[styles.button, disabled && styles.disabled]} onPress={onPress} disabled={disabled}>
+    <TouchableOpacity
+      style={[styles.button, disabled && styles.disabled]}
+      onPress={onPress}
+      disabled={disabled}
+    >
       <Text style={styles.text}>{title}</Text>
     </TouchableOpacity>
   );
@@ -18,18 +27,18 @@ export const Button: React.FC<Props> = ({ title, onPress, disabled }) => {
 
 const styles = StyleSheet.create({
   button: {
+    alignItems: "center",
     backgroundColor: theme.colors.primary,
-    paddingVertical: 12,
-    paddingHorizontal: 16,
     borderRadius: 8,
-    alignItems: 'center',
+    paddingHorizontal: 16,
+    paddingVertical: 12,
   },
   disabled: {
     opacity: 0.6,
   },
   text: {
-    color: '#fff',
-    fontWeight: '600',
+    color: "#fff",
+    fontWeight: "600",
   },
 });
 

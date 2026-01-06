@@ -2,11 +2,16 @@ name: CI/CD - React Native Nur Makkah
 
 on:
   push:
-    branches: [ main, develop, 'release/*' ]
+    branches:
+      - main
+      - develop
+      - 'release/*'
   pull_request:
-    branches: [ main ]
+    branches:
+      - main
   release:
-    types: [ published ]
+    types:
+      - published
 
 env:
   NODE_VERSION: '18'

@@ -1,22 +1,30 @@
-import React, { createContext, useContext, useState, useEffect, ReactNode, useCallback, useMemo } from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { createStackNavigator } from '@react-navigation/stack';
-import Icon from 'react-native-vector-icons/MaterialIcons';
-import { AppSettings } from '../../core/types';
-import { getLocalizedText, shouldUseRTL } from '../../core/utils';
-import { APP_CONFIG } from '../../core/constants';
+import React, {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  ReactNode,
+  useCallback,
+  useMemo,
+} from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { createStackNavigator } from "@react-navigation/stack";
+import Icon from "react-native-vector-icons/MaterialIcons";
+import { AppSettings } from "../../core/types";
+import { getLocalizedText, shouldUseRTL } from "../../core/utils";
+import { APP_CONFIG } from "../../core/constants";
 
 // Import screens
-import SplashScreen from '../../screens/SplashScreen';
-import HomeScreen from '../../screens/HomeScreen';
-import CategoriesScreen from '../../screens/CategoriesScreen';
-import ContentScreen from '../../screens/ContentScreen';
-import MapScreen from '../../screens/MapScreen';
-import AboutScreen from '../../screens/AboutScreen';
-import DetailScreen from '../../screens/DetailScreen';
-import SearchScreen from '../../screens/SearchScreen';
-import SettingsScreen from '../../screens/SettingsScreen';
+import SplashScreen from "../../screens/SplashScreen";
+import HomeScreen from "../../screens/HomeScreen";
+import CategoriesScreen from "../../screens/CategoriesScreen";
+import ContentScreen from "../../screens/ContentScreen";
+import MapScreen from "../../screens/MapScreen";
+import AboutScreen from "../../screens/AboutScreen";
+import DetailScreen from "../../screens/DetailScreen";
+import SearchScreen from "../../screens/SearchScreen";
+import SettingsScreen from "../../screens/SettingsScreen";
 
 // Types
 export type RootStackParamList = {
@@ -24,7 +32,7 @@ export type RootStackParamList = {
   Main: undefined;
   Detail: {
     item: any;
-    type: 'rule' | 'category';
+    type: "rule" | "category";
   };
   Search: undefined;
   Settings: undefined;
@@ -50,12 +58,16 @@ interface NavigationContextType {
   isRTL: boolean;
 }
 
-const NavigationContext = createContext<NavigationContextType | undefined>(undefined);
+const NavigationContext = createContext<NavigationContextType | undefined>(
+  undefined,
+);
 
 export const useNavigationContext = () => {
   const context = useContext(NavigationContext);
   if (!context) {
-    throw new Error('useNavigationContext must be used within NavigationProvider');
+    throw new Error(
+      "useNavigationContext must be used within NavigationProvider",
+    );
   }
   return context;
 };
@@ -72,15 +84,15 @@ export const NavigationProvider: React.FC<NavigationProviderProps> = ({
 }) => {
   const [settings, setSettings] = useState<AppSettings>(
     initialSettings || {
-      language: 'albanian',
-      theme: 'light',
-      fontSize: 'medium',
+      language: "albanian",
+      theme: "light",
+      fontSize: "medium",
       showArabicText: false,
       showTransliteration: false,
       autoPlayAudio: false,
       notifications: true,
       rtl: false,
-    }
+    },
   );
 
   const [isRTL, setIsRTL] = useState(false);
@@ -94,7 +106,7 @@ export const NavigationProvider: React.FC<NavigationProviderProps> = ({
   }, [settings]);
 
   const updateSettings = (newSettings: Partial<AppSettings>) => {
-    setSettings(prev => ({ ...prev, ...newSettings }));
+    setSettings((prev) => ({ ...prev, ...newSettings }));
   };
 
   return (
@@ -120,75 +132,88 @@ const Tab = createBottomTabNavigator<MainTabParamList>();
 const MainTabs: React.FC = () => {
   const { settings } = useNavigationContext();
 
-  const getTabBarIcon = useCallback((routeName: string, color: string, size: number) => {
-    let iconName: string;
+  const getTabBarIcon = useCallback(
+    (routeName: string, color: string, size: number) => {
+      let iconName: string;
 
-    switch (routeName) {
-      case 'Home':
-        iconName = 'home';
-        break;
-      case 'Search':
-        iconName = 'search';
-        break;
-      case 'Map':
-        iconName = 'map';
-        break;
-      case 'Settings':
-        iconName = 'settings';
-        break;
-      default:
-        iconName = 'help';
-    }
+      switch (routeName) {
+        case "Home":
+          iconName = "home";
+          break;
+        case "Search":
+          iconName = "search";
+          break;
+        case "Map":
+          iconName = "map";
+          break;
+        case "Settings":
+          iconName = "settings";
+          break;
+        default:
+          iconName = "help";
+      }
 
-    return <Icon name={iconName} size={size} color={color} />;
-  }, []);
-
-  const getTabBarLabel = useCallback((routeName: string) => {
-    const labels: Record<string, Record<string, string>> = {
-      Home: {
-        albanian: 'Ballina',
-        arabic: 'الرئيسية',
-        english: 'Home',
-      },
-      Search: {
-        albanian: 'Kërko',
-        arabic: 'بحث',
-        english: 'Search',
-      },
-      Map: {
-        albanian: 'Harta',
-        arabic: 'الخريطة',
-        english: 'Map',
-      },
-      Settings: {
-        albanian: 'Cilësimet',
-        arabic: 'الإعدادات',
-        english: 'Settings',
-      },
-    };
-
-    const label = labels[routeName];
-    return label ? getLocalizedText(label as any, settings.language) : routeName;
-  }, [settings.language]);
-
-  const screenOptions = useMemo(() => ({ route }: any) => ({
-    tabBarIcon: ({ color, size }: { color: string; size: number }) => getTabBarIcon(route.name, color, size),
-    tabBarLabel: () => getTabBarLabel(route.name),
-    tabBarActiveTintColor: APP_CONFIG.theme.primary,
-    tabBarInactiveTintColor: 'gray',
-    headerStyle: {
-      backgroundColor: '#2c2c2c',
-      borderBottomWidth: 1,
-      borderColor: APP_CONFIG.theme.primary,
+      return <Icon name={iconName} size={size} color={color} />;
     },
-    headerTintColor: APP_CONFIG.theme.surface,
-    headerTitleStyle: ({ fontWeight: 'bold', fontFamily: 'serif' } as any),
-    tabBarStyle: {
-      backgroundColor: '#2c2c2c',
-      borderTopColor: APP_CONFIG.theme.primary,
+    [],
+  );
+
+  const getTabBarLabel = useCallback(
+    (routeName: string) => {
+      const labels: Record<string, Record<string, string>> = {
+        Home: {
+          albanian: "Ballina",
+          arabic: "الرئيسية",
+          english: "Home",
+        },
+        Search: {
+          albanian: "Kërko",
+          arabic: "بحث",
+          english: "Search",
+        },
+        Map: {
+          albanian: "Harta",
+          arabic: "الخريطة",
+          english: "Map",
+        },
+        Settings: {
+          albanian: "Cilësimet",
+          arabic: "الإعدادات",
+          english: "Settings",
+        },
+      };
+
+      const label = labels[routeName];
+      return label
+        ? getLocalizedText(label as any, settings.language)
+        : routeName;
     },
-    tabBarDirection: settings.rtl ? 'rtl' : 'ltr' as const,
-  }), [getTabBarIcon, getTabBarLabel, settings.rtl]);
+    [settings.language],
+  );
+
+  const screenOptions = useMemo(
+    () =>
+      ({ route }: any) => ({
+        tabBarIcon: ({ color, size }: { color: string; size: number }) =>
+          getTabBarIcon(route.name, color, size),
+        tabBarLabel: () => getTabBarLabel(route.name),
+        tabBarActiveTintColor: APP_CONFIG.theme.primary,
+        tabBarInactiveTintColor: "gray",
+        headerStyle: {
+          backgroundColor: "#2c2c2c",
+          borderBottomWidth: 1,
+          borderColor: APP_CONFIG.theme.primary,
+        },
+        headerTintColor: APP_CONFIG.theme.surface,
+        headerTitleStyle: { fontWeight: "bold", fontFamily: "serif" } as any,
+        tabBarStyle: {
+          backgroundColor: "#2c2c2c",
+          borderTopColor: APP_CONFIG.theme.primary,
+        },
+        tabBarDirection: settings.rtl ? "rtl" : ("ltr" as const),
+      }),
+    [getTabBarIcon, getTabBarLabel, settings.rtl],
+  );
 
   return (
     <Tab.Navigator screenOptions={screenOptions}>
@@ -203,9 +228,9 @@ const MainTabs: React.FC = () => {
         name="Search"
         component={SearchScreen}
         options={{
-          title: getTabBarLabel('Search'),
+          title: getTabBarLabel("Search"),
           headerTitleStyle: {
-            writingDirection: settings.rtl ? 'rtl' : 'ltr',
+            writingDirection: settings.rtl ? "rtl" : "ltr",
           },
         }}
       />
@@ -213,9 +238,9 @@ const MainTabs: React.FC = () => {
         name="Map"
         component={MapScreen}
         options={{
-          title: getTabBarLabel('Map'),
+          title: getTabBarLabel("Map"),
           headerTitleStyle: {
-            writingDirection: settings.rtl ? 'rtl' : 'ltr',
+            writingDirection: settings.rtl ? "rtl" : "ltr",
           },
         }}
       />
@@ -223,9 +248,9 @@ const MainTabs: React.FC = () => {
         name="Settings"
         component={SettingsScreen}
         options={{
-          title: getTabBarLabel('Settings'),
+          title: getTabBarLabel("Settings"),
           headerTitleStyle: {
-            writingDirection: settings.rtl ? 'rtl' : 'ltr',
+            writingDirection: settings.rtl ? "rtl" : "ltr",
           },
         }}
       />
@@ -243,9 +268,9 @@ const AppNavigator: React.FC = () => {
           headerStyle: {
             backgroundColor: APP_CONFIG.theme.primary,
           },
-          headerTintColor: '#fff',
+          headerTintColor: "#fff",
           headerTitleStyle: {
-            fontWeight: 'bold',
+            fontWeight: "bold",
           },
         }}
       >
@@ -263,9 +288,12 @@ const AppNavigator: React.FC = () => {
           name="Detail"
           component={DetailScreen}
           options={({ route }) => ({
-            title: route.params.type === 'category' ? 'Category Details' : 'Rule Details',
+            title:
+              route.params.type === "category"
+                ? "Category Details"
+                : "Rule Details",
             headerTitleStyle: {
-              writingDirection: 'rtl', // Will be updated based on settings
+              writingDirection: "rtl", // Will be updated based on settings
             },
           })}
         />
@@ -273,9 +301,9 @@ const AppNavigator: React.FC = () => {
           name="Search"
           component={SearchScreen}
           options={{
-            title: 'Search',
+            title: "Search",
             headerTitleStyle: {
-              writingDirection: 'rtl', // Will be updated based on settings
+              writingDirection: "rtl", // Will be updated based on settings
             },
           }}
         />
@@ -283,9 +311,9 @@ const AppNavigator: React.FC = () => {
           name="Content"
           component={ContentScreen}
           options={({ route }) => ({
-            title: getLocalizedText(route.params.title, 'albanian'), // Will be updated based on settings
+            title: getLocalizedText(route.params.title, "albanian"), // Will be updated based on settings
             headerTitleStyle: {
-              writingDirection: 'rtl', // Will be updated based on settings
+              writingDirection: "rtl", // Will be updated based on settings
             },
           })}
         />
@@ -293,9 +321,9 @@ const AppNavigator: React.FC = () => {
           name="Map"
           component={MapScreen}
           options={{
-            title: 'Map',
+            title: "Map",
             headerTitleStyle: {
-              writingDirection: 'rtl', // Will be updated based on settings
+              writingDirection: "rtl", // Will be updated based on settings
             },
           }}
         />
@@ -303,9 +331,9 @@ const AppNavigator: React.FC = () => {
           name="About"
           component={AboutScreen}
           options={{
-            title: 'About',
+            title: "About",
             headerTitleStyle: {
-              writingDirection: 'rtl', // Will be updated based on settings
+              writingDirection: "rtl", // Will be updated based on settings
             },
           }}
         />
@@ -313,9 +341,9 @@ const AppNavigator: React.FC = () => {
           name="Settings"
           component={SettingsScreen}
           options={{
-            title: 'Settings',
+            title: "Settings",
             headerTitleStyle: {
-              writingDirection: 'rtl', // Will be updated based on settings
+              writingDirection: "rtl", // Will be updated based on settings
             },
           }}
         />

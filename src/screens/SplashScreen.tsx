@@ -1,21 +1,15 @@
-import React, { useEffect } from 'react';
-import {
-  View,
-  Text,
-  Image,
-  StyleSheet,
-  Dimensions,
-} from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import React, { useEffect } from "react";
+import { View, Text, Image, StyleSheet, Dimensions } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
-const { width, height } = Dimensions.get('window');
+const { width, height } = Dimensions.get("window");
 
 const SplashScreen: React.FC = () => {
   const navigation = useNavigation();
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      navigation.navigate('Main' as never);
+      navigation.navigate("Main" as never);
     }, 2000);
 
     return () => clearTimeout(timer);
@@ -24,7 +18,7 @@ const SplashScreen: React.FC = () => {
   return (
     <View style={styles.container}>
       <Image
-        source={require('../../assets/images/rituals_optimized/app_icon.webp')}
+        source={require("../../assets/images/rituals_optimized/app_icon.webp")}
         style={styles.logo}
         resizeMode="contain"
       />
@@ -36,27 +30,27 @@ const SplashScreen: React.FC = () => {
 
 const styles = StyleSheet.create({
   container: {
+    alignItems: "center",
+    backgroundColor: "#2E7D32",
     flex: 1,
-    backgroundColor: '#2E7D32',
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
   },
   logo: {
-    width: width * 0.3,
     height: width * 0.3,
     marginBottom: 20,
-  },
-  title: {
-    fontSize: 28,
-    fontWeight: 'bold',
-    color: '#FFFFFF',
-    marginBottom: 10,
-    textAlign: 'center',
+    width: width * 0.3,
   },
   subtitle: {
+    color: "#E8F5E8",
     fontSize: 16,
-    color: '#E8F5E8',
-    textAlign: 'center',
+    textAlign: "center",
+  },
+  title: {
+    color: "#FFFFFF",
+    fontSize: 28,
+    fontWeight: "bold",
+    marginBottom: 10,
+    textAlign: "center",
   },
 });
 

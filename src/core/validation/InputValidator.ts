@@ -13,10 +13,12 @@ interface ValidationResult {
 // Regular expressions for validation
 const REGEX_PATTERNS = {
   // Allowed characters for Islamic content (Arabic, English, Albanian characters, numbers, basic punctuation)
-  ISLAMIC_CONTENT: /^[\w\s\u0600-\u06FF\u0750-\u077F\uFB50-\uFDFF\uFE70-\uFEFF\u00C0-\u017F.,;:!?'"()\-\/@#%&*+=]*$/,
+  ISLAMIC_CONTENT:
+    /^[\w\s\u0600-\u06FF\u0750-\u077F\uFB50-\uFDFF\uFE70-\uFEFF\u00C0-\u017F.,;:!?'"()\-\/@#%&*+=]*$/,
 
   // Arabic text only (for religious content) — allow Arabic letters, digits, whitespace and common punctuation
-  ARABIC_TEXT: /^[\u0600-\u06FF\u0750-\u077F\uFB50-\uFDFF\uFE70-\uFEFF0-9\s\.,;:!\-\u060C\u061B\u061F'"()]*$/,
+  ARABIC_TEXT:
+    /^[\u0600-\u06FF\u0750-\u077F\uFB50-\uFDFF\uFE70-\uFEFF0-9\s\.,;:!\-\u060C\u061B\u061F'"()]*$/,
 
   // Quranic verse reference pattern
   QURANIC_REFERENCE: /^(\d+):(\d+)(-\d+)?$/,
@@ -59,22 +61,25 @@ export class InputValidator {
    * Validate and sanitize Islamic content titles
    */
   static validateTitle(input: string): ValidationResult {
-    if (!input || typeof input !== 'string') {
-      return { isValid: false, error: 'Title is required' };
+    if (!input || typeof input !== "string") {
+      return { isValid: false, error: "Title is required" };
     }
 
     const trimmed = input.trim();
 
     if (trimmed.length === 0) {
-      return { isValid: false, error: 'Title cannot be empty' };
+      return { isValid: false, error: "Title cannot be empty" };
     }
 
     if (trimmed.length > MAX_LENGTHS.TITLE) {
-      return { isValid: false, error: `Title must be less than ${MAX_LENGTHS.TITLE} characters` };
+      return {
+        isValid: false,
+        error: `Title must be less than ${MAX_LENGTHS.TITLE} characters`,
+      };
     }
 
     if (!REGEX_PATTERNS.ISLAMIC_CONTENT.test(trimmed)) {
-      return { isValid: false, error: 'Title contains invalid characters' };
+      return { isValid: false, error: "Title contains invalid characters" };
     }
 
     return { isValid: true, sanitizedValue: this.sanitizeHtml(trimmed) };
@@ -84,23 +89,29 @@ export class InputValidator {
    * Validate and sanitize Arabic religious text
    */
   static validateArabicText(input: string): ValidationResult {
-    if (!input || typeof input !== 'string') {
-      return { isValid: true, sanitizedValue: '' };
+    if (!input || typeof input !== "string") {
+      return { isValid: true, sanitizedValue: "" };
     }
 
     const trimmed = input.trim();
 
     if (trimmed.length === 0) {
-      return { isValid: true, sanitizedValue: '' };
+      return { isValid: true, sanitizedValue: "" };
     }
 
     if (trimmed.length > MAX_LENGTHS.ARABIC_TEXT) {
-      return { isValid: false, error: `Arabic text must be less than ${MAX_LENGTHS.ARABIC_TEXT} characters` };
+      return {
+        isValid: false,
+        error: `Arabic text must be less than ${MAX_LENGTHS.ARABIC_TEXT} characters`,
+      };
     }
 
     // Allow Arabic text with basic punctuation
     if (!REGEX_PATTERNS.ARABIC_TEXT.test(trimmed)) {
-      return { isValid: false, error: 'Arabic text contains invalid characters' };
+      return {
+        isValid: false,
+        error: "Arabic text contains invalid characters",
+      };
     }
 
     return { isValid: true, sanitizedValue: trimmed };
@@ -110,22 +121,28 @@ export class InputValidator {
    * Validate and sanitize content descriptions
    */
   static validateDescription(input: string): ValidationResult {
-    if (!input || typeof input !== 'string') {
-      return { isValid: false, error: 'Description is required' };
+    if (!input || typeof input !== "string") {
+      return { isValid: false, error: "Description is required" };
     }
 
     const trimmed = input.trim();
 
     if (trimmed.length === 0) {
-      return { isValid: false, error: 'Description cannot be empty' };
+      return { isValid: false, error: "Description cannot be empty" };
     }
 
     if (trimmed.length > MAX_LENGTHS.DESCRIPTION) {
-      return { isValid: false, error: `Description must be less than ${MAX_LENGTHS.DESCRIPTION} characters` };
+      return {
+        isValid: false,
+        error: `Description must be less than ${MAX_LENGTHS.DESCRIPTION} characters`,
+      };
     }
 
     if (!REGEX_PATTERNS.ISLAMIC_CONTENT.test(trimmed)) {
-      return { isValid: false, error: 'Description contains invalid characters' };
+      return {
+        isValid: false,
+        error: "Description contains invalid characters",
+      };
     }
 
     return { isValid: true, sanitizedValue: this.sanitizeHtml(trimmed) };
@@ -135,20 +152,24 @@ export class InputValidator {
    * Validate Quranic verse reference
    */
   static validateQuranicReference(input: string): ValidationResult {
-    if (!input || typeof input !== 'string') {
-      return { isValid: true, sanitizedValue: '' };
+    if (!input || typeof input !== "string") {
+      return { isValid: true, sanitizedValue: "" };
     }
 
     const trimmed = input.trim();
 
     if (trimmed.length === 0) {
-      return { isValid: true, sanitizedValue: '' };
+      return { isValid: true, sanitizedValue: "" };
     }
 
     // Pattern: Surah:Ayah (e.g., 2:255 or 2:255-256)
     const match = REGEX_PATTERNS.QURANIC_REFERENCE.exec(trimmed);
     if (!match) {
-      return { isValid: false, error: 'Invalid Quranic reference format. Use format: Surah:Ayah (e.g., 2:255)' };
+      return {
+        isValid: false,
+        error:
+          "Invalid Quranic reference format. Use format: Surah:Ayah (e.g., 2:255)",
+      };
     }
 
     const surah = parseInt(match[1], 10);
@@ -156,18 +177,18 @@ export class InputValidator {
     const rangePart = match[3];
 
     if (isNaN(surah) || surah < 1) {
-      return { isValid: false, error: 'Invalid surah number' };
+      return { isValid: false, error: "Invalid surah number" };
     }
 
     const ayahStart = parseInt(ayahPart, 10);
     if (isNaN(ayahStart) || ayahStart < 1) {
-      return { isValid: false, error: 'Invalid ayah number' };
+      return { isValid: false, error: "Invalid ayah number" };
     }
 
     if (rangePart) {
       const ayahEnd = parseInt(rangePart.slice(1), 10);
       if (isNaN(ayahEnd) || ayahEnd < ayahStart) {
-        return { isValid: false, error: 'Invalid ayah range' };
+        return { isValid: false, error: "Invalid ayah range" };
       }
     }
 
@@ -178,22 +199,25 @@ export class InputValidator {
    * Validate Hadith reference
    */
   static validateHadithReference(input: string): ValidationResult {
-    if (!input || typeof input !== 'string') {
-      return { isValid: true, sanitizedValue: '' };
+    if (!input || typeof input !== "string") {
+      return { isValid: true, sanitizedValue: "" };
     }
 
     const trimmed = input.trim();
 
     if (trimmed.length === 0) {
-      return { isValid: true, sanitizedValue: '' };
+      return { isValid: true, sanitizedValue: "" };
     }
 
     if (trimmed.length > MAX_LENGTHS.REFERENCE) {
-      return { isValid: false, error: `Reference must be less than ${MAX_LENGTHS.REFERENCE} characters` };
+      return {
+        isValid: false,
+        error: `Reference must be less than ${MAX_LENGTHS.REFERENCE} characters`,
+      };
     }
 
     if (!REGEX_PATTERNS.HADITH_REFERENCE.test(trimmed)) {
-      return { isValid: false, error: 'Invalid Hadith reference format' };
+      return { isValid: false, error: "Invalid Hadith reference format" };
     }
 
     return { isValid: true, sanitizedValue: this.sanitizeHtml(trimmed) };
@@ -203,23 +227,29 @@ export class InputValidator {
    * Validate search queries
    */
   static validateSearchQuery(input: string): ValidationResult {
-    if (!input || typeof input !== 'string') {
-      return { isValid: true, sanitizedValue: '' };
+    if (!input || typeof input !== "string") {
+      return { isValid: true, sanitizedValue: "" };
     }
 
     const trimmed = input.trim();
 
     if (trimmed.length === 0) {
-      return { isValid: true, sanitizedValue: '' };
+      return { isValid: true, sanitizedValue: "" };
     }
 
     if (trimmed.length > MAX_LENGTHS.SEARCH_QUERY) {
-      return { isValid: false, error: `Search query must be less than ${MAX_LENGTHS.SEARCH_QUERY} characters` };
+      return {
+        isValid: false,
+        error: `Search query must be less than ${MAX_LENGTHS.SEARCH_QUERY} characters`,
+      };
     }
 
     // Allow safe characters only
     if (!REGEX_PATTERNS.SAFE_TEXT.test(trimmed)) {
-      return { isValid: false, error: 'Search query contains invalid characters' };
+      return {
+        isValid: false,
+        error: "Search query contains invalid characters",
+      };
     }
 
     return { isValid: true, sanitizedValue: trimmed };
@@ -229,18 +259,18 @@ export class InputValidator {
    * Validate email addresses
    */
   static validateEmail(input: string): ValidationResult {
-    if (!input || typeof input !== 'string') {
-      return { isValid: false, error: 'Email is required' };
+    if (!input || typeof input !== "string") {
+      return { isValid: false, error: "Email is required" };
     }
 
     const trimmed = input.trim();
 
     if (trimmed.length === 0) {
-      return { isValid: false, error: 'Email cannot be empty' };
+      return { isValid: false, error: "Email cannot be empty" };
     }
 
     if (!REGEX_PATTERNS.EMAIL.test(trimmed)) {
-      return { isValid: false, error: 'Invalid email format' };
+      return { isValid: false, error: "Invalid email format" };
     }
 
     return { isValid: true, sanitizedValue: trimmed.toLowerCase() };
@@ -250,18 +280,18 @@ export class InputValidator {
    * Validate phone numbers
    */
   static validatePhone(input: string): ValidationResult {
-    if (!input || typeof input !== 'string') {
-      return { isValid: true, sanitizedValue: '' };
+    if (!input || typeof input !== "string") {
+      return { isValid: true, sanitizedValue: "" };
     }
 
     const trimmed = input.trim();
 
     if (trimmed.length === 0) {
-      return { isValid: true, sanitizedValue: '' };
+      return { isValid: true, sanitizedValue: "" };
     }
 
     if (!REGEX_PATTERNS.PHONE.test(trimmed)) {
-      return { isValid: false, error: 'Invalid phone number format' };
+      return { isValid: false, error: "Invalid phone number format" };
     }
 
     return { isValid: true, sanitizedValue: trimmed };
@@ -271,22 +301,25 @@ export class InputValidator {
    * Validate user notes
    */
   static validateNote(input: string): ValidationResult {
-    if (!input || typeof input !== 'string') {
-      return { isValid: true, sanitizedValue: '' };
+    if (!input || typeof input !== "string") {
+      return { isValid: true, sanitizedValue: "" };
     }
 
     const trimmed = input.trim();
 
     if (trimmed.length === 0) {
-      return { isValid: true, sanitizedValue: '' };
+      return { isValid: true, sanitizedValue: "" };
     }
 
     if (trimmed.length > MAX_LENGTHS.NOTE) {
-      return { isValid: false, error: `Note must be less than ${MAX_LENGTHS.NOTE} characters` };
+      return {
+        isValid: false,
+        error: `Note must be less than ${MAX_LENGTHS.NOTE} characters`,
+      };
     }
 
     if (!REGEX_PATTERNS.SAFE_TEXT.test(trimmed)) {
-      return { isValid: false, error: 'Note contains invalid characters' };
+      return { isValid: false, error: "Note contains invalid characters" };
     }
 
     return { isValid: true, sanitizedValue: this.sanitizeHtml(trimmed) };
@@ -298,12 +331,12 @@ export class InputValidator {
   private static sanitizeHtml(input: string): string {
     // Replace ampersand first to avoid double-escaping
     return input
-      .replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;')
-      .replace(/"/g, '&quot;')
-      .replace(/'/g, '&#x27;')
-      .replace(/\//g, '&#x2F;');
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#x27;")
+      .replace(/\//g, "&#x2F;");
   }
 
   /**
@@ -358,10 +391,10 @@ export class InputValidator {
    * Check if content is safe for display
    */
   static isSafeContent(input: string): boolean {
-    if (!input || typeof input !== 'string') {
+    if (!input || typeof input !== "string") {
       return false;
     }
-    return !DANGEROUS_PATTERNS.some(pattern => pattern.test(input));
+    return !DANGEROUS_PATTERNS.some((pattern) => pattern.test(input));
   }
 
   /**
@@ -369,8 +402,8 @@ export class InputValidator {
    */
   static sanitizeFilename(input: string): string {
     return input
-      .replace(/[^a-zA-Z0-9.-]/g, '_')
-      .replace(/_{2,}/g, '_')
+      .replace(/[^a-zA-Z0-9.-]/g, "_")
+      .replace(/_{2,}/g, "_")
       .toLowerCase();
   }
 }

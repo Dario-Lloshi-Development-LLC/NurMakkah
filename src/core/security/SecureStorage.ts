@@ -1,15 +1,15 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { Platform } from 'react-native';
-import CryptoJS from 'crypto-js';
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { Platform } from "react-native";
+import CryptoJS from "crypto-js";
 
 /**
  * Secure storage implementation with encryption
  * Protects sensitive Islamic content and user data
  */
 export class SecureStorage {
-  private static readonly ENCRYPTION_KEY = 'hajj_app_secure_key_v1';
+  private static readonly ENCRYPTION_KEY = "hajj_app_secure_key_v1";
   private static readonly IV_LENGTH = 16;
-  private static readonly PREFIX = 'secure_';
+  private static readonly PREFIX = "secure_";
 
   /**
    * Store encrypted data
@@ -37,7 +37,7 @@ export class SecureStorage {
       const decryptedValue = this.decrypt(encryptedValue);
       return JSON.parse(decryptedValue) as T;
     } catch (error) {
-      console.warn('Failed to retrieve secure data:', error);
+      console.warn("Failed to retrieve secure data:", error);
       return null;
     }
   }
@@ -71,7 +71,7 @@ export class SecureStorage {
   static async clear(): Promise<void> {
     try {
       const keys = await AsyncStorage.getAllKeys();
-      const secureKeys = keys.filter(key => key.startsWith(this.PREFIX));
+      const secureKeys = keys.filter((key) => key.startsWith(this.PREFIX));
       await AsyncStorage.multiRemove(secureKeys);
     } catch (error) {
       throw new Error(`Failed to clear secure data: ${error}`);
@@ -86,7 +86,7 @@ export class SecureStorage {
       const encrypted = CryptoJS.AES.encrypt(data, this.ENCRYPTION_KEY);
       return encrypted.toString();
     } catch (error) {
-      throw new Error('Encryption failed');
+      throw new Error("Encryption failed");
     }
   }
 
@@ -95,16 +95,19 @@ export class SecureStorage {
    */
   private static decrypt(encryptedData: string): string {
     try {
-      const decrypted = CryptoJS.AES.decrypt(encryptedData, this.ENCRYPTION_KEY);
+      const decrypted = CryptoJS.AES.decrypt(
+        encryptedData,
+        this.ENCRYPTION_KEY,
+      );
       const decryptedString = decrypted.toString(CryptoJS.enc.Utf8);
 
       if (!decryptedString) {
-        throw new Error('Decryption resulted in empty string');
+        throw new Error("Decryption resulted in empty string");
       }
 
       return decryptedString;
     } catch (error) {
-      throw new Error('Decryption failed');
+      throw new Error("Decryption failed");
     }
   }
 
@@ -113,11 +116,11 @@ export class SecureStorage {
    */
   static async setUserPreferences(preferences: {
     language?: string;
-    theme?: 'light' | 'dark' | 'system';
+    theme?: "light" | "dark" | "system";
     notifications?: boolean;
     autoBackup?: boolean;
   }): Promise<void> {
-    await this.setItem('user_preferences', preferences);
+    await this.setItem("user_preferences", preferences);
   }
 
   /**
@@ -125,18 +128,20 @@ export class SecureStorage {
    */
   static async getUserPreferences(): Promise<{
     language?: string;
-    theme?: 'light' | 'dark' | 'system';
+    theme?: "light" | "dark" | "system";
     notifications?: boolean;
     autoBackup?: boolean;
   }> {
     const defaultPreferences = {
-      language: 'en',
-      theme: 'system' as const,
+      language: "en",
+      theme: "system" as const,
       notifications: true,
       autoBackup: true,
     };
 
-    const preferences = (await this.getItem('user_preferences')) as Partial<typeof defaultPreferences> | null;
+    const preferences = (await this.getItem("user_preferences")) as Partial<
+      typeof defaultPreferences
+    > | null;
     return { ...defaultPreferences, ...(preferences || {}) };
   }
 
@@ -146,9 +151,9 @@ export class SecureStorage {
   static async setAppSettings(settings: {
     contentVersion?: string;
     lastSync?: number;
-    securityLevel?: 'low' | 'medium' | 'high';
+    securityLevel?: "low" | "medium" | "high";
   }): Promise<void> {
-    await this.setItem('app_settings', settings);
+    await this.setItem("app_settings", settings);
   }
 
   /**
@@ -157,14 +162,16 @@ export class SecureStorage {
   static async getAppSettings(): Promise<{
     contentVersion?: string;
     lastSync?: number;
-    securityLevel?: 'low' | 'medium' | 'high';
+    securityLevel?: "low" | "medium" | "high";
   }> {
     const defaultSettings = {
-      contentVersion: '1.0.0',
-      securityLevel: 'medium' as const,
+      contentVersion: "1.0.0",
+      securityLevel: "medium" as const,
     };
 
-    const settings = (await this.getItem('app_settings')) as Partial<typeof defaultSettings> | null;
+    const settings = (await this.getItem("app_settings")) as Partial<
+      typeof defaultSettings
+    > | null;
     return { ...defaultSettings, ...(settings || {}) };
   }
 
@@ -177,7 +184,7 @@ export class SecureStorage {
     userNotes: Record<string, string>;
     lastAccess: number;
   }): Promise<void> {
-    await this.setItem('user_progress', progress);
+    await this.setItem("user_progress", progress);
   }
 
   /**
@@ -196,7 +203,9 @@ export class SecureStorage {
       lastAccess: Date.now(),
     };
 
-    const progress = (await this.getItem('user_progress')) as Partial<typeof defaultProgress> | null;
+    const progress = (await this.getItem("user_progress")) as Partial<
+      typeof defaultProgress
+    > | null;
     return { ...defaultProgress, ...(progress || {}) };
   }
 
@@ -206,7 +215,7 @@ export class SecureStorage {
   static async exportBackup(): Promise<string> {
     try {
       const keys = await AsyncStorage.getAllKeys();
-      const secureKeys = keys.filter(key => key.startsWith(this.PREFIX));
+      const secureKeys = keys.filter((key) => key.startsWith(this.PREFIX));
       const backup: Record<string, string> = {};
 
       for (const key of secureKeys) {
@@ -217,7 +226,7 @@ export class SecureStorage {
       }
 
       const backupJson = JSON.stringify({
-        version: '1.0',
+        version: "1.0",
         timestamp: Date.now(),
         platform: Platform.OS,
         data: backup,
@@ -238,7 +247,7 @@ export class SecureStorage {
       const backup = JSON.parse(backupJson);
 
       if (!backup.version || !backup.data) {
-        throw new Error('Invalid backup format');
+        throw new Error("Invalid backup format");
       }
 
       // Clear existing data

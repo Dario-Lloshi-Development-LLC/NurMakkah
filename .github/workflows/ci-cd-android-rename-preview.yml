@@ -2,12 +2,14 @@ name: CI/CD - Android Rename Preview
 
 on:
   pull_request:
-    branches: [ main ]
+    branches:
+      - main
     paths:
       - 'android/**'
       - '.github/workflows/**'
   push:
-    branches: [ feature/android-rename ]
+    branches:
+      - feature/android-rename
     paths:
       - 'android/**'
       - '.github/workflows/**'

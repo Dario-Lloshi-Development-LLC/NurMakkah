@@ -2,15 +2,20 @@ name: CI/CD - Android Native Nur Makkah
 
 on:
   push:
-    branches: [ main, develop, 'release/*' ]
+    branches:
+      - main
+      - develop
+      - 'release/*'
     paths:
       - 'android/**'
   pull_request:
-    branches: [ main ]
+    branches:
+      - main
     paths:
       - 'android/**'
   release:
-    types: [ published ]
+    types:
+      - published
     paths:
       - 'android/**'
 
@@ -164,17 +169,10 @@ jobs:
             adb install apk/app-debug.apk
             echo "=== Running Islamic Content Integration Tests ==="
 
-            # Test Arabic content loading
-            adb shell am instrument -w com.nurmakkah.test/androidx.test.runner.AndroidJUnitRunner -e class com.nurmakkah.IntegrationArabicContentTest
-
-            # Test database functionality
-            adb shell am instrument -w com.nurmakkah.test/androidx.test.runner.AndroidJUnitRunner -e class com.nurmakkah.IntegrationDatabaseTest
-
-            # Test accessibility features
-            adb shell am instrument -w com.nurmakkah.test/androidx.test.runner.AndroidJUnitRunner -e class com.nurmakkah.IntegrationAccessibilityTest
-
-            # Test security features
-            adb shell am instrument -w com.nurmakkah.test/androidx.test.runner.AndroidJUnitRunner -e class com.nurmakkah.IntegrationSecurityTest
+            # Run integration instrumented tests
+            for test in IntegrationArabicContentTest IntegrationDatabaseTest IntegrationAccessibilityTest IntegrationSecurityTest; do
+              adb shell am instrument -w com.nurmakkah.test/androidx.test.runner.AndroidJUnitRunner -e class com.nurmakkah.$test
+            done
 
       - name: Upload integration test results
         uses: actions/upload-artifact@v3
@@ -206,7 +204,7 @@ jobs:
           sarif_file: 'trivy-results.sarif'
 
       - name: OWASP Dependency Check
-          working-directory: ./android
+        working-directory: ./android
         run: |
           ./gradlew dependencyCheckAnalyze --info || true
 
@@ -315,7 +313,7 @@ jobs:
           path: ./build-artifacts
 
       - name: Deploy to Google Play Console
-          uses: r0adkll/upload-google-play@v1
+        uses: r0adkll/upload-google-play@v1
         with:
           serviceAccountJsonPlainText: ${{ secrets.GOOGLE_PLAY_SERVICE_ACCOUNT }}
           packageName: com.nurmakkah

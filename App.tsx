@@ -1,37 +1,39 @@
-import React from 'react';
-import { NavigationProvider } from './src/shared/navigation/AppNavigator';
-import AppNavigator from './src/shared/navigation/AppNavigator';
-import { AppSettings } from './src/core/types';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { APP_CONFIG } from './src/core/constants';
+import React from "react";
+import { NavigationProvider } from "./src/shared/navigation/AppNavigator";
+import AppNavigator from "./src/shared/navigation/AppNavigator";
+import { AppSettings } from "./src/core/types";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { APP_CONFIG } from "./src/core/constants";
 
 // Import screens for backward compatibility
 // These will be gradually replaced with enhanced versions
-import SplashScreen from './src/screens/SplashScreen';
-import DetailScreen from './src/screens/DetailScreen';
-import SearchScreen from './src/screens/SearchScreen';
-import MapScreen from './src/screens/MapScreen';
-import AboutScreen from './src/screens/AboutScreen';
+import SplashScreen from "./src/screens/SplashScreen";
+import DetailScreen from "./src/screens/DetailScreen";
+import SearchScreen from "./src/screens/SearchScreen";
+import MapScreen from "./src/screens/MapScreen";
+import AboutScreen from "./src/screens/AboutScreen";
 
 // Enhanced screens
-import CategoriesScreen from './src/screens/CategoriesScreen';
+import CategoriesScreen from "./src/screens/CategoriesScreen";
 
 // Load settings from storage
 const loadSettings = async (): Promise<AppSettings> => {
   try {
-    const storedSettings = await AsyncStorage.getItem(APP_CONFIG.storage.settingsKey);
+    const storedSettings = await AsyncStorage.getItem(
+      APP_CONFIG.storage.settingsKey,
+    );
     if (storedSettings) {
       return JSON.parse(storedSettings);
     }
   } catch (error) {
-    console.warn('Failed to load settings from storage:', error);
+    console.warn("Failed to load settings from storage:", error);
   }
 
   // Default settings
   return {
-    language: 'albanian',
-    theme: 'light',
-    fontSize: 'medium',
+    language: "albanian",
+    theme: "light",
+    fontSize: "medium",
     showArabicText: false,
     showTransliteration: false,
     autoPlayAudio: false,
@@ -43,9 +45,12 @@ const loadSettings = async (): Promise<AppSettings> => {
 // Save settings to storage
 const saveSettings = async (settings: AppSettings): Promise<void> => {
   try {
-    await AsyncStorage.setItem(APP_CONFIG.storage.settingsKey, JSON.stringify(settings));
+    await AsyncStorage.setItem(
+      APP_CONFIG.storage.settingsKey,
+      JSON.stringify(settings),
+    );
   } catch (error) {
-    console.warn('Failed to save settings to storage:', error);
+    console.warn("Failed to save settings to storage:", error);
   }
 };
 
@@ -62,7 +67,7 @@ const AppContent: React.FC = () => {
         const loadedSettings = await loadSettings();
         setSettings(loadedSettings);
       } catch (error) {
-        console.error('Failed to initialize app:', error);
+        console.error("Failed to initialize app:", error);
       } finally {
         setLoading(false);
       }
@@ -79,7 +84,7 @@ const AppContent: React.FC = () => {
       setSettings(updatedSettings);
       await saveSettings(updatedSettings);
     },
-    [settings]
+    [settings],
   );
 
   if (loading || !settings) {

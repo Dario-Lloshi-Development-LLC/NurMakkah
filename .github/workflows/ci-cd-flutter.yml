@@ -2,15 +2,20 @@ name: CI/CD - Flutter Nur Makkah
 
 on:
   push:
-    branches: [ main, develop, 'release/*' ]
+    branches:
+      - main
+      - develop
+      - 'release/*'
     paths:
       - 'hajj_app_flutter/**'
   pull_request:
-    branches: [ main ]
+    branches:
+      - main
     paths:
       - 'hajj_app_flutter/**'
   release:
-    types: [ published ]
+    types:
+      - published
     paths:
       - 'hajj_app_flutter/**'
 
@@ -41,13 +46,15 @@ jobs:
 
       - name: Cache Flutter dependencies
         uses: actions/cache@v3
+        env:
+          CACHE_KEY: ${{ runner.os }}-flutter-${{ hashFiles('hajj_app_flutter/**') }}
         with:
           path: |
             /opt/hostedtoolcache/flutter
             hajj_app_flutter/.packages
             hajj_app_flutter/.flutter-plugins
             hajj_app_flutter/.flutter-dependencies
-          key: ${{ runner.os }}-flutter-${{ hashFiles('hajj_app_flutter/pubspec.yaml', 'hajj_app_flutter/.dart_tool/package_config.json') }}
+          key: ${{ env.CACHE_KEY }}
 
       - name: Install dependencies
         working-directory: ./hajj_app_flutter
@@ -412,6 +419,7 @@ jobs:
           path: |
             hajj_app_flutter/build/size-analysis.txt
             hajj_app_flutter/build/flutter_assets.json
+
 
   # Deployment to Production
   deploy-production:
