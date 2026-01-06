@@ -5,11 +5,11 @@
 [![Platform](https://img.shields.io/badge/Platform-iOS%20%7C%20Android%20%7C%20Web-blue.svg)](https://github.com/Dario-Lloshi-Development-LLC/NurMakkah)
 [![Languages](https://img.shields.io/badge/Languages-Arabic%20%7C%20English%20%7C%20Albanian-green.svg)](https://github.com/Dario-Lloshi-Development-LLC/NurMakkah)
 
-A comprehensive multi-platform mobile application providing verified Islamic guidance for Hajj and Umrah rituals, built with React Native, Android Native, and Flutter implementations.
+A comprehensive multi-platform mobile application providing verified Islamic guidance for Nur Makkah and Umrah rituals, built with React Native, Android Native, and Flutter implementations.
 
 ## 🕌 **Project Overview**
 
-The **Hajj & Umrah Guide** is a meticulously crafted digital companion for Muslims performing the sacred pilgrimages of Hajj and Umrah. This project demonstrates best practices in multi-platform development while maintaining the highest standards of religious accuracy, accessibility, and user experience.
+The **Nur Makkah & Umrah Guide** is a meticulously crafted digital companion for Muslims performing the sacred pilgrimages of Nur Makkah and Umrah. This project demonstrates best practices in multi-platform development while maintaining the highest standards of religious accuracy, accessibility, and user experience.
 
 ### ✨ **Key Features**
 

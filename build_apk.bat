@@ -1,5 +1,5 @@
 @echo off
-echo Building Hajj Rules APK...
+echo Building Nur Makkah APK...
 echo.
 
 REM Check if Flutter is installed

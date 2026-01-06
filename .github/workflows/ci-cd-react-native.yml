@@ -2,11 +2,16 @@ name: CI/CD - React Native Nur Makkah
 
 on:
   push:
-    branches: [ main, develop, 'release/*' ]
+    branches:
+      - main
+      - develop
+      - 'release/*'
   pull_request:
-    branches: [ main ]
+    branches:
+      - main
   release:
-    types: [ published ]
+    types:
+      - published
 
 env:
   NODE_VERSION: '18'
@@ -31,7 +36,7 @@ jobs:
           cache-dependency-path: package-lock.json
 
       - name: Install dependencies
-        run: npm ci
+        run: npm ci --legacy-peer-deps
 
       - name: ESLint - Code Quality Check
         run: npm run lint
@@ -84,7 +89,7 @@ jobs:
         uses: android-actions/setup-android@v3
 
       - name: Install dependencies
-        run: npm ci
+        run: npm ci --legacy-peer-deps
 
       - name: Cache Gradle
         uses: actions/cache@v3
@@ -173,7 +178,7 @@ jobs:
           xcode-version: latest-stable
 
       - name: Install dependencies
-        run: npm ci
+        run: npm ci --legacy-peer-deps
 
       - name: Install CocoaPods
         run: |
@@ -183,8 +188,8 @@ jobs:
       - name: Build iOS App
         run: |
           cd ios
-          xcodebuild -workspace HajjApp.xcworkspace \
-            -scheme HajjApp \
+          xcodebuild -workspace NurMakkah.xcworkspace \
+            -scheme NurMakkah \
             -configuration Debug \
             -destination generic/platform=iOS \
             build
@@ -192,8 +197,8 @@ jobs:
       - name: Run iOS Tests
         run: |
           cd ios
-          xcodebuild -workspace HajjApp.xcworkspace \
-            -scheme HajjApp \
+          xcodebuild -workspace NurMakkah.xcworkspace \
+            -scheme NurMakkah \
             -configuration Debug \
             -destination 'platform=iOS Simulator,name=iPhone 14' \
             test
@@ -202,8 +207,8 @@ jobs:
         if: github.ref == 'refs/heads/main' || github.event_name == 'release'
         run: |
           cd ios
-          xcodebuild -workspace HajjApp.xcworkspace \
-            -scheme HajjApp \
+          xcodebuild -workspace NurMakkah.xcworkspace \
+            -scheme NurMakkah \
             -configuration Release \
             -destination generic/platform=iOS \
             build
@@ -222,7 +227,7 @@ jobs:
           node-version: ${{ env.NODE_VERSION }}
 
       - name: Install dependencies
-        run: npm ci
+        run: npm ci --legacy-peer-deps
 
       - name: Verify Islamic Content Authenticity
         run: |
@@ -321,7 +326,7 @@ jobs:
         uses: r0adkll/upload-google-play@v1
         with:
           serviceAccountJsonPlainText: ${{ secrets.GOOGLE_PLAY_SERVICE_ACCOUNT }}
-          packageName: com.muslim.hajjrules
+          packageName: com.nurmakkah
           releaseFiles: ./build-artifacts/android-release-aab/app-release.aab
           track: production
           status: completed
@@ -335,7 +340,7 @@ jobs:
           groups: testers
           file: ./build-artifacts/android-release-apk/app-release.apk
           releaseNotes: |
-            🕌 Hajj & Umrah Guide v${{ github.event.release.tag_name }}
+            🕌 Nur Makkah & Umrah Guide v${{ github.event.release.tag_name }}
 
             ✅ Verified Islamic content with authentic sources
             ✅ Enhanced Arabic RTL support
@@ -343,7 +348,7 @@ jobs:
             ✅ Security enhancements
             ✅ Performance optimizations
 
-            Full release notes: https://github.com/muslim/hajj-app/releases/tag/${{ github.event.release.tag_name }}
+            Full release notes: https://github.com/Dario-Lloshi-Development-LLC/NurMakkah/releases/tag/${{ github.event.release.tag_name }}
 
       - name: Notify deployment success
         uses: 8398a7/action-slack@v3
@@ -351,7 +356,7 @@ jobs:
           status: ${{ job.status }}
           channel: '#deployments'
           text: |
-            🕌 *Hajj & Umrah Guide* successfully deployed to production!
+            🕌 *Nur Makkah & Umrah Guide* successfully deployed to production!
 
             **Version:** ${{ github.event.release.tag_name }}
             **Platform:** React Native
@@ -361,7 +366,7 @@ jobs:
             ✅ Security scans passed
             ✅ Quality checks completed
 
-            Download: https://play.google.com/store/apps/details?id=com.muslim.hajjrules
+            Download: https://play.google.com/store/apps/details?id=com.nurmakkah
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
 

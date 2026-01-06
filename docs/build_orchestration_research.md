@@ -35,7 +35,7 @@ Specifically designed for Dart and Flutter monorepos, these tools focus on manag
 
 ## Evaluation and Recommendation
 
-Given that the `hajj-app` project contains **both React Native and Flutter applications**, a single tool that natively handles both ecosystems perfectly does not appear to exist without significant custom integration.
+Given that the `nur_makkah-app` project contains **both React Native and Flutter applications**, a single tool that natively handles both ecosystems perfectly does not appear to exist without significant custom integration.
 
 *   **Turborepo/Nx** are strong candidates for managing the overall monorepo and orchestrating the React Native builds. They can also be configured to call Flutter's build commands.
 *   **Melos** is ideal for managing the Flutter specific parts of the project.

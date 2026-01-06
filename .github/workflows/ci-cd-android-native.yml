@@ -2,17 +2,22 @@ name: CI/CD - Android Native Nur Makkah
 
 on:
   push:
-    branches: [ main, develop, 'release/*' ]
+    branches:
+      - main
+      - develop
+      - 'release/*'
     paths:
-      - 'hajj_app/**'
+      - 'android/**'
   pull_request:
-    branches: [ main ]
+    branches:
+      - main
     paths:
-      - 'hajj_app/**'
+      - 'android/**'
   release:
-    types: [ published ]
+    types:
+      - published
     paths:
-      - 'hajj_app/**'
+      - 'android/**'
 
 env:
   JAVA_VERSION: '17'
@@ -40,24 +45,24 @@ jobs:
         uses: actions/cache@v3
         with:
           path: |
-            hajj_app/.gradle/caches
-            hajj_app/.gradle/wrapper
-          key: ${{ runner.os }}-gradle-android-native-${{ hashFiles('hajj_app/**/*.gradle*', 'hajj_app/**/gradle-wrapper.properties') }}
+            android/.gradle/caches
+            android/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-android-native-${{ hashFiles('android/**/*.gradle*', 'android/**/gradle-wrapper.properties') }}
 
       - name: Run ktlint
-        working-directory: ./hajj_app
+        working-directory: ./android
         run: ./gradlew ktlintCheck
 
       - name: Run Lint
-        working-directory: ./hajj_app
+        working-directory: ./android
         run: ./gradlew lintDebug
 
       - name: Unit Tests
-        working-directory: ./hajj_app
+        working-directory: ./android
         run: ./gradlew testDebugUnitTest --continue
 
       - name: Islamic Content Tests
-        working-directory: ./hajj_app
+        working-directory: ./android
         run: ./gradlew testDebugUnitTest --tests "*ValidationTest*"
 
       - name: Upload test results
@@ -66,8 +71,8 @@ jobs:
         with:
           name: android-native-test-results
           path: |
-            hajj_app/app/build/reports/
-            hajj_app/app/build/test-results/
+            android/app/build/reports/
+            android/app/build/test-results/
 
   # Android Build
   android-build:
@@ -89,53 +94,53 @@ jobs:
 
       - name: Decode keystore
         run: |
-          echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 -d > hajj_app/keystore/release.keystore
-          echo "storeFile=keystore/release.keystore" >> hajj_app/keystore.properties
-          echo "storePassword=${{ secrets.KEYSTORE_PASSWORD }}" >> hajj_app/keystore.properties
-          echo "keyAlias=${{ secrets.KEY_ALIAS }}" >> hajj_app/keystore.properties
-          echo "keyPassword=${{ secrets.KEY_PASSWORD }}" >> hajj_app/keystore.properties
+          echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 -d > android/keystore/release.keystore
+          echo "storeFile=keystore/release.keystore" >> android/keystore.properties
+          echo "storePassword=${{ secrets.KEYSTORE_PASSWORD }}" >> android/keystore.properties
+          echo "keyAlias=${{ secrets.KEY_ALIAS }}" >> android/keystore.properties
+          echo "keyPassword=${{ secrets.KEY_PASSWORD }}" >> android/keystore.properties
 
       - name: Cache Gradle
         uses: actions/cache@v3
         with:
           path: |
-            hajj_app/.gradle/caches
-            hajj_app/.gradle/wrapper
-          key: ${{ runner.os }}-gradle-android-${{ hashFiles('hajj_app/**/*.gradle*', 'hajj_app/**/gradle-wrapper.properties') }}
+            android/.gradle/caches
+            android/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-android-${{ hashFiles('android/**/*.gradle*', 'android/**/gradle-wrapper.properties') }}
 
       - name: Build Debug APK
-        working-directory: ./hajj_app
+        working-directory: ./android
         run: ./gradlew assembleDebug --stacktrace
 
       - name: Build Release APK
         if: github.ref == 'refs/heads/main' || github.event_name == 'release'
-        working-directory: ./hajj_app
+        working-directory: ./android
         run: ./gradlew assembleRelease --stacktrace
 
       - name: Build Release AAB
         if: github.ref == 'refs/heads/main' || github.event_name == 'release'
-        working-directory: ./hajj_app
+        working-directory: ./android
         run: ./gradlew bundleRelease --stacktrace
 
       - name: Upload Debug APK
         uses: actions/upload-artifact@v3
         with:
           name: android-native-debug-apk
-          path: hajj_app/app/build/outputs/apk/debug/app-debug.apk
+          path: android/app/build/outputs/apk/debug/app-debug.apk
 
       - name: Upload Release APK
         if: github.ref == 'refs/heads/main' || github.event_name == 'release'
         uses: actions/upload-artifact@v3
         with:
           name: android-native-release-apk
-          path: hajj_app/app/build/outputs/apk/release/app-release.apk
+          path: android/app/build/outputs/apk/release/app-release.apk
 
       - name: Upload Release AAB
         if: github.ref == 'refs/heads/main' || github.event_name == 'release'
         uses: actions/upload-artifact@v3
         with:
           name: android-native-release-aab
-          path: hajj_app/app/build/outputs/bundle/release/app-release.aab
+          path: android/app/build/outputs/bundle/release/app-release.aab
 
   # Integration Tests
   integration-tests:
@@ -164,17 +169,10 @@ jobs:
             adb install apk/app-debug.apk
             echo "=== Running Islamic Content Integration Tests ==="
 
-            # Test Arabic content loading
-            adb shell am instrument -w com.muslim.hajjrules.test/androidx.test.runner.AndroidJUnitRunner -e class com.muslim.hajjrules.IntegrationArabicContentTest
-
-            # Test database functionality
-            adb shell am instrument -w com.muslim.hajjrules.test/androidx.test.runner.AndroidJUnitRunner -e class com.muslim.hajjrules.IntegrationDatabaseTest
-
-            # Test accessibility features
-            adb shell am instrument -w com.muslim.hajjrules.test/androidx.test.runner.AndroidJUnitRunner -e class com.muslim.hajjrules.IntegrationAccessibilityTest
-
-            # Test security features
-            adb shell am instrument -w com.muslim.hajjrules.test/androidx.test.runner.AndroidJUnitRunner -e class com.muslim.hajjrules.IntegrationSecurityTest
+            # Run integration instrumented tests
+            for test in IntegrationArabicContentTest IntegrationDatabaseTest IntegrationAccessibilityTest IntegrationSecurityTest; do
+              adb shell am instrument -w com.nurmakkah.test/androidx.test.runner.AndroidJUnitRunner -e class com.nurmakkah.$test
+            done
 
       - name: Upload integration test results
         uses: actions/upload-artifact@v3
@@ -196,7 +194,7 @@ jobs:
         uses: aquasecurity/trivy-action@master
         with:
           scan-type: 'fs'
-          scan-ref: './hajj_app'
+          scan-ref: './android'
           format: 'sarif'
           output: 'trivy-results.sarif'
 
@@ -206,7 +204,7 @@ jobs:
           sarif_file: 'trivy-results.sarif'
 
       - name: OWASP Dependency Check
-        working-directory: ./hajj_app
+        working-directory: ./android
         run: |
           ./gradlew dependencyCheckAnalyze --info || true
 
@@ -216,11 +214,11 @@ jobs:
 
           # Check for hardcoded secrets
           echo "🔍 Checking for hardcoded secrets..."
-          grep -r "password\\|secret\\|token\\|key" hajj_app/src/main/ --exclude-dir=test || echo "✅ No hardcoded secrets found"
+          grep -r "password\\|secret\\|token\\|key" android/src/main/ --exclude-dir=test || echo "✅ No hardcoded secrets found"
 
           # Check for insecure network configurations
           echo "🔍 Checking network security..."
-          if grep -r "http://" hajj_app/src/main/; then
+          if grep -r "http://" android/src/main/; then
             echo "⚠️  HTTP usage found - should use HTTPS"
             exit 1
           else
@@ -229,7 +227,7 @@ jobs:
 
           # Check for debug code in release
           echo "🔍 Checking for debug code..."
-          if grep -r "Log\\.d\\|System\\.out\\.println" hajj_app/src/main/; then
+          if grep -r "Log\\.d\\|System\\.out\\.println" android/src/main/; then
             echo "⚠️  Debug logging found in release code"
             exit 1
           else
@@ -251,7 +249,7 @@ jobs:
           java-version: ${{ env.JAVA_VERSION }}
 
       - name: Verify Islamic Content Database
-        working-directory: ./hajj_app
+        working-directory: ./android
         run: |
           echo "=== Islamic Content Verification for Android Native ==="
 
@@ -318,7 +316,7 @@ jobs:
         uses: r0adkll/upload-google-play@v1
         with:
           serviceAccountJsonPlainText: ${{ secrets.GOOGLE_PLAY_SERVICE_ACCOUNT }}
-          packageName: com.muslim.hajjrules
+          packageName: com.nurmakkah
           releaseFiles: ./build-artifacts/android-native-release-aab/app-release.aab
           track: production
           status: completed
@@ -331,7 +329,7 @@ jobs:
           groups: testers
           file: ./build-artifacts/android-native-release-apk/app-release.apk
           releaseNotes: |
-            🕌 Hajj & Umrah Guide - Android Native v${{ github.event.release.tag_name }}
+            🕌 Nur Makkah & Umrah Guide - Android Native v${{ github.event.release.tag_name }}
 
             ✅ Native performance optimized
             ✅ Verified Islamic content

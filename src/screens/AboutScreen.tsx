@@ -1,80 +1,202 @@
-import React from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  ScrollView,
-} from 'react-native';
-import DataService from '../services/DataService';
+import React from "react";
+import { View, Text, StyleSheet, ScrollView } from "react-native";
+import DataService from "../services/DataService";
+
+import { useNavigationContext } from "../shared/navigation/AppNavigator";
+import ContentService from "../features/content/services/ContentService";
+import { APP_CONFIG } from "../core/constants";
+import { getLocalizedTextWithFallback, shouldUseRTL } from "../core/utils";
+import Icon from "react-native-vector-icons/MaterialIcons";
 
 const AboutScreen: React.FC = () => {
-  const introduction = DataService.getIntroduction();
-  const hajjObligation = DataService.getHajjObligation();
-  const ihramInfo = DataService.getIhramInfo();
+  const { settings } = useNavigationContext();
+  const isRTL = shouldUseRTL(settings);
+  const [hajjData, setHajjData] = React.useState<any>(null);
+
+  React.useEffect(() => {
+    const loadHajjData = async () => {
+      const data = await ContentService.getHajjData();
+      setHajjData(data);
+    };
+    loadHajjData();
+  }, []);
 
   return (
-    <ScrollView style={styles.container}>
-      <View style={styles.header}>
-        <Text style={styles.headerTitle}>Rreth Aplikacionit</Text>
+    <ScrollView
+      style={[
+        styles.container,
+        { backgroundColor: APP_CONFIG.theme.background },
+      ]}
+    >
+      <View
+        style={[styles.header, { backgroundColor: APP_CONFIG.theme.primary }]}
+      >
+        <Text style={styles.headerTitle}>
+          {getLocalizedTextWithFallback(
+            {
+              albanian: "Rreth Aplikacionit",
+              arabic: "حول التطبيق",
+              english: "About App",
+            },
+            settings,
+          )}
+        </Text>
         <Text style={styles.headerDescription}>
-          Udhëzues i plotë për rregullat e Haxhit
+          {getLocalizedTextWithFallback(
+            {
+              albanian: "Udhëzues i plotë për rregullat e Haxhit",
+              arabic: "دليل كامل لأحكام الحج",
+              english: "Complete guide for Hajj rules",
+            },
+            settings,
+          )}
         </Text>
       </View>
 
-      {introduction && (
-        <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Hyrje</Text>
-          <Text style={styles.sectionText}>{introduction.description}</Text>
-          <Text style={styles.sectionText}>{introduction.qabja}</Text>
-        </View>
-      )}
-
-      {hajjObligation && (
-        <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Detyrimi i Haxhit</Text>
-          <Text style={styles.sectionText}>{hajjObligation.description}</Text>
-          
-          <View style={styles.hadithContainer}>
-            <Text style={styles.hadithTitle}>Hadithi:</Text>
-            <Text style={styles.hadithText}>"{hajjObligation.hadith}"</Text>
+      {hajjData && (
+        <>
+          <View style={styles.section}>
+            <Text
+              style={[
+                styles.sectionTitle,
+                {
+                  color: APP_CONFIG.theme.primary,
+                  textAlign: isRTL ? "right" : "left",
+                },
+              ]}
+            >
+              {getLocalizedTextWithFallback(
+                { albanian: "Hyrje", arabic: "مقدمة", english: "Introduction" },
+                settings,
+              )}
+            </Text>
+            <Text
+              style={[
+                styles.sectionText,
+                { textAlign: isRTL ? "right" : "left" },
+              ]}
+            >
+              {getLocalizedTextWithFallback(
+                hajjData.introduction.description,
+                settings,
+              )}
+            </Text>
           </View>
-          
-          <Text style={styles.sectionText}>{hajjObligation.kushtet}</Text>
-        </View>
-      )}
 
-      {ihramInfo && (
-        <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Ihrami</Text>
-          <Text style={styles.sectionText}>{ihramInfo.description}</Text>
-          <Text style={styles.sectionText}><Text style={styles.bold}>Koha:</Text> {ihramInfo.koha}</Text>
-          
-          <Text style={styles.subsectionTitle}>Llojet e Nijetit:</Text>
-          {ihramInfo.llojet_e_nijetit.map((nija, index) => (
-            <View key={index} style={styles.nijetContainer}>
-              <Text style={styles.nijetType}>{nija.lloji}:</Text>
-              <Text style={styles.nijetText}>{nija.nijeti}</Text>
+          <View style={styles.section}>
+            <Text
+              style={[
+                styles.sectionTitle,
+                {
+                  color: APP_CONFIG.theme.primary,
+                  textAlign: isRTL ? "right" : "left",
+                },
+              ]}
+            >
+              {getLocalizedTextWithFallback(
+                {
+                  albanian: "Detyrimi i Haxhit",
+                  arabic: "وجوب الحج",
+                  english: "Hajj Obligation",
+                },
+                settings,
+              )}
+            </Text>
+            <Text
+              style={[
+                styles.sectionText,
+                { textAlign: isRTL ? "right" : "left" },
+              ]}
+            >
+              {getLocalizedTextWithFallback(
+                hajjData.detyrimi_i_haxhit.description,
+                settings,
+              )}
+            </Text>
+
+            <View
+              style={[
+                styles.hadithContainer,
+                { backgroundColor: `${APP_CONFIG.theme.primary}10` },
+              ]}
+            >
+              <Text
+                style={[
+                  styles.hadithTitle,
+                  {
+                    color: APP_CONFIG.theme.primary,
+                    textAlign: isRTL ? "right" : "left",
+                  },
+                ]}
+              >
+                {getLocalizedTextWithFallback(
+                  {
+                    albanian: "Hadithi:",
+                    arabic: "الحديث:",
+                    english: "Hadith:",
+                  },
+                  settings,
+                )}
+              </Text>
+              <Text
+                style={[
+                  styles.hadithText,
+                  { textAlign: isRTL ? "right" : "left" },
+                ]}
+              >
+                "
+                {getLocalizedTextWithFallback(
+                  hajjData.detyrimi_i_haxhit.hadith,
+                  settings,
+                )}
+                "
+              </Text>
             </View>
-          ))}
-        </View>
+          </View>
+        </>
       )}
 
       <View style={styles.section}>
-        <Text style={styles.sectionTitle}>Aplikacioni</Text>
-        <Text style={styles.sectionText}>
-          Ky aplikacion është krijuar për të ndihmuar muslimanët në mësimin e rregullave 
-          të Haxhit dhe Umres. Përmban informacione të detajuara për të gjitha aspektet 
-          e rëndësishme të këtyre akteve të adhurimit.
+        <Text
+          style={[
+            styles.sectionTitle,
+            {
+              color: APP_CONFIG.theme.primary,
+              textAlign: isRTL ? "right" : "left",
+            },
+          ]}
+        >
+          {getLocalizedTextWithFallback(
+            {
+              albanian: "Aplikacioni",
+              arabic: "التطبيق",
+              english: "The Application",
+            },
+            settings,
+          )}
         </Text>
-        <Text style={styles.sectionText}>
-          Informacionet janë bazuar në Kuran dhe Sunnah, dhe janë organizuar në mënyrë 
-          që të jenë të lehta për t'u kuptuar dhe zbatuar.
+        <Text
+          style={[styles.sectionText, { textAlign: isRTL ? "right" : "left" }]}
+        >
+          {getLocalizedTextWithFallback(
+            {
+              albanian:
+                "Ky aplikacion është krijuar për të ndihmuar muslimanët në mësimin e rregullave të Haxhit dhe Umres.",
+              arabic:
+                "تم إنشاء هذا التطبيق لمساعدة المسلمين في تعلم أحكام الحج والعمرة.",
+              english:
+                "This application was created to help Muslims learn the rules of Hajj and Umrah.",
+            },
+            settings,
+          )}
         </Text>
       </View>
 
       <View style={styles.footer}>
-        <Text style={styles.footerText}>Hajj Rules App v1.0</Text>
-        <Text style={styles.footerText}>© 2025 - Për më shumë informata kontaktoni zhvilluesit</Text>
+        <Text style={styles.footerText}>Nur Makkah v1.0</Text>
+        <Text style={styles.footerText}>
+          © 2026 - Për më shumë informata kontaktoni zhvilluesit
+        </Text>
       </View>
     </ScrollView>
   );
@@ -83,108 +205,77 @@ const AboutScreen: React.FC = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F5F5F5',
   },
-  header: {
-    backgroundColor: '#2E7D32',
-    padding: 20,
-    margin: 16,
-    borderRadius: 12,
-    elevation: 3,
-    shadowColor: '#000',
-    shadowOffset: {width: 0, height: 2},
-    shadowOpacity: 0.1,
-    shadowRadius: 3,
+  footer: {
+    alignItems: "center",
+    padding: 32,
   },
-  headerTitle: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    color: '#FFFFFF',
-    marginBottom: 8,
-  },
-  headerDescription: {
-    fontSize: 14,
-    color: '#E8F5E8',
-    lineHeight: 20,
-  },
-  section: {
-    backgroundColor: '#FFFFFF',
-    borderRadius: 12,
-    padding: 16,
-    margin: 16,
-    marginTop: 8,
-    marginBottom: 8,
-    elevation: 2,
-    shadowColor: '#000',
-    shadowOffset: {width: 0, height: 1},
-    shadowOpacity: 0.1,
-    shadowRadius: 2,
-  },
-  sectionTitle: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    color: '#2E7D32',
-    marginBottom: 12,
-  },
-  sectionText: {
-    fontSize: 14,
-    color: '#333',
-    lineHeight: 20,
-    marginBottom: 8,
-    textAlign: 'justify',
-  },
-  subsectionTitle: {
-    fontSize: 16,
-    fontWeight: '600',
-    color: '#2E7D32',
-    marginTop: 12,
-    marginBottom: 8,
+  footerText: {
+    color: APP_CONFIG.theme.textSecondary,
+    fontSize: 13,
+    marginBottom: 4,
+    textAlign: "center",
   },
   hadithContainer: {
-    backgroundColor: '#E8F5E8',
-    padding: 12,
-    borderRadius: 8,
-    marginVertical: 8,
+    borderRadius: 12,
+    marginVertical: 12,
+    padding: 16,
+  },
+  hadithText: {
+    color: APP_CONFIG.theme.text,
+    fontSize: 14,
+    fontStyle: "italic",
+    lineHeight: 20,
   },
   hadithTitle: {
     fontSize: 14,
-    fontWeight: 'bold',
-    color: '#2E7D32',
-    marginBottom: 4,
+    fontWeight: "700",
+    marginBottom: 6,
   },
-  hadithText: {
-    fontSize: 14,
-    color: '#333',
-    fontStyle: 'italic',
-    lineHeight: 18,
+  header: {
+    borderRadius: 16,
+    elevation: 4,
+    margin: 16,
+    padding: 24,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.15,
+    shadowRadius: 6,
   },
-  nijetContainer: {
+  headerDescription: {
+    color: "rgba(255, 255, 255, 0.9)",
+    fontSize: 15,
+    lineHeight: 22,
+  },
+  headerTitle: {
+    color: "#FFFFFF",
+    fontSize: 26,
+    fontWeight: "800",
     marginBottom: 8,
   },
-  nijetType: {
-    fontSize: 14,
-    fontWeight: '600',
-    color: '#2E7D32',
-  },
-  nijetText: {
-    fontSize: 14,
-    color: '#333',
-    marginLeft: 8,
-    fontStyle: 'italic',
-  },
-  bold: {
-    fontWeight: 'bold',
-    color: '#2E7D32',
-  },
-  footer: {
+  section: {
+    backgroundColor: APP_CONFIG.theme.surface,
+    borderRadius: 16,
+    elevation: 2,
+    margin: 16,
+    marginBottom: 16,
+    marginTop: 0,
     padding: 20,
-    alignItems: 'center',
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
   },
-  footerText: {
-    fontSize: 12,
-    color: '#666',
-    textAlign: 'center',
-    marginBottom: 4,
+  sectionText: {
+    color: APP_CONFIG.theme.text,
+    fontSize: 15,
+    lineHeight: 22,
+    marginBottom: 8,
+  },
+  sectionTitle: {
+    fontSize: 18,
+    fontWeight: "700",
+    marginBottom: 12,
   },
 });
 

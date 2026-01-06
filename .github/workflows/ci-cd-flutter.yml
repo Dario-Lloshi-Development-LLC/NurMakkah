@@ -2,15 +2,20 @@ name: CI/CD - Flutter Nur Makkah
 
 on:
   push:
-    branches: [ main, develop, 'release/*' ]
+    branches:
+      - main
+      - develop
+      - 'release/*'
     paths:
       - 'hajj_app_flutter/**'
   pull_request:
-    branches: [ main ]
+    branches:
+      - main
     paths:
       - 'hajj_app_flutter/**'
   release:
-    types: [ published ]
+    types:
+      - published
     paths:
       - 'hajj_app_flutter/**'
 
@@ -41,13 +46,15 @@ jobs:
 
       - name: Cache Flutter dependencies
         uses: actions/cache@v3
+        env:
+          CACHE_KEY: ${{ runner.os }}-flutter-${{ hashFiles('hajj_app_flutter/**') }}
         with:
           path: |
             /opt/hostedtoolcache/flutter
             hajj_app_flutter/.packages
             hajj_app_flutter/.flutter-plugins
             hajj_app_flutter/.flutter-dependencies
-          key: ${{ runner.os }}-flutter-${{ hashFiles('hajj_app_flutter/pubspec.yaml', 'hajj_app_flutter/.dart_tool/package_config.json') }}
+          key: ${{ env.CACHE_KEY }}
 
       - name: Install dependencies
         working-directory: ./hajj_app_flutter
@@ -290,17 +297,17 @@ jobs:
             echo "=== Running Flutter Integration Tests ==="
 
             # Test Islamic content loading
-            adb shell am start -n com.muslim.hajjrules.flutter/.MainActivity
+            adb shell am start -n com.nurmakkah.flutter/.MainActivity
             sleep 5
 
             # Test basic functionality
-            adb shell am instrument -w com.muslim.hajjrules.flutter.test/com.example.hajj_app_flutter.IntegrationTest
+            adb shell am instrument -w com.nurmakkah.flutter.test/com.example.hajj_app_flutter.IntegrationTest
 
             # Test Arabic content display
-            adb shell am instrument -w com.muslim.hajjrules.flutter.test/com.example.hajj_app_flutter.ArabicContentTest
+            adb shell am instrument -w com.nurmakkah.flutter.test/com.example.hajj_app_flutter.ArabicContentTest
 
             # Test accessibility features
-            adb shell am instrument -w com.muslim.hajjrules.flutter.test/com.example.hajj_app_flutter.AccessibilityTest
+            adb shell am instrument -w com.nurmakkah.flutter.test/com.example.hajj_app_flutter.AccessibilityTest
 
       - name: Upload integration test results
         uses: actions/upload-artifact@v3
@@ -413,6 +420,7 @@ jobs:
             hajj_app_flutter/build/size-analysis.txt
             hajj_app_flutter/build/flutter_assets.json
 
+
   # Deployment to Production
   deploy-production:
     runs-on: ubuntu-latest
@@ -429,7 +437,7 @@ jobs:
         uses: r0adkll/upload-google-play@v1
         with:
           serviceAccountJsonPlainText: ${{ secrets.GOOGLE_PLAY_SERVICE_ACCOUNT }}
-          packageName: com.muslim.hajjrules.flutter
+          packageName: com.nurmakkah.flutter
           releaseFiles: ./build-artifacts/flutter-release-aab/app-release.aab
           track: production
           status: completed
@@ -443,7 +451,7 @@ jobs:
           groups: testers
           file: ./build-artifacts/flutter-release-apk/app-release.apk
           releaseNotes: |
-            🕌 Hajj & Umrah Guide - Flutter v${{ github.event.release.tag_name }}
+            🕌 Nur Makkah & Umrah Guide - Flutter v${{ github.event.release.tag_name }}
 
             ✅ Cross-platform performance optimized
             ✅ Verified Islamic content with authentic sources
@@ -459,7 +467,7 @@ jobs:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_KEY }}'
           channelId: live
-          projectId: hajj-app-preview
+          projectId: nur-makkah-app-preview
           entry: "build/web/index.html"
 
       - name: Generate Deployment Report

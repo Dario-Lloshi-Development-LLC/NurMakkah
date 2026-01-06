@@ -1,4 +1,5 @@
 apply plugin: "com.android.application"
+apply plugin: "org.jetbrains.kotlin.android"
 
 import com.android.build.OutputFile
 
@@ -7,6 +8,7 @@ import com.android.build.OutputFile
  * and bundleReleaseJsAndAssets).
  * These basically call `react-native bundle` with the correct arguments during the Android build
  * cycle. By default, bundleDebugJsAndAssets is skipped, as in debug/dev mode we prefer to load the
+ * bundle directly from the development server. By default, bundleDebugJsAndAssets is skipped, as in debug/dev mode we prefer to load the
  * bundle directly from the development server. Below you can see all the possible configurations
  * and their defaults. If you decide to add a configuration block, make sure to add it before the
  * `apply from: "../../node_modules/react-native/react.gradle"` line.
@@ -92,21 +94,14 @@ def enableSeparateBuildPerCPUArchitecture = false
  */
 def enableProguardInReleaseBuilds = false
 
-/**
- * The preferred build and target SDK versions.
- */
-def compileSdkVersion = 34
-def targetSdkVersion = 34
-def minSdkVersion = 21
-
 android {
     ndkVersion "25.1.8937393"
-    compileSdkVersion rootProject.ext.compileSdkVersion
+    compileSdkVersion 34
     namespace "com.nurmakkah"
     defaultConfig {
         applicationId "com.nurmakkah"
-        minSdkVersion rootProject.ext.minSdkVersion
-        targetSdkVersion rootProject.ext.targetSdkVersion
+        minSdkVersion 21
+        targetSdkVersion 34
         versionCode 1
         versionName "1.0"
     }

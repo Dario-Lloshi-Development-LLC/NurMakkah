@@ -1,24 +1,24 @@
 # Google Play Store Release Guide
-## Hajj & Umrah Guide - Complete Ritual Companion
+## Nur Makkah & Umrah Guide - Complete Ritual Companion
 
 ### App Information
-- **App Name**: Hajj & Umrah Guide - Complete Ritual Companion
+- **App Name**: Nur Makkah & Umrah Guide - Complete Ritual Companion
 - **Package Name**: `com.muslim.hajjrules` (Android Native)
 - **Bundle ID**: `com.muslim.hajjrules.flutter` (Flutter)
 - **Application ID**: `com.muslim.hajjrules` (React Native)
 - **Category**: Education
 - **Content Rating**: Everyone
-- **Target Audience**: Muslims performing Hajj and Umrah
+- **Target Audience**: Muslims performing Nur Makkah and Umrah
 
 ### Store Listing
 
 #### Short Description (80 characters max)
-Complete Hajj & Umrah guide with verified Islamic content in Arabic, English & Albanian
+Complete Nur Makkah & Umrah guide with verified Islamic content in Arabic, English & Albanian
 
 #### Full Description
-**Hajj & Umrah Guide - Complete Ritual Companion**
+**Nur Makkah & Umrah Guide - Complete Ritual Companion**
 
-Experience the most comprehensive digital companion for Hajj and Umrah with verified Islamic content. Our app provides authentic guidance for performing the sacred Islamic rituals with multilingual support and accessibility features.
+Experience the most comprehensive digital companion for Nur Makkah and Umrah with verified Islamic content. Our app provides authentic guidance for performing the sacred Islamic rituals with multilingual support and accessibility features.
 
 **✅ VERIFIED ISLAMIC CONTENT**
 • All content verified against authentic sources (Quran, Sahih Bukhari, Muslim, Abu Dawud)
@@ -33,7 +33,7 @@ Experience the most comprehensive digital companion for Hajj and Umrah with veri
 • Easy language switching
 
 **📱 KEY FEATURES**
-• Step-by-step Hajj and Umrah guidance
+• Step-by-step Nur Makkah and Umrah guidance
 • Interactive Qibla finder with accurate compass
 • Detailed explanations for all rituals
 • Progress tracking for completed steps
@@ -65,10 +65,10 @@ Experience the most comprehensive digital companion for Hajj and Umrah with veri
 • Halq/Taqsir (hair cutting) instructions
 
 **PERFECT FOR:**
-• First-time Hajj pilgrims
+• First-time Nur Makkah pilgrims
 • Those preparing for Umrah
 • Islamic scholars and students
-• Anyone wanting to learn about Hajj rituals
+• Anyone wanting to learn about Nur Makkah rituals
 • Muslim families educating children
 
 **LANGUAGES SUPPORTED:**
@@ -76,10 +76,10 @@ Experience the most comprehensive digital companion for Hajj and Umrah with veri
 - English - Complete translation
 - Albanian (Shqip) - Native language
 
-Download now and have a reliable, scholarly-verified Hajj and Umrah companion in your pocket!
+Download now and have a reliable, scholarly-verified Nur Makkah and Umrah companion in your pocket!
 
 ### Keywords
-Hajj, Umrah, Islamic, Muslim, pilgrimage, Mecca, Medina, Quran, prayer, salah, duaa, Arabic, guide, rituals, ihram, tawaf, sa'i, arafat, mina, jamarat, halq, taqsir, compass, qibla, Ramadan, Islamic education,清真寺, 麦加, 伊斯蘭教
+Nur Makkah, Umrah, Islamic, Muslim, pilgrimage, Mecca, Medina, Quran, prayer, salah, duaa, Arabic, guide, rituals, ihram, tawaf, sa'i, arafat, mina, jamarat, halq, taqsir, compass, qibla, Ramadan, Islamic education,清真寺, 麦加, 伊斯蘭教
 
 ### Content Rating Details
 **Content Rating:** Everyone
@@ -102,7 +102,7 @@ Hajj, Umrah, Islamic, Muslim, pilgrimage, Mecca, Medina, Quran, prayer, salah, d
 #### Screenshots (8-10 required)
 **Primary Screenshots:**
 1. **Home Screen** - Show main interface with categories
-2. **Hajj Steps** - Display step-by-step guidance
+2. **Nur Makkah Steps** - Display step-by-step guidance
 3. **Qibla Finder** - Show compass and Qibla direction
 4. **Arabic Content** - Display RTL Arabic text properly
 5. **Multilingual** - Show language switching
@@ -120,14 +120,14 @@ Hajj, Umrah, Islamic, Muslim, pilgrimage, Mecca, Medina, Quran, prayer, salah, d
 
 #### Feature Graphic (1024x500px)
 - **Islamic theme**: Green and gold color scheme
-- **Clear branding**: "Hajj & Umrah Guide" prominent
+- **Clear branding**: "Nur Makkah & Umrah Guide" prominent
 - **Multi-language indicators**: Show Arabic/English/Albanian
 - **Key features**: Qibla finder, verified content icons
 - **Professional design**: Clean, modern Islamic aesthetic
 
 ### Privacy Policy URL
 ```
-https://hajj-app.com/privacy-policy
+https://nur_makkah-app.com/privacy-policy
 ```
 
 **Privacy Policy Highlights:**
@@ -139,7 +139,7 @@ https://hajj-app.com/privacy-policy
 - Contact information for support
 
 ### Target Audience
-- **Primary**: Muslims aged 18-65 performing Hajj/Umrah
+- **Primary**: Muslims aged 18-65 performing Nur Makkah/Umrah
 - **Secondary**: Islamic scholars, students, and educators
 - **Tertiary**: Non-Muslims learning about Islamic practices
 - **Geographic**: Global, with focus on regions with significant Muslim populations
@@ -168,10 +168,10 @@ https://hajj-app.com/privacy-policy
 
 ### Marketing Assets
 #### Promotional Text (80 characters)
-Verified Hajj & Umrah guide with Arabic content. Islamic rituals explained step-by-step.
+Verified Nur Makkah & Umrah guide with Arabic content. Islamic rituals explained step-by-step.
 
 #### Promotional Text (4000 characters)
-The ultimate companion for Hajj and Umrah pilgrims! This comprehensive guide provides verified Islamic content with authentic sources, step-by-step ritual instructions, and multilingual support. Features include accurate Qibla finder, offline access, and full accessibility support. Perfect for first-time pilgrims and those wanting to deepen their understanding of Islamic practices.
+The ultimate companion for Nur Makkah and Umrah pilgrims! This comprehensive guide provides verified Islamic content with authentic sources, step-by-step ritual instructions, and multilingual support. Features include accurate Qibla finder, offline access, and full accessibility support. Perfect for first-time pilgrims and those wanting to deepen their understanding of Islamic practices.
 
 #### What's New
 - Enhanced Arabic RTL support
@@ -183,7 +183,7 @@ The ultimate companion for Hajj and Umrah pilgrims! This comprehensive guide pro
 ### Release Notes Template
 ```
 Version 1.0.0 - Initial Release
-✅ Complete Hajj and Umrah step-by-step guidance
+✅ Complete Nur Makkah and Umrah step-by-step guidance
 ✅ Verified Islamic content with authentic sources
 ✅ Multilingual support (Arabic, English, Albanian)
 ✅ Accurate Qibla finder and compass
@@ -208,10 +208,10 @@ Version 1.0.0 - Initial Release
 - **Accessibility**: High ratings from accessibility users
 
 ### Support Information
-- **Email**: support@hajj-app.com
-- **Website**: https://hajj-app.com
-- **Documentation**: https://docs.hajj-app.com
-- **Community**: https://community.hajj-app.com
+- **Email**: support@nur_makkah-app.com
+- **Website**: https://nur_makkah-app.com
+- **Documentation**: https://docs.nur_makkah-app.com
+- **Community**: https://community.nur_makkah-app.com
 
 ### Technical Specifications
 - **Minimum OS**: Android 5.0 (API 21)

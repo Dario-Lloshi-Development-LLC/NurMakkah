@@ -1,8 +1,8 @@
-# Recommended Build Framework for Hajj-App (React Native & Flutter Monorepo)
+# Recommended Build Framework for Nur Makkah-App (React Native & Flutter Monorepo)
 
 ## Executive Summary
 
-After evaluating various build system alternatives to Gradle for the `hajj-app` project, which comprises both React Native and Flutter applications within a monorepo, the recommended approach is a **Hybrid Build Orchestration Strategy**. This strategy leverages specialized tools for each framework while providing a unified management layer, offering the best balance of efficiency, maintainability, and reduced complexity compared to a full build system replacement like Bazel.
+After evaluating various build system alternatives to Gradle for the `nur_makkah-app` project, which comprises both React Native and Flutter applications within a monorepo, the recommended approach is a **Hybrid Build Orchestration Strategy**. This strategy leverages specialized tools for each framework while providing a unified management layer, offering the best balance of efficiency, maintainability, and reduced complexity compared to a full build system replacement like Bazel.
 
 ## Rationale for the Hybrid Approach
 
@@ -41,7 +41,7 @@ Instead, a build orchestration approach allows for a unified interface to manage
 
 ## Implementation Strategy
 
-1.  **Initialize Monorepo with Turborepo (or Nx)**: Set up the root of the `hajj-app` repository as a monorepo managed by Turborepo. This will involve creating a `turbo.json` (for Turborepo) or `workspace.json` (for Nx) configuration file.
+1.  **Initialize Monorepo with Turborepo (or Nx)**: Set up the root of the `nur_makkah-app` repository as a monorepo managed by Turborepo. This will involve creating a `turbo.json` (for Turborepo) or `workspace.json` (for Nx) configuration file.
 
 2.  **Integrate React Native**: Configure Turborepo to manage the React Native application. This will involve defining tasks for installing dependencies, running development servers, and building Android/iOS artifacts by invoking the React Native CLI and underlying Gradle/Xcode commands.
 
@@ -61,4 +61,4 @@ Instead, a build orchestration approach allows for a unified interface to manage
 
 ## Conclusion
 
-The Hybrid Build Orchestration Strategy, utilizing **Turborepo (or Nx) as the monorepo orchestrator and Melos for Flutter-specific management**, is the most optimal and pragmatic solution for the `hajj-app` project. This approach balances performance benefits with ease of integration and maintainability, providing a robust and efficient build system for your cross-platform mobile applications.
+The Hybrid Build Orchestration Strategy, utilizing **Turborepo (or Nx) as the monorepo orchestrator and Melos for Flutter-specific management**, is the most optimal and pragmatic solution for the `nur_makkah-app` project. This approach balances performance benefits with ease of integration and maintainability, providing a robust and efficient build system for your cross-platform mobile applications.

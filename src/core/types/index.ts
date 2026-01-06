@@ -26,7 +26,7 @@ export interface MultilingualDescription {
   quranic_reference?: string;
 }
 
-// Enhanced Hajj-related interfaces with multilingual support
+// Enhanced Nur Makkah-related interfaces with multilingual support
 export interface PillarOfIslam {
   id: number;
   name: MultilingualTitle;
@@ -185,9 +185,9 @@ export interface Rule {
 
 // App state and settings
 export interface AppSettings {
-  language: 'albanian' | 'arabic' | 'english';
-  theme: 'light' | 'dark';
-  fontSize: 'small' | 'medium' | 'large';
+  language: "albanian" | "arabic" | "english";
+  theme: "light" | "dark";
+  fontSize: "small" | "medium" | "large";
   showArabicText: boolean;
   showTransliteration: boolean;
   autoPlayAudio: boolean;
@@ -201,7 +201,7 @@ export interface RootStackParamList {
   Main: undefined;
   Detail: {
     item: Rule | Category;
-    type: 'rule' | 'category';
+    type: "rule" | "category";
   };
   Search: undefined;
   Settings: undefined;
@@ -225,7 +225,7 @@ export interface MainTabParamList {
 export interface ContentCardProps {
   item: Rule | Category;
   onPress: (item: Rule | Category) => void;
-  language?: AppSettings['language'];
+  language?: AppSettings["language"];
   showArabic?: boolean;
   showTransliteration?: boolean;
 }
@@ -234,7 +234,7 @@ export interface SearchResultProps {
   query: string;
   results: Rule[];
   onResultPress: (rule: Rule) => void;
-  language?: AppSettings['language'];
+  language?: AppSettings["language"];
 }
 
 // API and Service types
@@ -267,19 +267,12 @@ export interface AnalyticsEvent {
 }
 
 export interface UserInteraction {
-  type: 'view' | 'search' | 'share' | 'favorite';
+  type: "view" | "search" | "share" | "favorite";
   itemId: string;
-  itemType: 'rule' | 'category';
+  itemType: "rule" | "category";
   timestamp: Date;
   duration?: number;
 }
 
-// Export all types for convenience
-export type {
-  MultilingualString,
-  MultilingualTitle,
-  MultilingualContent,
-  MultilingualDescription,
-  RootStackParamList,
-  MainTabParamList,
-};
+// Note: individual interfaces are exported above. Avoid re-exporting
+// the same names as types to prevent duplicate-export conflicts.

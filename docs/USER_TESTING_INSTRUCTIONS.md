@@ -6,12 +6,12 @@ This document provides instructions for users to test the Nur Makkah, focusing o
 
 *   **Android Studio:** Ensure you have Android Studio installed on your machine.
 *   **Git:** Ensure Git is installed and configured.
-*   **Cloned Repository:** You should have the `hajj-app` repository cloned to your local machine.
+*   **Cloned Repository:** You should have the `nur_makkah-app` repository cloned to your local machine.
 
 ## Steps to Test
 
 1.  **Pull Latest Changes:**
-    Open your terminal or Git Bash, navigate to the root directory of your `hajj-app` project, and pull the latest changes from the GitHub repository:
+    Open your terminal or Git Bash, navigate to the root directory of your `nur_makkah-app` project, and pull the latest changes from the GitHub repository:
     ```bash
     git pull origin main
     ```
@@ -19,8 +19,8 @@ This document provides instructions for users to test the Nur Makkah, focusing o
 2.  **Open Project in Android Studio:**
     *   Close any open projects in Android Studio (File > Close Project).
     *   From the Android Studio welcome screen, select **"Open an existing Android Studio project"** or **"Open"**.
-    *   Navigate to the **root directory of the `hajj-app` folder** (the one containing `build.gradle`, `settings.gradle`, `hajj_app`, `docs`, etc.).
-    *   Select the `hajj-app` folder and click **"Open"**.
+    *   Navigate to the **root directory of the `nur_makkah-app` folder** (the one containing `build.gradle`, `settings.gradle`, `nur_makkah`, `docs`, etc.).
+    *   Select the `nur_makkah-app` folder and click **"Open"**.
 
 3.  **Gradle Sync:**
     Android Studio should automatically start a Gradle sync. Wait for it to complete. If it doesn't start automatically, look for the "Sync Project with Gradle Files" button (usually an elephant with a downward arrow or a refresh icon) in the toolbar and click it.

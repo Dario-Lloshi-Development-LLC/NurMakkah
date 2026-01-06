@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { Platform, AccessibilityInfo, I18nManager } from 'react-native';
+import { useState, useEffect } from "react";
+import { Platform, AccessibilityInfo, I18nManager } from "react-native";
 
 interface AccessibilitySettings {
   reduceMotion: boolean;
@@ -28,40 +28,36 @@ export const useAccessibility = () => {
     checkAccessibilitySettings();
 
     const listeners = [
-      AccessibilityInfo.addEventListener(
-        'reduceMotionChanged',
-        (enabled) => updateSetting('reduceMotion', enabled)
+      (AccessibilityInfo as any).addEventListener(
+        "reduceMotionChanged",
+        (enabled: boolean) => updateSetting("reduceMotion", enabled),
       ),
-      AccessibilityInfo.addEventListener(
-        'screenReaderChanged',
-        (enabled) => updateSetting('screenReaderEnabled', enabled)
+      (AccessibilityInfo as any).addEventListener(
+        "screenReaderChanged",
+        (enabled: boolean) => updateSetting("screenReaderEnabled", enabled),
       ),
-      AccessibilityInfo.addEventListener(
-        'highContrastChanged',
-        (enabled) => updateSetting('highContrastMode', enabled)
+      (AccessibilityInfo as any).addEventListener(
+        "highContrastChanged",
+        (enabled: boolean) => updateSetting("highContrastMode", enabled),
       ),
     ];
 
     return () => {
-      listeners.forEach(listener => listener.remove());
+      listeners.forEach((listener) => listener.remove());
     };
   }, []);
 
   const checkAccessibilitySettings = async () => {
     try {
-      const [
-        reduceMotion,
-        screenReader,
-        highContrast,
-        fontSizeScale,
-      ] = await Promise.all([
-        AccessibilityInfo.isReduceMotionEnabled(),
-        AccessibilityInfo.isScreenReaderEnabled(),
-        AccessibilityInfo.isHighContrastEnabled(),
-        AccessibilityInfo.preferredFontScale(),
-      ]);
+      const [reduceMotion, screenReader, highContrast, fontSizeScale] =
+        await Promise.all([
+          (AccessibilityInfo as any).isReduceMotionEnabled(),
+          (AccessibilityInfo as any).isScreenReaderEnabled(),
+          (AccessibilityInfo as any).isHighContrastEnabled(),
+          (AccessibilityInfo as any).preferredFontScale(),
+        ]);
 
-      setSettings(prev => ({
+      setSettings((prev) => ({
         ...prev,
         reduceMotion,
         screenReaderEnabled: screenReader,
@@ -70,12 +66,15 @@ export const useAccessibility = () => {
         largeTextSize: fontSizeScale > 1.0,
       }));
     } catch (error) {
-      console.warn('Failed to check accessibility settings:', error);
+      console.warn("Failed to check accessibility settings:", error);
     }
   };
 
-  const updateSetting = (key: keyof AccessibilitySettings, value: boolean | number) => {
-    setSettings(prev => ({
+  const updateSetting = (
+    key: keyof AccessibilitySettings,
+    value: boolean | number,
+  ) => {
+    setSettings((prev) => ({
       ...prev,
       [key]: value,
     }));
@@ -84,7 +83,7 @@ export const useAccessibility = () => {
   const toggleRTL = () => {
     const newRTLState = !settings.rtlLayout;
     I18nManager.forceRTL(newRTLState);
-    updateSetting('rtlLayout', newRTLState);
+    updateSetting("rtlLayout", newRTLState);
   };
 
   const announceForAccessibility = (message: string) => {
@@ -99,16 +98,16 @@ export const useAccessibility = () => {
       animationDuration: settings.reduceMotion ? 0 : undefined,
 
       // High contrast colors
-      colorScheme: settings.highContrastMode ? 'highContrast' : 'default',
+      colorScheme: settings.highContrastMode ? "highContrast" : "default",
 
       // Font size scaling
       fontSizeMultiplier: settings.fontSizeScale,
 
       // Text direction
-      textAlign: settings.rtlLayout ? 'right' : 'left',
+      textAlign: settings.rtlLayout ? "right" : "left",
 
       // RTL layout
-      flexDirection: settings.rtlLayout ? 'row-reverse' : 'row',
+      flexDirection: settings.rtlLayout ? "row-reverse" : "row",
     };
   };
 
@@ -134,9 +133,9 @@ export const useAccessibility = () => {
     if (props.role) {
       accessibilityProps.accessibilityRole = props.role;
     } else if (props.isButton) {
-      accessibilityProps.accessibilityRole = 'button';
+      accessibilityProps.accessibilityRole = "button";
     } else if (props.isHeader) {
-      accessibilityProps.accessibilityRole = 'header';
+      accessibilityProps.accessibilityRole = "header";
     }
 
     return accessibilityProps;
@@ -176,33 +175,39 @@ export const useRTL = () => {
     return isRTL() ? rtlStyle || ltrStyle : ltrStyle;
   };
 
-  const getFlexDirection = (defaultDirection: 'row' | 'column' = 'row') => {
-    if (defaultDirection === 'row') {
-      return isRTL() ? 'row-reverse' : 'row';
+  const getFlexDirection = (defaultDirection: "row" | "column" = "row") => {
+    if (defaultDirection === "row") {
+      return isRTL() ? "row-reverse" : "row";
     }
     return defaultDirection;
   };
 
-  const getTextAlign = (defaultAlign: 'left' | 'right' | 'center' = 'left') => {
-    if (defaultAlign === 'left') {
-      return isRTL() ? 'right' : 'left';
+  const getTextAlign = (defaultAlign: "left" | "right" | "center" = "left") => {
+    if (defaultAlign === "left") {
+      return isRTL() ? "right" : "left";
     }
-    if (defaultAlign === 'right') {
-      return isRTL() ? 'left' : 'right';
+    if (defaultAlign === "right") {
+      return isRTL() ? "left" : "right";
     }
     return defaultAlign;
   };
 
   const getMarginDirection = (margin: number) => {
-    return isRTL() ? { marginLeft: margin, marginRight: 0 } : { marginLeft: 0, marginRight: margin };
+    return isRTL()
+      ? { marginLeft: margin, marginRight: 0 }
+      : { marginLeft: 0, marginRight: margin };
   };
 
   const getPaddingDirection = (padding: number) => {
-    return isRTL() ? { paddingLeft: padding, paddingRight: 0 } : { paddingLeft: 0, paddingRight: padding };
+    return isRTL()
+      ? { paddingLeft: padding, paddingRight: 0 }
+      : { paddingLeft: 0, paddingRight: padding };
   };
 
   const getPositionDirection = (position: number) => {
-    return isRTL() ? { left: 0, right: position } : { left: position, right: 0 };
+    return isRTL()
+      ? { left: 0, right: position }
+      : { left: position, right: 0 };
   };
 
   return {
@@ -233,8 +238,8 @@ export const useArabicText = () => {
 
   const getArabicFontFamily = () => {
     return Platform.select({
-      ios: 'NotoSansArabic-Regular',
-      android: 'Noto Sans Arabic',
+      ios: "NotoSansArabic-Regular",
+      android: "Noto Sans Arabic",
     });
   };
 
@@ -244,19 +249,19 @@ export const useArabicText = () => {
     return {
       isRTL: hasArabic || isRTL(),
       fontFamily: hasArabic ? getArabicFontFamily() : undefined,
-      textAlign: hasArabic ? 'right' : 'left',
-      writingDirection: hasArabic ? 'rtl' : 'ltr',
+      textAlign: hasArabic ? "right" : "left",
+      writingDirection: hasArabic ? "rtl" : "ltr",
     };
   };
 
   const formatArabicNumbers = (text: string): string => {
-    const arabicNumbers = ['٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩'];
+    const arabicNumbers = ["٠", "١", "٢", "٣", "٤", "٥", "٦", "٧", "٨", "٩"];
     return text.replace(/[0-9]/g, (digit) => arabicNumbers[parseInt(digit)]);
   };
 
   const removeDiacritics = (text: string): string => {
     const diacriticsRegex = /[\u064B-\u0652]/g;
-    return text.replace(diacriticsRegex, '');
+    return text.replace(diacriticsRegex, "");
   };
 
   return {
@@ -275,7 +280,7 @@ export const useArabicText = () => {
 export const useScreenReader = () => {
   const { isScreenReaderActive, announceForAccessibility } = useAccessibility();
 
-  const announce = (message: string, delay: number = 0) => {
+  const announce = (message: string, delay = 0) => {
     if (isScreenReaderActive()) {
       if (delay > 0) {
         setTimeout(() => {
@@ -300,7 +305,7 @@ export const useScreenReader = () => {
   };
 
   const announceLoading = () => {
-    announce('Loading content');
+    announce("Loading content");
   };
 
   const announceCompletion = (task: string) => {

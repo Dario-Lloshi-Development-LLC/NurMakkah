@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Comprehensive Deployment Script for Hajj & Umrah Guide
+# Comprehensive Deployment Script for Nur Makkah & Umrah Guide
 # Deploys all three platforms to production with proper verification
 
 set -e  # Exit on any error
@@ -78,7 +78,7 @@ verify_islamic_content() {
     info "Verifying Islamic content integrity..."
 
     # Check if Islamic content files exist
-    if [[ ! -f "$PROJECT_ROOT/src/assets/data/hajj_rules.json" ]]; then
+    if [[ ! -f "$PROJECT_ROOT/src/assets/data/nur_makkah_rules.json" ]]; then
         error "Islamic content file not found"
         return 1
     fi
@@ -87,7 +87,7 @@ verify_islamic_content() {
     if ! python3 -c "
 import json
 try:
-    with open('$PROJECT_ROOT/src/assets/data/hajj_rules.json', 'r') as f:
+    with open('$PROJECT_ROOT/src/assets/data/nur_makkah_rules.json', 'r') as f:
         data = json.load(f)
     print('✅ JSON structure is valid')
     print(f'✅ Found {len(data)} content items')
@@ -105,7 +105,7 @@ except Exception as e:
     # Check for Arabic text integrity
     local arabic_items=$(python3 -c "
 import json
-with open('$PROJECT_ROOT/src/assets/data/hajj_rules.json', 'r') as f:
+with open('$PROJECT_ROOT/src/assets/data/nur_makkah_rules.json', 'r') as f:
     data = json.load(f)
     count = 0
     for item in data:
@@ -156,7 +156,7 @@ build_react_native() {
 build_android_native() {
     info "Building Android Native application..."
 
-    cd "$PROJECT_ROOT/hajj_app"
+    cd "$PROJECT_ROOT/nur_makkah"
 
     # Clean previous builds
     ./gradlew clean
@@ -282,7 +282,7 @@ generate_report() {
 
     local report_file="$PROJECT_ROOT/deployment_report.md"
     cat > "$report_file" << EOF
-# Hajj & Umrah Guide - Deployment Report
+# Nur Makkah & Umrah Guide - Deployment Report
 
 **Generated:** $TIMESTAMP
 **Commit:** $(git rev-parse HEAD 2>/dev/null || echo "N/A")
@@ -359,7 +359,7 @@ EOF
 main() {
     local start_time=$(date +%s)
 
-    echo "🕌 Hajj & Umrah Guide - Multi-Platform Deployment"
+    echo "🕌 Nur Makkah & Umrah Guide - Multi-Platform Deployment"
     echo "=============================================="
     echo ""
 
@@ -385,7 +385,7 @@ main() {
     echo "📁 Build artifacts: $PROJECT_ROOT/build_artifacts"
     echo "📄 Deployment report: $PROJECT_ROOT/deployment_report.md"
     echo ""
-    echo "🕌 Hajj & Umrah Guide is ready for distribution!"
+    echo "🕌 Nur Makkah & Umrah Guide is ready for distribution!"
     echo "   - React Native: Ready for Google Play Store"
     echo "   - Android Native: Ready for Google Play Store"
     echo "   - Flutter: Ready for Google Play Store"
