@@ -127,3 +127,7 @@ hajj_app/build/
 # Large patch files
 changes.patch
 flutter.tar.gz
+
+# Allow Flutter app source
+!hajj_app_flutter/lib/
+!hajj_app_flutter/lib/**
