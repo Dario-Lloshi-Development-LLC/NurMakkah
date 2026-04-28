@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hajj_app_flutter/app/nur_theme.dart';
 import 'package:hajj_app_flutter/features/content/screens/about_screen.dart';
 import 'package:hajj_app_flutter/features/content/screens/categories_screen.dart';
 import 'package:hajj_app_flutter/features/content/screens/home_screen.dart';
@@ -17,11 +18,8 @@ class NurMakkahApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Nur Makkah',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFFD4AF37), brightness: Brightness.dark),
-        scaffoldBackgroundColor: const Color(0xFF1A1A1A),
-        useMaterial3: true,
-      ),
+      debugShowCheckedModeBanner: false,
+      theme: NurTheme.dark,
       home: const MainScaffold(),
     );
   }
@@ -50,18 +48,26 @@ class _MainScaffoldState extends State<MainScaffold> {
 
     return Scaffold(
       appBar: AppBar(title: const Text('Nur Makkah')),
-      body: pages[index],
-      bottomNavigationBar: NavigationBar(
-        selectedIndex: index,
-        onDestinationSelected: (v) => setState(() => index = v),
-        destinations: const [
-          NavigationDestination(icon: Icon(Icons.home), label: 'Home'),
-          NavigationDestination(icon: Icon(Icons.category), label: 'Categories'),
-          NavigationDestination(icon: Icon(Icons.search), label: 'Search'),
-          NavigationDestination(icon: Icon(Icons.map), label: 'Map'),
-          NavigationDestination(icon: Icon(Icons.info), label: 'About'),
-          NavigationDestination(icon: Icon(Icons.settings), label: 'Settings'),
-        ],
+      body: AnimatedSwitcher(
+        duration: const Duration(milliseconds: 250),
+        child: KeyedSubtree(key: ValueKey(index), child: pages[index]),
+      ),
+      bottomNavigationBar: Container(
+        decoration: const BoxDecoration(
+          border: Border(top: BorderSide(color: Color(0x22D4AF37))),
+        ),
+        child: BottomNavigationBar(
+          currentIndex: index,
+          onTap: (v) => setState(() => index = v),
+          items: const [
+            BottomNavigationBarItem(icon: Icon(Icons.home_rounded), label: 'Home'),
+            BottomNavigationBarItem(icon: Icon(Icons.category_rounded), label: 'Categories'),
+            BottomNavigationBarItem(icon: Icon(Icons.search_rounded), label: 'Search'),
+            BottomNavigationBarItem(icon: Icon(Icons.map_rounded), label: 'Map'),
+            BottomNavigationBarItem(icon: Icon(Icons.info_outline_rounded), label: 'About'),
+            BottomNavigationBarItem(icon: Icon(Icons.settings_rounded), label: 'Settings'),
+          ],
+        ),
       ),
     );
   }

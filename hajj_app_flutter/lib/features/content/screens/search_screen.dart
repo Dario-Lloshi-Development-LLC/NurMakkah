@@ -34,15 +34,21 @@ class _SearchScreenState extends State<SearchScreen> {
           child: TextField(
             controller: controller,
             onChanged: _search,
-            decoration: const InputDecoration(labelText: 'Kërko në të gjitha kategoritë'),
+            decoration: const InputDecoration(
+              labelText: 'Kërko në të gjitha kategoritë',
+              prefixIcon: Icon(Icons.search_rounded),
+            ),
           ),
         ),
         Expanded(
           child: ListView.builder(
             itemCount: results.length,
-            itemBuilder: (context, index) => ListTile(
-              title: Text(results[index].rule),
-              subtitle: Text(results[index].description),
+            itemBuilder: (context, index) => Card(
+              margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
+              child: ListTile(
+                title: Text(results[index].rule),
+                subtitle: Text(results[index].description),
+              ),
             ),
           ),
         ),

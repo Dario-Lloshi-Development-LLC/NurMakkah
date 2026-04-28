@@ -20,8 +20,11 @@ class CategoriesScreen extends StatelessWidget {
             return Card(
               margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
               child: ListTile(
-                leading: CircleAvatar(child: Text('${category.rules.length}')),
-                title: Text(category.title),
+                contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+                leading: CircleAvatar(
+                  child: Text('${category.rules.length}'),
+                ),
+                title: Text(category.title, style: Theme.of(context).textTheme.titleLarge),
                 subtitle: Text(category.description),
                 onTap: () => Navigator.of(context).push(
                   MaterialPageRoute(builder: (_) => DetailScreen(category: category)),

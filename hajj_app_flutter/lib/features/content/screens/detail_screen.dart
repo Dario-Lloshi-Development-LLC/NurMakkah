@@ -29,7 +29,10 @@ class _DetailScreenState extends State<DetailScreen> {
           Padding(
             padding: const EdgeInsets.all(16),
             child: TextField(
-              decoration: const InputDecoration(labelText: 'Kërko rregulla...'),
+              decoration: const InputDecoration(
+                labelText: 'Kërko rregulla...',
+                prefixIcon: Icon(Icons.search_rounded),
+              ),
               onChanged: (value) => setState(() => query = value),
             ),
           ),
@@ -40,7 +43,17 @@ class _DetailScreenState extends State<DetailScreen> {
                 final rule = filtered[index];
                 return Card(
                   margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                  child: ListTile(title: Text(rule.rule), subtitle: Text(rule.description)),
+                  child: Padding(
+                    padding: const EdgeInsets.all(14),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(rule.rule, style: Theme.of(context).textTheme.titleLarge),
+                        const SizedBox(height: 6),
+                        Text(rule.description),
+                      ],
+                    ),
+                  ),
                 );
               },
             ),
